@@ -32,6 +32,7 @@ const linkSchema = new Schema({
   boundary: [boundarySchema],
   eligibleUsers: [eligibleUser],
 });
+
 // uniqueValidator plugin for presave validation of unique fields. Check the docs for more details
 linkSchema.plugin(uniqueValidator);
 let Link = mongoose.model("link", linkSchema);
