@@ -1,13 +1,15 @@
 const express = require("express");
+
 // For when we create our apis
 const cors = require("cors");
 const mongoose = require("mongoose");
 const session = require("express-session");
+
 // For session Storage
 const MongoStore = require("connect-mongo")(session);
 const config=require("./config/database")
-
 let configuration = process.env.DATABASE || config.database;
+
 // connect to database
 mongoose.connect(configuration, {
   useNewUrlParser: true,
@@ -22,6 +24,7 @@ db.once("open", function () {
 
 // initialize app
 const app = express();
+
 // middlewares
 app.use(
   session({
