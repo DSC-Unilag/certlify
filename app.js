@@ -46,5 +46,5 @@ app.listen(PORT, () => {
 });
 
 // Auth (User) Routes
-const blogRoutes = require('./routes/blogRoutes');
+const userRoutes = require('./routes/userRoutes');
 app.use('/', userRoutes);
