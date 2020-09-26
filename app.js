@@ -44,3 +44,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
 });
+
+// Auth (User) Routes
+const blogRoutes = require('./routes/blogRoutes');
+app.use('/', userRoutes);
