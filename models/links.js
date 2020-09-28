@@ -24,6 +24,7 @@ const eligibleUser = new Schema({
 });
 
 const linkSchema = new Schema({
+  issuer:String,
   name:String,
   link: {
     type: String,

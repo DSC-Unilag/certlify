@@ -72,3 +72,6 @@ app.use("/", userRoutes);
 
 const dashboard = require("./routes/dashboard");
 app.use("/", dashboard);
+
+const manage = require("./routes/manage");
+app.use("/", manage);
