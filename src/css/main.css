@@ -1,7 +1,8 @@
 @font-face {
     font-family: "Open-Sans";
-    src: url("./fonts/OpenSans-Semibold.ttf");
+    src: url("./fonts/OpenSans-Regular.ttf");
 }
+
 * {
     font-family: Open-Sans, Verdana, Geneva, Tahoma, sans-serif;
     margin: 0;
@@ -21,12 +22,28 @@ body {
     letter-spacing: 0.12rem;
     word-spacing: 0.16rem;
 }
-
-main {
+body{
     display: grid;
     grid-template-rows: auto auto;
 }
 
+main {
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-items: center;
+}
+
+main span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+main span img {
+    width: 70%;
+    height: auto
+}
 
 header {
     display: grid;
@@ -35,35 +52,51 @@ header {
     align-items: center;
     margin: 1.5rem 0;
 }
-header span{
+
+header span {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    height: 15rem;
+    height: 12.5rem;
 }
+
 header #logo img {
     width: 95%;
     height: auto;
 }
-main .landing-page-section{
+
+main .landing-page-section {
     display: grid;
     height: auto;
+    text-align: center;
     justify-items: center;
     align-items: center;
     grid-template-columns: auto;
     grid-template-rows: 4rem 4rem 4rem 3rem;
 }
 
-main .landing-page-section p{
+main .landing-page-section h1 {
+    font-weight: bolder;
+    font-size: 600;
+    color: #4285F4;
+}
+
+
+main .landing-page-section p {
     text-align: center;
     color: black;
 }
-main .landing-page-section button{
+
+main .landing-page-section button {
     width: 12rem;
     height: 2.5rem;
+    background-color: #4285F4;
+    color: white;
+    border: 1px solid;
     box-shadow: 1px 4px 5px lightgrey;
 }
+
 /* For another page */
 /* 
 header p {
