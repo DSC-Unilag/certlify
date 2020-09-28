@@ -7,3 +7,5 @@ router.use(express.urlencoded({ extended: true }));
 router.use(express.json());
 
 router.get('/', GetDashboard);
+
+module.exports = router;
