@@ -78,8 +78,8 @@ post:
     
                     schema:
 ```JSON                    
-                    {
-						status:false,
-						message:"duplicate user"
-					}
+{
+    status:false,
+    message:"duplicate user"
+}
 ```
