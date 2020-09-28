@@ -6,29 +6,34 @@ let dashboard = (req, res) => {
     let email = req.session.email
     if (email) {
         User.findOne({ email }, 'name, certificateUrls', function (err, user) {
-            let certs = [];
+            let data={}
             if (user) {
-                let data = {}
+                data.name = user.name
+                data.certificateUrls = user.certificateUrls
+                data.certs= [];
                 let links = user.certificateUrls
                 for (i in links) {
+                    data.certs[i]={}
                     Links.findOne({ link: links[i] }, 'link, boundary,eligibleUsers', function (err, cert) {
                         if (cert) {
-                            data.name = user.name
-                            data.certificateUrls = user.certificateUrls
-                            data.link = cert.link
-                            data.boundary = cert.boundary
-                            res.json(data)
-                        } else {
-                            data.name = user.name
-                            data.certificateUrls = user.certificateUrls
-                            res.json(data)
+                            data.certs[i].link = cert.link
+                            data.certs[i].boundary = cert.boundary
                         }
                     })
                 }
+                res.json(data);
+            }else{
+                res.json({
+                    status:false,
+                    message:"Unregistered user"
+                })
             }
         })
     } else {
-        // login alert
+        res.json({
+            status:false,
+            message:"user not logged in"
+        })
     }
 
 }
