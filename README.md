@@ -1,8 +1,9 @@
 # cert
 ## Api documentation
 
-post 
-    /register
+post:
+
+    /register:
 
     Requestbody:
     
