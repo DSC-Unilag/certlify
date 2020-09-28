@@ -16,6 +16,7 @@ let dashboard = (req, res) => {
                     data.certs[i]={}
                     Links.findOne({ link: links[i] }, 'link, boundary,eligibleUsers', function (err, cert) {
                         if (cert) {
+                            data.certs[i].name = cert.name
                             data.certs[i].link = cert.link
                             data.certs[i].boundary = cert.boundary
                         }
