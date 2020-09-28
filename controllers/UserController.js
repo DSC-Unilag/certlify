@@ -8,7 +8,7 @@ const User = require("../models/users");
 const config = require("../config/database");
 const rounds = process.env.DATABASE || config.rounds;
 // Load dependencies
-const bcryptjs = require("bcryptjs");
+const bcrypt = require("bcryptjs");
 
 const getRegister = (req, res) => { };
 
@@ -16,14 +16,14 @@ const register = (req, res) => {
 	const { name, email, password } = req.body;
 	const passwordhash
 	// Check if the mail is taken already, we want unique mails only
-	User.find({ email },function (err, user) {
+	User.findOne({ email },function (err, user) {
 		if (err) throw err;
 		if (!user) {
 			// Password validation
 			if (password.length >= 8) {
 				// Salt and hash passoword here
-				bcryptjs.genSalt(rounds, (err, salt) => {
-					bcryptjs.hash(password, salt, (err, hash) => {
+				bcrypt.genSalt(rounds, (err, salt) => {
+					bcrypt.hash(password, salt, (err, hash) => {
 						passwordhash = hash;
 					});
 				});
@@ -58,7 +58,7 @@ const login = (req, res) => {
 	const { email, password } = req.body;
 
 	// Checks if the user exists
-	User.find({ email }, function (err, user) {
+	User.findOne({ email }, function (err, user) {
 		if (user) {
 			// Check for correct password
 			bcrypt.compare(password, user.passwordhash, function (err, stats) {

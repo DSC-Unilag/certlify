@@ -47,4 +47,7 @@ app.listen(PORT, () => {
 
 // Auth (User) Routes
 const userRoutes = require('./routes/userRoutes');
-app.use('/', userRoutes);
+app.use('/api/v1', userRoutes);
+
+const dashboard = require('./routes/dashboard');
+app.use('/api/v1', dashboard);
