@@ -1,0 +1,195 @@
+@font-face {
+    font-family: "Open-Sans";
+    src: url("./fonts/OpenSans-Regular.ttf");
+}
+
+* {
+    font-family: Open-Sans, Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1rem;
+    scroll-behavior: smooth;
+
+}
+
+html,
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #098dff;
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.12rem;
+    word-spacing: 0.16rem;
+}
+body{
+    display: grid;
+    grid-template-rows: auto auto;
+}
+
+main {
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-items: center;
+}
+
+main span {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+main span img {
+    width: 70%;
+    height: auto
+}
+
+header {
+    display: grid;
+    grid-template-columns: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem 0;
+}
+
+header span {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 12.5rem;
+}
+
+header #logo img {
+    width: 95%;
+    height: auto;
+}
+
+main .landing-page-section {
+    display: grid;
+    height: auto;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: auto;
+    grid-template-rows: 7rem 3rem 2rem 7rem;
+}
+
+main .landing-page-section h1 {
+    font-weight: 600;
+    font-size: 1.13rem;
+    color: #4285F4;
+}
+
+
+main .landing-page-section p {
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: black;
+    align-self: start;
+}
+
+main .landing-page-section button {
+    width: 12.25rem;
+    height: 2.5rem;
+    background-color: #4285F4;
+    color: white;
+    border: none;
+    box-shadow: 1px 4px 5px lightgrey;
+}
+main .landing-page-section button:hover{
+    background-color: #4285F4;
+}
+main .landing-page-section button:focus{
+    background-color: #1f74fc;
+}
+main .landing-page-section button:active{
+    background-color: #2e7eff;
+}
+/* For another page */
+/* 
+header p {
+    grid-area: 1 / 1 / 2 / 2;
+    color: black;
+    font-weight: bold;
+    font-family: cursive;
+    font-size: 1.1rem;
+    letter-spacing: 0.2rem;
+} */
+
+
+/* 
+header .section-links {
+    grid-area: 2 / 1 / 3 / 3;
+    width: 100%;
+    position: relative;
+    height: 0;
+    justify-self: center;
+    transition: all 400ms ease-in;
+    overflow: hidden;
+}
+
+header #toggle-butt {
+    display: none;
+}
+
+header #toggle-butt:checked~.section-links {
+    height: 10rem;
+} */
+
+/* ul {
+    display: grid;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+    grid-template-rows: 36%;
+}
+
+ul li {
+    list-style-type: none;
+    justify-self: center;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+ul li a {
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+    transition: all 80ms ease-in;
+}
+
+header .section-links ul {
+    justify-self: end;
+}
+
+header .section-links ul li a {
+    padding: 1rem;
+    color: #03567b;
+    font-size: 1rem;
+}
+
+header .bread-crumbs {
+    grid-area: 1 / 2 / 2 / 3;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 0 0 1rem;
+    height: 4rem;
+    padding: 1rem 0;
+    cursor: pointer;
+    width: 3rem;
+    justify-self: end;
+}
+
+.bread-crumb {
+    display: inline-block;
+    width: 95%;
+    margin: 0.25rem;
+    height: 0.19rem;
+    background-color: #0088ff;
+    border-radius: 3rem;
+} */
