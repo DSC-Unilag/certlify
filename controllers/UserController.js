@@ -14,7 +14,8 @@ const getRegister = (req, res) => { };
 
 const register = (req, res) => {
 	if (!req.body.name||!req.body.password||!req.body.email){
-	return res.json({
+		res.status(400);
+	 res.json({
 			status:false,
 			message:"incomplete User Data"
 		})
@@ -46,12 +47,14 @@ const register = (req, res) => {
 						message:"user added successfully"
 					})
 				}else{
+					res.status(401)
 					res.json({
 						status:false,
-						message:"invalidpassword"
+						message:"incorrect username or password"
 					})
 				}
 			}else{
+				res.status(402)
 				res.json({
 					status:false,
 					message:"duplicate user"
@@ -66,7 +69,12 @@ const getLogin = (req, res) => { };
 
 const login = (req, res) => {
 	const { email, password } = req.body;
-
+	if(!email||!password){
+		res.json({
+			status:false,
+			message:"incomplete login data"
+		})
+	}
 	// Checks if the user exists
 	User.findOne({ email }, function (err, user) {
 		if (user) {
