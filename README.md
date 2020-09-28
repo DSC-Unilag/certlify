@@ -7,9 +7,8 @@ post
     
     ```json
     {
-        name
+        name,
         email,
         password
     }
     ```
-    
