@@ -1,0 +1,29 @@
+{
+  "name": "Slideshow",
+  "short_name": "Slideshow",
+  "start_url": "index.html",
+  "background_color": "#3498DC",
+  "theme_color": "#34495E",
+  "orientation": "any",
+  "display": "standalone",
+
+  "icons": [{
+    "src": "imgs/icon.png",
+    "type": "image/png",
+    "sizes": "512x512"
+  }],
+
+  "dir": "ltr",
+  "lang": "en-US",
+  "description": "",
+  "scope": "./",
+  "screenshots": [{
+    "src": ""
+  }],
+  "related_applications": [{
+    "platform": "play",
+    "url": "",
+    "id": "" 
+  }],
+  "prefer_related_applications": true 
+}
