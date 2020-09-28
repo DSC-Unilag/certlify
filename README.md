@@ -15,11 +15,11 @@ post:
     
                 schema:
 ```JSON
-                    {
-                        name,
-                        email,
-                        password
-                    }
+{
+    name:"name",
+    email:"emai",
+    password:"password"
+}
 ```
     responses:
 
@@ -33,10 +33,10 @@ post:
     
                     schema:
 ```JSON                    
-                    {
-						status:true,
-						message:"user added successfully"
-					}
+{
+    status:true,
+    message:"user added successfully"
+}
 ```
         "400":
     
@@ -48,10 +48,10 @@ post:
     
                     schema:
 ```JSON                    
-                    {
-						status:false,
-						message:"incomplete User Data"
-					}
+{
+    status:false,
+    message:"incomplete User Data"
+}
 ```          
 "401":
     
@@ -63,10 +63,10 @@ post:
     
                     schema:
 ```JSON                    
-                    {
-						status:false,
-						message:"incorrect username or password"
-					}
+{
+    status:false,
+    message:"incorrect username or password"
+}
 ```
 "402":
     
