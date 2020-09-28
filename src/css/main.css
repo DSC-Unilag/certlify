@@ -73,30 +73,41 @@ main .landing-page-section {
     justify-items: center;
     align-items: center;
     grid-template-columns: auto;
-    grid-template-rows: 4rem 4rem 4rem 3rem;
+    grid-template-rows: 7rem 3rem 2rem 7rem;
 }
 
 main .landing-page-section h1 {
-    font-weight: bolder;
-    font-size: 600;
+    font-weight: 600;
+    font-size: 1.13rem;
     color: #4285F4;
 }
 
 
 main .landing-page-section p {
     text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
     color: black;
+    align-self: start;
 }
 
 main .landing-page-section button {
-    width: 12rem;
+    width: 12.25rem;
     height: 2.5rem;
     background-color: #4285F4;
     color: white;
-    border: 1px solid;
+    border: none;
     box-shadow: 1px 4px 5px lightgrey;
 }
-
+main .landing-page-section button:hover{
+    background-color: #4285F4;
+}
+main .landing-page-section button:focus{
+    background-color: #1f74fc;
+}
+main .landing-page-section button:active{
+    background-color: #2e7eff;
+}
 /* For another page */
 /* 
 header p {
