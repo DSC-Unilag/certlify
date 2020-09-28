@@ -3,12 +3,15 @@
 
 post 
     /register
-    json body required
-    
-```json
-    {
-        name,
-        email,
-        password
-    }
+    Requestbody:
+        required:true
+        content:
+            application/json
+                schema:
+```JSON
+                    {
+                        name,
+                        email,
+                        password
+                    }
 ```
