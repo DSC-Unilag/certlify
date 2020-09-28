@@ -1,7 +1,7 @@
 # cert
 ## Api documentation
 
-post:
+### post:
 
     /register:
 
