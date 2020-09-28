@@ -27,7 +27,7 @@ post:
             content:
                 application/json:
                     schema:
-```json                    
+```JSON                    
                     {
 						status:true,
 						message:"user added successfully"
