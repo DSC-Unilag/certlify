@@ -5,10 +5,10 @@ post
     /register
     json body required
     
-    ```json
+```json
     {
         name,
         email,
         password
     }
-    ```
+```
