@@ -16,10 +16,11 @@ const UserSchema = new Schema({
     required: true,
     unique: true,
   },
-  password: {
+  passwordhash: {
     type: String,
     required: true,
   },
+  profilePicture:String,
   "certificate-urls": [String],
 });
 
