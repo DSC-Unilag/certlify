@@ -21,3 +21,15 @@ post:
                         password
                     }
 ```
+    responses:
+        "200":
+            description: Successfully created user
+            content:
+                application/json:
+                    schema:
+```json                    
+                    {
+						status:true,
+						message:"user added successfully"
+					}
+```

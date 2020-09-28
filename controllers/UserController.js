@@ -41,7 +41,10 @@ const register = (req, res) => {
 					// Start session ish
 					req.session.status = true;
 		
-					// Render page finally
+					res.json({
+						status:true,
+						message:"user added successfully"
+					})
 				}else{
 					res.json({
 						status:false,
