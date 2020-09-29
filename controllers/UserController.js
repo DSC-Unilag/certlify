@@ -13,19 +13,21 @@ const bcrypt = require("bcryptjs");
 const getRegister = (req, res) => { };
 
 const register = (req, res) => {
-	if (!req.body.name||!req.body.password||!req.body.email){
+	if (!req.body.name || !req.body.password || !req.body.email){
 		res.status(400);
 	 res.json({
-			status:false,
-			message:"incomplete User Data"
+			status: false,
+			message: "incomplete User Data"
 		})
-	}else{
+	} else {
 		const { name, email, password } = req.body;
 		var passwordhash
+
 		// Check if the mail is taken already, we want unique mails only
 		User.findOne({ email },function (err, user) {
 			if (err) throw err;
 			if (!user) {
+
 				// Password validation
 				if (password.length >= 8) {
 					// Salt and hash passoword here
@@ -39,25 +41,26 @@ const register = (req, res) => {
 					const credentials = [name, email, passwordhash];
 					const user = new User(credentials);
 					user.save();
+
 					// Start session ish
 					req.session.status = true;
 		
 					res.json({
-						status:true,
-						message:"user added successfully"
+						status: true,
+						message: "user added successfully"
 					})
-				}else{
+				} else {
 					res.status(401)
 					res.json({
-						status:false,
-						message:"invalid password"
+						status: false,
+						message: "invalid password"
 					})
 				}
-			}else{
+			} else {
 				res.status(402)
 				res.json({
-					status:false,
-					message:"duplicate user"
+					status: false,
+					message: "duplicate user"
 				})
 			}
 		});
@@ -69,40 +72,43 @@ const getLogin = (req, res) => { };
 
 const login = (req, res) => {
 	const { email, password } = req.body;
-	if(!email||!password){
+	if(!email || !password){
 		res.status(400)
 		res.json({
-			status:false,
-			message:"incomplete login data"
+			status: false,
+			message: "incomplete login data"
 		})
 	}
+
 	// Checks if the user exists
 	User.findOne({ email }, function (err, user) {
 		if (user) {
+
 			// Check for correct password
 			bcrypt.compare(password, user.passwordhash, function (err, stats) {
 				if (stats) {
+
 					// Start session ish
 					req.session.status = true;
 					req.session.email = email;
 					res.json({
-						status:true,
-						message:"user logged in successfully"
+						status: true,
+						message: "user logged in successfully"
 					})
 				}
 			});
 	
 			// Render page finally
-		}else{
+
+		} else {
 			res.status(401)
 			res.json({
-				status:false,
-				message:"incorrect username or password"
+				status: false,
+				message: "incorrect username or password"
 			})
 		}
 	});
-	
 };
 
-module.exports.login=login;
-module.exports.register=register;
+module.exports.login = login;
+module.exports.register = register;

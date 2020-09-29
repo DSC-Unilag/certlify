@@ -28,18 +28,18 @@ const app = express();
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 
-const swaggerOptions={
-  swaggerDefinition:{
-    info:{
-      title:'Certificate Generator API',
-      description:"Certificate Generator API informations",
-      contact:{
-        name:"DSC Unilag"
+const swaggerOptions = {
+  swaggerDefinition: {
+    info: {
+      title: 'Certificate Generator API',
+      description: "Certificate Generator API informations",
+      contact: {
+        name: "DSC Unilag"
       },
-      servers:["http://localhost:3000/"]
+      servers: ["http://localhost:3000/"]
     }
   },
-  apis:["./routes/*.js"]
+  apis: ["./routes/*.js"]
 }
 
 const swaggerDocs=swaggerJsDoc(swaggerOptions);
