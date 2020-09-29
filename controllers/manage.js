@@ -68,5 +68,3 @@ let edit = (req,res) => {
     })
 }
 
-module.exports.getCollectors = getCollectors;
-module.exports.edit = edit;

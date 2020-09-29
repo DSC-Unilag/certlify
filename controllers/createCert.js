@@ -35,7 +35,7 @@ let certificate = (req,res) => {
                             res.json({
                                 status: true,
                                 message: "certificate created",
-                                link:req.hostname+"/certificate/"+link
+                                link: req.hostname+"/certificate/"+link
                             })
                         });
                     }
