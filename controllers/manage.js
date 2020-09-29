@@ -68,5 +68,44 @@ let edit=(req,res)=>{
     })
 }
 
+let update=(req,res)=>{
+    if (!req.session.email){
+      return res.json({
+            status:false,
+            message:"user not logged in"
+        })
+    }
+    req.session.link=req.params.link
+
+    let boundary=req.body.boundaries;
+    Links.findOne({ link:req.params.link}, function (err, cert) {
+        if(cert){
+            if(cert.issuer==req.session.email){
+                cert.boundary=boundary;
+                cert.save((err)=>{
+                    if (err) throw err;
+                    res.json({
+                        status:true,
+                        message:"certificate successfully updated"
+                    })
+                })
+            }else{
+                res.status(400)
+                res.json({
+                    status:false,
+                    message:"Unauthorized access"
+                });
+            }
+        }else{
+            res.status(404)
+            res.json({
+                status:false,
+                message:"certificate not found"
+            })
+        }
+    })
+}
+
 module.exports.getCollectors=getCollectors;
 module.exports.edit=edit;
+module.exports.update=update;
