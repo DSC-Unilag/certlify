@@ -16,7 +16,6 @@ const boundarySchema = new Schema({
 const eligibleUser = new Schema({
   email: {
     type: String,
-    required: true,
     unique: true,
   },
   name: String,

@@ -1,10 +1,11 @@
 const User = require("../models/users");
 const Links = require("../models/links");
 const config = require("../config/database");
-const rounds = process.env.DATABASE || config.rounds;
+const rounds = process.env.ROUNDS || config.rounds;
 
 let getCollectors=(req,res)=>{
     if (!req.session.email){
+        res.status(401);
        return res.json({
             status:false,
             message:"user not logged in"

@@ -75,3 +75,6 @@ app.use("/", dashboard);
 
 const manage = require("./routes/manage");
 app.use("/", manage);
+
+const createCert = require("./routes/createCert");
+app.use("/", createCert);

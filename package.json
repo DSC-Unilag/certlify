@@ -18,6 +18,7 @@
     "mongoose": "^5.10.6",
     "mongoose-unique-validator": "^2.0.3",
     "swagger-jsdoc": "^4.2.0",
-    "swagger-ui-express": "^4.1.4"
+    "swagger-ui-express": "^4.1.4",
+    "uniqid": "^5.2.0"
   }
 }
