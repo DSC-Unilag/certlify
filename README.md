@@ -7,7 +7,7 @@
 
     Requestbody:
     
-        required:true
+        required: true
     
         content:
     
@@ -16,9 +16,9 @@
                 schema:
 ```JSON
 {
-    name:"name",
-    email:"emai",
-    password:"password"
+    name: "name",
+    email: "email",
+    password: "password"
 }
 ```
     responses:
@@ -34,8 +34,8 @@
                     schema:
 ```JSON                    
 {
-    status:true,
-    message:"user added successfully"
+    status: true,
+    message: "user added successfully"
 }
 ```
         "400":
@@ -49,8 +49,8 @@
                     schema:
 ```JSON                    
 {
-    status:false,
-    message:"incomplete User Data"
+    status: false,
+    message: "incomplete User Data"
 }
 ```          
 "401":
@@ -64,8 +64,8 @@
                     schema:
 ```JSON                    
 {
-    status:false,
-    message:"incorrect username or password"
+    status: false,
+    message: "incorrect username or password"
 }
 ```
 "402":
@@ -79,8 +79,8 @@
                     schema:
 ```JSON                    
 {
-    status:false,
-    message:"duplicate user"
+    status: false,
+    message: "duplicate user"
 }
 ```
 
@@ -90,7 +90,7 @@
 
     Requestbody:
     
-        required:true
+        required: true
     
         content:
     
@@ -99,8 +99,8 @@
                 schema:
 ```JSON
 {
-    email:"emai",
-    password:"password"
+    email: "email",
+    password: "password"
 }
 ```
     responses:
@@ -116,8 +116,8 @@
                     schema:
 ```JSON                    
 {
-    status:true,
-    message:"user logged in successfully"
+    status: true,
+    message: "user logged in successfully"
 }
 ```
         "400":
@@ -131,8 +131,8 @@
                     schema:
 ```JSON                    
 {
-    status:false,
-    message:"incomplete login data"
+    status: false,
+    message: "incomplete login data"
 }
 ```          
 "401":
@@ -146,7 +146,74 @@
                     schema:
 ```JSON                    
 {
-    status:false,
-    message:"incorrect username or password"
+    status: false,
+    message: "incorrect username or password"
+}
+```
+
+### get:
+
+   #### /geteligibleusers:
+
+    Requestbody:
+    
+        required: false
+    
+        content:
+    
+            application/json
+    
+                schema:
+```JSON
+{
+    email: "email"
+}
+```
+    responses:
+
+        "200":
+    
+            description: Successfully fetched eligible users
+    
+            content:
+    
+                application/json:
+    
+                    schema:
+```JSON                    
+{
+    status: true,
+    message: "eligible users fetched",
+    data: [{ },] // Array of objects
+}
+```
+        "400":
+    
+            description: bad request
+    
+            content:
+    
+                application/json:
+    
+                    schema:
+```JSON                    
+{
+    status: false,
+    message: "bad request" // I don't really know how you can make a bad get request
+}
+```          
+"401":
+    
+            description: no access
+    
+            content:
+    
+                application/json:
+    
+                    schema:
+```JSON                    
+{
+    status: false,
+    message: "unauthorized user"
 }
 ```
