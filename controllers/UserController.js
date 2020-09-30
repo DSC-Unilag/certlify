@@ -14,7 +14,7 @@ const getRegister = (req, res) => { };
 
 const register = (req, res) => {
 	if (!req.body.name || !req.body.password || !req.body.email) {
-		res.status(405);
+		res.status(400);
 		res.json({
 			status: false,
 			message: "Invalid or incomplete input"
@@ -50,14 +50,14 @@ const register = (req, res) => {
 					});
 
 				} else {
-					res.status(401)
+					res.status(501)
 					res.json({
 						status: false,
 						message: "invalid password"
 					})
 				}
 			} else {
-				res.status(402)
+				res.status(409)
 				res.json({
 					status: false,
 					message: "duplicate user"
@@ -67,8 +67,6 @@ const register = (req, res) => {
 	}
 
 };
-
-const getLogin = (req, res) => { };
 
 const login = (req, res) => {
 	const { email, password } = req.body;
@@ -93,7 +91,7 @@ const login = (req, res) => {
 						message: "user logged in successfully"
 					})
 				}else {
-					res.status(401)
+					res.status(501)
 					res.json({
 						status: false,
 						message: "incorrect username or password"
@@ -103,7 +101,7 @@ const login = (req, res) => {
 
 			// Render page finally
 		} else {
-			res.status(401)
+			res.status(501)
 			res.json({
 				status: false,
 				message: "incorrect username or password"

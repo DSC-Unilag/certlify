@@ -24,7 +24,7 @@ let dashboard = (req, res) => {
                 }
                 res.json(data);
             }else{
-                res.status(401)
+                res.status(501)
                 res.json({
                     status:false,
                     message:"Unregistered user"
@@ -32,7 +32,7 @@ let dashboard = (req, res) => {
             }
         })
     } else {
-        res.status(401)
+        res.status(501)
         res.json({
             status:false,
             message:"user not signed in"

@@ -4,7 +4,7 @@ info:
   version: "1.0.0"
   title: "Certificate Generator"
   contact:
-    email: "dscemail address"
+    email: "dscemail@gmail.com"
   license:
     name: "ISC"
 host: "localhost:3000"
@@ -65,7 +65,7 @@ paths:
               message:
                 type: string
             
-        "405":
+        "400":
           description: "Invalid input"
           schema:
             type: object
@@ -75,8 +75,8 @@ paths:
               message:
                 type: string
                 
-        "401":
-          description: "Invalid password"
+        "501":
+          description: "Invalid password or unrecognized user"
           schema:
             type: object
             properties:
@@ -85,7 +85,7 @@ paths:
               message:
                 type: string
                 
-        "402":
+        "409":
           description: "duplicate user"
           schema:
             type: object
@@ -144,7 +144,7 @@ paths:
               message:
                 type: string
                 
-        "401":
+        "501":
           description: "Incorrect Username or password"
           schema:
             type: object
@@ -179,10 +179,219 @@ paths:
                 type: array
                 items:
                   type: object
-  
-            
-        "401":
+              
+        "501":
           description: "Unauthorized"
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+              message:
+                type: string
+
+  /manage/{link}/getcollectors:
+    get:
+      tags:
+      - "Manage"
+      summary: Gets the array of eligible collector objects for a certificate.
+      parameters:
+        - in: path
+          name: link
+          type: string
+          required: true
+          description: specific url identifier string for a particular certificate.
+      operationId: "getcollectors"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "Successfully retrieved collectors information"
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+              collectors:
+                type: array
+                items:
+                  type: object
+            
+        "501":
+          description: "Unauthorized access"
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+              message:
+                type: string
+        "404":
+          description: "Certificate not found"
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+              message:
+                type: string
+
+  /manage/{link}/edit:
+    get:
+      tags:
+      - "Manage"
+      summary: Edit an already existing certificate.
+      parameters:
+        - in: path
+          name: link
+          type: string
+          required: true
+          description: specific url identifier string for a particular certificate.
+      operationId: "edit"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successfully retrieved certificate data"
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+              boundaries:
+                type: array
+                items:
+                  type: object
+            
+        "501":
+          description: "Unauthorized access"
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+              message:
+                type: string
+        "404":
+          description: "Certificate not found"
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+              message:
+                type: string
+
+  /manage/{link}/update:
+    post:
+      tags:
+      - "Manage"
+      summary: update certificate boundary.
+      operationId: "update"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"      
+      parameters:
+        - in: path
+          name: link
+          type: string
+          required: true
+          description: specific url identifier string for a particular certificate.
+      
+        - in: "body"
+          name: "body"
+          description: "User object to be registered in DB"
+          required: true
+          schema:
+            type: object
+            required: 
+              - boundaries
+            properties:
+              boundaries:
+                type: array
+                items: 
+                  type: object         
+      
+      responses:
+        "200":
+          description: "successfully updated certificate boundaries"
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+              message:
+                type: string
+            
+        "501":
+          description: "Unauthorized access"
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+              message:
+                type: string
+        "404":
+          description: "Certificate not found"
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+              message:
+                type: string
+
+  /createcert:
+    post:
+      tags:
+      - "Manage"
+      summary: update certificate boundary.
+      operationId: "update"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"      
+      parameters:
+        - in: "body"
+          name: "body"
+          description: "User object to be registered in DB"
+          required: true
+          schema:
+            type: object
+            required: 
+              - issuer
+              - name
+              - boundaries
+            properties:
+              issuer:
+                type: string
+                description: the email of the issuer
+              name:
+                type: string
+                description: the name of the certificate
+              boundaries:
+                type: array
+                description: the boundary array for the certificate details
+                items: 
+                  type: object
+      responses:
+        "200":
+          description: "successfully created certificate"
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+              message:
+                type: string
+              link:
+                type: string
+                description: this is the link which woul lead to the generation page for a particular certificate
+            
+        "501":
+          description: "Unauthorized access"
           schema:
             type: object
             properties:
