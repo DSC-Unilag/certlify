@@ -50,7 +50,7 @@ const register = (req, res) => {
 					});
 
 				} else {
-					res.status(501)
+					res.status(401)
 					res.json({
 						status: false,
 						message: "invalid password"
@@ -91,7 +91,7 @@ const login = (req, res) => {
 						message: "user logged in successfully"
 					})
 				}else {
-					res.status(501)
+					res.status(401)
 					res.json({
 						status: false,
 						message: "incorrect username or password"
@@ -101,7 +101,7 @@ const login = (req, res) => {
 
 			// Render page finally
 		} else {
-			res.status(501)
+			res.status(401)
 			res.json({
 				status: false,
 				message: "incorrect username or password"

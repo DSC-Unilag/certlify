@@ -5,7 +5,7 @@ const rounds = process.env.ROUNDS || config.rounds;
 
 let getCollectors=(req,res)=>{
     if (!req.session.email){
-        res.status(501);
+        res.status(401);
        return res.json({
             status:false,
             message:"user not logged in"
@@ -20,7 +20,7 @@ let getCollectors=(req,res)=>{
                     collectors:cert.eligibleUsers
                 });
             }else{
-                res.status(501)
+                res.status(401)
                 res.json({
                     status:false,
                     message:"Unauthorized access"
@@ -38,7 +38,7 @@ let getCollectors=(req,res)=>{
 
 let edit=(req,res)=>{
     if (!req.session.email){
-        res.status(501)
+        res.status(401)
       return res.json({
             status:false,
             message:"user not logged in"
@@ -53,7 +53,7 @@ let edit=(req,res)=>{
                     boundaries:cert.boundary
                 });
             }else{
-                res.status(501)
+                res.status(401)
                 res.json({
                     status:false,
                     message:"Unauthorized access"
@@ -92,7 +92,7 @@ let update=(req,res)=>{
                     })
                 })
             }else{
-                res.status(501)
+                res.status(401)
                 res.json({
                     status:false,
                     message:"Unauthorized access"

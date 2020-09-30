@@ -75,7 +75,7 @@ paths:
               message:
                 type: string
                 
-        "501":
+        "401":
           description: "Invalid password or unrecognized user"
           schema:
             type: object
@@ -144,7 +144,7 @@ paths:
               message:
                 type: string
                 
-        "501":
+        "401":
           description: "Incorrect Username or password"
           schema:
             type: object
@@ -180,7 +180,7 @@ paths:
                 items:
                   type: object
               
-        "501":
+        "401":
           description: "Unauthorized"
           schema:
             type: object
@@ -217,7 +217,7 @@ paths:
                 items:
                   type: object
             
-        "501":
+        "401":
           description: "Unauthorized access"
           schema:
             type: object
@@ -263,7 +263,7 @@ paths:
                 items:
                   type: object
             
-        "501":
+        "401":
           description: "Unauthorized access"
           schema:
             type: object
@@ -324,7 +324,7 @@ paths:
               message:
                 type: string
             
-        "501":
+        "401":
           description: "Unauthorized access"
           schema:
             type: object
@@ -390,7 +390,7 @@ paths:
                 type: string
                 description: this is the link which woul lead to the generation page for a particular certificate
             
-        "501":
+        "401":
           description: "Unauthorized access"
           schema:
             type: object

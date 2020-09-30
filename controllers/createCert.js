@@ -4,7 +4,7 @@ const Link = require("../models/links");
 
 let certificate = (req, res) => {
     if (!req.session.email) {
-        res.status(501)
+        res.status(401)
         res.json({
             status: false,
             message: "user not logged in"
@@ -14,7 +14,7 @@ let certificate = (req, res) => {
         req.session.link = link;
         User.findOne({ email: req.session.email }, function (err, user) {
             if (!user) {
-                res.status(501)
+                res.status(401)
                 res.json({
                     status: false,
                     message: "Unregistered User"
