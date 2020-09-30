@@ -44,6 +44,7 @@ main {
 
 main span {
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
     width: 100%;
@@ -229,6 +230,31 @@ input {
     top: 3rem;
 }
 
+.custom-cir{
+    width: 3rem;
+    height: 3rem;
+    background-color: aliceblue;
+    position: absolute;
+    border-radius: 50%;
+    right: 0;
+    left: 50.5rem;
+}
+
+.cir-left{
+    right: 0rem;
+    left: 0;
+}
+.custom-ellipse{
+    position: absolute;
+    z-index: -3;
+    background-color: aliceblue;
+    width: 22rem;
+    height: 22rem;
+    border-top-left-radius: 40% 80%;
+    border-top-right-radius: 40% 30%;
+    border-bottom-left-radius: 60% 30%;
+    border-bottom-right-radius: 20% 90%;
+}
 @media screen and (min-width: 40rem) {
     header #logo img {
         bottom: 4rem;
