@@ -6,6 +6,6 @@ const router = express.Router();
 router.use(express.urlencoded({ extended: true }));
 router.use(express.json());
 
-router.get('/', GetDashboard);
+router.get('/getdashboard', GetDashboard);
 
 module.exports = router;

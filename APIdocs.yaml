@@ -1,0 +1,193 @@
+swagger: "2.0"
+info:
+  description: "This is the api Documentation for the DSC Unilag online certificate generator"
+  version: "1.0.0"
+  title: "Certificate Generator"
+  contact:
+    email: "dscemail address"
+  license:
+    name: "ISC"
+host: "localhost:3000"
+tags:
+- name: "User Routes"
+  description: "All the user routes"
+- name: "Dashboard"
+  description: "Endpoints related to serving dashboard data"
+- name: "Manage"
+  description: "Endpoints used to manage already created certifictes"
+- name: "Create Certificate"
+  description: "Endpoints used to create certificate templates"
+schemes:
+- "https"
+- "http"
+paths:
+  /register:
+    post:
+      tags:
+      - "User Routes"
+      summary: "Add a new user to the db"
+      description: "This endpoint is used to create a new User"
+      operationId: "RegisterUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "User object to be registered in DB"
+        required: true
+        schema:
+          type: object
+          required: 
+            - name
+            - email
+            - password
+          properties:
+            name:
+              type: string
+            email:
+              type: string
+            password:
+              type: string
+          example:
+            name: Akinwande Akinboluwarin
+            email: akinwandeakinboluwarin@gmail.com
+            password: password
+      responses:
+        "201":
+          description: "User added Successfully"
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+              message:
+                type: string
+            
+        "405":
+          description: "Invalid input"
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+              message:
+                type: string
+                
+        "401":
+          description: "Invalid password"
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+              message:
+                type: string
+                
+        "402":
+          description: "duplicate user"
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+              message:
+                type: string
+  /login:
+    post:
+      tags:
+      - "User Routes"
+      summary: "Login a user"
+      description: "This endpoint is used to create a new User"
+      operationId: "LoginUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "User object to be registered in DB"
+        required: true
+        schema:
+          type: object
+          required: 
+            - email
+            - password
+          properties:
+            email:
+              type: string
+            password:
+              type: string
+          example:
+            email: akinwandeakinboluwarin@gmail.com
+            password: password
+      responses:
+        "200":
+          description: "User logged in Successfully"
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+              message:
+                type: string
+            
+        "400":
+          description: "Incomplete login data"
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+              message:
+                type: string
+                
+        "401":
+          description: "Incorrect Username or password"
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+              message:
+                type: string
+                
+  /getdashboard:
+    get:
+      tags:
+      - "Dashboard"
+      summary: "Get dashboard data"
+      description: "This endpoint is used to retrieve the dashboard data of a User"
+      operationId: "GetDashboard"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "Successfully retrieved dashboard data"
+          schema:
+            type: object
+            properties:
+              name:
+                type: boolean
+              certificateUrls:
+                type: array
+                items:
+                  type: string
+              certs:
+                type: array
+                items:
+                  type: object
+  
+            
+        "401":
+          description: "Unauthorized"
+          schema:
+            type: object
+            properties:
+              status:
+                type: boolean
+              message:
+                type: string
+                

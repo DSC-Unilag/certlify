@@ -24,18 +24,20 @@ let dashboard = (req, res) => {
                 }
                 res.json(data);
             }else{
+                res.status(401)
                 res.json({
-                    status: false,
-                    message: "Unregistered user"
+                    status:false,
+                    message:"Unregistered user"
                 })
             }
         })
     } else {
+        res.status(401)
         res.json({
-            status: false,
-            message: "user not logged in"
+            status:false,
+            message:"user not signed in"
         })
     }
 
 }
-module.exports = dashboard;
+module.exports=dashboard;

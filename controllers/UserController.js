@@ -13,42 +13,42 @@ const bcrypt = require("bcryptjs");
 const getRegister = (req, res) => { };
 
 const register = (req, res) => {
-	if (!req.body.name || !req.body.password || !req.body.email){
-		res.status(400);
-	 res.json({
+	if (!req.body.name || !req.body.password || !req.body.email) {
+		res.status(405);
+		res.json({
 			status: false,
-			message: "incomplete User Data"
+			message: "Invalid or incomplete input"
 		})
 	} else {
 		const { name, email, password } = req.body;
-		var passwordhash
-
 		// Check if the mail is taken already, we want unique mails only
-		User.findOne({ email },function (err, user) {
+		User.findOne({ email }, function (err, user) {
 			if (err) throw err;
 			if (!user) {
-
 				// Password validation
 				if (password.length >= 8) {
 					// Salt and hash passoword here
-					bcrypt.genSalt(rounds, (err, salt) => {
-						bcrypt.hash(password, salt, (err, hash) => {
-							passwordhash = hash;
+					bcrypt.genSalt(10, (err, salt) => {
+						bcrypt.hash(password, salt, (err, passwordhash) => {
+							// Commit the authenticated and validated user to memory
+							const credentials = { name, email, passwordhash };
+							const user = new User(credentials);
+							user.save((err) => {
+								if (err) {
+									res.send("err")
+									throw err;
+								}
+								// Start session ish
+								req.session.status = true;
+								res.status(201)
+								res.json({
+									status: true,
+									message: "user added successfully"
+								})
+							});
 						});
 					});
-		
-					// Commit the authenticated and validated user to memory
-					const credentials = [name, email, passwordhash];
-					const user = new User(credentials);
-					user.save();
 
-					// Start session ish
-					req.session.status = true;
-		
-					res.json({
-						status: true,
-						message: "user added successfully"
-					})
 				} else {
 					res.status(401)
 					res.json({
@@ -65,29 +65,26 @@ const register = (req, res) => {
 			}
 		});
 	}
-	
+
 };
 
 const getLogin = (req, res) => { };
 
 const login = (req, res) => {
 	const { email, password } = req.body;
-	if(!email || !password){
+	if (!email || !password) {
 		res.status(400)
 		res.json({
 			status: false,
 			message: "incomplete login data"
 		})
 	}
-
 	// Checks if the user exists
 	User.findOne({ email }, function (err, user) {
 		if (user) {
-
 			// Check for correct password
 			bcrypt.compare(password, user.passwordhash, function (err, stats) {
 				if (stats) {
-
 					// Start session ish
 					req.session.status = true;
 					req.session.email = email;
@@ -95,11 +92,16 @@ const login = (req, res) => {
 						status: true,
 						message: "user logged in successfully"
 					})
+				}else {
+					res.status(401)
+					res.json({
+						status: false,
+						message: "incorrect username or password"
+					})
 				}
 			});
-	
-			// Render page finally
 
+			// Render page finally
 		} else {
 			res.status(401)
 			res.json({
@@ -108,6 +110,7 @@ const login = (req, res) => {
 			})
 		}
 	});
+
 };
 
 module.exports.login = login;

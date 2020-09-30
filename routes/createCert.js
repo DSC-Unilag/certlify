@@ -6,6 +6,7 @@ const router = express.Router();
 router.use(express.urlencoded({ extended: true }));
 router.use(express.json());
 
-router.get("/createcert", createCert);
+router.get("/createcert",createCert);
 
-module.exports = router;
+module.exports=router;
+
