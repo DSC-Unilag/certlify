@@ -1,10 +1,10 @@
 const files = [
     './',
-    '/imgs/.',
+    'imgs/.',
     'index.html',
-    'src/css/main.css',
-    'src/js/main.js'
-]
+    'src/js/main.js',
+    'src/css/main.css'
+];
 
 const fileVersion = 'v1';
 

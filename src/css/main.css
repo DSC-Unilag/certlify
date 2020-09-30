@@ -15,16 +15,19 @@
 
 html,
 body {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: Open-Sans, Verdana, Geneva, Tahoma, sans-serif;
     color: #098dff;
     font-size: 1rem;
     line-height: 1.5;
     letter-spacing: 0.12rem;
     word-spacing: 0.16rem;
 }
-body{
+
+body {
     display: grid;
     grid-template-rows: auto auto;
+    justify-content: center;
+    align-content: center;
 }
 
 main {
@@ -58,11 +61,14 @@ header span {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    height: 12.5rem;
+    height: 6.7rem;
 }
 
-header #logo img {
-    width: 95%;
+header .logo img {
+    width: 20rem;
+    position: relative;
+    z-index: -1;
+    bottom: 4rem;
     height: auto;
 }
 
@@ -91,23 +97,109 @@ main .landing-page-section p {
     align-self: start;
 }
 
-main .landing-page-section button {
+a {
+    text-decoration: none;
+    color: #098dff;
+    cursor: pointer;
+}
+
+.landing-page-section a,
+.sign-log {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 4px 5px lightgrey;
+    border: none;
+    color: white;
     width: 12.25rem;
     height: 2.5rem;
     background-color: #4285F4;
-    color: white;
-    border: none;
-    box-shadow: 1px 4px 5px lightgrey;
+    transition: 300ms all ease-in;
 }
-main .landing-page-section button:hover{
-    background-color: #4285F4;
+
+.sign-log {
+    width: 85%;
+    margin-top: 1rem;
 }
-main .landing-page-section button:focus{
+
+.landing-page-section a:hover,
+.sign-log:hover {
+    background-color: #619bf7;
+}
+
+.landing-page-section a:focus,
+.sign-log:focus {
     background-color: #1f74fc;
 }
-main .landing-page-section button:active{
+
+.landing-page-section a:active,
+.sign-log:active {
     background-color: #2e7eff;
 }
+
+input {
+    width: 85%;
+    height: 3rem;
+    border: 1.7px solid #4285F4;
+    padding-left: 0.3rem;
+    margin-bottom: 1rem;
+    border-radius: 0.3rem;
+    font-size: 0.9rem;
+}
+
+.sign-page-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-page-section p {
+    color: #707070;
+    margin: 1rem 0;
+    text-align: center;
+    width: 100%;
+}
+
+.sign-page-section form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0.1rem 0rem 2rem 0rem;
+}
+
+.sign-page-section h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    width: 100%;
+    font-weight: bolder;
+}
+
+.sign-page-section .second-text {
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+}
+
+@media screen and (min-width: 40rem) {
+    header #logo img {
+        bottom: 4rem;
+    }
+}
+
+@media screen and (min-width: 45rem) {
+    .sign-page-section form {
+        width: 50rem;
+    }
+}
+
+@media screen and (min-width: 62.3125rem) {
+    .sign-page-section form {
+        width: 55.125rem;
+    }
+}
+
 /* For another page */
 /* 
 header p {

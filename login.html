@@ -37,20 +37,23 @@
 </head>
 <body>
     <header>
-        <span id="logo"><img src="imgs/hero-dsc-about-unilag.png" alt=""></span>
+        <span class="logo"><img src="imgs/hero-dsc-about-unilag.png" alt=""></span>
     </header>
    
     <main>
-        <span>
-            <img src="imgs/diploma.svg" alt="certificate image">
-        </span>
-
-        <section class="landing-page-section">
-            <h1>Welcome to the Certificate Generator</h1>
-            <p>Easily generate your certificates at your convinience.</p>
-            <p>Anywhere, anytime, and anyday.</p>
-            
-            <a id="get-started" href="signup.html">Get Started</a>
+        <section class="sign-page-section">
+                <h1 class="first-text">Login</h1>
+                <p class="second-text">Hi there! Kindly enter your login details</p>
+        
+                <form id="email-input" class="form-input">
+                  <input type="email" id="input-text" placeholder="Enter your e-mail" name="email" autocomplete="email" minlength=4 required>
+                  <input type="password" id="password" placeholder="Enter your password" name="password" autocomplete="current-password" minlength=8 required>
+                
+                  <button type="button" onclick="main()" class="sign-log">
+                    Login
+                  </button>
+                </form>
+                <p>Don't have an account? <a id="login" href="signup.html">Sign up</a></p>
         </section>
     </main>
     <script src='src/js/main.js'></script>
