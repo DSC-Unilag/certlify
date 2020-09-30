@@ -189,12 +189,18 @@ input {
 }
 
 @media screen and (min-width: 45rem) {
+    main span img{
+        width: 60%;
+    }
     .sign-page-section form {
         width: 50rem;
     }
 }
 
 @media screen and (min-width: 62.3125rem) {
+    main span img{
+        width: 70%;
+    }
     .sign-page-section form {
         width: 55.125rem;
     }
