@@ -25,14 +25,20 @@ body {
 
 body {
     display: grid;
-    grid-template-rows: auto auto;
+    position: relative;
+    width: 100%;
+    grid-template-columns: 100%;
+    grid-template-rows: auto 100%;
     justify-content: center;
     align-content: center;
 }
 
 main {
     display: grid;
-    grid-template-rows: auto auto;
+    position: relative;
+    width: 100%;
+    grid-template-columns: 100%;
+    grid-template-rows: 11rem auto;
     justify-items: center;
 }
 
@@ -182,6 +188,47 @@ input {
     width: 100%;
 }
 
+/* 
+    ellispse curve code
+*/
+
+.ellipse-curve{
+    width: 15rem;
+    position: fixed;
+    overflow: hidden;
+    z-index: -1;
+    right: 0;
+    top: 32rem;
+    transform: rotate(25deg);
+    height: 15rem;
+    display: inline-block;
+}
+.top-left{
+    transform: rotate(223deg);
+    top: -7.8rem;
+    left: -9.5rem;
+}
+.first-line, .second-line, .third-line{
+    width: 23.25rem;
+    height: 27rem;
+    position: absolute;
+    overflow: hidden;
+    border-top-left-radius: 65% 80%;
+    border-bottom-left-radius: 35% 20%;
+}
+.first-line{
+    border: 1px solid #0F9D58;
+}
+.second-line{
+    border: 1px solid #4285F4;
+    top: 1.5rem;
+}
+.third-line
+{
+    border: 1px solid #FBBC04;
+    top: 3rem;
+}
+
 @media screen and (min-width: 40rem) {
     header #logo img {
         bottom: 4rem;
@@ -190,7 +237,7 @@ input {
 
 @media screen and (min-width: 45rem) {
     main span img{
-        width: 60%;
+        width: 25%;
     }
     .sign-page-section form {
         width: 50rem;
@@ -199,7 +246,7 @@ input {
 
 @media screen and (min-width: 62.3125rem) {
     main span img{
-        width: 70%;
+        width: 11rem;
     }
     .sign-page-section form {
         width: 55.125rem;
