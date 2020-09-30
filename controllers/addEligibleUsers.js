@@ -4,36 +4,77 @@
 
 */
 // Bring in the links model
-const User = require("../models/links");
+const  Link= require("../models/links");
 const config = require("../config/database");
 const rounds = process.env.DATABASE || config.rounds;
 
 // Load dependencies
-const csvtojson = require("csvtojson");
+const csv = require("csvtojson");
 const multer = require("multer");
 
 // This is as used in the last project
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
-        cb(null, 'uploads/csv/');
+        cb(null, __dirname+'/uploads/csv/');
     },
 
     // By default, multer removes file extensions so let's add them back
     filename: function(req, file, cb) {
-        cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+        cb(null, req.session.email + '-' + Date.now() + path.extname(file.originalname));
     }
 });
 
 const upload = multer({ storage: storage });
 
-const addEligibleUsers = (upload.single('FileUpload'), (req, res, next) => {
-
-	// This too, is from the last project, I really hope I get time to learn these things properly
-  	csvtojson(__dirname + "\\" + req.file.path)
-	    .fromFile()
-	    .then((result) => {
-	      	res.send(result);
-	    })
-});
+const addEligibleUsers = (req, res) => {
+    upload(req,res,function (err){
+      if (err instanceof multer.MulterError){
+        console.log("multer error")
+        throw err
+      }else if(err){
+        throw err
+      }else{
+        const csvFilePath=__dirname+'/uploads/csv/data.csv'
+        csv()
+      .fromFile(csvFilePath)
+      .then((users)=>{
+        Link.findOne({link:req.params.link},(err,cert)=>{
+            if (cert){
+                if(cert.issuer==req.session.email){
+                    users=JSON.parse(users);
+                    for (i in users){
+                        users[i].status=0;
+                    }
+                    cert.eligibleUsers=users;
+                    cert.save((err)=>{
+                        if(err) throw err;
+                        else{
+                            res.status(201)
+                            res.json({
+                                status: true,
+                                message: "successfully added eligible users"
+                            })
+                        }
+                    })
+                }else{
+                    res.status(401);
+                    res.json({
+                        status:false,
+                        message:"unauthorized access"
+                    })
+                }
+            }else{
+                res.status(404)
+                res.json({
+                    status:false,
+                    message:"certificate does not exist"
+                })
+            }
+        })
+      })
+      }
+  
+    })
+  }
 
 module.exports.addNew = addEligibleUsers;

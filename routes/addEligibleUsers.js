@@ -6,6 +6,6 @@ const router = express.Router();
 router.use(express.urlencoded({ extended: true }));
 router.use(express.json());
 
-router.post('/addeligibleusers', addEligibleUsers.addNew);
+router.post('/addeligibleusers/:link', addEligibleUsers.addNew);
 
 module.exports = router;
