@@ -13,10 +13,12 @@
     "bcryptjs": "^2.4.3",
     "connect-mongo": "^3.2.0",
     "cors": "^2.8.5",
+    "csvtojson": "^2.0.10",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "mongoose": "^5.10.6",
     "mongoose-unique-validator": "^2.0.3",
+    "multer": "^1.4.2",
     "swagger-jsdoc": "^4.2.0",
     "swagger-ui-express": "^4.1.4",
     "uniqid": "^5.2.0"
