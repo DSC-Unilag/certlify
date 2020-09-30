@@ -346,9 +346,9 @@ paths:
   /createcert:
     post:
       tags:
-      - "Manage"
-      summary: update certificate boundary.
-      operationId: "update"
+      - "create"
+      summary: create certificate boundary.
+      operationId: "create"
       consumes:
       - "application/json"
       produces:
