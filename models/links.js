@@ -16,7 +16,6 @@ const boundarySchema = new Schema({
 const eligibleUser = new Schema({
   email: {
     type: String,
-    required: true,
     unique: true,
   },
   name: String,
@@ -24,6 +23,8 @@ const eligibleUser = new Schema({
 });
 
 const linkSchema = new Schema({
+  issuer:String,
+  name:String,
   link: {
     type: String,
     required: true,

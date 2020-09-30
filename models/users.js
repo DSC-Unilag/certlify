@@ -16,11 +16,12 @@ const UserSchema = new Schema({
     required: true,
     unique: true,
   },
-  password: {
+  passwordhash: {
     type: String,
     required: true,
   },
-  "certificate-urls": [String],
+  profilePicture:String,
+  certificateUrls: [String],
 });
 
 // uniqueValidator plugin for presave validation of unique fields. Check the docs for more details
