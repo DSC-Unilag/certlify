@@ -42,18 +42,20 @@
    
     <main>
         <section class="sign-page-section">
-                <h1 class="first-text">Login</h1>
-                <p class="second-text">Hi there! Kindly enter your login details</p>
+                <h1 class="first-text">Sign up</h1>
+                <p class="second-text">Hi there! Kindly enter the following details to create an account</p>
         
                 <form id="email-input" class="form-input">
                   <input type="email" id="input-text" placeholder="Enter your e-mail" name="email" autocomplete="email" minlength=4 required>
-                  <input type="password" id="password" placeholder="Enter your password" name="password" autocomplete="current-password" minlength=8 required>
+                  <input type="text" id="organization" placeholder="Enter your personal/organization name" name="organization" minlength=2 required>
+                  <input type="password" id="password" placeholder="Enter your password" name="password" autocomplete="new-password" minlength=8 required>
+                  <input type="password" id="con-password" placeholder="Confirm your password" name="con-password" autocomplete="new-password" minlength=8 required>
                 
                   <button type="button" onclick="main()" class="sign-log">
-                    Login
+                    Sign up
                   </button>
                 </form>
-                <p>Don't have an account? <a id="login" href="signup.html">Sign up</a></p>
+                <p>Already have an account? <a id="login" href="login.html">Login</a></p>
         </section>
     </main>
     <script src='src/js/main.js'></script>
