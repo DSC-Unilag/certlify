@@ -1,0 +1,243 @@
+@font-face {
+    font-family: "Open-Sans";
+    src: url("./fonts/OpenSans-Regular.ttf");
+}
+
+* {
+    font-family: Open-Sans, Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1rem;
+    scroll-behavior: smooth;
+
+}
+
+html,
+body {
+    color: #098dff;
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.12rem;
+    word-spacing: 0.16rem;
+}
+
+
+main {
+    display: grid;
+    grid-template-rows: auto auto auto 3rem;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 4rem auto auto;
+    grid-template-rows: 4.6rem auto 15rem;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    min-height: 22rem;
+    color: white;
+    background-color: #4285F4;
+}
+
+.welcome-user h1 {
+    color: #FBBC04;
+    font-size: 3rem;
+}
+
+.active-cert {
+    border-bottom: 1px solid #FBBC04;
+}
+
+header #logo img {
+    width: 1.7rem;
+    height: auto;
+}
+
+header span {
+    width: 75%;
+}
+
+header #logo img {
+    width: 100%;
+}
+
+header .search-section {
+    position: relative;
+    text-align: center;
+}
+
+header .search-section input {
+    height: 3rem;
+    width: 100%;
+    padding-left: 0.7rem;
+}
+
+header .search-section button {
+    background: none;
+    border: none;
+    position: absolute;
+    display: flex;
+    width: 3rem;
+    height: 3rem;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    top: 0;
+}
+
+header .search-section button img {
+    width: 1.7rem;
+}
+
+header .section-links {
+    width: 100%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    height: 0;
+    grid-area: 2 / 1 / 3 / 4;
+    justify-self: center;
+    transition: all 400ms ease-in;
+    overflow: hidden;
+}
+
+header .welcome-user {
+    grid-area: 3 / 1 / 4 / 3;
+    padding-left: 1rem;
+    width: 100%;
+    display: inline-block;
+    height: 75%;
+    align-self: self-start;
+}
+
+header #toggle-butt {
+    display: none;
+}
+
+header #toggle-butt:checked~.section-links {
+    height: 10rem;
+}
+
+ul {
+    display: grid;
+    width: 100%;
+    justify-items: center;
+    align-items: center;
+    grid-template-rows: 36%;
+}
+
+ul li {
+    list-style-type: none;
+    justify-self: center;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+}
+
+ul li a {
+    display: inline-block;
+    width: 100%;
+    text-decoration: none;
+    transition: all 80ms ease-in;
+}
+
+header .section-links ul {
+    justify-self: end;
+}
+
+header .section-links ul li a {
+    padding: 1rem;
+    color: white;
+    font-size: 1rem;
+}
+
+header .bread-crumbs {
+    grid-area: 1 / 3 / 2 / 4;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 0 0 0 0.7rem;
+    height: 4rem;
+    padding: 1rem 0;
+    cursor: pointer;
+    width: 3rem;
+    justify-self: end;
+}
+
+.bread-crumb {
+    display: inline-block;
+    width: 95%;
+    margin: 0.25rem;
+    height: 0.19rem;
+    background-color: white;
+    border-radius: 3rem;
+}
+
+.main-dashboard {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-columns: auto;
+    width: 100%;
+}
+
+.main-dashboard .landing-page-section {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto;
+    align-content: center;
+    justify-items: center;
+    width: 100%;
+}
+
+.main-dashboard .landing-page-section .certificate-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+.landing-page-section .certificate-card article {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: 12rem 3rem 3rem;
+    justify-items: center;
+    align-content: center;
+    width: 85%;
+    height: 23.8375rem;
+    box-shadow: 1px 4px 5px lightgrey;
+    margin: 0;
+}
+
+.landing-page-section .certificate-card article>h2 {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.main-dashboard .landing-page-section .certificate-card a,
+.main-dashboard .landing-page-section button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 4px 5px lightgrey;
+    border: 1px solid #4285F4;
+    color: #4285F4;
+    border-radius: 0.2rem;
+    width: 13.65rem;
+    align-self: center;
+    height: 2.5rem;
+    background-color: white;
+    transition: 300ms all ease-in;
+}
+
+.main-dashboard .landing-page-section button {
+    width: 15.875rem;
+    background-color: #4285F4;
+    color: white;
+    border: none;
+    font-size: 1.275rem;
+}
