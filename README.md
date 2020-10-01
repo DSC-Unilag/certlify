@@ -1,4 +1,4 @@
 # cert
 ## Api documentation
 
-To view the api documentation, visit [editor.swagger.io](editor.swagger.io) and replace the code on the left with the code content found in the "APIdocs.yaml" file in the repo. The documentation would be hosted soon.
+To view the api documentation, visit [editor.swagger.io](https://app.swaggerhub.com/apis-docs/DSC-cert-gen/certificate-generator/1.0.0). You cannot test yet as the api has not been deployed.

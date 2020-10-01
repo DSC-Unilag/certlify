@@ -72,8 +72,10 @@ paths:
             properties:
               status:
                 type: boolean
+                example: false
               message:
                 type: string
+                example: invalid or incomplete request body
                 
         "401":
           description: "Invalid password or unrecognized user"
@@ -82,9 +84,11 @@ paths:
             properties:
               status:
                 type: boolean
+                example: false
               message:
                 type: string
-                
+                example: invalid password or unrecognized user
+
         "409":
           description: "duplicate user"
           schema:
@@ -92,8 +96,10 @@ paths:
             properties:
               status:
                 type: boolean
+                example: false
               message:
                 type: string
+                example: duplicate user
   /login:
     post:
       tags:
@@ -141,8 +147,10 @@ paths:
             properties:
               status:
                 type: boolean
+                example: false
               message:
                 type: string
+                example: "incomplete login data"
                 
         "401":
           description: "Incorrect Username or password"
@@ -151,8 +159,10 @@ paths:
             properties:
               status:
                 type: boolean
+                example: false
               message:
                 type: string
+                example: incorrect username or password
                 
   /getdashboard:
     get:
@@ -170,16 +180,18 @@ paths:
             type: object
             properties:
               name:
-                type: boolean
+                type: string
+                example: certificate of participation
               certificateUrls:
                 type: array
                 items:
                   type: string
+                example: ["link-to-a-certificate","link-to-another-one"]
               certs:
                 type: array
                 items:
                   type: object
-              
+                
         "401":
           description: "Unauthorized"
           schema:
@@ -187,6 +199,7 @@ paths:
             properties:
               status:
                 type: boolean
+                example: false
               message:
                 type: string
 
@@ -224,6 +237,7 @@ paths:
             properties:
               status:
                 type: boolean
+                example: false
               message:
                 type: string
         "404":
@@ -233,6 +247,7 @@ paths:
             properties:
               status:
                 type: boolean
+                example: false
               message:
                 type: string
 
@@ -270,6 +285,7 @@ paths:
             properties:
               status:
                 type: boolean
+                example: false
               message:
                 type: string
         "404":
@@ -279,6 +295,7 @@ paths:
             properties:
               status:
                 type: boolean
+                example: false
               message:
                 type: string
 
@@ -331,6 +348,7 @@ paths:
             properties:
               status:
                 type: boolean
+                example: false
               message:
                 type: string
         "404":
@@ -340,15 +358,16 @@ paths:
             properties:
               status:
                 type: boolean
+                example: false
               message:
                 type: string
 
   /createcert:
     post:
       tags:
-      - "create"
+      - "Create Certificate"
       summary: create certificate boundary.
-      operationId: "create"
+      operationId: "CreateCertificate"
       consumes:
       - "application/json"
       produces:
@@ -397,6 +416,7 @@ paths:
             properties:
               status:
                 type: boolean
+                example: false
               message:
                 type: string
                 
