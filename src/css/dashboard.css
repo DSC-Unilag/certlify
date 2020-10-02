@@ -46,20 +46,26 @@ header {
 }
 
 .active-cert {
-    border-bottom: 1px solid #FBBC04;
 }
 
-header #logo img {
-    width: 1.7rem;
-    height: auto;
-}
 
 header span {
     width: 75%;
+    justify-self: end;
 }
 
-header #logo img {
-    width: 100%;
+header #dsc-logo {
+    display: none;
+}
+header #profile-image{
+    display: inline-block;
+    text-align: center;
+}
+header #profile-image img {
+    width: 2.8rem;
+    height: auto;
+    border-radius: 50%;
+    border: 1px solid;
 }
 
 header .search-section {
@@ -70,7 +76,9 @@ header .search-section {
 header .search-section input {
     height: 3rem;
     width: 100%;
-    padding-left: 0.7rem;
+    border-radius: 11px;
+    padding-left: 1rem;
+    border: none;
 }
 
 header .search-section button {
@@ -78,12 +86,12 @@ header .search-section button {
     border: none;
     position: absolute;
     display: flex;
-    width: 3rem;
-    height: 3rem;
+    width: 2rem;
+    height: 2rem;
     justify-content: center;
     align-items: center;
-    right: 0;
-    top: 0;
+    right: 1rem;
+    top: 0.5rem;
 }
 
 header .search-section button img {
@@ -94,7 +102,7 @@ header .section-links {
     width: 100%;
     display: flex;
     position: relative;
-    justify-content: center;
+    justify-content: end;
     align-items: center;
     height: 0;
     grid-area: 2 / 1 / 3 / 4;
@@ -178,7 +186,6 @@ header .bread-crumbs {
 .main-dashboard {
     display: grid;
     grid-template-columns: auto;
-    grid-template-columns: auto;
     width: 100%;
 }
 
@@ -189,6 +196,8 @@ header .bread-crumbs {
     align-content: center;
     justify-items: center;
     width: 100%;
+    position: absolute;
+    top: 19.9rem;
 }
 
 .main-dashboard .landing-page-section .certificate-card {
@@ -203,13 +212,17 @@ header .bread-crumbs {
 .landing-page-section .certificate-card article {
     display: grid;
     grid-template-columns: auto;
-    grid-template-rows: 12rem 3rem 3rem;
+    grid-template-rows: 12rem auto 4.5rem;
     justify-items: center;
     align-content: center;
     width: 85%;
-    height: 23.8375rem;
-    box-shadow: 1px 4px 5px lightgrey;
+    height: 24.5375rem;
+    background-color: white;
+    box-shadow: 25px 7px 47px #0000001A;
     margin: 0;
+    z-index: 3;
+    border-radius: 11px;
+    border: 1px solid #FFFFFF;
 }
 
 .landing-page-section .certificate-card article>h2 {
@@ -240,4 +253,57 @@ header .bread-crumbs {
     color: white;
     border: none;
     font-size: 1.275rem;
+}
+
+@media screen and (min-width: 45rem) {
+    header {
+        grid-template-columns: 4rem 40% auto auto;
+        width: 100%;
+    }
+    
+    header #dsc-logo {
+        display: inline;
+    }
+    
+    header #profile-image {
+        grid-area: 1 / 4 / 2 / 5;
+        display: inline-block;
+        text-align: center;
+        justify-self: flex-start;
+    }
+    
+    header .section-links {
+        height: 3rem;
+        grid-area: auto;
+    }
+    
+    header .section-links ul {
+        grid-template-columns: 16rem 13rem;
+        grid-template-rows: auto;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    header .bread-crumbs {
+        display: none;
+    }
+    
+    .main-dashboard .landing-page-section .certificate-card {
+        flex-wrap: wrap;
+        width: 100%;
+    }
+    
+    .main-dashboard .landing-page-section {
+        grid-template-rows: auto;
+        grid-template-columns: auto auto auto;
+        top: 17.5rem;
+    }
+    .main-dashboard .landing-page-section button{
+        grid-area: 2 / 2 / 3 / 3;
+    }
+}
+@media screen and (min-width: 64rem) {
+    header {
+        grid-template-columns: 4rem 47% 40% auto;
+    }
 }
