@@ -3,7 +3,8 @@ const files = [
     'imgs/.',
     'index.html',
     'src/js/main.js',
-    'src/css/main.css'
+    'src/css/main.css',
+    'src/css/dashboard.css'
 ];
 
 const fileVersion = 'v1';
