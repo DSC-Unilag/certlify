@@ -15,7 +15,6 @@
 
 html,
 body {
-    font-family: Open-Sans, Verdana, Geneva, Tahoma, sans-serif;
     color: #098dff;
     font-size: 1rem;
     line-height: 1.5;
@@ -25,6 +24,10 @@ body {
 
 body {
     display: grid;
+    position: relative;
+    width: 100%;
+    height: -webkit-fill-available;
+    grid-template-columns: 100%;
     grid-template-rows: auto auto;
     justify-content: center;
     align-content: center;
@@ -32,20 +35,24 @@ body {
 
 main {
     display: grid;
-    grid-template-rows: auto auto;
+    position: relative;
+    width: 100%;
+    grid-template-columns: 100%;
+    grid-template-rows: 11rem auto;
     justify-items: center;
 }
 
 main span {
     display: flex;
+    position: relative;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 45%;
 }
 
 main span img {
-    width: 30%;
-    height: auto
+    width: 100%;
+    height: auto;
 }
 
 header {
@@ -68,8 +75,8 @@ header .logo img {
     width: 20rem;
     position: relative;
     z-index: -1;
-    bottom: 4rem;
-    height: auto;
+    bottom: 4.5rem;
+    left: 0.2rem;
 }
 
 main .landing-page-section {
@@ -93,6 +100,7 @@ main .landing-page-section p {
     text-align: center;
     font-size: 0.9rem;
     font-weight: 600;
+    padding: 0.3rem;
     color: black;
     align-self: start;
 }
@@ -182,6 +190,74 @@ input {
     width: 100%;
 }
 
+/* 
+    ellispse curve code
+*/
+
+.ellipse-curve{
+    width: 15rem;
+    position: fixed;
+    overflow: hidden;
+    z-index: -1;
+    bottom: -7rem;
+    right: 0;
+    transform: rotate(25deg);
+    height: 15rem;
+    display: inline-block;
+}
+.top-left{
+    transform: rotate(223deg);
+    top: -7.8rem;
+    left: -9.5rem;
+}
+.first-line, .second-line, .third-line{
+    width: 23.25rem;
+    height: 27rem;
+    position: absolute;
+    overflow: hidden;
+    border-top-left-radius: 65% 80%;
+    border-bottom-left-radius: 35% 20%;
+}
+.first-line{
+    border: 1px solid #0F9D58;
+}
+.second-line{
+    border: 1px solid #4285F4;
+    top: 1.5rem;
+}
+.third-line
+{
+    border: 1px solid #FBBC04;
+    top: 3rem;
+}
+
+.custom-cir{
+    width: 3rem;
+    height: 3rem;
+    background-color: aliceblue;
+    position: absolute;
+    border-radius: 50%;
+    right: 0rem;
+    z-index: -3;
+    bottom: 1rem;
+}
+
+.cir-left{
+    right: 0rem;
+    left: 0;
+    bottom: 11rem;
+}
+.custom-ellipse{
+    position: absolute;
+    z-index: -3;
+    background-color: aliceblue;
+    width: 22rem;
+    height: 22rem;
+    border-top-left-radius: 40% 80%;
+    border-top-right-radius: 40% 30%;
+    border-bottom-left-radius: 60% 30%;
+    border-bottom-right-radius: 20% 90%;
+}
 @media screen and (min-width: 40rem) {
     header #logo img {
         bottom: 4rem;
@@ -199,7 +275,7 @@ input {
 
 @media screen and (min-width: 62.3125rem) {
     main span img{
-        width: 70%;
+        width: 15rem;
     }
     .sign-page-section form {
         width: 55.125rem;

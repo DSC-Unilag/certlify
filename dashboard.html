@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en-US">
-    <head>
+
+<head>
     <meta charset='utf-8'>
     <!--
          Todo:
@@ -33,26 +34,69 @@
     <link rel="icon" sizes="512x512" href="imgs/icon.png">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-    <link rel='stylesheet' type='text/css' media='screen' href='src/css/main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='src/css/dashboard.css'>
 </head>
+
 <body>
     <header>
-        <span id="logo"><img src="imgs/hero-dsc-about-unilag.png" alt=""></span>
-    </header>
-   
-    <main>
-        <span>
-            <img src="imgs/diploma.svg" alt="certificate image">
-        </span>
+        <span id="logo"><img id="user-image" src="" alt="user icon" /></span>
 
+        <section class="search-section">
+            <input type="search" placeholder="Search"/>
+            <button onclick=""><img src="imgs/search.svg" alt=""></button>
+        </section>
+
+        <input type="checkbox" id="toggle-butt" />
+
+        <label for="toggle-butt" class="bread-crumbs">
+            <div class="bread-crumb"></div>
+            <div class="bread-crumb"></div>
+            <div class="bread-crumb"></div>
+        </label>
+
+        <nav class="section-links">
+            <ul class="home-links">
+                <li><a href="#" class="active-cert">Generated Certificates</a></li>
+                <li><a href="#">Issued Certificates</a></li>
+            </ul>
+        </nav>
+
+        <section class="welcome-user">
+            <h1>Hi Lateefah,</h1>
+            <p>You have <span id="user-cert-number">30</span> certificates in the last <span id="user-months-active">two</span> months.</p>
+        </section>
+
+    </header>
+
+    <main class="main-dashboard">
         <section class="landing-page-section">
-            <h1>Welcome to the Certificate Generator</h1>
-            <p>Easily generate your certificates at your convinience.</p>
-            <p>Anywhere, anytime, and anyday.</p>
+            <section class="certificate-card">
+                <article>
+                    <img src="imgs/diploma (1).svg" alt="user certificate" />
+                    <h2>Certificate of Heroes</h2>
+                    <a>Manage Certificate</a>
+                </article>
+            </section>
             
-            <button id="get-started">Get Started</button>
+            <section class="certificate-card">
+                <article>
+                    <img src="imgs/diploma (2).svg" alt="user certificate" />
+                    <h2>Certificate of Heroes</h2>
+                    <a>Manage Certificate</a>
+                </article>
+            </section>
+            
+            <section class="certificate-card">
+                <article>
+                    <img src="imgs/diploma (3).svg" alt="user certificate" />
+                    <h2>Certificate of Heroes</h2>
+                    <a>Manage Certificate</a>
+                </article>
+            </section>
+            <button id="add-cert">&#43; Add Certificate</button>
         </section>
     </main>
     <script src='src/js/main.js'></script>
 </body>
+
 </html>
