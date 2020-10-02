@@ -72,7 +72,7 @@ const login = (req, res) => {
 	const { email, password } = req.body;
 	if (!email || !password) {
 		res.status(400)
-		res.json({
+		return res.json({
 			status: false,
 			message: "incomplete login data"
 		})

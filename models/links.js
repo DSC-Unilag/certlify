@@ -17,6 +17,7 @@ const eligibleUser = new Schema({
   email: {
     type: String,
     unique: true,
+    sparse: true
   },
   name: String,
   status: Number,
