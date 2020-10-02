@@ -236,6 +236,18 @@ header .bread-crumbs {
     margin-bottom: 3rem;
 }
 
+.main-dashboard .landing-page-section section:nth-child(1) article .cert-header{
+    color: #FBBC04;
+}
+
+.main-dashboard .landing-page-section section:nth-child(2) article .cert-header{
+    color: green;
+}
+
+.main-dashboard .landing-page-section section:nth-child(3) article .cert-header{
+    color: red;
+}
+
 .landing-page-section .certificate-card article {
     display: grid;
     grid-template-columns: auto;
