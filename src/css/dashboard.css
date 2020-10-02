@@ -151,6 +151,18 @@ ul li a {
     transition: all 80ms ease-in;
 }
 
+header .section-links ul li a:hover {
+    color: #fbbf09;
+}
+
+header .section-links ul li a:focus {
+    color: #daa916;
+}
+
+header .section-links ul li a:active {
+    color: #eed487;
+}
+
 header .section-links ul {
     justify-self: end;
 }
@@ -258,8 +270,30 @@ header .bread-crumbs {
     width: 13.65rem;
     align-self: center;
     height: 2.5rem;
+    cursor: pointer;
     background-color: white;
-    transition: 300ms all ease-in;
+    transition: 90ms all ease-in;
+}
+
+.main-dashboard .landing-page-section .certificate-card a:hover {
+    background-color: #4488f5;
+    color: white;
+}
+
+.main-dashboard .landing-page-section button:hover {
+    background-color: #558ae1;
+}
+
+.main-dashboard .landing-page-section .certificate-card a:focus,
+.main-dashboard .landing-page-section button:focus {
+    background-color: #2673ee;
+    color: white;
+}
+
+.main-dashboard .landing-page-section .certificate-card a:active,
+.main-dashboard .landing-page-section button:active {
+    background-color: #498af3;
+    color: white;
 }
 
 .main-dashboard .landing-page-section button {
