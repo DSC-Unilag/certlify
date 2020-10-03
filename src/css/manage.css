@@ -61,6 +61,8 @@ header {
 .volunteer-header h1 {
     color: white;
     font-size: 2.5rem;
+    width: 100%;
+    text-align: center;
 }
 
 header span {
@@ -131,13 +133,14 @@ header .section-links {
 header .volunteer-header {
     grid-area: 3 / 1 / 4 / 4;
     width: 100%;
-    display: inline-block;
-    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     height: 75%;
     align-self: auto;
 }
 
-header .volunteer-header a{
+header .volunteer-header a {
     position: relative;
     opacity: 1;
     height: auto;
@@ -234,14 +237,16 @@ header .bread-crumbs {
     background-color: white;
     border-radius: 3rem;
 }
-.volunteer-header #back-button{
+
+.volunteer-header #back-button {
     display: inline-block;
     width: 3rem;
     height: auto;
     position: relative;
-    bottom: -1.3rem;
+    bottom: 0.5rem;
 }
-.volunteer-header #back-button img{
+
+.volunteer-header #back-button img {
     width: 3rem;
     height: auto;
 }
@@ -262,12 +267,14 @@ header .bread-crumbs {
 
 .main-dashboard .edit-section {
     display: flex;
+    position: relative;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     height: 12rem;
 }
 
-.main-dashboard .edit-section a{
+.main-dashboard .edit-section a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -280,13 +287,32 @@ header .bread-crumbs {
     height: 2.5rem;
     cursor: pointer;
     background-color: white;
-    transition: 90ms all ease-in;    
+    transition: 90ms all ease-in;
 }
 
 @media screen and (min-width: 45rem) {
     header {
         grid-template-columns: 4rem 40% auto auto;
-        width: 100%;
+        grid-template-rows: 5rem auto 13rem;
+        min-height: 18rem;
+    }
+
+    header .volunteer-header {
+        position: relative;
+    }
+
+    .main-dashboard .cert-section {
+        top: -7rem;
+    }
+
+    .main-dashboard .cert-section img {
+        width: 37.5rem;
+    }
+
+    .volunteer-header #back-button {
+        position: absolute;
+        bottom: 0;
+        left: 0;
     }
 
     header #dsc-logo {
@@ -320,6 +346,13 @@ header .bread-crumbs {
         display: none;
     }
 
+    .main-dashboard .edit-section {
+        top: -1.3px;
+    }
+
+    .main-dashboard .edit-section a {
+        margin: 0rem 1.3rem;
+    }
 }
 
 @media screen and (min-width: 64rem) {
