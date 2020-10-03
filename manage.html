@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en-US">
-    <head>
+
+<head>
     <meta charset='utf-8'>
     <!--
          Todo:
@@ -33,26 +34,55 @@
     <link rel="icon" sizes="512x512" href="imgs/icon.png">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-    <link rel='stylesheet' type='text/css' media='screen' href='src/css/main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='src/css/manage.css'>
 </head>
+
 <body>
     <header>
-        <span id="logo"><img src="imgs/hero-dsc-about-unilag.png" alt=""></span>
-    </header>
-   
-    <main>
-        <span>
-            <img src="imgs/diploma.svg" alt="certificate image">
-        </span>
+        <span id="dsc-logo"><img id="cropped-logo" src="" alt="logo icon"></span>
+        <span id="profile-image"><img id="user-image" src="imgs/user.svg" alt="user icon" /></span>
 
-        <section class="landing-page-section">
-            <h1>Welcome to the Certificate Generator</h1>
-            <p>Easily generate your certificates at your convinience.</p>
-            <p>Anywhere, anytime, and anyday.</p>
-            
-            <button id="get-started">Get Started</button>
+        <section class="search-section">
+            <input type="search" placeholder="Search" />
+            <button onclick=""><img src="imgs/search.svg" alt=""></button>
+        </section>
+
+        <input type="checkbox" id="toggle-butt" />
+
+        <label for="toggle-butt" class="bread-crumbs">
+            <div class="bread-crumb"></div>
+            <div class="bread-crumb"></div>
+            <div class="bread-crumb"></div>
+        </label>
+
+        <nav class="section-links">
+            <ul class="home-links">
+                <li id="gen-cert"><a href="#">Generated Certificates</a>
+                    <hr class="active-cert">
+                </li>
+                <li><a href="#">Issued Certificates</a></li>
+            </ul>
+        </nav>
+
+        <section class="volunteer-header">
+            <h1>Certificate of Volunteer</h1>
+
+            <a href="#" id="back-button"><img src="imgs/arrow.svg"></a>
+        </section>
+    </header>
+
+    <main class="main-dashboard">
+        <section class="cert-section">
+            <img src="imgs/Sunkanmi's Certificate.png" alt="Demo certificate" />
+        </section>
+
+        <section class="edit-section">
+            <a>Edit</a>
+            <a>Collectors</a>
+            <a>Add Certificate</a>
         </section>
     </main>
     <script src='src/js/main.js'></script>
 </body>
+
 </html>

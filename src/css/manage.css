@@ -43,12 +43,13 @@ body {
 main {
     display: grid;
     grid-template-rows: auto auto auto 3rem;
+    position: relative;
 }
 
 header {
     display: grid;
     grid-template-columns: 4rem auto auto;
-    grid-template-rows: 5rem auto 16rem;
+    grid-template-rows: 5rem auto 20rem;
     justify-content: center;
     align-items: center;
     margin-bottom: 1.5rem;
@@ -57,14 +58,17 @@ header {
     background-color: #4285F4;
 }
 
-.welcome-user h1 {
-    color: #FBBC04;
-    font-size: 3rem;
+.volunteer-header h1 {
+    color: white;
+    font-size: 2.5rem;
+    width: 100%;
+    text-align: center;
 }
 
 header span {
     width: 100%;
     justify-self: end;
+    height: auto;
 }
 
 header #dsc-logo {
@@ -126,13 +130,20 @@ header .section-links {
     overflow: hidden;
 }
 
-header .welcome-user {
-    grid-area: 3 / 1 / 4 / 3;
-    padding-left: 1rem;
+header .volunteer-header {
+    grid-area: 3 / 1 / 4 / 4;
     width: 100%;
-    display: inline-block;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     height: 75%;
-    align-self: self-start;
+    align-self: auto;
+}
+
+header .volunteer-header a {
+    position: relative;
+    opacity: 1;
+    height: auto;
 }
 
 header #toggle-butt {
@@ -140,7 +151,7 @@ header #toggle-butt {
 }
 
 header #toggle-butt:checked~.section-links {
-    height: 10rem;
+    height: 9rem;
 }
 
 ul {
@@ -227,68 +238,43 @@ header .bread-crumbs {
     border-radius: 3rem;
 }
 
-.main-dashboard {
-    display: grid;
-    grid-template-columns: auto;
-    width: 100%;
-}
-
-.main-dashboard .landing-page-section {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: auto auto auto auto;
-    align-content: center;
-    justify-items: center;
-    width: 100%;
+.volunteer-header #back-button {
+    display: inline-block;
+    width: 3rem;
+    height: auto;
     position: relative;
-    top: -4.1rem;
+    bottom: 0.5rem;
 }
 
-.main-dashboard .landing-page-section .certificate-card {
+.volunteer-header #back-button img {
+    width: 3rem;
+    height: auto;
+}
+
+.main-dashboard .cert-section {
+    position: relative;
+    top: -5.3rem;
+    width: 100%;
     display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-dashboard .cert-section img {
+    width: 90%;
+    height: auto;
+}
+
+.main-dashboard .edit-section {
+    display: flex;
+    position: relative;
     flex-wrap: wrap;
     justify-content: center;
-    width: 100%;
     align-items: center;
-    margin-bottom: 3rem;
+    height: 12rem;
 }
 
-.main-dashboard .landing-page-section section:nth-child(1) article .cert-header{
-    color: #FBBC04;
-}
-
-.main-dashboard .landing-page-section section:nth-child(2) article .cert-header{
-    color: green;
-}
-
-.main-dashboard .landing-page-section section:nth-child(3) article .cert-header{
-    color: red;
-}
-
-.landing-page-section .certificate-card article {
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 12rem auto 4.5rem;
-    justify-items: center;
-    align-content: center;
-    width: 85%;
-    height: 24.5375rem;
-    background-color: white;
-    box-shadow: 25px 7px 47px #0000001A;
-    margin: 0;
-    z-index: 3;
-    border-radius: 11px;
-    border: 1px solid #FFFFFF;
-}
-
-.landing-page-section .certificate-card article>h2 {
-    width: 100%;
-    text-align: center;
-    font-size: 1.5rem;
-}
-
-.main-dashboard .landing-page-section .certificate-card a,
-.main-dashboard .landing-page-section button {
+.main-dashboard .edit-section a {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -304,39 +290,29 @@ header .bread-crumbs {
     transition: 90ms all ease-in;
 }
 
-.main-dashboard .landing-page-section .certificate-card a:hover {
-    background-color: #4488f5;
-    color: white;
-}
-
-.main-dashboard .landing-page-section button:hover {
-    background-color: #558ae1;
-}
-
-.main-dashboard .landing-page-section .certificate-card a:focus,
-.main-dashboard .landing-page-section button:focus {
-    background-color: #2673ee;
-    color: white;
-}
-
-.main-dashboard .landing-page-section .certificate-card a:active,
-.main-dashboard .landing-page-section button:active {
-    background-color: #498af3;
-    color: white;
-}
-
-.main-dashboard .landing-page-section button {
-    width: 15.875rem;
-    background-color: #4285F4;
-    color: white;
-    border: none;
-    font-size: 1.275rem;
-}
-
 @media screen and (min-width: 45rem) {
     header {
         grid-template-columns: 4rem 40% auto auto;
-        width: 100%;
+        grid-template-rows: 5rem auto 13rem;
+        min-height: 18rem;
+    }
+
+    header .volunteer-header {
+        position: relative;
+    }
+
+    .main-dashboard .cert-section {
+        top: -7rem;
+    }
+
+    .main-dashboard .cert-section img {
+        width: 37.5rem;
+    }
+
+    .volunteer-header #back-button {
+        position: absolute;
+        bottom: 0;
+        left: 0;
     }
 
     header #dsc-logo {
@@ -370,21 +346,13 @@ header .bread-crumbs {
         display: none;
     }
 
-    .main-dashboard .landing-page-section .certificate-card {
-        flex-wrap: wrap;
-        width: 100%;
+    .main-dashboard .edit-section {
+        top: -1.3px;
     }
 
-    .main-dashboard .landing-page-section {
-        grid-template-rows: auto;
-        grid-template-columns: auto auto auto;
-        top: -5.5rem;
+    .main-dashboard .edit-section a {
+        margin: 0rem 1.3rem;
     }
-
-    .main-dashboard .landing-page-section button {
-        grid-area: 2 / 2 / 3 / 3;
-    }
-
 }
 
 @media screen and (min-width: 64rem) {
