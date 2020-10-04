@@ -26,7 +26,6 @@ body {
     display: grid;
     position: relative;
     width: 100%;
-    height: -webkit-fill-available;
     grid-template-columns: 100%;
     grid-template-rows: auto auto;
     justify-content: center;
@@ -148,6 +147,7 @@ a {
 .sign-log {
     width: 85%;
     margin-top: 1rem;
+    cursor: pointer;
 }
 
 .landing-page-section a:hover,
@@ -169,7 +169,7 @@ input {
     width: 85%;
     height: 3rem;
     border: 1.7px solid #4285F4;
-    padding-left: 0.3rem;
+    padding-left: 1.5rem;
     margin-bottom: 1rem;
     border-radius: 0.3rem;
     font-size: 0.9rem;

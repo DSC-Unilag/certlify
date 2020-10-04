@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <meta charset='utf-8'>
+    <!--
+         Todo:
+        1. SEO meta tags to improve search results.
+        2. animation
+        3. app installation
+        4. ONe page app
+    -->
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>DSC Unilag Certificate Generator</title>
+    <meta name="msapplication-tap-highlight" , content="none" />
+    <link rel="manifest" href="../manifest.json">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="DSC Unilag Certificate Generator">
+    <meta name="apple-mobile-web-app-title" content="DSC Unilag Certificate Generator">
+    <meta name="theme-color" content="#34495E">
+    <meta name="msapplication-navbutton-color" content="#FF9800">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="index.html">
+    <link rel="icon" sizes="128x128" href="">
+    <link rel="apple-touch-icon" sizes="128x128" href="">
+    <link rel="icon" sizes="192x192" href="">
+    <link rel="apple-touch-icon" sizes="192x192" href="">
+    <link rel="icon" sizes="256x256" href="">
+    <link rel="apple-touch-icon" sizes="256x256" href="">
+    <link rel="icon" sizes="384x384" href="">
+    <link rel="apple-touch-icon" sizes="384x384" href="">
+    <link rel="icon" sizes="512x512" href="../imgs/icon.png">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link rel='stylesheet' type='text/css' media='screen' href='../src/css/manage.css'>
+</head>
+
+<body>
+    <header>
+        <span id="dsc-logo"><img id="cropped-logo" src="" alt="logo icon"></span>
+        <span id="profile-image"><img id="user-image" src="../imgs/user.svg" alt="user icon" /></span>
+
+        <section class="search-section">
+            <input type="search" placeholder="Search" />
+            <button onclick=""><img src="../imgs/search.svg" alt=""></button>
+        </section>
+
+        <input type="checkbox" id="toggle-butt" />
+
+        <label for="toggle-butt" class="bread-crumbs">
+            <div class="bread-crumb"></div>
+            <div class="bread-crumb"></div>
+            <div class="bread-crumb"></div>
+        </label>
+
+        <nav class="section-links">
+            <ul class="home-links">
+                <li id="gen-cert"><a href="#">Generated Certificates</a>
+                    <hr class="active-cert">
+                </li>
+                <li><a href="#">Issued Certificates</a></li>
+            </ul>
+        </nav>
+
+        <section class="volunteer-header">
+            <h1>Certificate of Volunteer</h1>
+
+            <a href="#" id="back-button"><img src="../imgs/arrow.svg"></a>
+        </section>
+    </header>
+
+    <main class="main-dashboard">
+        <section class="cert-section">
+            <img src="../imgs/Sunkanmi's Certificate.png" alt="Demo certificate" />
+        </section>
+
+        <section class="edit-section">
+            <a>Edit</a>
+            <a>Collectors</a>
+            <a>Add Certificate</a>
+        </section>
+    </main>
+    <script src='../src/js/main.js'></script>
+</body>
+
+</html>
