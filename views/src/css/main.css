@@ -26,6 +26,7 @@ body {
     display: grid;
     position: relative;
     width: 100%;
+    height: -webkit-fill-available;
     grid-template-columns: 100%;
     grid-template-rows: auto auto;
     justify-content: center;
@@ -147,7 +148,6 @@ a {
 .sign-log {
     width: 85%;
     margin-top: 1rem;
-    cursor: pointer;
 }
 
 .landing-page-section a:hover,
@@ -169,7 +169,7 @@ input {
     width: 85%;
     height: 3rem;
     border: 1.7px solid #4285F4;
-    padding-left: 1.5rem;
+    padding-left: 0.3rem;
     margin-bottom: 1rem;
     border-radius: 0.3rem;
     font-size: 0.9rem;
@@ -285,10 +285,6 @@ input {
     border-bottom-left-radius: 60% 30%;
     border-bottom-right-radius: 20% 90%;
 }
-
-#password-message, #email-message{
-    color:red;
-  }
 
 @media screen and (min-width: 40rem) {
     header #logo img {

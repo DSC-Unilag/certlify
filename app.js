@@ -57,7 +57,7 @@ app.use(
 );
 
 app.use(cors());
-app.use(express.static("views"));
+app.use(express.static(__dirname+"/views"));
 app.use(express.json({ limit: "50mb" }));
 
 const PORT = process.env.PORT || 3000;
@@ -68,13 +68,29 @@ app.listen(PORT, () => {
 
 // Auth (User) Routes
 const userRoutes = require("./routes/userRoutes");
-app.use("/", userRoutes);
+app.use("/api", userRoutes);
 
 const dashboard = require("./routes/dashboard");
-app.use("/", dashboard);
+app.use("/api", dashboard);
 
 const manage = require("./routes/manage");
-app.use("/", manage);
+app.use("/api", manage);
 
 const createCert = require("./routes/createCert");
-app.use("/", createCert);
+app.use("/api", createCert);
+
+app.get('/signup', (req,res)=>{
+  res.sendFile(__dirname+"/views/signup.html");
+});
+app.get("/dashboard",(req,res)=>{
+  if(!req.session.email){
+    return res.redirect("login");
+  }
+  res.sendFile(__dirname+"/views/dashboard.html");
+})
+app.get("/login",(req,res)=>{
+  res.sendFile(__dirname+"/views/login.html");
+})
+app.get("/manage",(req,res)=>{
+  res.sendFile(__dirname+"/views/manage.html");
+})

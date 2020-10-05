@@ -5,7 +5,7 @@ const Links = require("../models/links");
 let dashboard = (req, res) => {
     let email = req.session.email
     if (email) {
-        User.findOne({ email }, 'name, certificateUrls', function (err, user) {
+        User.findOne({ email }, function (err, user) {
             let data={}
             if (user) {
                 data.name = user.name
@@ -14,11 +14,12 @@ let dashboard = (req, res) => {
                 let links = user.certificateUrls
                 for (i in links) {
                     data.certs[i]={}
-                    Links.findOne({ link: links[i] }, 'link, boundary,eligibleUsers', function (err, cert) {
+                    Links.findOne({ link: links[i] }, function (err, cert) {
                         if (cert) {
                             data.certs[i].name = cert.name
                             data.certs[i].link = cert.link
                             data.certs[i].boundary = cert.boundary
+                            data.certs[i].src=cert.boundary.src
                         }
                     })
                 }

@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en-US">
-    <head>
+
+<head>
     <meta charset='utf-8'>
     <!--
          Todo:
@@ -12,7 +13,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>DSC Unilag Certificate Generator</title>
     <meta name="msapplication-tap-highlight" , content="none" />
-    <link rel="manifest" href="../manifest.json">
+    <link rel="manifest" href="/manifest.json">
 
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -30,32 +31,69 @@
     <link rel="apple-touch-icon" sizes="256x256" href="">
     <link rel="icon" sizes="384x384" href="">
     <link rel="apple-touch-icon" sizes="384x384" href="">
-    <link rel="icon" sizes="512x512" href="../imgs/icon.png">
+    <link rel="icon" sizes="512x512" href="/imgs/icon.png">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-    <link rel='stylesheet' type='text/css' media='screen' href='../src/css/signup.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/signup.css'>
 </head>
+
 <body>
     <header>
-        <span class="logo"><img src="../imgs/hero-dsc-about-unilag.png" alt=""></span>
+        <span class="logo"><img src="/imgs/hero-dsc-about-unilag.png" alt=""></span>
     </header>
-   
+
     <main>
         <section class="sign-page-section">
-                <h1 class="first-text">Login</h1>
-                <p class="second-text">Hi there! Kindly enter your login details</p>
-        
-                <form id="email-input" class="form-input">
-                  <input type="email" id="input-text" placeholder="Enter your e-mail" name="email" autocomplete="email" minlength=4 required>
-                  <input type="password" id="password" placeholder="Enter your password" name="password" autocomplete="current-password" minlength=8 required>
-                
-                  <button type="button" onclick="main()" class="sign-log">
+            <h1 class="first-text">Login</h1>
+            <p class="second-text">Hi there! Kindly enter your login details</p>
+
+            <form id="email-input" class="form-input" onsubmit="return false">
+                <input type="email" id="email" placeholder="Enter your e-mail" name="email" autocomplete="email"
+                    minlength=4 required>
+                <input type="password" id="password" placeholder="Enter your password" name="password"
+                    autocomplete="current-password" minlength=8 required>
+
+                <p id="password-message" class="message"></p>
+                <button type="submit" onclick="main()" class="sign-log">
                     Login
-                  </button>
-                </form>
-                <p>Don't have an account? <a id="login" href="signup.html">Sign up</a></p>
+                </button>
+            </form>
+            <p>Don't have an account? <a id="login" href="/signup">Sign up</a></p>
         </section>
     </main>
-    <script src='../src/js/main.js'></script>
+    <script>
+        let main = () => {
+            let data={};
+            let password = document.getElementById("password").value
+            let email = document.getElementById("email").value
+            if (password.length >= 8 && ValidateEmail(email)) {
+                data.password = password;
+                data.email = email;
+                send(data);
+            }
+        }
+        let send = (data) => {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "/api/login", true);
+            xhttp.setRequestHeader("Content-Type", "application/json");
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    location.href = "/dashboard";
+                }
+                if (this.readyState == 4 && (this.status == 400||this.status==401)) {
+                    document.getElementById("password-message").innerHTML = "email or password incorrect"
+                }
+            };
+
+            xhttp.send(JSON.stringify(data));
+        }
+        function ValidateEmail(email) {
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+                return (true)
+            }
+            return (false)
+        }
+    </script>
 </body>
+
 </html>
