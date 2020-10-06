@@ -9,8 +9,6 @@ let pos = 0;
 //let active=0;
 //let textareas=[]
 let boundary = {};
-boundary.fontsize=Number(document.getElementById('number').value);
-boundary.color = "black";
 //let height = 0;
 // Initializing a new image and assigning it to a source
 let img = new Image();
@@ -119,8 +117,9 @@ function mark() {
        let person = document.getElementById("preview-test").value
         let width = document.getElementById('container').offsetWidth;
         let center = (boundary.left[0] * width + boundary.right[0] * width) / 2
-        boundary.fontsize=Number(document.getElementById('number').value)/canvas.height
-        ctx.font = `${boundary.fontsize * canvas.height}px Verdana`;
+        boundary.color = document.getElementById("color").value;
+        boundary.fontsize=Number(document.getElementById('number').value)/(width/rat)
+        ctx.font = `${boundary.fontsize * (width/rat)}px Verdana`;
         ctx.fillStyle = boundary.color;
         //ctx2.font = `${boundary.fontsize * canvas2.height}px Verdana`;
         //ctx2.fillStyle = boundary.color;
@@ -218,9 +217,7 @@ function check() {
         let ctx = canvas.getContext("2d");
         ctx.imageSmoothingEnabled = false;
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        // would later add dynamic font change
-        //let font = (30 * width) / 1264;
-        ctx.font = `${boundary.fontsize * canvas.height}px Verdana`;
+        ctx.font = `${boundary.fontsize * width/rat}px Verdana`;
         ctx.fillStyle = boundary.color;
         ctx.textAlign = "center";
         ctx.fillText(person, center, boundary.bottom[1] * (width / rat));

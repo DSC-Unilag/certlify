@@ -29,5 +29,4 @@ function newfont() {
     let height = width / rat;
     boundary.fontsize = value / height;
     mark();
-    console.log(value);
 }
