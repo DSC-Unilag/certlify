@@ -82,7 +82,7 @@
                     <input id="full-name" type="text" autocomplete="name" name="fname" minlength="3" maxlength="40" required placeholder="Enter your name"/>
                 </section>
 
-                <section>
+                <section class="fonts-section">
                     <label for="font-family">Font family:</label>
                     <select name="font-family" id="font-family">
                         <option value="Font fmaily 1">Font family 1</option>
@@ -91,10 +91,15 @@
                         <option value="Font fmaily 4">Font family 4</option>
                         <option value="Font fmaily 5">Font family 5</option>
                     </select>
-    
+
                     <label for="font-size">Font-size:</label>
-                    <input type="number" id="font-size" name="font-size" value="16" min="16" max="56" required>
-    
+                    
+                    <section class="climb-section">
+                        <button id="minus" onclick="this.nextElementSibling.stepDown()">&#45;</button>
+                        <input type="number" id="font-size" name="font-size" value="16" min="16" max="56" required>
+                        <button id="plus" onclick="this.previousElementSibling.stepUp()">&#43;</button>
+                    </section>
+                    
                     <label for="color-code">Color:</label>
                     <input type="color">
                 </section>
@@ -108,7 +113,7 @@
                 <a href="#">Text base</a>
                 <a href="#">Preview</a>
             </section>
-            
+
             <input type="submit" value="Submit">
         </section>
     </main>

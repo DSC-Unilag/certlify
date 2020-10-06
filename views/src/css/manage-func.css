@@ -48,6 +48,12 @@ hr {
     height: 0.08rem;
 }
 
+input,
+a,
+img {
+    box-shadow: 1px 3px 7px #d3d0d0;
+}
+
 main {
     display: grid;
     grid-template-rows: auto auto 3rem;
@@ -97,6 +103,7 @@ header #profile-image img {
     width: 2.8rem;
     height: auto;
     border-radius: 50%;
+    box-shadow: none;
     border: 1px solid;
 }
 
@@ -181,6 +188,7 @@ header .section-links ul li a {
     padding: 0.8rem;
     color: white;
     font-size: 1rem;
+    box-shadow: none;
 }
 
 header .section-links ul #gen-cert {
@@ -236,6 +244,7 @@ header .bread-crumbs {
     color: #2196F3;
     justify-self: start;
     text-decoration: none;
+    box-shadow: none;
     height: 4rem;
     display: flex;
     justify-content: center;
@@ -264,10 +273,49 @@ header .bread-crumbs {
     margin: 1rem 0rem;
 }
 
+.main-func-manage .value-input-section .input-details .fonts-section select {
+    width: 5rem;
+    height: 2rem;
+}
+
+.main-func-manage .value-input-section .input-details .climb-section {
+    justify-content: center;
+    width: auto;
+}
+
+.main-func-manage .value-input-section .input-details .climb-section #minus,
+.main-func-manage .value-input-section .input-details .climb-section #plus {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: white;
+    background-color: #9CBFF9;
+    color: #4285F4;
+    padding: 0.1rem 1rem;
+    border: none;
+}
+
+.main-func-manage .value-input-section .input-details input[type="number"] {
+    text-align: center;
+    height: 2rem;
+    box-shadow: none;
+    border: 1px solid #9cbff9;
+}
+
+.main-func-manage .value-input-section .input-details .fonts-section select,
+input[type="color"] {
+    background-color: #9CBFF9;
+    color: white;
+}
+
+.main-func-manage .value-input-section .input-details .fonts-section input[type="color"] {
+    width: 3rem;
+    height: 2rem;
+}
+
 .main-func-manage .value-input-section .border-section a {
     text-align: center;
     padding: 0.5rem 1rem;
-    margin: 0.5rem 0.6rem;
+    margin: 0.4rem 0.6rem;
     border: 1px solid;
     border-radius: 0.5rem;
     text-decoration: none;
@@ -280,38 +328,104 @@ header .bread-crumbs {
 }
 
 .main-func-manage .value-input-section .input-details section {
-    margin: 1rem 0;
+    margin: 0.4rem 0;
     width: 100%;
     text-align: center;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 }
 
 .main-func-manage .value-input-section .input-details section input[type=text] {
-    width: 85%;
+    width: 93%;
+    text-align: center;
+    border-radius: 0.4rem;
+    height: 2.5rem;
+    border: 1px solid #9CBFF9;
 }
 
 .main-func-manage .value-input-section .input-details label {
     position: absolute;
     visibility: hidden;
 }
+
+.main-func-manage .value-input-section .border-section a{
+    transition: 90ms all ease-in; 
+}
 .main-func-manage .value-input-section .border-section a:first-child {
     color: white;
     background-color: red;
+    border: none;
 }
+
+.main-func-manage .value-input-section .border-section a:first-child:hover {
+    background-color: rgb(255, 94, 94);
+}
+
+.main-func-manage .value-input-section .border-section a:first-child:focus {
+    background-color: rgb(253, 25, 25);
+}
+.main-func-manage .value-input-section .border-section a:first-child:active {
+    background-color: rgb(253, 25, 25);
+}
+
 .main-func-manage .value-input-section .border-section a:nth-child(2) {
     color: #FBBC04;
     border-color: #FBBC04;
 }
+.main-func-manage .value-input-section .border-section a:nth-child(2):hover{
+    background-color: #FBBC04;
+    color: white;
+}
+
+.main-func-manage .value-input-section .border-section a:nth-child(2):focus {
+    background-color: #c69607;
+    color: white;
+}
+
+.main-func-manage .value-input-section .border-section a:nth-child(2):active {
+    background-color: #fabf10;
+    color: white;
+}
+
 .main-func-manage .value-input-section .border-section a:nth-child(3) {
     color: #0F9D58;
     border-color: #0F9D58;
 }
+
+.main-func-manage .value-input-section .border-section a:nth-child(3):hover {
+    color: white;
+    background-color: #0F9D58;
+}
+
+.main-func-manage .value-input-section .border-section a:nth-child(3):focus {
+    color: white;
+    background-color: #077a42;
+}
+
+.main-func-manage .value-input-section .border-section a:nth-child(3):active {
+    color: white;
+    background-color: #0fc46c;
+}
+
 .main-func-manage .value-input-section .border-section a:nth-child(4) {
     color: #4285F4;
     border-color: #4285F4;
 }
+
+.main-func-manage .value-input-section .border-section a:nth-child(4):hover {
+    color: white;
+    background-color: #4285F4;
+}
+.main-func-manage .value-input-section .border-section a:nth-child(4):focus {
+    color: white;
+    background-color: #1f65d6;
+}
+.main-func-manage .value-input-section .border-section a:nth-child(4):active {
+    color: white;
+    background-color: #3778e0;
+}
+
 .main-func-manage .value-input-section input[type="submit"] {
     display: flex;
     justify-content: center;
@@ -322,8 +436,22 @@ header .bread-crumbs {
     color: white;
     width: 12.25rem;
     height: 2.5rem;
+    border-radius: 0.4rem;
     background-color: #4285F4;
-    transition: 300ms all ease-in;
+    transition: 90ms all ease-in;
+    cursor: pointer;
+}
+
+.main-func-manage .value-input-section input[type="submit"]:hover {
+    background-color: #619bf7;
+}
+
+.main-func-manage .value-input-section input[type="submit"]:focus {
+    background-color: #3781f8;
+}
+
+.main-func-manage .value-input-section input[type="submit"]:active {
+    background-color: #2e7eff;
 }
 
 @media screen and (min-width: 45rem) {
@@ -342,6 +470,7 @@ header .bread-crumbs {
     .logo-section span img {
         width: 100%;
         height: auto;
+        box-shadow: none;
     }
 
     header .volunteer-header {
@@ -403,9 +532,10 @@ header .bread-crumbs {
     .main-func-manage .edit-cert-section img {
         width: 33.2rem;
     }
-    hr{
+
+    hr {
         width: 0.08rem;
-        height: 5rem;
+        height: 6rem;
     }
 }
 
