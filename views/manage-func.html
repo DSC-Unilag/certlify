@@ -34,18 +34,17 @@
     <link rel="icon" sizes="512x512" href="../imgs/icon.png">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-    <link rel='stylesheet' type='text/css' media='screen' href='../src/css/manage.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='./src/css/manage-func.css'>
 </head>
 
 <body>
     <header>
-        <span id="dsc-logo"><img id="cropped-logo" src="" alt="logo icon"></span>
-        <span id="profile-image"><img id="user-image" src="../imgs/user.svg" alt="user icon" /></span>
-
-        <section class="search-section">
-            <input type="search" placeholder="Search" />
-            <button onclick=""><img src="../imgs/search.svg" alt=""></button>
+        <section class="logo-section">
+            <span id="code-logo"><img id="cropped-logo" src="../imgs/code logo.png" alt="logo icon"></span>
+            <div class="img-line"></div>
         </section>
+
+        <span id="profile-image"><img id="user-image" src="../imgs/user.svg" alt="user icon" /></span>
 
         <input type="checkbox" id="toggle-butt" />
 
@@ -67,22 +66,56 @@
         <section class="volunteer-header">
             <h1>Certificate of Volunteer</h1>
 
-            <a href="#" id="back-button"><img src="/imgs/arrow.svg"></a>
         </section>
     </header>
-
-    <main class="main-dashboard">
-        <section class="cert-section">
-            <img src="../imgs/Sunkanmi's Certificate.png" alt="Demo certificate" />
+    
+    <main class="main-func-manage">
+        <section class="edit-cert-section">
+            <a href="#" id="close-button">&#x2716;</a>
+            <img id="demo-test-image" src="../imgs/Sunkanmi's Certificate.png" alt="Demo certificate" />
         </section>
 
-        <section class="edit-section">
-            <a>Edit</a>
-            <a>Collectors</a>
-            <a>Add Certificate</a>
+        <section class="value-input-section">
+            <section class="input-details">
+                <section>
+                    <label for="full-name">Full name:</label>
+                    <input id="full-name" type="text" autocomplete="name" name="fname" minlength="3" maxlength="40" required placeholder="Enter your name"/>
+                </section>
+
+                <section>
+                    <label for="font-family">Font family:</label>
+                    <select name="font-family" id="font-family">
+                        <option value="Font fmaily 1">Font family 1</option>
+                        <option value="Font fmaily 2">Font family 2</option>
+                        <option value="Font fmaily 3">Font family 3</option>
+                        <option value="Font fmaily 4">Font family 4</option>
+                        <option value="Font fmaily 5">Font family 5</option>
+                    </select>
+    
+                    <label for="font-size">Font-size:</label>
+                    <input type="number" id="font-size" name="font-size" value="16" min="16" max="56" required>
+    
+                    <label for="color-code">Color:</label>
+                    <input type="color">
+                </section>
+            </section>
+
+            <hr />
+
+            <section class="border-section">
+                <a href="#">Left border</a>
+                <a href="#">Right border</a>
+                <a href="#">Text base</a>
+                <a href="#">Preview</a>
+            </section>
+            
+            <input type="submit" value="Submit">
         </section>
     </main>
-    <script src='/src/js/main.js'></script>
+    
+    <footer>
+
+    </footer>
 </body>
 
 </html>

@@ -40,16 +40,26 @@ body {
     background-color: #ae8407;
 }
 
+hr {
+    width: 17rem;
+    justify-self: center;
+    border: none;
+    background-color: #707070;
+    height: 0.08rem;
+}
+
 main {
     display: grid;
-    grid-template-rows: auto auto auto 3rem;
+    grid-template-rows: auto auto 3rem;
     position: relative;
+    justify-items: center;
+    align-content: center;
 }
 
 header {
     display: grid;
-    grid-template-columns: 4rem auto auto;
-    grid-template-rows: 5rem auto 20rem;
+    grid-template-columns: 37% 40%;
+    grid-template-rows: 5rem auto 17rem;
     justify-content: center;
     align-items: center;
     margin-bottom: 1.5rem;
@@ -71,14 +81,16 @@ header span {
     height: auto;
 }
 
-header #dsc-logo {
+header #code-logo {
     display: none;
 }
 
 header #profile-image {
     display: flex;
-    justify-content: center;
+    justify-content: end;
+    padding-left: 1.5rem;
     align-items: center;
+    grid-area: 1 / 1 / 2 / 2;
 }
 
 header #profile-image img {
@@ -86,36 +98,6 @@ header #profile-image img {
     height: auto;
     border-radius: 50%;
     border: 1px solid;
-}
-
-header .search-section {
-    position: relative;
-    text-align: center;
-}
-
-header .search-section input {
-    height: 3rem;
-    width: 100%;
-    border-radius: 11px;
-    padding-left: 1rem;
-    border: none;
-}
-
-header .search-section button {
-    background: none;
-    border: none;
-    position: absolute;
-    display: flex;
-    width: 2rem;
-    height: 2rem;
-    justify-content: center;
-    align-items: center;
-    right: 1rem;
-    top: 0.5rem;
-}
-
-header .search-section button img {
-    width: 1.7rem;
 }
 
 header .section-links {
@@ -126,7 +108,7 @@ header .section-links {
     height: 0;
     grid-area: 2 / 1 / 3 / 4;
     justify-self: center;
-    transition: all 400ms ease-in;
+    transition: all 330ms ease-in-out;
     overflow: hidden;
 }
 
@@ -136,7 +118,7 @@ header .volunteer-header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    height: 75%;
+    height: 50%;
     align-self: auto;
 }
 
@@ -221,12 +203,12 @@ header .bread-crumbs {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin: 0 0 0 0.7rem;
+    margin: 0 0 0 1rem;
     height: 4rem;
     padding: 1rem 0;
     cursor: pointer;
     width: 3rem;
-    justify-self: end;
+    justify-self: start;
 }
 
 .bread-crumb {
@@ -238,76 +220,140 @@ header .bread-crumbs {
     border-radius: 3rem;
 }
 
-.volunteer-header #back-button {
-    display: inline-block;
-    width: 3rem;
-    height: auto;
-    position: relative;
-    bottom: 0.5rem;
-}
-
-.volunteer-header #back-button img {
-    width: 3rem;
-    height: auto;
-}
-
-.main-dashboard .cert-section {
-    position: relative;
-    top: -5.3rem;
+.main-func-manage .edit-cert-section {
     width: 100%;
+    display: grid;
+    grid-template-rows: auto auto;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+}
+
+.main-func-manage .edit-cert-section #close-button {
+    font-size: 2rem;
+    width: 3rem;
+    color: #2196F3;
+    justify-self: start;
+    text-decoration: none;
+    height: 4rem;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.main-dashboard .cert-section img {
+.main-func-manage .edit-cert-section img {
     width: 90%;
     height: auto;
 }
 
-.main-dashboard .edit-section {
-    display: flex;
-    position: relative;
-    flex-wrap: wrap;
+.main-func-manage .value-input-section,
+.main-func-manage .value-input-section .input-details,
+.main-func-manage .value-input-section .border-section {
+    display: grid;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
     justify-content: center;
     align-items: center;
-    height: 12rem;
+    position: relative;
 }
 
-.main-dashboard .edit-section a {
+.main-func-manage .value-input-section .border-section {
+    grid-template-rows: auto auto auto auto;
+    grid-template-columns: auto auto;
+    margin: 1rem 0rem;
+}
+
+.main-func-manage .value-input-section .border-section a {
+    text-align: center;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0.6rem;
+    border: 1px solid;
+    border-radius: 0.5rem;
+    text-decoration: none;
+}
+
+.main-func-manage .value-input-section .input-details {
+    margin: 1rem 0;
+    grid-template-columns: 19rem;
+    grid-template-rows: auto auto;
+}
+
+.main-func-manage .value-input-section .input-details section {
+    margin: 1rem 0;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-func-manage .value-input-section .input-details section input[type=text] {
+    width: 85%;
+}
+
+.main-func-manage .value-input-section .input-details label {
+    position: absolute;
+    visibility: hidden;
+}
+.main-func-manage .value-input-section .border-section a:first-child {
+    color: white;
+    background-color: red;
+}
+.main-func-manage .value-input-section .border-section a:nth-child(2) {
+    color: #FBBC04;
+    border-color: #FBBC04;
+}
+.main-func-manage .value-input-section .border-section a:nth-child(3) {
+    color: #0F9D58;
+    border-color: #0F9D58;
+}
+.main-func-manage .value-input-section .border-section a:nth-child(4) {
+    color: #4285F4;
+    border-color: #4285F4;
+}
+.main-func-manage .value-input-section input[type="submit"] {
     display: flex;
     justify-content: center;
     align-items: center;
     box-shadow: 1px 4px 5px lightgrey;
-    border: 1px solid #4285F4;
-    color: #4285F4;
-    border-radius: 0.2rem;
-    width: 13.65rem;
-    align-self: center;
+    border: none;
+    justify-self: center;
+    color: white;
+    width: 12.25rem;
     height: 2.5rem;
-    cursor: pointer;
-    background-color: white;
-    transition: 90ms all ease-in;
+    background-color: #4285F4;
+    transition: 300ms all ease-in;
 }
 
-
-    .main-dashboard .cert-section {
-        top: -7rem;
+@media screen and (min-width: 45rem) {
+    header {
+        grid-template-columns: 4rem 80% auto;
+        grid-template-rows: 5rem auto 13rem;
+        min-height: 18rem;
     }
 
-    .main-dashboard .cert-section img {
-        width: 37.5rem;
+    .logo-section {
+        width: 100%;
+        height: 3rem;
+        position: relative;
     }
 
-    .volunteer-header #back-button {
+    .logo-section span img {
+        width: 100%;
+        height: auto;
+    }
+
+    header .volunteer-header {
+        position: relative;
+    }
+
+    header #code-logo {
+        display: inline-block;
+        width: 80%;
+        height: 3rem;
         position: absolute;
-        bottom: 0;
-        left: 0;
-        z-index: 1;
-    }
-
-    header #dsc-logo {
-        display: inline;
+        border: 1px solid;
     }
 
     header .section-links ul li .active-cert {
@@ -315,9 +361,9 @@ header .bread-crumbs {
     }
 
     header #profile-image {
-        grid-area: 1 / 4 / 2 / 5;
+        grid-area: 1 / 3 / 2 / 4;
         display: inline-block;
-        text-align: center;
+        text-align: end;
         justify-self: flex-start;
     }
 
@@ -337,17 +383,34 @@ header .bread-crumbs {
         display: none;
     }
 
-    .main-dashboard .edit-section {
-        top: -1.3px;
+    .main-func-manage .value-input-section {
+        grid-template-columns: auto 1rem auto;
+        grid-template-rows: auto auto;
     }
 
-    .main-dashboard .edit-section a {
-        margin: 0rem 1.3rem;
+    .main-func-manage .value-input-section input[type="submit"] {
+        grid-area: 2 / 1 / 3 / 4;
+    }
+
+    .main-func-manage .value-input-section input[type="submit"] {
+        grid-area: 2 / 1 / 3 / 4;
+    }
+
+    .main-func-manage .edit-cert-section {
+        width: 80%;
+    }
+
+    .main-func-manage .edit-cert-section img {
+        width: 33.2rem;
+    }
+    hr{
+        width: 0.08rem;
+        height: 5rem;
     }
 }
 
 @media screen and (min-width: 64rem) {
     header {
-        grid-template-columns: 4rem 47% 40% auto;
+        grid-template-columns: 20% 50% 20%;
     }
 }
