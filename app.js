@@ -92,5 +92,16 @@ app.get("/login",(req,res)=>{
   res.sendFile(__dirname+"/views/login.html");
 })
 app.get("/manage",(req,res)=>{
-  res.sendFile(__dirname+"/views/manage.html");
+  if(req.session.email){
+    res.sendFile(__dirname+"/views/manage.html");
+  }else{
+    res.redirect("/login")
+  }
+})
+
+app.get("/createcertificate",(req,res)=>{
+  if(!req.session.email){
+    return res.redirect("/login");
+  }
+  res.sendFile(__dirname+"/views/certificate.html");
 })

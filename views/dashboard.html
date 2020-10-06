@@ -70,7 +70,7 @@
     </header>
     <main class="main-dashboard">
         <section id="cards" class="landing-page-section">
-           
+
             <!--   <section class="certificate-card">
                 <article>
                     <img src="../imgs/diploma (1).svg" alt="user certificate" />
@@ -94,12 +94,16 @@
                     <a>Manage Certificate</a>
                 </article>
             </section>-->
-            
+
         </section>
-        
+
     </main>
     <button id="add-cert">&#65291; Add Certificate</button>
     <script>
+        let create=document.getElementById("add-cert");
+        create.addEventListener("click",function(){
+            location.href="/createcertificate"
+        })
         var user;
         var xhttp = new XMLHttpRequest();
         xhttp.open("GET", "/api/getdashboard", true);
@@ -107,39 +111,30 @@
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 user = JSON.parse(this.responseText)
+                console.log(user)
                 let welcome = document.getElementById("welcome");
                 let cards = document.getElementById("cards")
                 welcome.innerHTML = `<h1>Hi ${user.name},</h1>
             <p>You have issued <span id="user-cert-number">${user.certificateUrls.length}</span> certificates so far.</p>`
                 if (user.certificateUrls.length !== 0) {
-                    for(i in user.certs){
-                        cards.innerHTML+=`<section class="certificate-card">
+                    for (i in user.certs) {
+                        cards.innerHTML += `<section class="certificate-card">
                 <article>
-                    <img src="${certs[i].src}" alt="user certificate" />
-                    <h2 class="cert-header">${certs[i].name}</h2>
-                    <a id="${i}"class="manage">Manage Certificate</a>
+                    <img src="${user.certs[i].src}" alt="user certificate" />
+                    <h2 class="cert-header">${user.certs[i].name}</h2>
+                    <a href="/manage/?link=${user.certificateUrls[i]}">Manage Certificate</a>
                 </article>
             </section>`
                     }
-                    
+
                 }
             }
             if (this.readyState == 4 && (this.status == 400 || this.status == 401)) {
-                location.href="/login"
+                location.href = "/login"
             }
         };
 
         xhttp.send();
-
-var manage = document.getElementsByClassName("manage");
-
-var myFunction = function() {
-    const tab = window.open('/manage', '_blank');
-};
-
-for (var i = 0; i < manage.length; i++) {
-    manage[i].addEventListener('click', myFunction, false);
-}
 
 
 
