@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <meta charset='utf-8'>
+    <!--
+         Todo:
+        1. SEO meta tags to improve search results.
+        2. animation
+        3. app installation
+        4. ONe page app
+    -->
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>DSC Unilag Certificate Generator</title>
+    <meta name="msapplication-tap-highlight" , content="none" />
+    <link rel="manifest" href="../manifest.json">
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="DSC Unilag Certificate Generator">
+    <meta name="apple-mobile-web-app-title" content="DSC Unilag Certificate Generator">
+    <meta name="theme-color" content="#34495E">
+    <meta name="msapplication-navbutton-color" content="#FF9800">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="index.html">
+    <link rel="icon" sizes="128x128" href="">
+    <link rel="apple-touch-icon" sizes="128x128" href="">
+    <link rel="icon" sizes="192x192" href="">
+    <link rel="apple-touch-icon" sizes="192x192" href="">
+    <link rel="icon" sizes="256x256" href="">
+    <link rel="apple-touch-icon" sizes="256x256" href="">
+    <link rel="icon" sizes="384x384" href="">
+    <link rel="apple-touch-icon" sizes="384x384" href="">
+    <link rel="icon" sizes="512x512" href="../imgs/icon.png">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+
+    <link rel='stylesheet' type='text/css' media='screen' href='./src/css/manage-func.css'>
+</head>
+
+<body>
+    <header>
+        <section class="logo-section">
+            <span id="code-logo"><img id="cropped-logo" src="../imgs/code logo.png" alt="logo icon"></span>
+            <div class="img-line"></div>
+        </section>
+
+        <span id="profile-image"><img id="user-image" src="../imgs/user.svg" alt="user icon" /></span>
+
+        <input type="checkbox" id="toggle-butt" />
+
+        <label for="toggle-butt" class="bread-crumbs">
+            <div class="bread-crumb"></div>
+            <div class="bread-crumb"></div>
+            <div class="bread-crumb"></div>
+        </label>
+
+        <nav class="section-links">
+            <ul class="home-links">
+                <li id="gen-cert"><a href="#">Generated Certificates</a>
+                    <hr class="active-cert">
+                </li>
+                <li><a href="#">Issued Certificates</a></li>
+            </ul>
+        </nav>
+
+        <section class="volunteer-header">
+            <h1>Certificate of Volunteer</h1>
+
+        </section>
+    </header>
+    
+    <main class="main-func-manage">
+        <section class="edit-cert-section">
+            <a href="#" id="close-button">&#x2716;</a>
+            <img id="demo-test-image" src="../imgs/Sunkanmi's Certificate.png" alt="Demo certificate" />
+        </section>
+
+        <section class="value-input-section">
+            <section class="input-details">
+                <section>
+                    <label for="full-name">Full name:</label>
+                    <input id="full-name" type="text" autocomplete="name" name="fname" minlength="3" maxlength="40" required placeholder="Enter your name"/>
+                </section>
+
+                <section class="fonts-section">
+                    <label for="font-family">Font family:</label>
+                    <select name="font-family" id="font-family">
+                        <option value="Font fmaily 1">Font family 1</option>
+                        <option value="Font fmaily 2">Font family 2</option>
+                        <option value="Font fmaily 3">Font family 3</option>
+                        <option value="Font fmaily 4">Font family 4</option>
+                        <option value="Font fmaily 5">Font family 5</option>
+                    </select>
+
+                    <label for="font-size">Font-size:</label>
+                    
+                    <section class="climb-section">
+                        <button id="minus" onclick="this.nextElementSibling.stepDown()">&#45;</button>
+                        <input type="number" id="font-size" name="font-size" value="16" min="16" max="56" required>
+                        <button id="plus" onclick="this.previousElementSibling.stepUp()">&#43;</button>
+                    </section>
+                    
+                    <label for="color-code">Color:</label>
+                    <input type="color">
+                </section>
+            </section>
+
+            <hr />
+
+            <section class="border-section">
+                <a href="#">Left border</a>
+                <a href="#">Right border</a>
+                <a href="#">Text base</a>
+                <a href="#">Preview</a>
+            </section>
+
+            <input type="submit" value="Submit">
+        </section>
+    </main>
+    
+    <footer>
+
+    </footer>
+</body>
+
+</html>
