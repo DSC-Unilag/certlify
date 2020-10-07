@@ -61,6 +61,23 @@ img {
   background-color: #4285F4;
   color:white;
 }
+
+input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+}
+
+button,
+select {
+    cursor: pointer;
+}
+
 main {
   display: grid;
   grid-template-rows: auto auto 3rem;
@@ -367,6 +384,7 @@ input[type="color"] {
 .main-func-manage .value-input-section .border-section a {
   transition: 90ms all ease-in;
 }
+
 .main-func-manage .value-input-section .border-section a:first-child {
   color: white;
   background-color: red;
@@ -380,6 +398,7 @@ input[type="color"] {
 .main-func-manage .value-input-section .border-section a:first-child:focus {
   background-color: rgb(253, 25, 25);
 }
+
 .main-func-manage .value-input-section .border-section a:first-child:active {
   background-color: rgb(253, 25, 25);
 }
@@ -432,10 +451,12 @@ input[type="color"] {
   color: white;
   background-color: #4285f4;
 }
+
 .main-func-manage .value-input-section .border-section a:nth-child(4):focus {
   color: white;
   background-color: #1f65d6;
 }
+
 .main-func-manage .value-input-section .border-section a:nth-child(4):active {
   color: white;
   background-color: #3778e0;
