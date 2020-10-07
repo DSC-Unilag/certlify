@@ -12,18 +12,22 @@ let dashboard = (req, res) => {
                 data.certificateUrls = user.certificateUrls
                 data.certs= [];
                 let links = user.certificateUrls
-                for (i in links) {
-                    data.certs[i]={}
-                    Links.findOne({ link: links[i] }, function (err, cert) {
-                        if (cert) {
-                            data.certs[i].name = cert.name
-                            data.certs[i].link = cert.link
-                            data.certs[i].boundary = cert.boundary
-                            data.certs[i].src=cert.boundary.src
-                        }
-                    })
+                const loop=async ()=>{
+                    for (i in links) {
+                        data.certs[i]={}
+                         await Links.findOne({ link: links[i] }, function (err, cert) {
+                            if (cert) {
+                                data.certs[i].name = cert.name
+                                data.certs[i].link = cert.link
+                                data.certs[i].src=cert.src
+                                data.certs[i].boundary = cert.boundary
+                            }
+                        })
+                    }
+                    res.json(data);
                 }
-                res.json(data);
+                loop();
+               
             }else{
                 res.status(401)
                 res.json({

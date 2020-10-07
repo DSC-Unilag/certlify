@@ -2,6 +2,9 @@
   font-family: "Open-Sans";
   src: url("./fonts/OpenSans-Regular.ttf");
 }
+:root{
+  --main-color: #4285F4;
+}
 
 * {
   font-family: Open-Sans, Verdana, Geneva, Tahoma, sans-serif;
@@ -52,7 +55,12 @@ a,
 img {
   box-shadow: 1px 3px 7px #d3d0d0;
 }
-
+#goto{
+  padding:10px;
+  border-radius: 10px;
+  background-color: #4285F4;
+  color:white;
+}
 main {
   display: grid;
   grid-template-rows: auto auto 3rem;
@@ -479,8 +487,13 @@ input[type="color"] {
     justify-content: center;
     align-items: center;
 }
-#file {
+#file,#csv {
   display: none;
+}
+.form{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .upload-style {
   width: 70%;
@@ -498,6 +511,41 @@ input[type="color"] {
   width: 100%;
   flex-direction: row;
   justify-content: center;
+}
+
+button.icon{
+  margin-left:20px;
+  margin-right:20px;
+  width: 160px;
+  height: 40px;
+  background-color: var(--main-color);
+  color: white;
+  padding: 0px 4px;
+  justify-content: space-evenly;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+}
+
+.icon i.copy {
+  background: url(/imgs/copy.svg) no-repeat;
+  float: left;
+  transform: scale(0.4);
+  width: 35px;
+  height: 35px;
+  margin: 0;
+  z-index: 20;
+}
+
+.icon i.share {
+  background: url(/imgs/share.svg) no-repeat;
+  float: left;
+  transform: scale(0.4);
+  width: 35px;
+  height: 35px;
+  margin: 0;
 }
 
 .show {

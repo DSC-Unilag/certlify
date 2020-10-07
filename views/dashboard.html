@@ -114,20 +114,26 @@
                 console.log(user)
                 let welcome = document.getElementById("welcome");
                 let cards = document.getElementById("cards")
-                welcome.innerHTML = `<h1>Hi ${user.name},</h1>
-            <p>You have issued <span id="user-cert-number">${user.certificateUrls.length}</span> certificates so far.</p>`
-                if (user.certificateUrls.length !== 0) {
+            let errors=0;    
+            if (user.certificateUrls.length !== 0) {
                     for (i in user.certs) {
-                        cards.innerHTML += `<section class="certificate-card">
+                        if(user.certs[i].name!==undefined){
+                            cards.innerHTML += `<section class="certificate-card">
                 <article>
                     <img src="${user.certs[i].src}" alt="user certificate" />
                     <h2 class="cert-header">${user.certs[i].name}</h2>
                     <a href="/manage/?link=${user.certificateUrls[i]}">Manage Certificate</a>
                 </article>
             </section>`
+                        }else{
+                            errors++
+                        }
+                        
                     }
 
                 }
+                welcome.innerHTML = `<h1>Hi, ${user.name}</h1>
+            <p>You have issued <span id="user-cert-number">${user.certificateUrls.length-errors}</span> certificates so far.</p>`
             }
             if (this.readyState == 4 && (this.status == 400 || this.status == 401)) {
                 location.href = "/login"

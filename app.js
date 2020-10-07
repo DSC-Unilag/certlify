@@ -60,7 +60,7 @@ app.use(cors());
 app.use(express.static(__dirname+"/views"));
 app.use(express.json({ limit: "50mb" }));
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3333;
 
 app.listen(PORT, () => {
   console.log(`server running on port ${PORT}`);
@@ -78,6 +78,9 @@ app.use("/api", manage);
 
 const createCert = require("./routes/createCert");
 app.use("/api", createCert);
+
+const addnew = require("./routes/addEligibleUsers");
+app.use("/api", addnew)
 
 app.get('/signup', (req,res)=>{
   res.sendFile(__dirname+"/views/signup.html");
@@ -103,5 +106,5 @@ app.get("/createcertificate",(req,res)=>{
   if(!req.session.email){
     return res.redirect("/login");
   }
-  res.sendFile(__dirname+"/views/certificate.html");
+  res.sendFile(__dirname+"/views/certificate-gen.html");
 })

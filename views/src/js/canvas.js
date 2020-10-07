@@ -4,7 +4,7 @@ window.addEventListener("resize", function () {
 let prompts = ["Please select the left boundary of the space allocated for the name", "Please select the right boundary of the space allocated for the name", "Please select the bottom boundary of the space allocated for the name", ""];
 let person;
 let pos = 0;
-
+let data={};
 // The boundary object to store the x and y coordinates of the text area boundaries for left, right and bottom
 //let active=0;
 //let textareas=[]
@@ -149,6 +149,7 @@ function start() {
     rat = img.width / img.height;
     document.getElementById("upload-div").classList.toggle("hide");
     document.getElementById("container").classList.toggle("show");
+    document.getElementById("value-input").classList.toggle("hide");
     mark();
     let left_border = document.getElementById("left_border")
     let right_border = document.getElementById("right_border");
@@ -156,16 +157,24 @@ function start() {
     let done = document.getElementById("done");
     done.addEventListener('click', function () {
         if (boundary.right && boundary.left && boundary.bottom) {
+            data.boundary=[boundary];
             var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "/boundary", false);
+            xhttp.open("POST", "/api/createcert", false);
             xhttp.setRequestHeader("Content-Type", "application/json");
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
-                    url = JSON.parse(this.responseText).url
-                    document.write(url);
+                    let link = JSON.parse(this.responseText).link
+                    let url=JSON.parse(this.responseText).url
+                    document.getElementById("email-form").setAttribute("action",`/api/addeligibleusers/${url}`);
+                    document.getElementById("add-emails").classList.toggle("hide");
+                    document.getElementById("prompt").innerHTML = "";
+                    document.getElementById("link").value=link
+                    document.getElementById("edit-cert").classList.toggle("hide");
+                    document.getElementById("value-input").classList.toggle("hide");
+                    
                 }
             };
-            xhttp.send(JSON.stringify(boundary));
+            xhttp.send(JSON.stringify(data));
         }
 
     })
@@ -205,7 +214,7 @@ function getBase64Image(img) {
     ctx.drawImage(img, 0, 0);
 
 var dataURL = canvas.toDataURL("image/png");
-boundary.src=dataURL;
+data.src=dataURL;
 }
 
 function check() {

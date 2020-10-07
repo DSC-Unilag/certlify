@@ -28,6 +28,7 @@ let certificate = (req, res) => {
                             issuer: req.session.email,
                             name: req.body.name,
                             link: link,
+                            src:req.body.src,
                             boundary: req.body.boundary,
                         })
                         cert.save(function (err, doc) {
@@ -35,7 +36,8 @@ let certificate = (req, res) => {
                             res.json({
                                 status: true,
                                 message: "certificate created",
-                                link: req.hostname + "/certificate/" + link
+                                link: req.hostname + "/certificate/" + link,
+                                url:link
                             })
                         });
                     }
