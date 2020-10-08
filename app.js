@@ -9,7 +9,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const config = require("./config/database");
 let configuration = process.env.DATABASE || config.database;
-
+const Link = require("./models/links");
 // connect to database
 mongoose.connect(configuration, {
   useNewUrlParser: true,
@@ -28,22 +28,22 @@ const app = express();
 const swaggerJsDoc = require("swagger-jsdoc");
 const swaggerUi = require("swagger-ui-express");
 
-const swaggerOptions={
-  swaggerDefinition:{
-    info:{
-      title:'Certificate Generator API',
-      description:"Certificate Generator API informations",
-      contact:{
-        name:"DSC Unilag"
+const swaggerOptions = {
+  swaggerDefinition: {
+    info: {
+      title: 'Certificate Generator API',
+      description: "Certificate Generator API informations",
+      contact: {
+        name: "DSC Unilag"
       },
-      servers:["http://localhost:3000/"]
+      servers: ["http://localhost:3000/"]
     }
   },
-  apis:["./routes/*.js"]
+  apis: ["./routes/*.js"]
 }
 
-const swaggerDocs=swaggerJsDoc(swaggerOptions);
-app.use("/api-docs",swaggerUi.serve,swaggerUi.setup(swaggerDocs));
+const swaggerDocs = swaggerJsDoc(swaggerOptions);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 
 
 // middlewares
@@ -57,7 +57,7 @@ app.use(
 );
 
 app.use(cors());
-app.use(express.static(__dirname+"/views"));
+app.use(express.static(__dirname + "/views"));
 app.use(express.json({ limit: "50mb" }));
 
 const PORT = process.env.PORT || 3333;
@@ -82,29 +82,59 @@ app.use("/api", createCert);
 const addnew = require("./routes/addEligibleUsers");
 app.use("/api", addnew)
 
-app.get('/signup', (req,res)=>{
-  res.sendFile(__dirname+"/views/signup.html");
+const generate = require("./routes/generate");
+app.use("/api", generate);
+
+
+app.get('/signup', (req, res) => {
+  res.sendFile(__dirname + "/views/signup.html");
 });
-app.get("/dashboard",(req,res)=>{
-  if(!req.session.email){
+app.get("/dashboard", (req, res) => {
+  if (!req.session.email) {
     return res.redirect("login");
   }
-  res.sendFile(__dirname+"/views/dashboard.html");
+  res.sendFile(__dirname + "/views/dashboard.html");
 })
-app.get("/login",(req,res)=>{
-  res.sendFile(__dirname+"/views/login.html");
+app.get("/login", (req, res) => {
+  res.sendFile(__dirname + "/views/login.html");
 })
-app.get("/manage",(req,res)=>{
-  if(req.session.email){
-    res.sendFile(__dirname+"/views/manage.html");
-  }else{
+app.get("/manage", (req, res) => {
+  if (req.session.email) {
+    res.sendFile(__dirname + "/views/manage.html");
+  } else {
     res.redirect("/login")
   }
 })
 
-app.get("/createcertificate",(req,res)=>{
-  if(!req.session.email){
+app.get("/createcertificate", (req, res) => {
+  if (!req.session.email) {
     return res.redirect("/login");
   }
-  res.sendFile(__dirname+"/views/certificate-gen.html");
+  res.sendFile(__dirname + "/views/certificate-gen.html");
+})
+
+app.get("/certificate/:link", (req, res) => {
+  let email = req.session.email;
+  let link = req.params.link
+  req.session.link = link;
+  if (email) {
+    Link.findOne({ link: req.params.link }, (err, cert) => {
+      if (cert) {
+        for (i in cert.eligibleUsers) {
+          if (cert.eligibleUsers[i].email == email) {
+            res.status(200);
+            return res.sendFile(__dirname + "/views/certificator.html");
+          }
+        }
+      } else {
+        res.status(400);
+        res.json({
+          status: false,
+          message: "invalid certificate link"
+        })
+      }
+    })
+  } else {
+    res.redirect("/login");
+  }
 })

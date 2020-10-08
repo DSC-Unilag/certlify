@@ -5,8 +5,6 @@
 */
 // Bring in the links model
 const  Link= require("../models/links");
-const config = require("../config/database");
-const rounds = process.env.DATABASE || config.rounds;
 
 // Load dependencies
 const csv = require("csvtojson");

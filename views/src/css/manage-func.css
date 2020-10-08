@@ -518,7 +518,7 @@ input[type="color"] {
   opacity: 1;
 }
 #container {
-    display:none;
+    display:hidden;
     width: 60%;
     margin: auto;
     justify-content: center;

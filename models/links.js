@@ -10,7 +10,6 @@ const boundarySchema = new Schema({
   right: Array,
   fontsize: Number,
   color: String,
-  src: String,
 });
 
 const eligibleUser = new Schema({
