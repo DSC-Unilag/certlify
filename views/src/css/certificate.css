@@ -4,6 +4,7 @@
 }
 
 * {
+  font-family: Open-Sans, Verdana, Geneva, Tahoma, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -13,6 +14,10 @@
 html,
 body {
   color: #098dff;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.12rem;
+  word-spacing: 0.16rem;
   display: flex;
   flex-direction: column;
 }
@@ -106,13 +111,12 @@ header #profile-image img {
   flex-direction: row;
   justify-content: center;
 }
-#prompt{
-  text-align: center;
-}
 #container {
     display:none;
     width: 60%;
     margin: auto;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
@@ -214,10 +218,10 @@ header #profile-image img {
   background-color: #f1f1f1;
 }
 .show {
-  display: block !important;
+  display: block;
 }
 .hide{
-    display:none !important;
+    display:none;
 }
 
 form {

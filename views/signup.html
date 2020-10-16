@@ -13,7 +13,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>DSC Unilag Certificate Generator</title>
     <meta name="msapplication-tap-highlight" , content="none" />
-    <link rel="manifest" href="/manifest.json">
+    <link rel="manifest" href="manifest.json">
 
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,12 +34,12 @@
     <link rel="icon" sizes="512x512" href="../imgs/icon.png">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/signup.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='src/css/signup.css'>
 </head>
 
 <body>
     <header>
-        <span class="logo"><img src="/imgs/hero-dsc-about-unilag.png" alt=""></span>
+        <span class="logo"><img src="imgs/hero-dsc-about-unilag.png" alt=""></span>
     </header>
 
     <main>
@@ -50,9 +50,9 @@
             <form id="form-input" class="form-input">
                 <input type="email" id="email" placeholder="Enter your e-mail" name="email" autocomplete="email"
                     minlength=4 required>
-                <p id="email-message" class="message"></p>
+                <p style="display:none"id="email-message" class="message"></p>
                 <input type="text" id="organization" placeholder="Enter your personal/organization name"
-                    name="organization" minlength=2 required>
+                    name="organization" minlength=2 autocomplete="organization" required>
                 <input type="password" id="password" placeholder="Enter your password" name="password"
                     autocomplete="new-password" minlength=8 required>
                 <input type="password" id="con-password" placeholder="Confirm your password" name="con-password"
@@ -81,6 +81,7 @@
             let password2 = document.getElementById("con-password").value;
             let email = document.getElementById("email").value;
             let name = document.getElementById("organization").value;
+            let email_text = document.getElementById("email-message");
             if (password !== password2) {
                 document.getElementById("password-message").innerHTML = "Passwords don't match"
             } else {
@@ -103,7 +104,8 @@
                     location.href = "/dashboard";
                 }
                 if (this.readyState == 4 && this.status == 409) {
-                    document.getElementById("email-message").innerHTML = "email already in use"
+                    email_text.style.display = "inline";
+                    email_text.innerHTML = "email already in use";
                 }
             };
 
@@ -117,6 +119,7 @@
             return (false)
         }
     </script>
+    <script src='src/js/main.js'></script>
 </body>
 
 </html>

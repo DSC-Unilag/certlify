@@ -290,6 +290,16 @@ header .bread-crumbs {
     transition: 90ms all ease-in;
 }
 
+@media screen and (min-width: 45rem) {
+    header {
+        grid-template-columns: 4rem 40% auto auto;
+        grid-template-rows: 5rem auto 13rem;
+        min-height: 18rem;
+    }
+
+    header .volunteer-header {
+        position: relative;
+    }
 
     .main-dashboard .cert-section {
         top: -7rem;
