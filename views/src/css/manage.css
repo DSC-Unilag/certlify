@@ -48,7 +48,7 @@ main {
 
 header {
     display: grid;
-    grid-template-columns: 4rem auto auto;
+    grid-template-columns: 3.5rem auto 3rem;
     grid-template-rows: 5rem auto 20rem;
     justify-content: center;
     align-items: center;
@@ -294,7 +294,7 @@ header .bread-crumbs {
     header {
         grid-template-columns: 4rem 40% auto auto;
         grid-template-rows: 5rem auto 13rem;
-        min-height: 18rem;
+        min-height: 22rem;
     }
 
     header .volunteer-header {
@@ -348,7 +348,7 @@ header .bread-crumbs {
     }
 
     .main-dashboard .edit-section {
-        top: -1.3px;
+        top: -53.3px;
     }
 
     .main-dashboard .edit-section a {
@@ -358,6 +358,6 @@ header .bread-crumbs {
 
 @media screen and (min-width: 64rem) {
     header {
-        grid-template-columns: 4rem 47% 40% auto;
+        grid-template-columns: 4rem 47% 40% 4rem;
     }
 }
