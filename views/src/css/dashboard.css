@@ -15,8 +15,6 @@
 
 html,
 body {
-    display:flex;
-    flex-direction: column;
     color: #098dff;
     font-size: 1rem;
     line-height: 1.5;
@@ -288,12 +286,9 @@ header .bread-crumbs {
     text-align: center;
     font-size: 1.5rem;
 }
-.landing-page-section .certificate-card article>img {
-    max-width: 211.154px;
-}
 
 .main-dashboard .landing-page-section .certificate-card a,
-.main-dashboard .landing-page-section button ,#add-cert {
+.main-dashboard .landing-page-section button {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -314,34 +309,32 @@ header .bread-crumbs {
     color: white;
 }
 
-.main-dashboard .landing-page-section button:hover,#add-cert:hover {
+.main-dashboard .landing-page-section button:hover {
     background-color: #558ae1;
 }
 
 .main-dashboard .landing-page-section .certificate-card a:focus,
-.main-dashboard .landing-page-section button:focus,#add-cert:focus {
+.main-dashboard .landing-page-section button:focus {
     background-color: #2673ee;
     color: white;
 }
 
 .main-dashboard .landing-page-section .certificate-card a:active,
-.main-dashboard .landing-page-section button:active,#add-cert:active {
+.main-dashboard .landing-page-section button:active {
     background-color: #498af3;
     color: white;
 }
 
-.main-dashboard .landing-page-section button,#add-cert {
+.main-dashboard .landing-page-section button {
     width: 15.875rem;
     background-color: #4285F4;
     color: white;
     border: none;
     font-size: 1.275rem;
 }
+
 #empty{
     grid-column-start: 2;
-}
-#add-cert{
-    bottom: 50px;
 }
 
 @media screen and (min-width: 45rem) {
