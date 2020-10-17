@@ -1,10 +1,11 @@
 const files = [
     './',
     'imgs/.',
-    '/views/index.html',
+    'index.html',
     'src/js/main.js',
     'src/css/main.css',
-    'src/css/dashboard.css'
+    'src/css/dashboard.css',
+    './fonts/OpenSans-Regular.ttf'
 ];
 
 const fileVersion = 'v1';

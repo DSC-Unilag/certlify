@@ -1,7 +1,7 @@
 {
   "name": "DSC Unilag Certificate Generator",
   "short_name": "DSC Unilag Certificate generator",
-  "start_url": "index.html",
+  "start_url": "views/src/index.html",
   "background_color": "#3498DC",
   "theme_color": "#34495E",
   "orientation": "any",
