@@ -36,7 +36,7 @@ let getCollectors=(req,res)=>{
     })
 }
 
-let edit=(req,res)=>{
+let details=(req,res)=>{
     if (!req.session.email){
         res.status(401)
       return res.json({
@@ -50,7 +50,10 @@ let edit=(req,res)=>{
             if(cert.issuer==req.session.email){
                 res.json({
                     status:true,
-                    boundaries:cert.boundary
+                    name:cert.name,
+                    src:cert.src,
+                    link:req.params.link,
+                    boundary:cert.boundary
                 });
             }else{
                 res.status(401)
@@ -109,5 +112,5 @@ let update=(req,res)=>{
 }
 
 module.exports.getCollectors=getCollectors;
-module.exports.edit=edit;
+module.exports.details=details;
 module.exports.update=update;

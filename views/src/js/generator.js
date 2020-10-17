@@ -2,17 +2,12 @@ window.addEventListener("resize", function () {
     check();
 });
 let data={};
-
 let boundary = {};
-
 let img = new Image();
-
 
 var loadFile = function(event) {
 img.src = URL.createObjectURL(event.target.files[0]);
 };
-
-
 
 // This function enables the download of the certificate
 function downloadfunc() {
@@ -28,13 +23,13 @@ function downloadfunc() {
     }
 
 }
+
 // On start, the canvas is drawn, and the various event listeners for the boundary selectors are initializes
 function start() {
-    rat = img.width / img.height;
-    
+    rat = img.width / img.height;    
     let done = document.getElementById("done");
     done.addEventListener('click',function(){
-        if(document.getElementById("preview-test")){
+        if(document.getElementById("preview-test").value){
             check();
         }
     })

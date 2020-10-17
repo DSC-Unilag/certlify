@@ -14,7 +14,7 @@ let boundary = {};
 let img = new Image();
 
 
-var loadFile = function(event) {
+let loadFile = function(event) {
 img.src = URL.createObjectURL(event.target.files[0]);
 };
 
@@ -158,7 +158,7 @@ function start() {
     done.addEventListener('click', function () {
         if (boundary.right && boundary.left && boundary.bottom) {
             data.boundary=[boundary];
-            var xhttp = new XMLHttpRequest();
+            let xhttp = new XMLHttpRequest();
             xhttp.open("POST", "/api/createcert", false);
             xhttp.setRequestHeader("Content-Type", "application/json");
             xhttp.onreadystatechange = function () {
@@ -205,15 +205,15 @@ img.onload = start;
 
 // function for storing the certificate template
 function getBase64Image(img) {
-    var canvas = document.createElement("canvas");
+    let canvas = document.createElement("canvas");
     canvas.width = img.width;
     canvas.height = img.height;
 
     // Copy the image contents to the canvas
-    var ctx = canvas.getContext("2d");
+    let ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0);
 
-var dataURL = canvas.toDataURL("image/png");
+let dataURL = canvas.toDataURL("image/png");
 data.src=dataURL;
 }
 
