@@ -33,14 +33,13 @@
     <link rel="apple-touch-icon" sizes="384x384" href="">
     <link rel="icon" sizes="512x512" href="../imgs/icon.png">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-
     <link rel='stylesheet' type='text/css' media='screen' href='./src/css/manage-func.css'>
 </head>
 
 <body>
     <header>
         <section class="logo-section">
-            <span id="code-logo"><img id="cropped-logo" src="../imgs/code logo.png" alt="logo icon"></span>
+            <span id="code-logo"><img id="cropped-logo" src="../imgs/code logo.jpg" alt="logo icon"></span>
             <div class="img-line"></div>
         </section>
 
@@ -72,16 +71,21 @@
         <section class="edit-cert-section">
             <a href="#" id="close-button">&#x2716;</a>
             <article class="main-upload">
+        
                 <div id="upload-div">
                   <label for="file" class="upload-style">CHOOSE CERTIFICATE FILE</label>
                   <input id="file" type="file" accept="image/*" onchange="loadFile(event)">
                 </div>
-                <div id="container">
+        
+                <div style="display: none;" id="container">
                   <div id="canvas"></div>
                 </div>
+        
             </article>
         </section>
+
         <h3 id="prompt"></h3>
+        
         <section class="value-input-section">
             <section class="input-details">
                 <section>

@@ -2,7 +2,8 @@
   font-family: "Open-Sans";
   src: url("./fonts/OpenSans-Regular.ttf");
 }
-:root{
+
+:root {
   --main-color: #4285F4;
 }
 
@@ -55,43 +56,44 @@ a,
 img {
   box-shadow: 1px 3px 7px #d3d0d0;
 }
-#goto{
-  padding:10px;
+
+#goto {
+  padding: 10px;
   border-radius: 10px;
   background-color: #4285F4;
-  color:white;
+  color: white;
 }
 
 input[type="number"] {
-    -webkit-appearance: textfield;
-    -moz-appearance: textfield;
-    appearance: textfield;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
 button,
 select {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 input[type="number"] {
-    -webkit-appearance: textfield;
-    -moz-appearance: textfield;
-    appearance: textfield;
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
-    -webkit-appearance: none;
+  -webkit-appearance: none;
 }
 
 button,
 select {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 main {
@@ -104,6 +106,7 @@ main {
 
 header {
   display: grid;
+  margin: 0;
   grid-template-columns: 37% 40%;
   grid-template-rows: 5rem auto 17rem;
   justify-content: center;
@@ -179,7 +182,7 @@ header #toggle-butt {
   display: none;
 }
 
-header #toggle-butt:checked ~ .section-links {
+header #toggle-butt:checked~.section-links {
   height: 9rem;
 }
 
@@ -291,6 +294,18 @@ header .bread-crumbs {
   align-items: center;
 }
 
+.main-func-manage .edit-cert-section #close-button:hover {
+  color: red;
+}
+
+.main-func-manage .edit-cert-section #close-button:focus {
+  color: rgb(247, 62, 62);
+}
+
+.main-func-manage .edit-cert-section #close-button:active {
+  color: rgb(245, 59, 59);
+}
+
 .main-func-manage .edit-cert-section img {
   width: 90%;
   height: auto;
@@ -325,7 +340,7 @@ header .bread-crumbs {
 
 .main-func-manage .value-input-section .input-details .climb-section #minus,
 .main-func-manage .value-input-section .input-details .climb-section #plus {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: 500;
   color: white;
   background-color: #9cbff9;
@@ -338,6 +353,8 @@ header .bread-crumbs {
   text-align: center;
   height: 2rem;
   box-shadow: none;
+  padding: 1rem;
+  margin: 0;
   border: 1px solid #9cbff9;
 }
 
@@ -347,13 +364,10 @@ input[type="color"] {
   color: white;
 }
 
-.main-func-manage
-  .value-input-section
-  .input-details
-  .fonts-section
-  input[type="color"] {
+.main-func-manage .value-input-section .input-details .fonts-section input[type="color"] {
   width: 3rem;
   height: 2rem;
+  margin: 0;
 }
 
 .main-func-manage .value-input-section .border-section a {
@@ -380,15 +394,13 @@ input[type="color"] {
   align-items: center;
 }
 
-.main-func-manage
-  .value-input-section
-  .input-details
-  section
-  input[type="text"] {
+.main-func-manage .value-input-section .input-details section input[type="text"] {
   width: 93%;
   text-align: center;
   border-radius: 0.4rem;
   height: 2.5rem;
+  padding: 0;
+  margin: 0;
   border: 1px solid #9cbff9;
 }
 
@@ -423,6 +435,7 @@ input[type="color"] {
   color: #fbbc04;
   border-color: #fbbc04;
 }
+
 .main-func-manage .value-input-section .border-section a:nth-child(2):hover {
   background-color: #fbbc04;
   color: white;
@@ -482,10 +495,13 @@ input[type="color"] {
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0;
   box-shadow: 1px 4px 5px lightgrey;
   border: none;
   justify-self: center;
+  font-size: 1.1rem;
   color: white;
+  margin-bottom: 1rem;
   width: 12.25rem;
   height: 2.5rem;
   border-radius: 0.4rem;
@@ -517,42 +533,66 @@ input[type="color"] {
   border: 1px dashed #4285f4;
   opacity: 1;
 }
+
 #container {
-    display:hidden;
-    width: 60%;
-    margin: auto;
-    justify-content: center;
-    align-items: center;
+  display: none;
+  width: 60%;
+  margin: auto;
+  justify-content: center;
+  align-items: center;
 }
-#file,#csv {
+
+#file,
+#csv {
   display: none;
 }
-.form{
-  display:flex;
+
+.form {
+  display: flex;
   flex-direction: column;
   justify-content: center;
 }
+
 .upload-style {
   width: 70%;
-  height: 40px;
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+  align-items: center;
+  height: 50px;
+  cursor: pointer;
+  box-shadow: 1px 3px 8px lightgrey;
   color: white;
   text-align: center;
-  font-size: 10px;
   background: #4285f4 0% 0% no-repeat padding-box;
   border-radius: 7px;
   opacity: 1;
+  transition: all 90ms ease-in;
 }
+
+.upload-style:hover {
+  background-color: #5f9af8;
+}
+
+.upload-style:focus {
+  background-color: #1f65d6;
+}
+.upload-style:active{
+  background-color: #3778e0;
+}
+
 .main-upload {
   display: flex;
   height: auto;
   width: 100%;
   flex-direction: row;
   justify-content: center;
+  align-items: center;
 }
 
-button.icon{
-  margin-left:20px;
-  margin-right:20px;
+button.icon {
+  margin-left: 20px;
+  margin-right: 20px;
   width: 160px;
   height: 40px;
   background-color: var(--main-color);
@@ -586,12 +626,14 @@ button.icon{
 }
 
 .show {
-    display: block !important;
-  }
-  .hide{
-      display:none !important;
-  }
-  #prompt{
+  display: block !important;
+}
+
+.hide {
+  display: none !important;
+}
+
+#prompt {
   text-align: center;
 }
 
@@ -606,12 +648,17 @@ button.icon{
     width: 100%;
     height: 3rem;
     position: relative;
+    top: -25px;
+    right: 5.6rem;
   }
 
   .logo-section span img {
-    width: 100%;
+    width: 7.5rem;
     height: auto;
     box-shadow: none;
+    border-bottom-right-radius: 40% 80%;
+    border-bottom-left-radius: 60% 50%;
+    border-top-right-radius: 55% 15%;
   }
 
   header .volunteer-header {
@@ -620,10 +667,14 @@ button.icon{
 
   header #code-logo {
     display: inline-block;
-    width: 80%;
-    height: 3rem;
+    width: 8.1rem;
+    height: 3.1rem;
     position: absolute;
     border: 1px solid;
+    border-top: none;
+    border-bottom-right-radius: 45% 80%;
+    border-bottom-left-radius: 60% 50%;
+    border-top-right-radius: 55% 15%;
   }
 
   header .section-links ul li .active-cert {
@@ -656,6 +707,7 @@ button.icon{
   .main-func-manage .value-input-section {
     grid-template-columns: auto 1rem auto;
     grid-template-rows: auto auto;
+    height: 17rem;
   }
 
   .main-func-manage .value-input-section input[type="submit"] {
