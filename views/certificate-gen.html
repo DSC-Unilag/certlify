@@ -35,20 +35,6 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/signup.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/manage-func.css'>
-
-    <script>
-        //Added due to error
-        let parse = () => {
-            let response = document.getElementsByName("hidden-iframe")[0].contentWindow.document
-                .getElementsByTagName("pre")[0].innerText
-            response = JSON.parse(response);
-            if (response.status) {
-                next();
-            } else {
-                document.getElementById("error").innerHTML = "Please check the format of your csv file"
-            }
-        }
-    </script>
 </head>
 
 <body>
@@ -115,19 +101,14 @@
             <section class="input-details">
                 <section>
                     <label for="full-name">Full name:</label>
-                    <input id="preview-test" type="text" autocomplete="name" name="fname" minlength="3" maxlength="40"
+                    <input class="" id="preview-test" type="text" autocomplete="name" name="fname" minlength="3" maxlength="40"
                         required placeholder="Enter your name" oninput="mark()" />
                 </section>
 
                 <section class="fonts-section">
-                    <label for="font-family">Font family:</label>
-                    <select name="font-family" id="font-family">
-                        <option value="Font family 1">Font family 1</option>
-                        <option value="Font family 2">Font family 2</option>
-                        <option value="Font family 3">Font family 3</option>
-                        <option value="Font family 4">Font family 4</option>
-                        <option value="Font family 5">Font family 5</option>
-                    </select>
+                    <label for="font-picker">Font family:</label>
+                    <section id="font-picker">
+                    </section>
 
                     <label for="font-size">Font-size:</label>
 
@@ -217,7 +198,15 @@
             }
         }
     </script>
+    <script src="/src/css/font-picker-3.5.1/FontPicker.js"></script>
+    <script>
+        const fontPicker = new FontPicker(
+            AIzaSyC1c-jtOCKTiFeVfSU6SVT4J3iWIkQ4RYo,
+            "Open Sans"
+        );
+    </script>
     <script src='/src/js/main.js'></script>
+
 </body>
 
 </html>
