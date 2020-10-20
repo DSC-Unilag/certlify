@@ -159,7 +159,7 @@ function start() {
         if (boundary.right && boundary.left && boundary.bottom) {
             data.boundary=[boundary];
             let xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "/api/createcert", false);
+            xhttp.open("POST", "/api/createcert", true);
             xhttp.setRequestHeader("Content-Type", "application/json");
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
