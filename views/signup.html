@@ -31,15 +31,15 @@
     <link rel="apple-touch-icon" sizes="256x256" href="">
     <link rel="icon" sizes="384x384" href="">
     <link rel="apple-touch-icon" sizes="384x384" href="">
-    <link rel="icon" sizes="512x512" href="../imgs/icon.png">
+    <link rel="icon" sizes="512x512" href="/imgs/icon.png">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-    <link rel='stylesheet' type='text/css' media='screen' href='src/css/signup.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/signup.css'>
 </head>
 
 <body>
     <header>
-        <span class="logo"><img src="imgs/hero-dsc-about-unilag.png" alt=""></span>
+        <span class="logo"><img src="/imgs/hero-dsc-about-unilag.png" alt=""></span>
     </header>
 
     <main>
@@ -67,13 +67,12 @@
     </main>
     <script>
         var form = document.getElementById("form-input");
-
+        let email_text = document.getElementById("email-message");
+        
         function handleForm(event) {
             event.preventDefault();
         }
         form.addEventListener('submit', handleForm);
-
-
 
         let matchpassword = () => {
             let data = {}
@@ -81,7 +80,6 @@
             let password2 = document.getElementById("con-password").value;
             let email = document.getElementById("email").value;
             let name = document.getElementById("organization").value;
-            let email_text = document.getElementById("email-message");
             if (password !== password2) {
                 document.getElementById("password-message").innerHTML = "Passwords don't match"
             } else {
@@ -119,7 +117,7 @@
             return (false)
         }
     </script>
-    <script src='src/js/main.js'></script>
+    <script src='/src/js/main.js'></script>
 </body>
 
 </html>

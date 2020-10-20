@@ -13,7 +13,7 @@
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>DSC Unilag Certificate Generator</title>
     <meta name="msapplication-tap-highlight" , content="none" />
-    <link rel="manifest" href="../manifest.json">
+    <link rel="manifest" href="manifest.json">
 
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -34,7 +34,7 @@
     <link rel="icon" sizes="512x512" href="../imgs/icon.png">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/signup.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='./src/css/manage-func.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/manage-func.css'>
 
 </head>
 
@@ -70,7 +70,7 @@
         </section>
     </header>
 
-    <main id="main-func"class="main-func-manage">
+    <main id="main-func" class="main-func-manage">
         <section id="cert-name" class="sign-page-section">
             <h1 class="first-text">Enter the certificate name</h1>
             <p class="second-text">Hi there!, what would you want to name this certificate when issued?</p>
@@ -86,7 +86,7 @@
             </form>
         </section>
         <section id="edit-cert" class="edit-cert-section hide">
-            <a href="#" id="close-button">&#x2716;</a>
+            <a onclick="" id="close-button">&#x2716;</a>
             <article class="main-upload">
                 <div id="upload-div">
                     <label for="file" class="upload-style">CHOOSE CERTIFICATE FILE</label>
@@ -103,7 +103,7 @@
                 <section>
                     <label for="full-name">Full name:</label>
                     <input id="preview-test" type="text" autocomplete="name" name="fname" minlength="3" maxlength="40"
-                        required placeholder="Enter your name" oninput="mark()"/>
+                        required placeholder="Enter your name" oninput="mark()" />
                 </section>
 
                 <section class="fonts-section">
@@ -144,15 +144,17 @@
         <section id="add-emails" class="edit-cert-section hide">
             <article class="main-upload">
                 <div id="upload-div">
-                    <form id="email-form"class="form" method="POST" enctype="multipart/form-data"target="hidden-iframe">
+                    <form id="email-form" class="form" method="POST" enctype="multipart/form-data"
+                        target="hidden-iframe">
                         <input type="file" name="FileUpload" accept=".csv">
-                    <button class="icon">submit</button>
+                        <button class="icon">submit</button>
                     </form>
                 </div>
             </article>
-            <p id="error"style="color:red;"></p>
-            <p>You may skip, this process now and add later on your dashboard. Note that only user emails you have uploaded would be eligile to generate</p>
-                <button class="icon" type="button" onclick="next()">skip</button>
+            <p id="error" style="color:red;"></p>
+            <p>You may skip, this process now and add later on your dashboard. Note that only user emails you have
+                uploaded would be eligile to generate</p>
+            <button class="icon" type="button" onclick="next()">skip</button>
         </section>
 
         <section id="cert-link" class="sign-page-section hide">
@@ -167,13 +169,14 @@
                 <button class="icon"><i class="copy"></i><span id="text">Copy</span></button>
                 <button class="icon"><i class="share"></i><span id="text">Share</span></button>
             </form>
-            <a id="goto"href="/dashboard">Go to dashboard</a>
+            <a id="goto" href="/dashboard">Go to dashboard</a>
         </section>
     </main>
 
     <footer>
-        <iframe name="hidden-iframe" style="display: none;"onload="parse()"></iframe>
+        <iframe name="hidden-iframe" style="display: none;" onload="parse()"></iframe>
     </footer>
+    
     <script src='./src/js/FontSizer.js'></script>
     <script src='./src/js/canvas.js'></script>
     <script>
@@ -185,24 +188,23 @@
                 document.getElementById("edit-cert").classList.toggle("hide");
                 document.getElementById("certificate-name").innerHTML = title;
             }
-
         }
-        let next=()=>{
+        let next = () => {
             document.getElementById("add-emails").classList.toggle("hide");
             document.getElementById("cert-link").classList.toggle("hide");
-            
         }
-        let parse=()=>{
-            let response=document.getElementsByName("hidden-iframe")[0].contentWindow.document.getElementsByTagName("pre")[0].innerText
-            response=JSON.parse(response);
-            if(response.status){
+        let parse = () => {
+            let response = document.getElementsByName("hidden-iframe")[0].contentWindow.document
+                .getElementsByTagName("pre")[0].innerText
+            response = JSON.parse(response);
+            if (response.status) {
                 next();
-            }else{
-document.getElementById("error").innerHTML="Please check the format of your csv file"
+            } else {
+                document.getElementById("error").innerHTML = "Please check the format of your csv file"
             }
         }
     </script>
-    <script src='src/js/main.js'></script>
+    <script src='/src/js/main.js'></script>
 </body>
 
 </html>
