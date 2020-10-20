@@ -648,12 +648,17 @@ button.icon {
     width: 100%;
     height: 3rem;
     position: relative;
+    top: -25px;
+    right: 5.6rem;
   }
 
   .logo-section span img {
-    width: 100%;
+    width: 7.5rem;
     height: auto;
     box-shadow: none;
+    border-bottom-right-radius: 40% 80%;
+    border-bottom-left-radius: 60% 50%;
+    border-top-right-radius: 55% 15%;
   }
 
   header .volunteer-header {
@@ -662,10 +667,14 @@ button.icon {
 
   header #code-logo {
     display: inline-block;
-    width: 80%;
-    height: 3rem;
+    width: 8.1rem;
+    height: 3.1rem;
     position: absolute;
     border: 1px solid;
+    border-top: none;
+    border-bottom-right-radius: 45% 80%;
+    border-bottom-left-radius: 60% 50%;
+    border-top-right-radius: 55% 15%;
   }
 
   header .section-links ul li .active-cert {

@@ -36,16 +36,29 @@
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/signup.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/manage-func.css'>
 
+    <script>
+        //Added due to error
+        let parse = () => {
+            let response = document.getElementsByName("hidden-iframe")[0].contentWindow.document
+                .getElementsByTagName("pre")[0].innerText
+            response = JSON.parse(response);
+            if (response.status) {
+                next();
+            } else {
+                document.getElementById("error").innerHTML = "Please check the format of your csv file"
+            }
+        }
+    </script>
 </head>
 
 <body>
     <header>
         <section class="logo-section">
-            <span id="code-logo"><img id="cropped-logo" src="../imgs/code logo.png" alt="logo icon"></span>
+            <span id="code-logo"><img id="cropped-logo" src="/imgs/code logo.jpg" alt="logo icon"></span>
             <div class="img-line"></div>
         </section>
 
-        <span id="profile-image"><img id="user-image" src="../imgs/user.svg" alt="user icon" /></span>
+        <span id="profile-image"><img id="user-image" src="/imgs/user.svg" alt="user icon" /></span>
 
         <input type="checkbox" id="toggle-butt" />
 
@@ -76,7 +89,7 @@
             <p class="second-text">Hi there!, what would you want to name this certificate when issued?</p>
 
             <form class="form-input" onsubmit="return false">
-                <input type="text" id="certificate" placeholder="Certificate of..." name="certificate"
+                <input type="text" id="certificate" placeholder="e.g Certificate of Volunteer" name="certificate"
                     autocomplete="current-password" minlength=4 required>
 
                 <p id="password-message" class="message"></p>
@@ -109,11 +122,11 @@
                 <section class="fonts-section">
                     <label for="font-family">Font family:</label>
                     <select name="font-family" id="font-family">
-                        <option value="Font fmaily 1">Font family 1</option>
-                        <option value="Font fmaily 2">Font family 2</option>
-                        <option value="Font fmaily 3">Font family 3</option>
-                        <option value="Font fmaily 4">Font family 4</option>
-                        <option value="Font fmaily 5">Font family 5</option>
+                        <option value="Font family 1">Font family 1</option>
+                        <option value="Font family 2">Font family 2</option>
+                        <option value="Font family 3">Font family 3</option>
+                        <option value="Font family 4">Font family 4</option>
+                        <option value="Font family 5">Font family 5</option>
                     </select>
 
                     <label for="font-size">Font-size:</label>
@@ -176,7 +189,7 @@
     <footer>
         <iframe name="hidden-iframe" style="display: none;" onload="parse()"></iframe>
     </footer>
-    
+
     <script src='./src/js/FontSizer.js'></script>
     <script src='./src/js/canvas.js'></script>
     <script>

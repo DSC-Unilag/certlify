@@ -3,9 +3,9 @@ const files = [
     'imgs/.',
     'index.html',
     '/src/js/',
-    '/src/css/main.css',
-    '/src/css/dashboard.css',
-    '/fonts/OpenSans-Regular.ttf'
+    '/views/src/css/main.css',
+    '/views/src/css/dashboard.css',
+    '/views/css/fonts/OpenSans-Regular.ttf'
 ];
 
 const fileVersion = 'v1';
