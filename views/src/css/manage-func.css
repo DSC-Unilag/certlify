@@ -125,7 +125,7 @@ header span {
   height: auto;
 }
 
-header #code-logo {
+header .code-logo {
   display: none;
 }
 
@@ -660,7 +660,7 @@ button.icon {
     position: relative;
   }
 
-  header #code-logo {
+  header .code-logo {
     display: inline-block;
     width: 8.1rem;
     height: 3.1rem;
