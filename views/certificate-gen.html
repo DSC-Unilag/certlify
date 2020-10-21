@@ -174,7 +174,7 @@
     <script src='./src/js/FontSizer.js'></script>
     <script src='./src/js/canvas.js'></script>
     <script>
-        let first = () => {
+        var first = () => {
             let title = document.getElementById("certificate").value
             if (title.length >= 4) {
                 data.name = title;
@@ -183,11 +183,11 @@
                 document.getElementById("certificate-name").innerHTML = title;
             }
         }
-        let next = () => {
+        var next = () => {
             document.getElementById("add-emails").classList.toggle("hide");
             document.getElementById("cert-link").classList.toggle("hide");
         }
-        let parse = () => {
+        var parse = () => {
             let response = document.getElementsByName("hidden-iframe")[0].contentWindow.document
                 .getElementsByTagName("pre")[0].innerText
             response = JSON.parse(response);
