@@ -286,7 +286,7 @@ input {
     border-bottom-left-radius: 60% 30%;
     border-bottom-right-radius: 20% 90%;
     bottom: -79px;
-    animation: 6.5s wobble 0.3s infinite ease-in-out;
+    animation: 6.5s wobble infinite ease;
 }
 
 @media screen and (min-width: 40rem) {
