@@ -81,6 +81,7 @@
                     location.href = "/dashboard";
                 }
                 if (this.readyState == 4 && (this.status == 400||this.status==401)) {
+                    document.getElementById("password-message").style.display = "inline";
                     document.getElementById("password-message").innerHTML = "email or password incorrect"
                 }
             };
