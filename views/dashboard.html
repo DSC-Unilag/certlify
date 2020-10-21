@@ -39,8 +39,10 @@
 
 <body>
     <header>
-        <span id="dsc-logo"><img id="cropped-logo" src="" alt="logo icon"></span>
-        <span id="profile-image"><img id="user-image" src="/imgs/user.svg" alt="user icon" /></span>
+        <section class="logo-section">
+            <span class="dsc-logo"><img class="cropped-logo" src="/imgs/code logo.jpg" alt="logo icon"></span>
+            <span id="profile-image"><img id="user-image" src="/imgs/user.svg" alt="user icon" /></span>
+        </section>
 
         <section class="search-section">
             <input type="search" placeholder="Search" />
@@ -70,16 +72,17 @@
     </header>
     <main class="main-dashboard">
         <section id="cards" class="landing-page-section">
-            
+
         </section>
 
     </main>
     <button id="add-cert">&#65291; Add Certificate</button>
     <script>
-        let create=document.getElementById("add-cert");
-        create.addEventListener("click",function(){
-            location.href="/createcertificate"
+        let create = document.getElementById("add-cert");
+        create.addEventListener("click", function () {
+            location.href = "/createcertificate"
         })
+
         var user;
         var xhttp = new XMLHttpRequest();
         xhttp.open("GET", "/api/getdashboard", true);
@@ -90,10 +93,10 @@
                 console.log(user)
                 let welcome = document.getElementById("welcome");
                 let cards = document.getElementById("cards")
-            let errors=0;    
-            if (user.certificateUrls.length !== 0) {
+                let errors = 0;
+                if (user.certificateUrls.length !== 0) {
                     for (i in user.certs) {
-                        if(user.certs[i].name!==undefined){
+                        if (user.certs[i].name !== undefined) {
                             cards.innerHTML += `<section class="certificate-card">
                 <article>
                     <img src="${user.certs[i].src}" alt="user certificate" />
@@ -101,14 +104,15 @@
                     <a href="/manage/?link=${user.certificateUrls[i]}">Manage Certificate</a>
                 </article>
             </section>`
-                        }else{
+                        } else {
                             errors++
                         }
-                        
+
                     }
 
                 }
-                welcome.innerHTML = `<h1>Hi, ${user.name}</h1>
+                welcome.innerHTML =
+                    `<h1>Hi, ${user.name}</h1>
             <p>You have issued <span id="user-cert-number">${user.certificateUrls.length-errors}</span> certificates so far.</p>`
             }
             if (this.readyState == 4 && (this.status == 400 || this.status == 401)) {
@@ -118,7 +122,7 @@
 
         xhttp.send();
     </script>
-    <script src='src/js/main.js'></script>
+    <script src='/src/js/main.js'></script>
 </body>
 
 </html>

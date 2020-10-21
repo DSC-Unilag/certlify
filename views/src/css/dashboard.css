@@ -67,6 +67,10 @@ header span {
     justify-self: end;
 }
 
+header .code-logo {
+    display: none;
+}
+
 header #dsc-logo {
     display: none;
 }
@@ -253,15 +257,15 @@ header .bread-crumbs {
     margin-bottom: 3rem;
 }
 
-.main-dashboard .landing-page-section section:nth-child(1) article .cert-header{
+.main-dashboard .landing-page-section section:nth-child(1) article .cert-header {
     color: #FBBC04;
 }
 
-.main-dashboard .landing-page-section section:nth-child(2) article .cert-header{
+.main-dashboard .landing-page-section section:nth-child(2) article .cert-header {
     color: green;
 }
 
-.main-dashboard .landing-page-section section:nth-child(3) article .cert-header{
+.main-dashboard .landing-page-section section:nth-child(3) article .cert-header {
     color: red;
 }
 
@@ -333,7 +337,7 @@ header .bread-crumbs {
     font-size: 1.275rem;
 }
 
-#empty{
+#empty {
     grid-column-start: 2;
 }
 
@@ -345,6 +349,27 @@ header .bread-crumbs {
 
     header #dsc-logo {
         display: inline;
+    }
+
+    .logo-section span img {
+        width: 7.5rem;
+        height: auto;
+        box-shadow: none;
+        border-bottom-right-radius: 40% 80%;
+        border-bottom-left-radius: 60% 50%;
+        border-top-right-radius: 55% 15%;
+    }
+
+    header .code-logo {
+        display: inline-block;
+        width: 8.1rem;
+        height: 3.1rem;
+        position: absolute;
+        border: 1px solid;
+        border-top: none;
+        border-bottom-right-radius: 45% 80%;
+        border-bottom-left-radius: 60% 50%;
+        border-top-right-radius: 55% 15%;
     }
 
     header .section-links ul li .active-cert {

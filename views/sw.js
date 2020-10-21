@@ -1,11 +1,34 @@
 const files = [
     './',
-    'imgs/.',
-    'index.html',
-    '/src/js/',
+    '/imgs/.',
+    '/imgs/diploma.svg',
+    '/imgs/arrow.svg',
+    '/imgs/diploma (1).svg',
+    '/imgs/diploma (2).svg',
+    '/imgs/diploma (3).svg',
+    '/imgs/hero-dsc-about-unilag.png',
+    '/imgs/icon.png',
+    '/imgs/IMG-20200923-WA0214.svg',
+    '/imgs/search.svg',
+    '/imgs/user.svg',
+    '/index.html',
+    '/login.html',
+    '/signup.html',
+    '/dashboard.html',
+    '/certificator.html',
+    '/certificate-gen.html',
+    '/manage-func.html',
+    '/manage.html',
+    '/src/js/.',
+    '/views/src/css/signup.css',
+    '/views/src/css/manage.css',
+    '/views/src/css/certificate.css',
+    '/views/src/css/manage-func.css',
+    '/views/src/css/font-picker-3.5.1/src/FontPicker.ts',
+    '/views/src/css/manage.css',
     '/views/src/css/main.css',
     '/views/src/css/dashboard.css',
-    '/views/css/fonts/OpenSans-Regular.ttf'
+    '/views/src/css/fonts/OpenSans-Regular.ttf'
 ];
 
 const fileVersion = 'v1';

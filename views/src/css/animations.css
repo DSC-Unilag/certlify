@@ -1,0 +1,34 @@
+@keyframes wobble {
+    0% {
+        border-top-left-radius: 40% 80%;
+        border-top-right-radius: 40% 30%;
+        border-bottom-left-radius: 60% 30%;
+        border-bottom-right-radius: 20% 90%;
+    }
+
+    25% {
+        border-top-left-radius: 45% 75%;
+        border-top-right-radius: 45% 25%;
+        border-bottom-left-radius: 65% 25%;
+        border-bottom-right-radius: 25% 85%;
+    }
+    50% {
+        border-top-left-radius: 50% 70%;
+        border-top-right-radius: 50% 20%;
+        border-bottom-left-radius: 70% 20%;
+        border-bottom-right-radius: 30% 80%;
+    }
+    75% {
+        border-top-left-radius: 45% 75%;
+        border-top-right-radius: 45% 25%;
+        border-bottom-left-radius: 55% 25%;
+        border-bottom-right-radius: 25% 85%;
+    }
+
+    100% {
+        border-top-left-radius: 40% 80%;
+        border-top-right-radius: 40% 30%;
+        border-bottom-left-radius: 60% 30%;
+        border-bottom-right-radius: 20% 90%;
+    }
+}
