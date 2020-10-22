@@ -168,8 +168,16 @@
     </main>
 
     <footer>
-        <iframe name="hidden-iframe" style="display: none;" onload="parse()"></iframe>
+        <iframe name="hidden-iframe" style="display: none;" onchange="parse()"></iframe>
     </footer>
+
+    <span class="loader">
+        <div class="large-circle">
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+        </div>
+    </span>
 
     <script src='./src/js/FontSizer.js'></script>
     <script src='./src/js/canvas.js'></script>
@@ -198,7 +206,7 @@
             }
         }
     </script>
-    <script src="/src/css/font-picker-3.5.1/FontPicker.js"></script>
+    <script src="/src/css/font-picker-3.5.1/src/FontPicker.ts"></script>
     <script>
         const fontPicker = new FontPicker(
             AIzaSyC1c-jtOCKTiFeVfSU6SVT4J3iWIkQ4RYo,
