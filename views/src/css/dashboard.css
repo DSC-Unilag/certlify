@@ -340,7 +340,10 @@ header .bread-crumbs {
 #empty {
     grid-column-start: 2;
 }
-
+.thumb{
+    width:200px;
+    height:auto;
+}
 @media screen and (min-width: 45rem) {
     header {
         grid-template-columns: 4rem 40% auto auto;

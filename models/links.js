@@ -25,6 +25,7 @@ const linkSchema = new Schema({
   issuer:String,
   name:String,
   src:String,
+  thumb:String,
   link: {
     type: String,
     required: true,

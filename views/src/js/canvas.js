@@ -1,10 +1,10 @@
-window.addEventListener("resize", function () {    
+window.addEventListener("resize", function () {
     mark();
 });
 let prompts = ["Please select the left boundary of the space allocated for the name", "Please select the right boundary of the space allocated for the name", "Please select the bottom boundary of the space allocated for the name", ""];
 let person;
 let pos = 0;
-let data={};
+let data = {};
 // The boundary object to store the x and y coordinates of the text area boundaries for left, right and bottom
 //let active=0;
 //let textareas=[]
@@ -14,8 +14,8 @@ let boundary = {};
 let img = new Image();
 
 
-let loadFile = function(event) {
-img.src = URL.createObjectURL(event.target.files[0]);
+let loadFile = function (event) {
+    img.src = URL.createObjectURL(event.target.files[0]);
 };
 
 
@@ -114,12 +114,12 @@ function mark() {
         ctx.stroke()
     }
     if (boundary.right && boundary.left && boundary.bottom) {
-       let person = document.getElementById("preview-test").value
+        let person = document.getElementById("preview-test").value
         let width = document.getElementById('container').offsetWidth;
         let center = (boundary.left[0] * width + boundary.right[0] * width) / 2
         boundary.color = document.getElementById("color").value;
-        boundary.fontsize=Number(document.getElementById('number').value)/(width/rat)
-        ctx.font = `${boundary.fontsize * (width/rat)}px Verdana`;
+        boundary.fontsize = Number(document.getElementById('number').value) / (width / rat)
+        ctx.font = `${boundary.fontsize * (width / rat)}px Verdana`;
         ctx.fillStyle = boundary.color;
         //ctx2.font = `${boundary.fontsize * canvas2.height}px Verdana`;
         //ctx2.fillStyle = boundary.color;
@@ -157,21 +157,21 @@ function start() {
     let done = document.getElementById("done");
     done.addEventListener('click', function () {
         if (boundary.right && boundary.left && boundary.bottom) {
-            data.boundary=[boundary];
+            data.boundary = [boundary];
             let xhttp = new XMLHttpRequest();
             xhttp.open("POST", "/api/createcert", true);
             xhttp.setRequestHeader("Content-Type", "application/json");
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     let link = JSON.parse(this.responseText).link
-                    let url=JSON.parse(this.responseText).url
-                    document.getElementById("email-form").setAttribute("action",`/api/addeligibleusers/${url}`);
+                    let url = JSON.parse(this.responseText).url
+                    document.getElementById("email-form").setAttribute("action", `/api/addeligibleusers/${url}`);
                     document.getElementById("add-emails").classList.toggle("hide");
                     document.getElementById("prompt").innerHTML = "";
-                    document.getElementById("link").value=link
+                    document.getElementById("link").value = link
                     document.getElementById("edit-cert").classList.toggle("hide");
                     document.getElementById("value-input").classList.toggle("hide");
-                    
+
                 }
             };
             xhttp.send(JSON.stringify(data));
@@ -181,15 +181,15 @@ function start() {
 
     left_border.addEventListener('click', function () {
         selector(0, prompts)
-      
+
     })
     right_border.addEventListener('click', function () {
         selector(1, prompts)
-       
+
     })
     bottom.addEventListener('click', function () {
         selector(2, prompts)
-       
+
     })
     preview.addEventListener('click', function () {
         selector(3, prompts)
@@ -203,18 +203,25 @@ function start() {
 img.onload = start;
 
 
-// function for storing the certificate template
+// function for storing the certificate template image and generating thumbnail
 function getBase64Image(img) {
     let canvas = document.createElement("canvas");
+    let thumb = document.createElement("canvas");
     canvas.width = img.width;
     canvas.height = img.height;
-
     // Copy the image contents to the canvas
     let ctx = canvas.getContext("2d");
     ctx.drawImage(img, 0, 0);
-
-let dataURL = canvas.toDataURL("image/png");
-data.src=dataURL;
+    let dataURL = canvas.toDataURL("image/png");
+    data.src = dataURL;
+    // for the thumbnail
+    // image width to height ratio
+    rat = img.width / img.height;
+    thumb.width=200;
+    thumb.height=200/rat;
+    let ctx2=thumb.getContext("2d");
+    ctx2.drawImage(img,0,0);
+    data.thumb=thumb.toDataURL("image/png");
 }
 
 function check() {
@@ -226,7 +233,7 @@ function check() {
         let ctx = canvas.getContext("2d");
         ctx.imageSmoothingEnabled = false;
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        ctx.font = `${boundary.fontsize * width/rat}px Verdana`;
+        ctx.font = `${boundary.fontsize * width / rat}px Verdana`;
         ctx.fillStyle = boundary.color;
         ctx.textAlign = "center";
         ctx.fillText(person, center, boundary.bottom[1] * (width / rat));
