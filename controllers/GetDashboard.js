@@ -19,7 +19,7 @@ let dashboard = (req, res) => {
                             if (cert) {
                                 data.certs[i].name = cert.name
                                 data.certs[i].link = cert.link
-                                data.certs[i].src=cert.thumb
+                                data.certs[i].thumb=cert.thumb
                                 data.certs[i].boundary = cert.boundary
                             }
                         })
