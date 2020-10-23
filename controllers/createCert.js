@@ -29,6 +29,7 @@ let certificate = (req, res) => {
                             name: req.body.name,
                             link: link,
                             src:req.body.src,
+                            thumb:req.body.thumb,
                             boundary: req.body.boundary,
                         })
                         cert.save(function (err, doc) {
