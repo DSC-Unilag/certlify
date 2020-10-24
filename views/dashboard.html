@@ -35,15 +35,19 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/dashboard.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/animations.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css'/>
 </head>
 
 <body>
     <header>
         <section class="logo-section">
-            <span class="dsc-logo"><img class="cropped-logo" src="/imgs/code logo.jpg" alt="logo icon"></span>
-            <span id="profile-image"><img id="user-image" src="/imgs/user.svg" alt="user icon" /></span>
+            <span class="code-logo"><img class="cropped-logo" src="/imgs/code logo.jpg" alt="logo icon"></span>
+            <div class="img-line"></div>
         </section>
-
+        
+        <span id="profile-image"><img id="user-image" src="/imgs/user.svg" alt="user icon" /></span>
+        
         <section class="search-section">
             <input type="search" placeholder="Search" />
             <button onclick=""><img src="/imgs/search.svg" alt=""></button>
@@ -77,6 +81,17 @@
 
     </main>
     <button id="add-cert">&#65291; Add Certificate</button>
+    
+    <span class="loader">
+        <div class="container-for-loader">
+            <div class="large-circle">
+            </div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+        </div>
+    </span>
     <script>
         let create = document.getElementById("add-cert");
         create.addEventListener("click", function () {
@@ -122,7 +137,7 @@
 
         xhttp.send();
     </script>
-    <!-- <script src='/src/js/main.js'></script> -->
+    <script src='/src/js/main.js'></script>
 </body>
 
 </html>

@@ -10,6 +10,15 @@
         3. app installation
         4. ONe page app
     -->
+
+    <!-- 
+        1. Create loader
+        2. Add font-picker
+        3. Fix service worker
+        4. Fix the manage page.
+        5. Fix add certificate icon
+    -->
+
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>DSC Unilag Certificate Generator</title>
     <meta name="msapplication-tap-highlight" , content="none" />
@@ -35,6 +44,8 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/signup.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/manage-func.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/animations.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css'/>
 </head>
 
 <body>
@@ -106,11 +117,11 @@
                 </section>
 
                 <section class="fonts-section">
-                    <label for="font-picker">Font family:</label>
+                    <!-- <label for="font-picker">Font family:</label>
                     <section id="font-picker">
                     </section>
 
-                    <label for="font-size">Font-size:</label>
+                    <label for="font-size">Font-size:</label> -->
 
                     <section class="climb-section">
                         <button id="minus" onclick="decreaseValue()">&#45;</button>
@@ -168,8 +179,19 @@
     </main>
 
     <footer>
-        <iframe name="hidden-iframe" style="display: none;" onload="parse()"></iframe>
+        <iframe name="hidden-iframe" style="display: none;" onchange="parse()"></iframe>
     </footer>
+
+    <span class="loader">
+        <div class="container-for-loader">
+            <div class="large-circle">
+            </div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+        </div>
+    </span>
 
     <script src='./src/js/FontSizer.js'></script>
     <script src='./src/js/canvas.js'></script>
@@ -198,14 +220,16 @@
             }
         }
     </script>
-    <script src="/src/js/FontPicker.js"></script>
+    <!-- <script src="/src/js/FontPicker.js"></script> -->
     <script>
-        const fontPicker = new FontPicker(
-            AIzaSyC1c-jtOCKTiFeVfSU6SVT4J3iWIkQ4RYo,
-            "Open Sans"
-        );
+        // import FontPicker from "font-picker";
+
+        // const fontPicker = new FontPicker(
+        //     "AIzaSyC1c-jtOCKTiFeVfSU6SVT4J3iWIkQ4RYo",
+        //     "Open Sans"
+        // );
     </script>
-    <!-- <script src='/src/js/main.js'></script> -->
+    <script src='/src/js/main.js'></script>
 
 </body>
 
