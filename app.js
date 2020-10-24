@@ -24,27 +24,6 @@ db.once("open", function () {
 
 // initialize app
 const app = express();
-// Swagger documentation requirements
-const swaggerJsDoc = require("swagger-jsdoc");
-const swaggerUi = require("swagger-ui-express");
-
-const swaggerOptions = {
-  swaggerDefinition: {
-    info: {
-      title: 'Certificate Generator API',
-      description: "Certificate Generator API informations",
-      contact: {
-        name: "DSC Unilag"
-      },
-      servers: ["http://localhost:3000/"]
-    }
-  },
-  apis: ["./routes/*.js"]
-}
-
-const swaggerDocs = swaggerJsDoc(swaggerOptions);
-app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
-
 
 // middlewares
 app.use(
@@ -90,8 +69,8 @@ app.get('/signup', (req, res) => {
   res.sendFile(__dirname + "/views/signup.html");
 });
 app.get("/dashboard", (req, res) => {
-  if (!req.session.email) {
-    return res.redirect("login");
+  if (!req.session.email&&!req.session.anon) {
+    return res.redirect("/login");
   }
   res.sendFile(__dirname + "/views/dashboard.html");
 })
@@ -99,22 +78,22 @@ app.get("/login", (req, res) => {
   res.sendFile(__dirname + "/views/login.html");
 })
 app.get("/manage", (req, res) => {
-  if (req.session.email) {
+  if (!req.session.email&&!req.session.anon) {
+    return res.redirect("/login");
+  }else {
     res.sendFile(__dirname + "/views/manage.html");
-  } else {
-    res.redirect("/login")
-  }
+  } 
 })
 
 app.get("/createcertificate", (req, res) => {
-  if (!req.session.email) {
+  if (!req.session.email&&!req.session.anon) {
     return res.redirect("/login");
   }
   res.sendFile(__dirname + "/views/certificate-gen.html");
 })
 
 app.get("/certificate/:link", (req, res) => {
-  let email = req.session.email;
+  let email = req.session.email
   let link = req.params.link
   req.session.link = link;
   if (email) {
