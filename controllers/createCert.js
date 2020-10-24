@@ -3,7 +3,7 @@ var uniqid = require('uniqid');
 const Link = require("../models/links");
 
 let certificate = (req, res) => {
-    if (!req.session.email) {
+    if (!req.session.email&&!req.session.anon) {
         res.status(401)
         res.json({
             status: false,
@@ -12,7 +12,7 @@ let certificate = (req, res) => {
     } else {
         let link = uniqid()
         req.session.link = link;
-        User.findOne({ email: req.session.email }, function (err, user) {
+        User.findOne({ email: req.session.email||req.session.anon }, function (err, user) {
             if (!user) {
                 res.status(401)
                 res.json({

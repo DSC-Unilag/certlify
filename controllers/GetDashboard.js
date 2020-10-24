@@ -3,7 +3,13 @@ const Links = require("../models/links");
 
 // controller to serve the dashboard data for a logged in user
 let dashboard = (req, res) => {
-    let email = req.session.email
+    let email
+    if(req.session.email){
+        email = req.session.email
+    }else{
+        email = req.session.anon
+    }
+    
     if (email) {
         User.findOne({ email }, function (err, user) {
             let data={}
@@ -19,7 +25,7 @@ let dashboard = (req, res) => {
                             if (cert) {
                                 data.certs[i].name = cert.name
                                 data.certs[i].link = cert.link
-                                data.certs[i].src=cert.thumb
+                                data.certs[i].thumb=cert.thumb
                                 data.certs[i].boundary = cert.boundary
                             }
                         })

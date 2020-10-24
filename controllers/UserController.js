@@ -1,16 +1,11 @@
-/*
-
-	Here I define functions to be used in my routes
-
-*/
 // Bring in the user model
 const User = require("../models/users");
+const Link = require("../models/links");
 const config = require("../config/database");
 const rounds = process.env.DATABASE || config.rounds;
 // Load dependencies
 const bcrypt = require("bcryptjs");
-
-const getRegister = (req, res) => { };
+var uniqid = require('uniqid');
 
 const register = (req, res) => {
 	if (!req.body.name || !req.body.password || !req.body.email) {
@@ -20,7 +15,8 @@ const register = (req, res) => {
 			message: "Invalid or incomplete input"
 		})
 	} else {
-		const { name, email, password } = req.body;
+		const { name, password } = req.body;
+		const email = req.body.email.toLowerCase();
 		// Check if the mail is taken already, we want unique mails only
 		User.findOne({ email }, function (err, user) {
 			if (err) throw err;
@@ -28,24 +24,48 @@ const register = (req, res) => {
 				// Password validation
 				if (password.length >= 8) {
 					// Salt and hash passoword here
-					bcrypt.genSalt(10, (err, salt) => {
+					bcrypt.genSalt(rounds, (err, salt) => {
 						bcrypt.hash(password, salt, (err, passwordhash) => {
 							// Commit the authenticated and validated user to memory
-							const credentials = { name, email, passwordhash };
-							const user = new User(credentials);
-							user.save((err) => {
-								if (err) {
-									res.send("err")
-									throw err;
-								}
-								// Start session ish
-								req.session.status = true;
-								res.status(201)
-								res.json({
-									status: true,
-									message: "user added successfully"
+							if (req.session.anon) {
+								User.findOne({ email: req.session.anon }, function (err, user) {
+									user.name = name;
+									user.email = email;
+									user.passwordhash = passwordhash;
 								})
-							});
+								user.save((err) => {
+									if (err) {
+										res.send("err")
+										throw err;
+									}
+									//delete session
+									// Start session ish
+									req.session.email = email
+									req.session.status = true;
+									res.status(201)
+									res.json({
+										status: true,
+										message: "user added successfully"
+									})
+								});
+							} else {
+								const credentials = { name, email, passwordhash };
+								const user = new User(credentials);
+								user.save((err) => {
+									if (err) {
+										res.send("err")
+										throw err;
+									}
+									// Start session ish
+									req.session.email = email
+									req.session.status = true;
+									res.status(201)
+									res.json({
+										status: true,
+										message: "user added successfully"
+									})
+								});
+							}
 						});
 					});
 
@@ -69,7 +89,8 @@ const register = (req, res) => {
 };
 
 const login = (req, res) => {
-	const { email, password } = req.body;
+	const { password } = req.body;
+	const email = req.body.email.toLowerCase();
 	if (!email || !password) {
 		res.status(400)
 		return res.json({
@@ -83,14 +104,35 @@ const login = (req, res) => {
 			// Check for correct password
 			bcrypt.compare(password, user.passwordhash, function (err, stats) {
 				if (stats) {
-					// Start session ish
-					req.session.status = true;
-					req.session.email = email;
-					res.json({
-						status: true,
-						message: "user logged in successfully"
-					})
-				}else {
+					if (req.session.anon) {
+						User.findOne({ email: req.session.anon }, function (err, anon) {
+							if (anon) {
+								user.certificateUrls = user.certificateUrls.concat(anon.certificateUrls);
+								Link.updateMany({ issuer: req.session.anon }, { issuer: email }, function (error) {
+									if (err) throw err;
+									else {
+										// delete session
+										req.session.status = true;
+										req.session.email = email;
+										res.json({
+											status: true,
+											message: "user logged in successfully"
+										})
+									}
+								})
+							}
+
+						})
+					} else {
+						req.session.status = true;
+						req.session.email = email;
+						res.json({
+							status: true,
+							message: "user logged in successfully"
+						})
+					}
+
+				} else {
 					res.status(401)
 					res.json({
 						status: false,
@@ -111,5 +153,34 @@ const login = (req, res) => {
 
 };
 
+
+// allow anonymous validation
+const anon = (req, res) => {
+	if (req.session.anon) {
+		res.json({
+			status: false,
+			message: "already anonymous"
+		})
+	} else{
+		// comeback to destroy session
+		let anonId = uniqid();
+		req.session.anon = anonId
+		let anonymous = {
+			name: "Anonymous",
+			email: anonId
+		}
+		const user = new User(anonymous);
+		user.save((err) => {
+			if (err) {
+				res.send("err")
+				throw err;
+			}
+			res.status(201)
+			res.redirect("/dashboard");
+		});
+	}
+}
+
 module.exports.login = login;
 module.exports.register = register;
+module.exports.anon = anon;

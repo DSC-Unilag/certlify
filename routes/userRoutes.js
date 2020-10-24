@@ -29,7 +29,8 @@ router.use(express.json());
 */
 router.post('/register', UserController.register);
 
-//router.get('/login', UserController.getLogin);
+// router.get('/login', UserController.getLogin);
 router.post('/login', UserController.login);
-
+// cater for anonymous users
+router.get("/anon",UserController.anon);
 module.exports = router;

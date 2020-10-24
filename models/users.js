@@ -9,16 +9,13 @@ const UserSchema = new Schema({
   // The name would be the name of the body or organization issuing certificates. It doesn't matter much for those that want to generate certificate.
   name: {
     type: String,
-    required: true,
   },
   email: {
     type: String,
-    required: true,
     unique: true,
   },
   passwordhash: {
     type: String,
-    required: true,
   },
   profilePicture:String,
   certificateUrls: [String],
