@@ -35,7 +35,8 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/signup.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/manage-func.css'>
-
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/animations.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css'/>
 </head>
 
 <body>
@@ -89,7 +90,16 @@
             <div id="canvas"></div>
         </div>
     </main>
-
+    <span class="loader">
+        <div class="container-for-loader">
+            <div class="large-circle">
+            </div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+        </div>
+    </span>
     <script src='/js/FontSizer.js'></script>
     <script src='/js/generator.js'></script>
     <script>
@@ -108,7 +118,7 @@
           };
         xhttp.send();
     </script>
-    <!-- <script src='/src/js/main.js'></script> -->
+    <script src='/src/js/main.js'></script>
 </body>
 
 </html>
