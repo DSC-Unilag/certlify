@@ -33,4 +33,6 @@ router.post('/register', UserController.register);
 router.post('/login', UserController.login);
 // cater for anonymous users
 router.get("/anon",UserController.anon);
+// check the login status of a user;
+router.get("/status",UserController.status);
 module.exports = router;

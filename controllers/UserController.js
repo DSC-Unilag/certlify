@@ -191,6 +191,21 @@ const anon = (req, res) => {
 	}
 }
 
+const status=(req,res)=>{
+	if(req.user.email){
+		res.json({
+			status:true,
+			message:"logged in"
+		})
+	}else{
+		res.json({
+			status:false,
+			message:"not logged in"
+		})
+	}
+}
+
 module.exports.login = login;
 module.exports.register = register;
 module.exports.anon = anon;
+module.exports.status = status;
