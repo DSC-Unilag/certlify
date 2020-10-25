@@ -35,6 +35,8 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/manage.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/animations.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css'/>
 </head>
 
 <body>
@@ -82,7 +84,17 @@
             <a>Add Certificate</a>
         </section>
     </main>
-    <!-- <script src='/src/js/main.js'></script> -->
+    <span class="loader">
+        <div class="container-for-loader">
+            <div class="large-circle">
+            </div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+        </div>
+    </span>
+    <script src='/src/js/main.js'></script>
 </body>
 
 </html>

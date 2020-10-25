@@ -35,6 +35,9 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
     <link rel='stylesheet' type='text/css' media='screen' href='src/css/signup.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='src/css/login.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/animations.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css'/>
 </head>
 
 <body>
@@ -61,6 +64,17 @@
             <p>Don't have an account? <a id="login" href="/signup">Sign up</a></p>
         </section>
     </main>
+
+    <span class="loader">
+        <div class="container-for-loader">
+            <div class="large-circle">
+            </div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+        </div>
+    </span>
     <script>
         let main = () => {
             let data={};
@@ -95,7 +109,7 @@
             return (false)
         }
     </script>
-    <!-- <script src='/src/js/main.js'></script> -->
+    <script src='/src/js/main.js'></script>
 </body>
 
 </html>
