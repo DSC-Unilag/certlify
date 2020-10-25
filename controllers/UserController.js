@@ -6,7 +6,6 @@ const rounds = process.env.DATABASE || config.rounds;
 // Load dependencies
 const bcrypt = require("bcryptjs");
 var uniqid = require('uniqid');
-
 const register = (req, res) => {
 	if (!req.body.name || !req.body.password || !req.body.email) {
 		res.status(400);
@@ -28,26 +27,29 @@ const register = (req, res) => {
 						bcrypt.hash(password, salt, (err, passwordhash) => {
 							// Commit the authenticated and validated user to memory
 							if (req.session.anon) {
-								User.findOne({ email: req.session.anon }, function (err, user) {
-									user.name = name;
-									user.email = email;
-									user.passwordhash = passwordhash;
+								User.findOne({ email: req.session.anon }, function (err, Anon) {
+									Anon.name = name;
+									Anon.email = email;
+									Anon.passwordhash = passwordhash;
+									Anon.save((err) => {
+										if (err) {
+											res.send("err")
+											return err;
+										}
+										req.session.regenerate((err) => {
+											if (err) console.log(err);
+											else {
+												req.session.email = email
+												req.session.status = true;
+												res.status(201)
+												res.json({
+													status: true,
+													message: "user added successfully"
+												})
+											}
+										})
+									});
 								})
-								user.save((err) => {
-									if (err) {
-										res.send("err")
-										throw err;
-									}
-									//delete session
-									// Start session ish
-									req.session.email = email
-									req.session.status = true;
-									res.status(201)
-									res.json({
-										status: true,
-										message: "user added successfully"
-									})
-								});
 							} else {
 								const credentials = { name, email, passwordhash };
 								const user = new User(credentials);
@@ -157,27 +159,35 @@ const login = (req, res) => {
 // allow anonymous validation
 const anon = (req, res) => {
 	if (req.session.anon) {
+		console.log(req.session.email);
 		res.json({
 			status: false,
 			message: "already anonymous"
 		})
-	} else{
-		// comeback to destroy session
-		let anonId = uniqid();
-		req.session.anon = anonId
-		let anonymous = {
-			name: "Anonymous",
-			email: anonId
-		}
-		const user = new User(anonymous);
-		user.save((err) => {
-			if (err) {
-				res.send("err")
-				throw err;
+	} else {
+		req.session.regenerate((err) => {
+			if (err) return res.send("regenerate " + err)
+			else {
+				let anonId = uniqid();
+				req.session.anon = anonId
+				let anonymous = {
+					name: "Anonymous",
+					email: anonId
+				}
+				const user = new User(anonymous);
+				user.save((err) => {
+					if (err) {
+						res.send("err")
+						throw err;
+					}
+					res.status(201)
+					res.json({
+						status: true,
+						message: "anoned"
+					})
+				});
 			}
-			res.status(201)
-			res.redirect("/dashboard");
-		});
+		})
 	}
 }
 
