@@ -176,12 +176,14 @@ input {
     border-radius: 0.3rem;
     font-size: 0.9rem;
 }
+/* Generated cert link */
 
 .sign-page-section {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto auto auto auto;
 }
 
 .sign-page-section p {
@@ -192,10 +194,11 @@ input {
 }
 
 .sign-page-section form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
     margin: 0.1rem 0rem 2rem 0rem;
 }
 
@@ -211,6 +214,11 @@ input {
     padding: 1rem;
     width: 100%;
 }
+
+#email-input .icon{
+    margin: 0rem 2rem;
+}
+
 
 /* 
     ellispse curve code
