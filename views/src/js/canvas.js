@@ -158,6 +158,7 @@ function start() {
     let done = document.getElementById("done");
     done.addEventListener('click', function () {
         if (boundary.right && boundary.left && boundary.bottom) {
+            ShowLoader();
             data.boundary = [boundary];
             let xhttp = new XMLHttpRequest();
             xhttp.open("POST", "/api/createcert", true);
@@ -172,7 +173,7 @@ function start() {
                     document.getElementById("link").value = link
                     document.getElementById("edit-cert").classList.toggle("hide");
                     document.getElementById("value-input").classList.toggle("hide");
-
+                    HideLoader();
                 }
             };
             xhttp.send(JSON.stringify(data));
@@ -206,6 +207,10 @@ img.onload = start;
 
 // function for storing the certificate template image and generating thumbnail
 function getBase64Image(img) {
+    // image width to height ratio
+    rat = img.width / img.height;
+    
+    ShowLoader();
     let canvas = document.createElement("canvas");
     let thumb = document.createElement("canvas");
     canvas.width = img.width;
@@ -216,13 +221,13 @@ function getBase64Image(img) {
     let dataURL = canvas.toDataURL("image/png");
     data.src = dataURL;
     // for the thumbnail
-    // image width to height ratio
-    rat = img.width / img.height;
-    thumb.width=200;
-    thumb.height=200/rat;
-    let ctx2=thumb.getContext("2d");
-    ctx2.drawImage(img,0,0);
-    data.thumb=thumb.toDataURL("image/png");
+
+    thumb.width = 200;
+    thumb.height = 200 / rat;
+    let ctx2 = thumb.getContext("2d");
+    ctx2.drawImage(img, 0, 0, thumb.width, thumb.height);
+    HideLoader();
+    data.thumb = thumb.toDataURL("image/png");
 }
 
 function check() {
