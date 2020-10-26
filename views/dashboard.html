@@ -92,12 +92,14 @@
             <div class="inner-circle"></div>
         </div>
     </span>
+    <script src='/src/js/main.js'></script>
     <script>
+    // toggle loader 
+       ShowLoader();
         let create = document.getElementById("add-cert");
         create.addEventListener("click", function () {
             location.href = "/createcertificate"
         })
-
         var user;
         var xhttp = new XMLHttpRequest();
         xhttp.open("GET", "/api/getdashboard", true);
@@ -129,7 +131,9 @@
                 welcome.innerHTML =
                     `<h1>Hi, ${user.name}</h1>
             <p>You have issued <span id="user-cert-number">${user.certificateUrls.length-errors}</span> certificates so far.</p>`
-            }
+        // toggle loader
+            HideLoader();    
+        }
             if (this.readyState == 4 && (this.status == 400 || this.status == 401)) {
                 location.href = "/login"
             }
@@ -137,7 +141,6 @@
 
         xhttp.send();
     </script>
-    <script src='/src/js/main.js'></script>
 </body>
 
 </html>
