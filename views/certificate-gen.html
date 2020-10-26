@@ -152,14 +152,14 @@
                     <form id="email-form" class="form" method="POST" enctype="multipart/form-data"
                         target="hidden-iframe">
                         <input type="file" name="FileUpload" accept=".csv" class="custom-file">
-                        <button class="icon">submit</button>
+                        <button class="icon">Submit</button>
                     </form>
                 </div>
             </article>
             <p id="error" style="color:red;"></p>
             <p>You may skip, this process now and add later on your dashboard. Note that only user emails you have
                 uploaded would be eligile to generate</p>
-            <button class="icon" type="button" onclick="next()">skip</button>
+            <button class="icon" type="button" onclick="next()">Skip</button>
         </section>
 
         <section id="cert-link" class="sign-page-section hide">
@@ -179,7 +179,7 @@
     </main>
 
     <footer>
-        <iframe name="hidden-iframe" style="display: none;" onload="parse()"></iframe>
+        <iframe name="hidden-iframe" style="display: none;" onchange="parse()"></iframe>
     </footer>
 
     <span class="loader">
