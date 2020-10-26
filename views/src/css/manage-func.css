@@ -79,27 +79,33 @@ input[type="number"] {
 .custom-file::-webkit-file-upload-button {
   visibility: hidden;
 }
+
 .custom-file::before {
-  content: 'Choose a file';
+  content: 'Select a file';
   display: inline-block;
-  background: linear-gradient(bottom, #4285F4, #5f9af8);
+  background: linear-gradient(to bottom, #4285F4, #5f9af8);
   border: 1px solid #999;
   border-radius: 3px;
   padding: 5px 8px;
+  text-align: center;
+  width: 90%;
+  margin: 0;
   outline: none;
-  color: white;
   white-space: nowrap;
   -webkit-user-select: none;
   cursor: pointer;
-  text-shadow: 1px 1px #fff;
-  font-weight: 700;
-  font-size: 10pt;
+  font-weight: 400;
+  text-shadow: none;
+  color: white;
+  box-shadow: 0px 3px 5px lightgrey;
 }
+
 .custom-file:hover::before {
   border-color: #4285F4;
 }
+
 .custom-file:active::before {
-  background: -webkit-linear-gradient(top, #2c79f3, #4d7fd0);
+  background: -webkit-linear-gradient(to bottom, #2c79f3, #4d7fd0);
 }
 
 input[type=number]::-webkit-inner-spin-button,
@@ -125,8 +131,8 @@ input[type=number]::-webkit-outer-spin-button {
 
 main {
   display: grid;
-  grid-template-rows: auto auto 3rem;
-  position: relative;
+  grid-template-rows: auto auto auto;
+  grid-template-columns: 100%;
   justify-items: center;
   align-content: center;
 }
@@ -549,15 +555,35 @@ input[type="color"] {
   cursor: pointer;
 }
 
-.main-func-manage .value-input-section input[type="submit"]:hover {
+button.icon {
+  width: 160px;
+  height: 40px;
+  background-color: var(--main-color);
+  color: white;
+  padding: 0px 4px;
+  justify-content: space-evenly;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  border: none;
+  font-size: 1.1rem;
+  box-shadow: 1px 4px 7px lightgrey;
+}
+
+.main-func-manage .value-input-section input[type="submit"]:hover,
+button.icon:hover {
   background-color: #619bf7;
 }
 
-.main-func-manage .value-input-section input[type="submit"]:focus {
+.main-func-manage .value-input-section input[type="submit"]:focus,
+button.icon:focus {
   background-color: #3781f8;
 }
 
-.main-func-manage .value-input-section input[type="submit"]:active {
+.main-func-manage .value-input-section input[type="submit"]:active,
+button.icon:active {
   background-color: #2e7eff;
 }
 
@@ -590,6 +616,7 @@ input[type="color"] {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
 }
 
 .upload-style {
@@ -628,22 +655,19 @@ input[type="color"] {
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  margin-bottom: 3rem;
 }
 
-button.icon {
-  margin-left: 20px;
-  margin-right: 20px;
-  width: 160px;
-  height: 40px;
-  background-color: var(--main-color);
-  color: white;
-  padding: 0px 4px;
-  justify-content: space-evenly;
-  padding: 2px;
-  display: flex;
+#upload-div form .custom-file {
+  display: grid;
+  width: 100%;
+  padding: 0;
+  outline: none;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  border-radius: 10px;
+  border: none;
+  box-shadow: none;
+  height: 3.6rem;
 }
 
 .icon i.copy {

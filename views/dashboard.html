@@ -95,17 +95,17 @@
     <script src='/src/js/main.js'></script>
     <script>
     // toggle loader 
-       ShowLoader();
-        let create = document.getElementById("add-cert");
-        create.addEventListener("click", function () {
-            location.href = "/createcertificate"
-        })
-        var user;
-        var xhttp = new XMLHttpRequest();
-        xhttp.open("GET", "/api/getdashboard", true);
-        //xhttp.setRequestHeader("Content-Type", "application/json");
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
+    let create = document.getElementById("add-cert");
+    create.addEventListener("click", function () {
+        location.href = "/createcertificate"
+    })
+    var user;
+    var xhttp = new XMLHttpRequest();
+    xhttp.open("GET", "/api/getdashboard", true);
+    //xhttp.setRequestHeader("Content-Type", "application/json");
+    xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+                ShowLoader();
                 user = JSON.parse(this.responseText)
                 console.log(user)
                 let welcome = document.getElementById("welcome");
@@ -124,9 +124,7 @@
                         } else {
                             errors++
                         }
-
                     }
-
                 }
                 welcome.innerHTML =
                     `<h1>Hi, ${user.name}</h1>
