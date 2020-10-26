@@ -9,6 +9,7 @@ const boundarySchema = new Schema({
   left: Array,
   right: Array,
   fontsize: Number,
+  fontfamily:String,
   color: String,
 });
 
