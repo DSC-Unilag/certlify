@@ -71,7 +71,7 @@ function mark() {
     let canvascontainer = document.getElementById("canvas");
     let width = document.getElementById('container').offsetWidth;
     let height = width / rat
-    canvascontainer.innerHTML = `<canvas id="my_canvas"width="${width}" height="${height}"></canvas>`
+    canvascontainer.innerHTML = `<canvas id="my_canvas"width="${width}" height="${height}" class="apply-font"></canvas>`
     let canvas = document.getElementById("my_canvas")
     height = canvas.height;
     canvas.addEventListener('click', function (event) {
@@ -120,6 +120,7 @@ function mark() {
         boundary.color = document.getElementById("color").value;
         boundary.fontsize = Number(document.getElementById('number').value) / (width / rat)
         ctx.font = `${boundary.fontsize * (width / rat)}px Verdana`;
+        // ctx.className = "apply-font";
         ctx.fillStyle = boundary.color;
         //ctx2.font = `${boundary.fontsize * canvas2.height}px Verdana`;
         //ctx2.fillStyle = boundary.color;

@@ -22,6 +22,14 @@ body {
     word-spacing: 0.16rem;
 }
 
+body {
+    display: grid;
+    grid-template-columns: 100%;
+    justify-items: center;
+    align-content: center;
+}
+
+
 ::-webkit-scrollbar {
     width: 1.5rem;
 }
@@ -52,7 +60,7 @@ header {
     justify-content: center;
     align-items: center;
     margin-bottom: 1.5rem;
-    min-height: 22rem;
+    min-height: 23rem;
     color: white;
     background-color: #4285F4;
 }
@@ -69,7 +77,7 @@ header span {
 
 header .code-logo {
     display: none;
-}  
+}
 
 header #dsc-logo {
     display: none;
@@ -79,6 +87,7 @@ header #profile-image {
     display: flex;
     justify-content: center;
     align-items: center;
+    grid-area: 1 / 1 / 2 / 2;
 }
 
 header #profile-image img {
@@ -91,6 +100,7 @@ header #profile-image img {
 header .search-section {
     position: relative;
     text-align: center;
+    grid-area: 1 / 2 / 2 / 3;
 }
 
 header .search-section input {
@@ -313,23 +323,33 @@ header .bread-crumbs {
     color: white;
 }
 
-#add-cert{
-
+#add-cert {
+    background-color: #4285F4;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    font-size: 1.1rem;
+    box-shadow: 0px 3px 5px lightgrey;
+    border-radius: 0.2rem;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: 90ms all ease-in;
 }
 
-.main-dashboard .landing-page-section button:hover {
+.main-dashboard .landing-page-section button:hover, #add-cert:hover {
     background-color: #558ae1;
 }
 
 .main-dashboard .landing-page-section .certificate-card a:focus,
-.main-dashboard .landing-page-section button:focus {
+.main-dashboard .landing-page-section button:focus, #add-cert:focus {
     background-color: #2673ee;
     color: white;
 }
 
 .main-dashboard .landing-page-section .certificate-card a:active,
-.main-dashboard .landing-page-section button:active {
+.main-dashboard .landing-page-section button:active, #add-cert:active {
     background-color: #498af3;
+    cursor: wait;
     color: white;
 }
 
@@ -341,16 +361,16 @@ header .bread-crumbs {
     font-size: 1.275rem;
 }
 
-#empty {
-    grid-column-start: 2;
+.thumb {
+    width: 200px;
+    height: auto;
 }
-.thumb{
-    width:200px;
-    height:auto;
-}
+
+
 @media screen and (min-width: 45rem) {
     header {
         grid-template-columns: 4rem 40% auto auto;
+        min-height: 21rem;
         width: 100%;
     }
 
@@ -375,17 +395,17 @@ header .bread-crumbs {
         border-top-right-radius: 55% 15%;
     }
 
-      header .code-logo {
-    display: inline-block;
-    width: 8.1rem;
-    height: 3.1rem;
-    position: absolute;
-    border: 1px solid;
-    border-top: none;
-    border-bottom-right-radius: 45% 80%;
-    border-bottom-left-radius: 60% 50%;
-    border-top-right-radius: 55% 15%;
-  }
+    header .code-logo {
+        display: inline-block;
+        width: 8.1rem;
+        height: 3.1rem;
+        position: absolute;
+        border: 1px solid;
+        border-top: none;
+        border-bottom-right-radius: 45% 80%;
+        border-bottom-left-radius: 60% 50%;
+        border-top-right-radius: 55% 15%;
+    }
 
     header .section-links ul li .active-cert {
         right: 0;
@@ -429,6 +449,9 @@ header .bread-crumbs {
         grid-area: 2 / 2 / 3 / 3;
     }
 
+    header .welcome-user {
+        align-self: center;
+    }
 }
 
 @media screen and (min-width: 64rem) {

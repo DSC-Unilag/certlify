@@ -21,6 +21,7 @@
 //     console.log(`Service worker not supported`);
 // }
 
+
 const containerLoad = document.querySelector(".loader");
 
 function HideLoader() {

@@ -45,7 +45,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/signup.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/manage-func.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/animations.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css'/>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css' />
 </head>
 
 <body>
@@ -103,7 +103,7 @@
                     <input id="file" type="file" accept="image/*" onchange="loadFile(event)">
                 </div>
                 <div id="container">
-                    <div id="canvas"></div>
+                    <div id="canvas" class="apply-font"></div>
                 </div>
             </article>
         </section>
@@ -112,16 +112,16 @@
             <section class="input-details">
                 <section>
                     <label for="full-name">Full name:</label>
-                    <input class="" id="preview-test" type="text" autocomplete="name" name="fname" minlength="3" maxlength="40"
-                        required placeholder="Enter your name" oninput="mark()" />
+                    <input class="apply-font" id="preview-test" type="text" autocomplete="name" name="fname" minlength="3"
+                        maxlength="40" required placeholder="Enter your name" oninput="mark()" />
                 </section>
 
                 <section class="fonts-section">
-                    <!-- <label for="font-picker">Font family:</label>
-                    <section id="font-picker">
-                    </section>
+                    <label for="font-picker">Font family:</label>
+                    <div id="font-picker" class="font-picker-dropdown">
+                    </div>
 
-                    <label for="font-size">Font-size:</label> -->
+                    <label for="font-size">Font-size:</label>
 
                     <section class="climb-section">
                         <button id="minus" onclick="decreaseValue()">&#45;</button>
@@ -151,7 +151,7 @@
                 <div id="upload-div">
                     <form id="email-form" class="form" method="POST" enctype="multipart/form-data"
                         target="hidden-iframe">
-                        <input type="file" name="FileUpload" accept=".csv">
+                        <input type="file" name="FileUpload" accept=".csv" class="custom-file">
                         <button class="icon">submit</button>
                     </form>
                 </div>
@@ -229,6 +229,17 @@
         //     "Open Sans"
         // );
     </script>
+    <script src='/src/js/FontPicker.js'></script>
+    <script>
+        const fontPicker = new FontPicker(
+            "AIzaSyC1c-jtOCKTiFeVfSU6SVT4J3iWIkQ4RYo", // Google API key
+            "Open Sans", // Default font
+            {
+                limit: 30
+            }, // Additional options
+        );
+    </script>
+
     <script src='/src/js/main.js'></script>
 
 </body>
