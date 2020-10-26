@@ -3,9 +3,9 @@ function increaseValue() {
     value = isNaN(value) ? 0 : value;
     value++;
     document.getElementById('number').value = value;
-    let width = document.getElementById('container').offsetWidth;
-    let height = width / rat;
-    boundary.fontsize = value / height;
+   // let width = document.getElementById('container').offsetWidth;
+    //let height = width / rat;
+    boundary.fontsize = value / rat;
     mark();
     console.log(value);
 }
@@ -16,9 +16,9 @@ function decreaseValue() {
     value < 1 ? value = 1 : '';
     value--;
     document.getElementById('number').value = value;
-    let width = document.getElementById('container').offsetWidth;
-    let height = width / rat;
-    boundary.fontsize = value / height;
+    //let width = document.getElementById('container').offsetWidth;
+  //  let height = width / rat;
+    boundary.fontsize = value / rat;
     mark();
     console.log(value);
 }

@@ -115,11 +115,11 @@ function mark() {
     }
     if (boundary.right && boundary.left && boundary.bottom) {
         let person = document.getElementById("preview-test").value
-        let width = document.getElementById('container').offsetWidth;
+        let width = canvas.width;
         let center = (boundary.left[0] * width + boundary.right[0] * width) / 2
         boundary.color = document.getElementById("color").value;
-        boundary.fontsize = Number(document.getElementById('number').value) / (width / rat)
-        ctx.font = `${boundary.fontsize * (width / rat)}px Verdana`;
+        boundary.fontsize = Number(document.getElementById('number').value) / (rat)
+        ctx.font = `${boundary.fontsize * rat}px ${boundary.fontfamily}`;
         // ctx.className = "apply-font";
         ctx.fillStyle = boundary.color;
         //ctx2.font = `${boundary.fontsize * canvas2.height}px Verdana`;
@@ -201,6 +201,15 @@ function start() {
 
     document.getElementById("prompt").innerHTML = prompts[0];
 
+    const buttons = document.querySelectorAll('.font-button');
+
+buttons.forEach(el => el.addEventListener('click', event => {
+    console.log(el.innerHTML);
+    boundary.fontfamily = el.innerHTML;
+    mark();
+}));
+
+
 }
 img.onload = start;
 
@@ -209,7 +218,7 @@ img.onload = start;
 function getBase64Image(img) {
     // image width to height ratio
     rat = img.width / img.height;
-    
+
     ShowLoader();
     let canvas = document.createElement("canvas");
     let thumb = document.createElement("canvas");
@@ -239,7 +248,7 @@ function check() {
         let ctx = canvas.getContext("2d");
         ctx.imageSmoothingEnabled = false;
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        ctx.font = `${boundary.fontsize * width / rat}px Verdana`;
+        ctx.font = `${boundary.fontsize * rat}px ${boundary.fontfamily}`;
         ctx.fillStyle = boundary.color;
         ctx.textAlign = "center";
         ctx.fillText(person, center, boundary.bottom[1] * (width / rat));
