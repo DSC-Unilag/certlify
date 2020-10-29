@@ -1,4 +1,5 @@
 const containerLoad = document.querySelector(".loader");
+const modal = document.querySelector(".collectors-modal");
 
 function HideLoader() {
     containerLoad.classList.toggle("zero-opacity");
@@ -14,4 +15,8 @@ function ShowLoader() {
 
 window.onload = function(){
     HideLoader();
+}
+
+function ToggleModal(){
+    modal.classList.toggle("hide");
 }

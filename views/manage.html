@@ -62,10 +62,11 @@
 
         <nav class="section-links">
             <ul class="home-links">
-                <li id="gen-cert"><a href="#">Generated Certificates</a>
+                <li><a href="/dashboard.html">Generated Certificates</a>
+                </li>
+                <li class="gen-cert"><a href="#">Issued Certificates</a>
                     <hr class="active-cert">
                 </li>
-                <li><a href="#">Issued Certificates</a></li>
             </ul>
         </nav>
 
@@ -82,9 +83,9 @@
         </section>
 
         <section class="edit-section">
-            <a>Edit</a>
-            <a>Collectors</a>
-            <a>Add Certificate</a>
+            <a href="/certificate-gen.html">Edit</a>
+            <a onclick="ToggleModal()">Collectors</a>
+            <a href="/certificate-gen.html">Add Certificate</a>
         </section>
     </main>
     <span class="loader">
@@ -97,6 +98,60 @@
             <div class="inner-circle"></div>
         </div>
     </span>
+
+    <section aria-live="polite" class="collectors-modal hide">
+        <section class="collectors-panel">
+            <span class="table-header">
+                <a onclick="ToggleModal()" id="close-button">&#x2716;</a>
+                <h3>Collectors</h3>
+            </span>
+            <table>
+                <tr>
+                  <th>S/N</th>
+                  <th>Name on Certificate</th>
+                  <th>Email Address</th>
+                  <th>Status</th>
+                </tr>
+                <tr>
+                  <td>1</td>
+                  <td>Chinemerm Ibukun Olageektutor</td>
+                  <td>chinemeremibukunolageektutor@gmail.com</td>
+                  <td>Collected</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Chinemerm Ibukun Olageektutor</td>
+                    <td>chinemeremibukunolageektutor@gmail.com</td>
+                    <td>Not Collected</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Chinemerm Ibukun Olageektutor</td>
+                    <td>chinemeremibukunolageektutor@gmail.com</td>
+                    <td>Collected</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Chinemerm Ibukun Olageektutor</td>
+                    <td>chinemeremibukunolageektutor@gmail.com</td>
+                    <td>Collected</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Chinemerm Ibukun Olageektutor</td>
+                    <td>chinemeremibukunolageektutor@gmail.com</td>
+                    <td>Not Collected</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Chinemerm Ibukun Olageektutor</td>
+                    <td>chinemeremibukunolageektutor@gmail.com</td>
+                    <td>Collected</td>
+                </tr>
+              </table>              
+        </section>
+    </section>
+
     <script src='/src/js/main.js'></script>
 </body>
 
