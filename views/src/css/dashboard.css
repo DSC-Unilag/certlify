@@ -309,8 +309,9 @@ header .bread-crumbs {
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: 1px 4px 5px lightgrey;
+    box-shadow: 1px 4px 5px lightgracey;
     border: 1px solid #4285F4;
+    text-decoration: none;
     color: #4285F4;
     border-radius: 0.2rem;
     width: 13.65rem;

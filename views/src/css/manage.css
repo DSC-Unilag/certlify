@@ -48,14 +48,15 @@ main {
 
 header {
     display: grid;
-    grid-template-columns: 3.5rem auto 3rem;
-    grid-template-rows: 5rem auto 20rem;
+    margin: 0;
+    grid-template-columns: minmax(6%, auto) minmax(50%, auto) minmax(2%, auto);
+    grid-template-rows: 5rem auto 17rem;
     justify-content: center;
     align-items: center;
     margin-bottom: 1.5rem;
     min-height: 22rem;
     color: white;
-    background-color: #4285F4;
+    background-color: #4285f4;
 }
 
 .volunteer-header h1 {
@@ -65,13 +66,11 @@ header {
     text-align: center;
 }
 
-header span {
-    width: 100%;
-    justify-self: end;
-    height: auto;
+header .code-logo {
+    display: none;
 }
 
-header #dsc-logo {
+header .code-logo {
     display: none;
 }
 
@@ -79,18 +78,33 @@ header #profile-image {
     display: flex;
     justify-content: center;
     align-items: center;
+    grid-area: 1 / 1 / 2 / 2;
 }
 
 header #profile-image img {
     width: 2.8rem;
     height: auto;
     border-radius: 50%;
+    box-shadow: none;
     border: 1px solid;
+}
+
+header .section-links {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 0;
+    grid-area: 2 / 1 / 3 / 4;
+    justify-self: center;
+    transition: all 330ms ease-in-out;
+    overflow: hidden;
 }
 
 header .search-section {
     position: relative;
     text-align: center;
+    grid-area: 1 / 2 / 2 / 3;
 }
 
 header .search-section input {
@@ -116,18 +130,6 @@ header .search-section button {
 
 header .search-section button img {
     width: 1.7rem;
-}
-
-header .section-links {
-    width: 100%;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    height: 0;
-    grid-area: 2 / 1 / 3 / 4;
-    justify-self: center;
-    transition: all 400ms ease-in;
-    overflow: hidden;
 }
 
 header .volunteer-header {
@@ -295,6 +297,35 @@ header .bread-crumbs {
         grid-template-columns: 4rem 40% auto auto;
         grid-template-rows: 5rem auto 13rem;
         min-height: 22rem;
+    }
+
+    .logo-section {
+        width: 100%;
+        height: 3rem;
+        position: relative;
+        top: -25px;
+        right: 5.6rem;
+    }
+
+    .logo-section span img {
+        width: 7.5rem;
+        height: auto;
+        box-shadow: none;
+        border-bottom-right-radius: 40% 80%;
+        border-bottom-left-radius: 60% 50%;
+        border-top-right-radius: 55% 15%;
+    }
+
+    header .code-logo {
+        display: inline-block;
+        width: 8.1rem;
+        height: 3.1rem;
+        position: absolute;
+        border: 1px solid;
+        border-top: none;
+        border-bottom-right-radius: 45% 80%;
+        border-bottom-left-radius: 60% 50%;
+        border-top-right-radius: 55% 15%;
     }
 
     header .volunteer-header {
