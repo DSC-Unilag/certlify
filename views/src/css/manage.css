@@ -17,9 +17,11 @@ html,
 body {
     color: #098dff;
     font-size: 1rem;
+    position: relative;
     line-height: 1.5;
     letter-spacing: 0.12rem;
     word-spacing: 0.16rem;
+    height: auto;
 }
 
 ::-webkit-scrollbar {
@@ -48,14 +50,15 @@ main {
 
 header {
     display: grid;
-    grid-template-columns: 3.5rem auto 3rem;
-    grid-template-rows: 5rem auto 20rem;
+    margin: 0;
+    grid-template-columns: minmax(6%, auto) minmax(50%, auto) minmax(2%, auto);
+    grid-template-rows: 5rem auto 17rem;
     justify-content: center;
     align-items: center;
     margin-bottom: 1.5rem;
     min-height: 22rem;
     color: white;
-    background-color: #4285F4;
+    background-color: #4285f4;
 }
 
 .volunteer-header h1 {
@@ -65,13 +68,11 @@ header {
     text-align: center;
 }
 
-header span {
-    width: 100%;
-    justify-self: end;
-    height: auto;
+header .code-logo {
+    display: none;
 }
 
-header #dsc-logo {
+header .code-logo {
     display: none;
 }
 
@@ -79,18 +80,33 @@ header #profile-image {
     display: flex;
     justify-content: center;
     align-items: center;
+    grid-area: 1 / 1 / 2 / 2;
 }
 
 header #profile-image img {
     width: 2.8rem;
     height: auto;
     border-radius: 50%;
+    box-shadow: none;
     border: 1px solid;
+}
+
+header .section-links {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 0;
+    grid-area: 2 / 1 / 3 / 4;
+    justify-self: center;
+    transition: all 330ms ease-in-out;
+    overflow: hidden;
 }
 
 header .search-section {
     position: relative;
     text-align: center;
+    grid-area: 1 / 2 / 2 / 3;
 }
 
 header .search-section input {
@@ -116,18 +132,6 @@ header .search-section button {
 
 header .search-section button img {
     width: 1.7rem;
-}
-
-header .section-links {
-    width: 100%;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    height: 0;
-    grid-area: 2 / 1 / 3 / 4;
-    justify-self: center;
-    transition: all 400ms ease-in;
-    overflow: hidden;
 }
 
 header .volunteer-header {
@@ -201,7 +205,7 @@ header .section-links ul li a {
     font-size: 1rem;
 }
 
-header .section-links ul #gen-cert {
+header .section-links ul .gen-cert {
     position: relative;
 }
 
@@ -290,11 +294,97 @@ header .bread-crumbs {
     transition: 90ms all ease-in;
 }
 
+/* Modal  */
+.collectors-modal {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 99;
+    top: 0;
+    color: white;
+    background-color: #00000090;
+}
+
+.collectors-modal .collectors-panel {
+    width: 100%;
+    background: white;
+    color: black;
+    border-top-left-radius: 2.5rem;
+    border-top-right-radius: 2.5rem;
+    box-shadow: 0px 2px 5px lightgrey;
+    overflow-x: scroll;
+}
+
+.collectors-modal .collectors-panel .table-header {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    width: auto;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    color: white;
+    background-color: #4285F4;
+}
+
+.collectors-modal .collectors-panel .table-header a {
+    justify-self: flex-start;
+    grid-area: 1 / 1 / 2 / 2;
+    padding: 1rem;
+}
+
+.collectors-modal .collectors-panel .table-header h3 {
+    grid-area: 1 / 1 / 2 / 2;
+    justify-self: center;
+    font-size: 1.8rem;
+}
+
+table,
+th,
+td {
+    border: none;
+    border-collapse: collapse;
+    text-align: center;
+    padding: 0.4rem;
+}
+
+
 @media screen and (min-width: 45rem) {
     header {
         grid-template-columns: 4rem 40% auto auto;
         grid-template-rows: 5rem auto 13rem;
         min-height: 22rem;
+    }
+
+    .logo-section {
+        width: 100%;
+        height: 3rem;
+        position: relative;
+        top: -25px;
+        right: 5.6rem;
+    }
+
+    .logo-section span img {
+        width: 7.5rem;
+        height: auto;
+        box-shadow: none;
+        border-bottom-right-radius: 40% 80%;
+        border-bottom-left-radius: 60% 50%;
+        border-top-right-radius: 55% 15%;
+    }
+
+    header .code-logo {
+        display: inline-block;
+        width: 8.1rem;
+        height: 3.1rem;
+        position: absolute;
+        border: 1px solid;
+        border-top: none;
+        border-bottom-right-radius: 45% 80%;
+        border-bottom-left-radius: 60% 50%;
+        border-top-right-radius: 55% 15%;
     }
 
     header .volunteer-header {

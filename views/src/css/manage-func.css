@@ -563,6 +563,7 @@ button.icon {
   padding: 0px 4px;
   justify-content: space-evenly;
   padding: 2px;
+  margin-top: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -626,7 +627,7 @@ button.icon:active {
   justify-content: center;
   font-size: 1rem;
   align-items: center;
-  height: 50px;
+  min-height: 50px;
   cursor: pointer;
   box-shadow: 1px 3px 8px lightgrey;
   color: white;
@@ -789,6 +790,19 @@ button.icon:active {
 
   .main-func-manage .edit-cert-section img {
     width: 33.2rem;
+  }
+
+  #email-input input[type="text"] {
+    grid-area: 1 / 1 / 2 / 3;
+  }
+
+  #email-input button.icon {
+    grid-area: 2;
+    justify-self: self-start;
+  }
+
+  #email-input button:nth-child(3) {
+    justify-self: end;
   }
 
   hr {

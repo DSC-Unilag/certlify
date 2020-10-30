@@ -109,7 +109,7 @@
             </form>
         </section>
         <section id="edit-cert" class="edit-cert-section hide">
-            <a onclick="" id="close-button">&#x2716;</a>
+            <a href="/certificate-gen.html" id="close-button">&#x2716;</a>
             <article class="main-upload">
                 <div id="upload-div">
                     <label for="file" class="upload-style">CHOOSE CERTIFICATE FILE</label>
@@ -184,7 +184,8 @@
                     readonly=true required>
 
                 <p id="password-message" class="message"></p>
-                <button class="icon"><i class="copy"></i><span id="text">Copy</span></button>
+                <button class="icon" onclick="CopyToClipBoard()"><i class="copy"></i><span
+                        id="text">Copy</span></button>
                 <button class="icon"><i class="share"></i><span id="text">Share</span></button>
             </form>
             <a id="goto" href="/dashboard">Go to dashboard</a>
@@ -225,12 +226,16 @@
     </script>
     <!-- <script src="/src/js/FontPicker.js"></script> -->
     <script>
-        // import FontPicker from "font-picker";
+        function CopyToClipBoard() {
+            let copyText = document.querySelector("#link");
 
-        // const fontPicker = new FontPicker(
-        //     "AIzaSyC1c-jtOCKTiFeVfSU6SVT4J3iWIkQ4RYo",
-        //     "Open Sans"
-        // );
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+            document.execCommand("copy");
+
+            alert("Copied Successfully!");
+        }
     </script>
     <script src='/src/js/FontPicker.js'></script>
     <script>
