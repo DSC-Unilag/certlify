@@ -7,6 +7,7 @@ const rounds = process.env.DATABASE || config.rounds;
 const bcrypt = require("bcryptjs");
 var uniqid = require('uniqid');
 const register = (req, res) => {
+	console.log("a register")
 	if (!req.body.name || !req.body.password || !req.body.email) {
 		res.status(400);
 		res.json({
@@ -35,17 +36,19 @@ const register = (req, res) => {
 										if (err) {
 											res.send("err")
 											return err;
-										}
-										req.session.regenerate((err) => {
-											if (err) console.log(err);
+										}	
+										Link.updateMany({ issuer: req.session.anon }, { issuer: email }, function (error) {
+											if (err) throw err;
 											else {
-												req.session.email = email
-												req.session.status = true;
-												res.status(201)
-												res.json({
-													status: true,
-													message: "user added successfully"
+												req.session.regenerate((err)=>{
+													req.session.status = true;
+													req.session.email = email;
+												return	res.json({
+														status: true,
+														message: "user logged in successfully"
+													})
 												})
+												
 											}
 										})
 									});
@@ -103,9 +106,9 @@ const login = (req, res) => {
 	// Checks if the user exists
 	User.findOne({ email }, function (err, user) {
 		if (user) {
-			if(!user.confirmed){
-				return res.send("confirm please")
-			}
+			// if(!user.confirmed){
+			// 	return res.send("confirm please")
+			// }
 			// Check for correct password
 			bcrypt.compare(password, user.passwordhash, function (err, stats) {
 				if (stats) {
@@ -113,28 +116,39 @@ const login = (req, res) => {
 						User.findOne({ email: req.session.anon }, function (err, anon) {
 							if (anon) {
 								user.certificateUrls = user.certificateUrls.concat(anon.certificateUrls);
+								user.save((err)=>{
+									if(err)console.log(err);
+								})
 								Link.updateMany({ issuer: req.session.anon }, { issuer: email }, function (error) {
 									if (err) throw err;
 									else {
-										// delete session
-										req.session.status = true;
-										req.session.email = email;
-										res.json({
-											status: true,
-											message: "user logged in successfully"
+										req.session.regenerate((err)=>{
+											req.session.status = true;
+											req.session.email = email;
+											res.json({
+												status: true,
+												message: "user logged in successfully"
+											})
 										})
+										
 									}
 								})
 							}
 
 						})
 					} else {
-						req.session.status = true;
-						req.session.email = email;
-						res.json({
-							status: true,
-							message: "user logged in successfully"
+						req.session.regenerate((err)=>{
+							if (err) console.log(err)
+							else{
+								req.session.status = true;
+								req.session.email = email;
+								res.json({
+									status: true,
+									message: "user logged in successfully"
+								})
+							}
 						})
+						
 					}
 
 				} else {
@@ -162,7 +176,6 @@ const login = (req, res) => {
 // allow anonymous validation
 const anon = (req, res) => {
 	if (req.session.anon) {
-		console.log(req.session.email);
 		res.json({
 			status: false,
 			message: "already anonymous"

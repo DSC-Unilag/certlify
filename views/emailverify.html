@@ -36,7 +36,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/signup.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/manage-func.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/animations.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css'/>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css' />
 </head>
 
 <body>
@@ -70,24 +70,21 @@
         </section>
     </header>
 
-    <main id="main-func"class="main-func-manage">
+    <main id="main-func" class="main-func-manage">
         <section id="cert-name" class="sign-page-section">
-            <h1 class="first-text">Enter Bearers name</h1>
-            <p class="second-text">Hi there!, who is this certificate being issued to?</p>
+            <h1 class="first-text">Enter Email address</h1>
+            <p class="second-text">Hi there!, please enter the email address recognized by your issuer</p>
 
             <form class="form-input" onsubmit="return false">
-                <input type="text" id="preview-test" placeholder="Name of Holder" name="Name of Holder"
-                    autocomplete="current-password" minlength=4 required>
+                <input type="text" id="email-verify" placeholder="Email Address" name="Email Address"
+                    autocomplete="Enter-Email" minlength=4 required>
 
-                <p id="password-message" class="message"></p>
-                <button id="done"type="button"  class="sign-log">
-                    Generate
+                <p id="email-message" class="message"></p>
+                <button id="done" type="button" class="sign-log">
+                    Submit
                 </button>
             </form>
         </section>
-        <div id="container">
-            <div id="canvas"></div>
-        </div>
     </main>
     <span class="loader">
         <div class="container-for-loader">
@@ -99,25 +96,76 @@
             <div class="inner-circle"></div>
         </div>
     </span>
-    <script src='/js/FontSizer.js'></script>
-    <script src='/js/generator.js'></script>
+    <!-- <script src='/js/FontSizer.js'></script>
+    <script src='/js/generator.js'></script> -->
     <script>
         var xhttp = new XMLHttpRequest();
-          xhttp.open("GET", "/api/details", false);
-          xhttp.setRequestHeader("Content-Type", "application/json");
-          xhttp.onreadystatechange = function () {
+        var link;
+        xhttp.open("GET", "/api/name", false);
+        xhttp.setRequestHeader("Content-Type", "application/json");
+        xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-             data=JSON.parse(this.responseText)
-             //   console.log(data);
-                boundary=data.data.boundary[0];
-                
-                img.src=data.data.src
-                //mark();
+                data = JSON.parse(this.responseText)
+                //   console.log(data);
+                let title = data.data.name;
+                link = data.data.link;
+                document.getElementById("certificate-name").innerHTML = title;
             }
-          };
+        };
         xhttp.send();
     </script>
     <script src='/src/js/main.js'></script>
+    <script>
+        document.getElementById("done").addEventListener("click", function () {
+            document.getElementById("email-message").style.display = "none";
+            document.getElementById("done").style.display = "none";
+            setTimeout(() => {
+                document.getElementById("done").style.display = "block";
+            }, 5000);
+            let email = document.getElementById("email-verify").value;
+            if (email.length > 4 && ValidateEmail(email)) {
+                var xhttp = new XMLHttpRequest();
+                xhttp.open("POST", `/api/generate/${link}`, true);
+                xhttp.setRequestHeader("Content-Type", "application/json");
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        let data = JSON.parse(this.responseText)
+                        if (data.status) {
+                            document.getElementById("email-message").style.display = "block";
+                            document.getElementById("email-message").style.color = "blue";
+                            document.getElementById("email-message").innerHTML = "Please check your email for your generation link"
+                        }
+                    }
+                    if (this.readyState == 4 && this.status == 400) {
+                        let data = JSON.parse(this.responseText)
+                        if (!data.status && data.message == "inneligible") {
+                            document.getElementById("email-message").style.display = "block";
+                            document.getElementById("email-message").style.color = "red";
+                            document.getElementById("email-message").innerHTML = "This email is inneligible for this certificate. Please verify the mail or contact your supposed issuer"
+                        }
+                        if (!data.status && data.message == "generated") {
+                            document.getElementById("email-message").style.display = "block";
+                            document.getElementById("email-message").style.color = "blue";
+                            document.getElementById("email-message").innerHTML = "This email has already generated a certificate. You may check your mail for the link to generate again"
+                        }
+                    }
+                };
+
+                xhttp.send(JSON.stringify({ email }));
+            } else {
+                document.getElementById("email-message").style.display = "block";
+                document.getElementById("email-message").innerHTML = "Please check the format of your email"
+            }
+        })
+
+
+        function ValidateEmail(email) {
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,10})+$/.test(email)) {
+                return (true)
+            }
+            return (false)
+        }
+    </script>
 </body>
 
 </html>

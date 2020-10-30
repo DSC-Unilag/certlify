@@ -11,6 +11,7 @@ let dashboard = (req, res) => {
     }
     
     if (email) {
+        
         User.findOne({ email }, function (err, user) {
             let data={}
             if (user) {
@@ -35,6 +36,7 @@ let dashboard = (req, res) => {
                 loop();
                
             }else{
+               
                 res.status(401)
                 res.json({
                     status:false,

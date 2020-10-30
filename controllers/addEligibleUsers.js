@@ -43,7 +43,7 @@ const addEligibleUsers = (req, res) => {
             if (cert){
                 if(cert.issuer==req.session.email){
                     for (i in users){
-                        users[i].status=0;
+                        users[i].status=false;
                         if(!users[i].email){
                              res.status(400)
                             return res.json({
