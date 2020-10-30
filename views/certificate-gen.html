@@ -6,17 +6,7 @@
     <!--
          Todo:
         1. SEO meta tags to improve search results.
-        2. animation
-        3. app installation
-        4. ONe page app
-    -->
-
-    <!-- 
-        1. Create loader
-        2. Add font-picker
-        3. Fix service worker
-        4. Fix the manage page.
-        5. Fix add certificate icon
+        2. ONe page app
     -->
 
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -46,18 +36,6 @@
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/manage-func.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/animations.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css' />
-    <script>
-        var parse = () => {
-            let response = document.getElementsByName("hidden-iframe")[0].contentWindow.document
-                .getElementsByTagName("pre")[0].innerText
-            response = JSON.parse(response);
-            if (response.status) {
-                next();
-            } else {
-                document.getElementById("error").innerHTML = "Please check the format of your csv file"
-            }
-        }
-    </script>
 
 </head>
 
@@ -209,6 +187,18 @@
 
     <script src='./src/js/FontSizer.js'></script>
     <script src='./src/js/canvas.js'></script>
+    <script>
+        var parse = () => {
+            let response = document.getElementsByName("hidden-iframe")[0].contentWindow.document
+                .getElementsByTagName("pre")[0].innerText
+            response = JSON.parse(response);
+            if (response.status) {
+                next();
+            } else {
+                document.getElementById("error").innerHTML = "Please check the format of your csv file"
+            }
+        }
+    </script>
     <script>
         var first = () => {
             let title = document.getElementById("certificate").value
