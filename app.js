@@ -10,6 +10,8 @@ const MongoStore = require("connect-mongo")(session);
 const config = require("./config/database");
 let configuration = process.env.DATABASE || config.database;
 const Link = require("./models/links");
+var jwt = require("jsonwebtoken");
+let secret = process.env.DATABASE || config.secret;
 // connect to database
 mongoose.connect(configuration, {
   useNewUrlParser: true,
@@ -108,5 +110,17 @@ app.get("/certificate/:link", (req, res) => {
       }
     })
   
+})
+app.get("/certify/:jwt",(req,res)=>{
+  let token=req.params.jwt
+  jwt.verify(token, secret, function(err, data) {
+    if(err){
+      res.send("404");
+    }else{
+      req.session.generator=data.email;
+      req.session.link=data.link;
+      res.sendFile(__dirname+"/views/certificator.html")
+    }
+  });
 })
 

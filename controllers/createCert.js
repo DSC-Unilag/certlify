@@ -25,7 +25,7 @@ let certificate = (req, res) => {
                     if (err) throw err
                     else {
                         let cert = new Link({
-                            issuer: req.session.email,
+                            issuer: req.session.email||req.session.anon,
                             name: req.body.name,
                             link: link,
                             src:req.body.src,

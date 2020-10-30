@@ -33,7 +33,7 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/manage.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/animations.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css'/>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css' />
 </head>
 
 <body>
@@ -69,7 +69,7 @@
         </nav>
 
         <section class="volunteer-header">
-            <h1>Certificate of Volunteer</h1>
+            <h1 id="title"></h1>
 
             <a href="/dashboard.html" id="back-button"><img src="/imgs/arrow.svg"></a>
         </section>
@@ -77,12 +77,12 @@
 
     <main class="main-dashboard">
         <section class="cert-section">
-            <img src="/imgs/Sunkanmi's Certificate.png" alt="Demo certificate" />
+            <img id="template" alt="certificate template" />
         </section>
 
         <section class="edit-section">
             <a href="/certificate-gen.html">Edit</a>
-            <a onclick="ToggleModal()">Collectors</a>
+            <a onclick="ToggleModal();collectors();ShowLoader();">Collectors</a>
             <a href="/certificate-gen.html">Add Certificate</a>
         </section>
     </main>
@@ -103,54 +103,85 @@
                 <a onclick="ToggleModal()" id="close-button">&#x2716;</a>
                 <h3>Collectors</h3>
             </span>
-            <table>
+            <table id="collectors">
                 <tr>
-                  <th>S/N</th>
-                  <th>Name on Certificate</th>
-                  <th>Email Address</th>
-                  <th>Status</th>
+                    <th>S/N</th>
+                    <th>Name on Certificate</th>
+                    <th>Email Address</th>
+                    <th>Status</th>
                 </tr>
-                <tr>
-                  <td>1</td>
-                  <td>Chinemerm Ibukun Olageektutor</td>
-                  <td>chinemeremibukunolageektutor@gmail.com</td>
-                  <td>Collected</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Chinemerm Ibukun Olageektutor</td>
-                    <td>chinemeremibukunolageektutor@gmail.com</td>
-                    <td>Not Collected</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Chinemerm Ibukun Olageektutor</td>
-                    <td>chinemeremibukunolageektutor@gmail.com</td>
-                    <td>Collected</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Chinemerm Ibukun Olageektutor</td>
-                    <td>chinemeremibukunolageektutor@gmail.com</td>
-                    <td>Collected</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Chinemerm Ibukun Olageektutor</td>
-                    <td>chinemeremibukunolageektutor@gmail.com</td>
-                    <td>Not Collected</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Chinemerm Ibukun Olageektutor</td>
-                    <td>chinemeremibukunolageektutor@gmail.com</td>
-                    <td>Collected</td>
-                </tr>
-              </table>              
+            </table>
         </section>
     </section>
 
     <script src='/src/js/main.js'></script>
+    <script>
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split('=');
+                if (decodeURIComponent(pair[0]) == variable) {
+                    return decodeURIComponent(pair[1]);
+                }
+            }
+            console.log('Query variable %s not found', variable);
+        }
+    </script>
+    <script>
+        ShowLoader();
+        let link = getQueryVariable("link")
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", `/api/manage/${link}/details`, true);
+        xhttp.setRequestHeader("Content-Type", "application/json");
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let data = JSON.parse(this.responseText)
+                document.getElementById("title").innerHTML = data.name;
+                document.getElementById("template").src = data.src;
+                HideLoader();
+            }
+        };
+
+        xhttp.send();
+
+
+
+
+        let collectors = () => {
+            let link = getQueryVariable("link")
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("GET", `/api/manage/${link}/getcollectors`, true);
+            xhttp.setRequestHeader("Content-Type", "application/json");
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    let data = JSON.parse(this.responseText)
+                    // getElementById("title").innerHTML=data.
+                    let collectors = data.collectors;
+                    for (i in collectors) {
+                        let collected;
+                        if (collectors[i].status) {
+                            collected = "Collected"
+                        } else {
+                            collected = "Not Collected"
+                        }
+                        document.getElementById("collectors").innerHTML += `
+                        <tr>
+                    <td>${Number(i) + 1}</td>
+                    <td>${collectors[i].name || ""}</td>
+                    <td>${collectors[i].email}</td>
+                    <td>${collected}</td>
+                </tr>
+                        `
+                    }
+                    HideLoader();
+                }
+            };
+
+            xhttp.send();
+        }
+    </script>
+
 </body>
 
 </html>

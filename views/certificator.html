@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <meta charset='utf-8'>
+    <!--
+         Todo:
+        1. SEO meta tags to improve search results.
+        2. animation
+        3. app installation
+        4. ONe page app
+    -->
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>DSC Unilag Certificate Generator</title>
+    <meta name="msapplication-tap-highlight" , content="none" />
+    <!-- <link rel="manifest" href="/manifest.json"> -->
+
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="DSC Unilag Certificate Generator">
+    <meta name="apple-mobile-web-app-title" content="DSC Unilag Certificate Generator">
+    <meta name="theme-color" content="#34495E">
+    <meta name="msapplication-navbutton-color" content="#FF9800">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="index.html">
+    <link rel="icon" sizes="128x128" href="">
+    <link rel="apple-touch-icon" sizes="128x128" href="">
+    <link rel="icon" sizes="192x192" href="">
+    <link rel="apple-touch-icon" sizes="192x192" href="">
+    <link rel="icon" sizes="256x256" href="">
+    <link rel="apple-touch-icon" sizes="256x256" href="">
+    <link rel="icon" sizes="384x384" href="">
+    <link rel="apple-touch-icon" sizes="384x384" href="">
+    <link rel="icon" sizes="512x512" href="../imgs/icon.png">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/signup.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/manage-func.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/animations.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css'/>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.3/jspdf.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <section class="logo-section">
+            <span class="code-logo"><img class="cropped-logo" src="/imgs/code logo.jpg" alt="logo icon"></span>
+            <div class="img-line"></div>
+        </section>
+
+        <span id="profile-image"><img id="user-image" src="/imgs/user.svg" alt="user icon" /></span>
+
+        <input type="checkbox" id="toggle-butt" />
+
+        <label for="toggle-butt" class="bread-crumbs">
+            <div class="bread-crumb"></div>
+            <div class="bread-crumb"></div>
+            <div class="bread-crumb"></div>
+        </label>
+
+        <nav class="section-links">
+            <ul class="home-links">
+                <li id="gen-cert"><a href="#">Generated Certificates</a>
+                    <hr class="active-cert">
+                </li>
+                <li><a href="#">Issued Certificates</a></li>
+            </ul>
+        </nav>
+
+        <section class="volunteer-header">
+            <h1 id="certificate-name"></h1>
+        </section>
+    </header>
+
+    <main id="main-func"class="main-func-manage">
+        <section id="cert-name" class="sign-page-section">
+            <h1 class="first-text">Enter Bearers name</h1>
+            <p class="second-text">Hi there!, who is this certificate being issued to?</p>
+
+            <form class="form-input" onsubmit="return false">
+                <input type="text" id="holdername" placeholder="Name of Holder" name="Name of Holder"
+                    autocomplete="current-password" minlength=4 required>
+
+                <p id="password-message" class="message"></p>
+                <button id="done"type="button"  class="sign-log">
+                    Generate
+                </button>
+            </form>
+        </section>
+        <section id="generate" class="sign-page-section"style="display:none">
+            <h1 class="first-text">A certificate has already been generted for this account. You may regenerate here</h1>
+
+                <button id="regenerate"type="button"  class="sign-log">
+                    Generate
+                </button>
+            
+        </section>
+        <div id="container">
+                    <div id="font-picker" class="font-picker-dropdown"style="display:none;">
+                    </div>
+            <div id="canvas"></div>
+        </div>
+    </main>
+    <span class="loader">
+        <div class="container-for-loader">
+            <div class="large-circle">
+            </div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+        </div>
+    </span>
+    <script src='/src/js/FontPicker.js'></script>
+    <script src='/src/js/generator.js'></script>
+    <script>
+        document.getElementById("regenerate").addEventListener("click",function(){
+            check();
+        })
+        var xhttp = new XMLHttpRequest();
+          xhttp.open("GET", "/api/details", false);
+          xhttp.setRequestHeader("Content-Type", "application/json");
+          xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+              data=JSON.parse(this.responseText)
+               console.log(data);
+             let title=data.data.title;
+             if(data.data.generated){
+                person=data.data.name;
+                document.getElementById("generate").style.display="block";
+                document.getElementById("cert-name").style.display="none";
+             }
+             document.getElementById("certificate-name").innerHTML = title;
+                boundary=data.data.boundary[0];
+                img.src=data.data.src
+                //mark();
+            }
+          };
+        xhttp.send();
+    </script>
+    <script src='/src/js/main.js'></script>
+    <script>
+        const fontPicker = new FontPicker(
+            "AIzaSyC1c-jtOCKTiFeVfSU6SVT4J3iWIkQ4RYo", // Google API key
+            "Open Sans", // Default font
+            {
+                limit: 40
+            }, // Additional options
+        );
+    </script>
+</body>
+
+</html>

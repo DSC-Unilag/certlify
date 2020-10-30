@@ -4,7 +4,7 @@ const config = require("../config/database");
 const rounds = process.env.ROUNDS || config.rounds;
 
 let getCollectors=(req,res)=>{
-    if (!req.session.email){
+    if (!req.session.email&&!req.session.anon){
         res.status(401);
        return res.json({
             status:false,
@@ -14,7 +14,7 @@ let getCollectors=(req,res)=>{
     req.session.link=req.params.link
     Links.findOne({ link:req.params.link }, function (err, cert) {
         if(cert){
-            if(cert.issuer==req.session.email){
+            if(cert.issuer==req.session.email||cert.issuer==req.session.anon){
                 res.json({
                     status:true,
                     collectors:cert.eligibleUsers
@@ -37,14 +37,13 @@ let getCollectors=(req,res)=>{
 }
 
 let details=(req,res)=>{
-    if (!req.session.email){
+    if (!req.session.email&&!req.session.anon){
         res.status(401)
       return res.json({
             status:false,
             message:"user not logged in"
         })
     }
-    req.session.link=req.params.link
     Links.findOne({ link:req.params.link}, function (err, cert) {
         if(cert){
             if(cert.issuer==req.session.email){
