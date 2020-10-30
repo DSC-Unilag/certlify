@@ -46,6 +46,19 @@
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/manage-func.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/animations.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css' />
+    <script>
+        var parse = () => {
+            let response = document.getElementsByName("hidden-iframe")[0].contentWindow.document
+                .getElementsByTagName("pre")[0].innerText
+            response = JSON.parse(response);
+            if (response.status) {
+                next();
+            } else {
+                document.getElementById("error").innerHTML = "Please check the format of your csv file"
+            }
+        }
+    </script>
+
 </head>
 
 <body>
@@ -179,7 +192,7 @@
     </main>
 
     <footer>
-        <iframe name="hidden-iframe" style="display: none;" onchange="parse()"></iframe>
+        <iframe name="hidden-iframe" style="display: none;" onload="parse()"></iframe>
     </footer>
 
     <span class="loader">
@@ -209,16 +222,6 @@
             document.getElementById("add-emails").classList.toggle("hide");
             document.getElementById("cert-link").classList.toggle("hide");
         }
-        var parse = () => {
-            let response = document.getElementsByName("hidden-iframe")[0].contentWindow.document
-                .getElementsByTagName("pre")[0].innerText
-            response = JSON.parse(response);
-            if (response.status) {
-                next();
-            } else {
-                document.getElementById("error").innerHTML = "Please check the format of your csv file"
-            }
-        }
     </script>
     <!-- <script src="/src/js/FontPicker.js"></script> -->
     <script>
@@ -235,7 +238,7 @@
             "AIzaSyC1c-jtOCKTiFeVfSU6SVT4J3iWIkQ4RYo", // Google API key
             "Open Sans", // Default font
             {
-                limit: 30
+                limit: 40
             }, // Additional options
         );
     </script>

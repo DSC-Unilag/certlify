@@ -5,7 +5,6 @@ const router = express.Router();
 router.use(express.urlencoded({ extended: true }));
 router.use(express.json());
 
-router.get("/details",generate.details);
-router.get("/generate",generate.generate);
-
+router.get("/name",generate.name);
+router.post("/generate/:link",generate.emailverification);
 module.exports=router;

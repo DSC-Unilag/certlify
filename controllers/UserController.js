@@ -103,6 +103,9 @@ const login = (req, res) => {
 	// Checks if the user exists
 	User.findOne({ email }, function (err, user) {
 		if (user) {
+			if(!user.confirmed){
+				return res.send("confirm please")
+			}
 			// Check for correct password
 			bcrypt.compare(password, user.passwordhash, function (err, stats) {
 				if (stats) {

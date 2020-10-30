@@ -93,18 +93,12 @@ app.get("/createcertificate", (req, res) => {
 })
 
 app.get("/certificate/:link", (req, res) => {
-  let email = req.session.email
   let link = req.params.link
   req.session.link = link;
-  if (email) {
     Link.findOne({ link: req.params.link }, (err, cert) => {
       if (cert) {
-        for (i in cert.eligibleUsers) {
-          if (cert.eligibleUsers[i].email == email) {
             res.status(200);
-            return res.sendFile(__dirname + "/views/certificator.html");
-          }
-        }
+            return res.sendFile(__dirname + "/views/emailverify.html");
       } else {
         res.status(400);
         res.json({
@@ -113,7 +107,6 @@ app.get("/certificate/:link", (req, res) => {
         })
       }
     })
-  } else {
-    res.redirect("/login");
-  }
+  
 })
+

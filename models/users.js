@@ -19,7 +19,10 @@ const UserSchema = new Schema({
   },
   profilePicture:String,
   certificateUrls: [String],
-  activated:Boolean
+  confirmed:{
+    type:Boolean,
+    default:false
+  }
 });
 
 // uniqueValidator plugin for presave validation of unique fields. Check the docs for more details

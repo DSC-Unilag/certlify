@@ -19,7 +19,7 @@ const eligibleUser = new Schema({
     sparse: true
   },
   name: String,
-  status: Number,
+  status: Boolean,
 });
 
 const linkSchema = new Schema({
