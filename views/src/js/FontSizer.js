@@ -1,5 +1,5 @@
 /**
- * 
+ * Increases font size value by 1
  */
 function increaseValue() {
     var value = Number(document.getElementById('number').value);
@@ -14,7 +14,7 @@ function increaseValue() {
 }
 
 /**
- * 
+ * Decreases font size value by 1
  */
 function decreaseValue() {
     var value = Number(document.getElementById('number').value);
@@ -30,7 +30,7 @@ function decreaseValue() {
 }
 
 /**
- * 
+ * Sets the font to the user selected font
  */
 function newfont() {
     var value = Number(document.getElementById('number').value);
