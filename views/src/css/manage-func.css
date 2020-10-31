@@ -567,7 +567,7 @@ button.icon {
   padding: 0px 4px;
   justify-content: space-evenly;
   padding: 2px;
-  margin-top: 0.5rem;
+  margin: 1.3rem 0rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -598,7 +598,7 @@ button.icon:active {
   align-items: center;
   width: 66vw;
   max-width: 600px;
-  height: 40vw;
+  min-height: 31vw;
   max-height: 400px;
   border: 1px dashed #4285f4;
   opacity: 1;
@@ -620,7 +620,7 @@ button.icon:active {
 .form {
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
 }
 
@@ -668,12 +668,12 @@ button.icon:active {
   display: grid;
   width: 100%;
   padding: 0;
+  justify-self: center;
   outline: none;
   justify-content: space-around;
   align-items: center;
   justify-items: baseline;
   align-content: space-around;
-  padding-left: 7rem;
   margin-top: 1rem;
   border: none;
   box-shadow: none;
@@ -813,6 +813,9 @@ button.icon:active {
     justify-self: end;
   }
 
+  #upload-div form .custom-file{
+    padding-left: 5rem;
+  }
   hr {
     width: 0.08rem;
     height: 6rem;
