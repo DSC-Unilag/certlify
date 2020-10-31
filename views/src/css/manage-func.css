@@ -68,6 +68,8 @@ img {
   border-radius: 10px;
   background-color: #4285F4;
   color: white;
+  width: 12rem;
+  text-align: center;
 }
 
 input[type="number"] {
@@ -81,14 +83,14 @@ input[type="number"] {
 }
 
 .custom-file::before {
-  content: 'Select a file';
+  content: 'Select a file (with .csv name extension)';
   display: inline-block;
   background: linear-gradient(to bottom, #4285F4, #5f9af8);
   border: 1px solid #999;
   border-radius: 3px;
   padding: 5px 8px;
   text-align: center;
-  width: 90%;
+  width: 19rem;
   margin: 0;
   outline: none;
   white-space: nowrap;
@@ -222,7 +224,7 @@ header #toggle-butt:checked~.section-links {
 ul {
   display: grid;
   width: 100%;
-  justify-items: center;
+  justify-content: center;
   align-items: center;
   grid-template-rows: auto;
 }
@@ -231,7 +233,7 @@ ul li {
   list-style-type: none;
   justify-self: center;
   display: flex;
-  width: 15rem;
+  width: 5rem;
   text-align: center;
   justify-content: center;
   align-items: center;
@@ -259,7 +261,9 @@ header .section-links ul li a:active {
 header .section-links ul {
   justify-self: end;
 }
-
+header .section-links ul li{
+  width: 15rem;
+}
 header .section-links ul li a {
   padding: 0.8rem;
   color: white;
@@ -267,7 +271,7 @@ header .section-links ul li a {
   box-shadow: none;
 }
 
-header .section-links ul #gen-cert {
+header .section-links ul .gen-cert {
   position: relative;
 }
 
@@ -592,7 +596,7 @@ button.icon:active {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 60vw;
+  width: 66vw;
   max-width: 600px;
   height: 40vw;
   max-height: 400px;
@@ -616,7 +620,7 @@ button.icon:active {
 .form {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
 }
 
@@ -667,6 +671,10 @@ button.icon:active {
   outline: none;
   justify-content: space-around;
   align-items: center;
+  justify-items: baseline;
+  align-content: space-around;
+  padding-left: 7rem;
+  margin-top: 1rem;
   border: none;
   box-shadow: none;
   height: 3.6rem;

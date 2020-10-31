@@ -26,9 +26,9 @@ body {
     display: grid;
     position: relative;
     width: 100%;
-    height: -webkit-fill-available;
+    height: auto;
     grid-template-columns: 100%;
-    grid-template-rows: auto auto;
+    grid-template-rows: auto auto minmax(4.5rem, auto);
     justify-content: center;
     align-content: center;
 }
@@ -133,7 +133,7 @@ a {
 }
 
 .landing-page-section a,
-.sign-log {
+.sign-log, #return-home {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -146,23 +146,28 @@ a {
     transition: 300ms all ease-in;
 }
 
+#return-home{
+    margin-top: 7rem;
+    width: 15.65rem;
+}
+
 .sign-log {
     width: 85%;
     margin-top: 1rem;
 }
 
 .landing-page-section a:hover,
-.sign-log:hover {
+.sign-log:hover, #return-home:hover {
     background-color: #619bf7;
 }
 
 .landing-page-section a:focus,
-.sign-log:focus {
+.sign-log:focus, #return-home:focus {
     background-color: #1f74fc;
 }
 
 .landing-page-section a:active,
-.sign-log:active {
+.sign-log:active, #return-home:active {
     background-color: #2e7eff;
 }
 
@@ -287,6 +292,25 @@ input {
     border-bottom-right-radius: 20% 90%;
     bottom: -79px;
     animation: 6.5s wobble infinite ease;
+}
+
+footer{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+    padding-left: 1.5rem;
+    align-items: center;
+    width: 100%;
+    height: 2rem;
+}
+
+footer a{
+    width: 3rem;
+    text-decoration: none;
+}
+footer a img{
+    width: 100%;
+    height: auto;
 }
 
 @media screen and (min-width: 40rem) {

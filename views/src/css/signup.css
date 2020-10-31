@@ -29,7 +29,6 @@ body {
     grid-template-columns: 100%;
     grid-template-rows: auto auto;
     justify-content: center;
-    align-content: center;
 }
 
 /* Custom Scroll-bar */
@@ -79,6 +78,7 @@ main span img {
 header {
     display: grid;
     grid-template-columns: 100%;
+    grid-template-rows: auto auto;
     justify-content: center;
     align-items: center;
     margin-bottom: 1.5rem;
@@ -98,6 +98,76 @@ header .logo img {
     z-index: -1;
     bottom: 4.5rem;
     left: 0.2rem;
+}
+
+header .section-links {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    justify-self: center;
+    transition: all 400ms ease-in;
+}
+
+ul {
+    display: grid;
+    width: 100%;
+    align-items: end;
+    grid-template-rows: 100%;
+    justify-content: end;
+}
+
+ul li {
+    list-style-type: none;
+    justify-self: center;
+    display: flex;
+    width: 9rem;
+    height: 5rem;
+    text-align: center;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+ul li a {
+    width: 100%;
+    text-decoration: none;
+    transition: all 80ms ease-in;
+}
+
+header .section-links ul li a:hover {
+    color: #fbbf09;
+}
+
+header .section-links ul li a:focus {
+    color: #daa916;
+}
+
+header .section-links ul li a:active {
+    color: #eed487;
+}
+
+header .section-links ul {
+    justify-self: end;
+}
+
+header .section-links ul li a {
+    padding: 0.8rem;
+    font-size: 1.1rem;
+}
+
+header .section-links ul .gen-cert {
+    position: relative;
+}
+
+header .section-links ul li .active-cert {
+    background-color: #FBBC04;
+    width: 11rem;
+    height: 0.2rem;
+    position: absolute;
+    border: none;
+    bottom: 0.3rem;
+    right: 0;
+    left: 2rem;
 }
 
 main .landing-page-section {
@@ -300,8 +370,26 @@ input {
 #password-message, #email-message{
     color:red;
     display: none;
-  }
+}
 
+footer{
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+    padding-left: 1.5rem;
+    align-items: center;
+    width: 100%;
+    height: 2rem;
+}
+
+footer a{
+    width: 3rem;
+    text-decoration: none;
+}
+footer a img{
+    width: 100%;
+    height: auto;
+}
 @media screen and (min-width: 40rem) {
     header #logo img {
         bottom: 4rem;
