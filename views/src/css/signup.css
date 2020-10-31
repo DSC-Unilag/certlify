@@ -235,6 +235,7 @@ a {
 .landing-page-section a:active,
 .sign-log:active {
     background-color: #2e7eff;
+    cursor: wait;
 }
 
 input {
@@ -246,6 +247,7 @@ input {
     border-radius: 0.3rem;
     font-size: 0.9rem;
 }
+
 /* Generated cert link */
 
 .sign-page-section {
@@ -253,6 +255,7 @@ input {
     justify-items: center;
     align-content: center;
     grid-template-columns: auto;
+    width: 100%;
     grid-template-rows: auto auto auto auto auto auto;
 }
 
@@ -286,7 +289,7 @@ input {
     width: 100%;
 }
 
-#email-input .icon{
+#email-input .icon {
     margin: 0.2rem 0.5rem;
 }
 
@@ -367,12 +370,13 @@ input {
     border-bottom-right-radius: 20% 90%;
 }
 
-#password-message, #email-message{
-    color:red;
+#password-message,
+#email-message {
+    color: red;
     display: none;
 }
 
-footer{
+footer {
     display: flex;
     justify-content: flex-start;
     margin-top: 1.5rem;
@@ -382,14 +386,16 @@ footer{
     height: 2rem;
 }
 
-footer a{
+footer a {
     width: 3rem;
     text-decoration: none;
 }
-footer a img{
+
+footer a img {
     width: 100%;
     height: auto;
 }
+
 @media screen and (min-width: 40rem) {
     header #logo img {
         bottom: 4rem;
@@ -403,6 +409,11 @@ footer a img{
 
     .sign-page-section form {
         width: 50rem;
+    }
+
+    #regenerate {
+        width: 24rem;
+        justify-self: center;
     }
 }
 
