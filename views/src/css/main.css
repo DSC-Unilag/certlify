@@ -72,8 +72,9 @@ main span {
 }
 
 main span img {
-    width: 100%;
+    width: 90%;
     height: auto;
+    margin: 0rem 0.5rem;
 }
 
 header {
@@ -116,7 +117,6 @@ main .landing-page-section h1 {
     color: #4285F4;
 }
 
-
 main .landing-page-section p {
     text-align: center;
     font-size: 0.9rem;
@@ -133,7 +133,8 @@ a {
 }
 
 .landing-page-section a,
-.sign-log, #return-home {
+.sign-log,
+#return-home {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -146,7 +147,12 @@ a {
     transition: 300ms all ease-in;
 }
 
-#return-home{
+main span .four-opor {
+    font-size: 44vw;
+    text-shadow: -7px 3px 1px gold;
+}
+
+#return-home {
     margin-top: 7rem;
     width: 15.65rem;
 }
@@ -157,17 +163,20 @@ a {
 }
 
 .landing-page-section a:hover,
-.sign-log:hover, #return-home:hover {
+.sign-log:hover,
+#return-home:hover {
     background-color: #619bf7;
 }
 
 .landing-page-section a:focus,
-.sign-log:focus, #return-home:focus {
+.sign-log:focus,
+#return-home:focus {
     background-color: #1f74fc;
 }
 
 .landing-page-section a:active,
-.sign-log:active, #return-home:active {
+.sign-log:active,
+#return-home:active {
     background-color: #2e7eff;
 }
 
@@ -217,7 +226,7 @@ input {
 }
 
 /* 
-    ellispse curve code
+ellispse curve code
 */
 
 .ellipse-curve {
@@ -294,7 +303,7 @@ input {
     animation: 6.5s wobble infinite ease;
 }
 
-footer{
+footer {
     display: flex;
     justify-content: flex-start;
     margin-top: 1.5rem;
@@ -304,11 +313,12 @@ footer{
     height: 2rem;
 }
 
-footer a{
+footer a {
     width: 3rem;
     text-decoration: none;
 }
-footer a img{
+
+footer a img {
     width: 100%;
     height: auto;
 }
@@ -316,6 +326,10 @@ footer a img{
 @media screen and (min-width: 40rem) {
     header #logo img {
         bottom: 4rem;
+    }
+
+    main span .four-opor {
+        font-size: 15.5rem;
     }
 
     .custom-ellipse {
@@ -327,7 +341,8 @@ footer a img{
 
 @media screen and (min-width: 45rem) {
     main span img {
-        width: 60%;
+        width: 11rem;
+        margin: 0rem 1rem;
     }
 
     .sign-page-section form {
