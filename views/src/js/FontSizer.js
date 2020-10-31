@@ -1,3 +1,6 @@
+/**
+ * 
+ */
 function increaseValue() {
     var value = Number(document.getElementById('number').value);
     value = isNaN(value) ? 0 : value;
@@ -10,6 +13,9 @@ function increaseValue() {
     console.log(value);
 }
 
+/**
+ * 
+ */
 function decreaseValue() {
     var value = Number(document.getElementById('number').value);
     value = isNaN(value) ? 0 : value;
@@ -23,6 +29,9 @@ function decreaseValue() {
     console.log(value);
 }
 
+/**
+ * 
+ */
 function newfont() {
     var value = Number(document.getElementById('number').value);
     let width = document.getElementById('container').offsetWidth;

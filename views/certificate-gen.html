@@ -143,7 +143,8 @@
                 <div id="upload-div">
                     <form id="email-form" class="form" method="POST" enctype="multipart/form-data"
                         target="hidden-iframe">
-                        <label for="csv-upload">Upload CSV file with the names of those eligible for the certificate</label>
+                        <label for="csv-upload">Upload CSV file with the names of those eligible for the
+                            certificate</label>
                         <input id="csv-upload" type="file" name="FileUpload" accept=".csv" class="custom-file">
                         <button class="icon">Submit</button>
                     </form>
@@ -190,7 +191,11 @@
     <script src='./src/js/FontSizer.js'></script>
     <script src='./src/js/canvas.js'></script>
     <script>
+<<<<<<< HEAD
        function parse(){
+=======
+        window.onload = function () {
+>>>>>>> d25f4989aa6d11347362b6330c313d1dcfc1ec0f
             let response = document.getElementsByName("hidden-iframe")[0].contentWindow.document
                 .getElementsByTagName("pre")[0].innerText
             response = JSON.parse(response);
@@ -199,7 +204,7 @@
             } else {
                 document.getElementById("error").innerHTML = "Please check the format of your csv file"
             }
-    }
+        }
     </script>
     <script>
         var first = () => {
@@ -216,20 +221,11 @@
             document.getElementById("cert-link").classList.toggle("hide");
         }
     </script>
-    <script>
-        function CopyToClipBoard() {
-            let copyText = document.querySelector("#link");
-
-            copyText.select();
-            copyText.setSelectionRange(0, 99999); /*For mobile devices*/
-
-            document.execCommand("copy");
-
-            alert("Copied Successfully!");
-        }
-    </script>
     <script src='/src/js/FontPicker.js'></script>
     <script>
+        /**
+         * 
+         */
         const fontPicker = new FontPicker(
             "AIzaSyC1c-jtOCKTiFeVfSU6SVT4J3iWIkQ4RYo", // Google API key
             "Open Sans", // Default font
@@ -238,7 +234,6 @@
             }, // Additional options
         );
     </script>
-
     <script src='/src/js/main.js'></script>
 
 </body>
