@@ -173,7 +173,7 @@
     </main>
 
     <footer>
-        <iframe name="hidden-iframe" style="display: none;"></iframe>
+        <iframe name="hidden-iframe" style="display: none;"onload="parse()"></iframe>
     </footer>
 
     <span class="loader">
@@ -190,7 +190,7 @@
     <script src='./src/js/FontSizer.js'></script>
     <script src='./src/js/canvas.js'></script>
     <script>
-        window.onload = function(){
+       function parse(){
             let response = document.getElementsByName("hidden-iframe")[0].contentWindow.document
                 .getElementsByTagName("pre")[0].innerText
             response = JSON.parse(response);
