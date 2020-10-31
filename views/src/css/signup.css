@@ -254,8 +254,7 @@ input {
     display: grid;
     justify-items: center;
     align-content: center;
-    grid-template-columns: auto;
-    width: 100%;
+    grid-template-columns: 100%;
     grid-template-rows: auto auto auto auto auto auto;
 }
 
@@ -408,7 +407,7 @@ footer a img {
     }
 
     .sign-page-section form {
-        width: 50rem;
+        width: 45rem;
     }
 
     #regenerate {
