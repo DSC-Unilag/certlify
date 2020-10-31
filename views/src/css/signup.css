@@ -250,12 +250,6 @@ input {
 
 /* Generated cert link */
 
-#generate{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 5rem 0rem;
-}
 
 .sign-page-section {
     display: grid;
@@ -302,6 +296,12 @@ input {
     margin: 0.2rem 0.5rem;
 }
 
+#generate {
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 5rem 0rem;
+}
 
 /* 
     ellispse curve code
