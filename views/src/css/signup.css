@@ -254,7 +254,7 @@ input {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 5rem;
+    margin: 5rem 0rem;
 }
 
 .sign-page-section {
