@@ -102,7 +102,7 @@ let emailverification = (req, res) => {
             var transporter = nodemailer.createTransport({
               service: "Gmail",
               auth: {
-                user: "fakeeamail@gmail.com",
+                user: "fakeemail@gmail.com",
                 pass: "fakepassword",
               },
             });
