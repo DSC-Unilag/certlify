@@ -1,14 +1,15 @@
 /**
- * 
+ *  Loader container element 
  */
 const containerLoad = document.querySelector(".loader");
+
 /**
- * 
+ * collectors modal element when "Collectors" button is clicked
  */
 const modal = document.querySelector(".collectors-modal");
 
 /**
- * 
+ * Hides Loader
  */
 function HideLoader() {
     containerLoad.classList.toggle("zero-opacity");
@@ -18,7 +19,7 @@ function HideLoader() {
 }
 
 /**
- * 
+ * Shows loader
  */
 function ShowLoader() {
     containerLoad.classList.toggle("zero-opacity");
@@ -26,7 +27,7 @@ function ShowLoader() {
 }
 
 /**
- * 
+ *  
  */
 function CopyToClipBoard() {
     let copyText = document.querySelector("#link");
@@ -40,14 +41,15 @@ function CopyToClipBoard() {
 }
 
 /**
- * 
+ * Hides loader when page has finished rendering.
+ * @type {Window}
  */
 window.onload = function(){
     HideLoader();
 }
 
 /**
- * 
+ * Toggles collectors modal to display/hide.
  */
 function ToggleModal(){
     modal.classList.toggle("hide");
