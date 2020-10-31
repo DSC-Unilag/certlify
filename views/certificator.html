@@ -10,7 +10,7 @@
     -->
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>DSC Unilag Certificate Generator</title>
-    <meta name="msapplication-tap-highlight" , content="none" />
+    <meta name="msapplication-tap-highlight", content="none" />
     <!-- <link rel="manifest" href="/manifest.json"> -->
 
     <meta name="mobile-web-app-capable" content="yes">
@@ -78,7 +78,7 @@
                     autocomplete="current-password" minlength=4 required>
 
                 <p id="password-message" class="message"></p>
-                <button id="done"type="button"  class="sign-log">
+                <button id="done" class="sign-log">
                     Generate
                 </button>
             </form>
@@ -86,7 +86,7 @@
         <section id="generate" class="sign-page-section"style="display:none">
             <h1 class="first-text">A certificate has already been generted for this account. You may regenerate here</h1>
 
-                <button id="regenerate"type="button"  class="sign-log">
+                <button id="regenerate"  class="sign-log">
                     Generate
                 </button>
             
@@ -107,6 +107,16 @@
             <div class="inner-circle"></div>
         </div>
     </span>
+    <script src='/src/js/FontPicker.js'></script>
+    <script>
+        const fontPicker = new FontPicker(
+            "AIzaSyC1c-jtOCKTiFeVfSU6SVT4J3iWIkQ4RYo", // Google API key
+            "Open Sans", // Default font
+            {
+                limit: 40
+            }, // Additional options
+        );
+    </script>
     <script src='/src/js/generator.js'></script>
     <script>
         document.getElementById("regenerate").addEventListener("click",function(){
