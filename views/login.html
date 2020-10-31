@@ -32,13 +32,19 @@
     <link rel="icon" sizes="512x512" href="../imgs/icon.png">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
 
-    <link rel='stylesheet' type='text/css' media='screen' href='src/css/signup.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/signup.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/animations.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css'/>
 </head>
 
 <body>
     <header>
+        <nav class="section-links">
+            <ul class="home-links">
+                <li><a href="/index.html">Home</a>
+                </li>
+            </ul>
+        </nav>
         <span class="logo"><img src="../imgs/hero-dsc-about-unilag.png" alt="DSC logo"></span>
     </header>
 
@@ -61,6 +67,12 @@
             <p>Don't have an account? <a id="login" href="/signup">Sign up</a></p>
         </section>
     </main>
+
+    <footer>
+        <a href="https://github.com/DSC-Unilag/cert" target="_blank">
+            <img src="/imgs/mark-github-512.png" alt="github logo">
+        </a>
+    </footer>
 
     <span class="loader">
         <div class="container-for-loader">
@@ -106,6 +118,7 @@
             return (false)
         }
     </script>
+    <script src="/src/js/sw-install.js"></script>
     <script src='/src/js/main.js'></script>
 </body>
 

@@ -34,7 +34,7 @@
 
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/dashboard.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/animations.css'>
-    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css'/>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css' />
 </head>
 
 <body>
@@ -43,9 +43,9 @@
             <span class="code-logo"><img class="cropped-logo" src="/imgs/code logo.jpg" alt="logo icon"></span>
             <div class="img-line"></div>
         </section>
-        
+
         <span id="profile-image"><img id="user-image" src="/imgs/user.svg" alt="user icon" /></span>
-        
+
         <section class="search-section">
             <input type="search" placeholder="Search" />
             <button onclick=""><img src="/imgs/search.svg" alt=""></button>
@@ -61,10 +61,11 @@
 
         <nav class="section-links">
             <ul class="home-links">
-                <li id="gen-cert"><a href="#">Generated Certificates</a>
+                <li><a href="/index.html">Home</a>
+                </li>
+                <li class="gen-cert"><a href="/dashboard">Issued Certificates</a>
                     <hr class="active-cert">
                 </li>
-                <li><a href="#">Issued Certificates</a></li>
             </ul>
         </nav>
 
@@ -79,7 +80,7 @@
 
     </main>
     <button id="add-cert">&#65291; Add Certificate</button>
-    
+
     <span class="loader">
         <div class="container-for-loader">
             <div class="large-circle">
@@ -92,18 +93,18 @@
     </span>
     <script src='/src/js/main.js'></script>
     <script>
-    // toggle loader 
-    let create = document.getElementById("add-cert");
-    create.addEventListener("click", function () {
-        location.href = "/createcertificate"
-    })
-    var user;
-    var xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "/api/getdashboard", true);
-    //xhttp.setRequestHeader("Content-Type", "application/json");
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-                ShowLoader();
+        let create = document.getElementById("add-cert");
+        create.addEventListener("click", function () {
+            location.href = "/createcertificate"
+        })
+        var user;
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", "/api/getdashboard", true);
+        // toggle loader 
+        ShowLoader();
+        //xhttp.setRequestHeader("Content-Type", "application/json");
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
                 user = JSON.parse(this.responseText)
                 console.log(user)
                 let welcome = document.getElementById("welcome");
@@ -116,7 +117,7 @@
                 <article>
                     <img src="${user.certs[i].thumb}" class="thumb"alt="user certificate" />
                     <h2 class="cert-header">${user.certs[i].name}</h2>
-                    <a href="/manage/?link=${user.certificateUrls[i]}">Manage Certificate</a>
+                    <!-- <a href="/manage/?link=${user.certificateUrls[i]}">Manage Certificate</a> -->
                 </article>
             </section>`
                         } else {
@@ -127,9 +128,9 @@
                 welcome.innerHTML =
                     `<h1>Hi, ${user.name}</h1>
             <p>You have issued <span id="user-cert-number">${user.certificateUrls.length-errors}</span> certificates so far.</p>`
-        // toggle loader
-            HideLoader();    
-        }
+                // toggle loader
+                HideLoader();
+            }
             if (this.readyState == 4 && (this.status == 400 || this.status == 401)) {
                 location.href = "/login"
             }

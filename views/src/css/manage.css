@@ -44,7 +44,7 @@ body {
 
 main {
     display: grid;
-    grid-template-rows: auto auto auto 3rem;
+    grid-template-rows: minmax(7rem, auto) 5rem;
     position: relative;
 }
 

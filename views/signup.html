@@ -39,7 +39,13 @@
 
 <body>
     <header>
-        <span class="logo"><img src="/imgs/hero-dsc-about-unilag.png" alt=""></span>
+        <nav class="section-links">
+            <ul class="home-links">
+                <li><a href="/index.html">Home</a>
+                </li>
+            </ul>
+        </nav>
+        <span class="logo"><img src="/imgs/hero-dsc-about-unilag.png" alt="DSC UNILAG logo"></span>
     </header>
 
     <main>
@@ -65,6 +71,11 @@
             <p>Already have an account? <a id="login" href="login.html">Login</a></p>
         </section>
     </main>
+    <footer>
+        <a href="https://github.com/DSC-Unilag/cert" target="_blank">
+            <img src="/imgs/mark-github-512.png" alt="github logo">
+        </a>
+    </footer>
     <span class="loader">
         <div class="container-for-loader">
             <div class="large-circle">
@@ -75,6 +86,7 @@
             <div class="inner-circle"></div>
         </div>
     </span>
+    <script src="/src/js/sw-install.js"></script>
     <script>
         var form = document.getElementById("form-input");
         let email_text = document.getElementById("email-message");

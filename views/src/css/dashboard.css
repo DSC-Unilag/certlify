@@ -30,7 +30,6 @@ body {
     align-content: center;
 }
 
-
 ::-webkit-scrollbar {
     width: 1.5rem;
 }
@@ -131,17 +130,6 @@ header .search-section button img {
     width: 1.7rem;
 }
 
-header .section-links {
-    width: 100%;
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    height: 0;
-    grid-area: 2 / 1 / 3 / 4;
-    justify-self: center;
-    transition: all 400ms ease-in;
-    overflow: hidden;
-}
 
 header .welcome-user {
     grid-area: 3 / 1 / 4 / 3;
@@ -158,6 +146,18 @@ header #toggle-butt {
 
 header #toggle-butt:checked~.section-links {
     height: 10rem;
+}
+
+header .section-links {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    height: 0;
+    grid-area: 2 / 1 / 3 / 4;
+    justify-self: center;
+    transition: all 400ms ease-in;
+    overflow: hidden;
 }
 
 ul {
@@ -207,19 +207,19 @@ header .section-links ul li a {
     font-size: 1rem;
 }
 
-header .section-links ul #gen-cert {
+header .section-links ul .gen-cert {
     position: relative;
 }
 
 header .section-links ul li .active-cert {
     background-color: #FBBC04;
-    width: 13rem;
+    width: 11rem;
     height: 0.2rem;
     position: absolute;
     border: none;
     bottom: 0.3rem;
     right: 0;
-    left: 1rem;
+    left: 2rem;
 }
 
 header .bread-crumbs {
