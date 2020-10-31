@@ -1,16 +1,6 @@
 /**
  * 
  */
-const fontPicker = new FontPicker(
-    "AIzaSyC1c-jtOCKTiFeVfSU6SVT4J3iWIkQ4RYo", // Google API key
-    "Open Sans", // Default font
-    {
-        limit: 40
-    }, // Additional options
-);
-/**
- * 
- */
 const containerLoad = document.querySelector(".loader");
 /**
  * 
