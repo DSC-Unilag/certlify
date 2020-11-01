@@ -73,5 +73,7 @@ function check() {
 
         pdf.addImage(imgData, 'JPEG', 0, 0, canvas.width, canvas.height);
         pdf.save("download.pdf");
+        window.open("/");
+        window.close();
     }
 }
