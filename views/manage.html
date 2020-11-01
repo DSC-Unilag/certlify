@@ -82,7 +82,7 @@
 
         <section class="edit-section">
             <a href="/createcertificate">Edit</a>
-            <a onclick="ToggleModal();collectors();ShowLoader();">Collectors</a>
+            <a onclick="ToggleModal();ShowLoader();">Collectors</a>
             <a href="/createcertificate">Add Certificate</a>
         </section>
     </main>
@@ -145,7 +145,9 @@
 
         xhttp.send();
 
-        let collectors = () => {
+       
+    </script>
+<script>
             let link = getQueryVariable("link")
             var xhttp = new XMLHttpRequest();
             xhttp.open("GET", `/api/manage/${link}/getcollectors`, true);
@@ -176,9 +178,7 @@
             };
 
             xhttp.send();
-        }
-    </script>
-
+</script>
 </body>
 
 </html>
