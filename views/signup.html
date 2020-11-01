@@ -140,7 +140,8 @@
     </script>
     <script src='/src/js/main.js'></script>
     <script>
-        var xhttp = new XMLHttpRequest();
+        let anon=()=>{
+            var xhttp = new XMLHttpRequest();
            xhttp.open("GET", "/api/anon", false);
            xhttp.setRequestHeader("Content-Type", "application/json");
            xhttp.onreadystatechange = function () {
@@ -150,6 +151,8 @@
            };
 
            xhttp.send();
+        }
+        
    </script>
 </body>
 
