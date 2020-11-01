@@ -59,7 +59,7 @@ function check() {
         let ctx = canvas.getContext("2d");
         ctx.imageSmoothingEnabled = false;
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        ctx.font = `${boundary.fontsize * rat}px ${boundary.fontfamily}`;
+        ctx.font = `${boundary.fontsize * width}px ${boundary.fontfamily}`;
         ctx.fillStyle = boundary.color;
         ctx.textAlign = "center";
         ctx.fillText(person, center, boundary.bottom[1] * (width / rat));

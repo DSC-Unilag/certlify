@@ -118,8 +118,8 @@ function mark() {
         let width = canvas.width;
         let center = (boundary.left[0] * width + boundary.right[0] * width) / 2
         boundary.color = document.getElementById("color").value;
-        boundary.fontsize = Number(document.getElementById('number').value) / (rat)
-        ctx.font = `${boundary.fontsize * rat}px ${boundary.fontfamily}`;
+      //  
+        ctx.font = `${boundary.fontsize * width}px ${boundary.fontfamily}`;
         // ctx.className = "apply-font";
         ctx.fillStyle = boundary.color;
         //ctx2.font = `${boundary.fontsize * canvas2.height}px Verdana`;
@@ -130,20 +130,6 @@ function mark() {
     }
 }
 
-// This function enables the download of the certificate
-function downloadfunc() {
-    if (boundary.right && boundary.left && boundary.bottom) {
-        const a = document.createElement("a");
-        let canvas2 = document.getElementById("print");
-        a.href = canvas2.toDataURL();
-        a.download = "canvas-image.png";
-        a.click();
-        document.body.removeChild(a);
-    } else {
-        prompt("select all boundaries");
-    }
-
-}
 // On start, the canvas is drawn, and the various event listeners for the boundary selectors are initializes
 function start() {
     getBase64Image(img);
@@ -152,6 +138,8 @@ function start() {
     document.getElementById("container").classList.toggle("show");
     document.getElementById("value-input").classList.toggle("hide");
     mark();
+    let width = document.getElementById('container').offsetWidth;
+    boundary.fontsize = Number(document.getElementById('number').value) / (width);
     let left_border = document.getElementById("left_border")
     let right_border = document.getElementById("right_border");
     let bottom = document.getElementById("bottom");
@@ -248,7 +236,7 @@ function check() {
         let ctx = canvas.getContext("2d");
         ctx.imageSmoothingEnabled = false;
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        ctx.font = `${boundary.fontsize * rat}px ${boundary.fontfamily}`;
+        ctx.font = `${boundary.fontsize * width}px ${boundary.fontfamily}`;
         ctx.fillStyle = boundary.color;
         ctx.textAlign = "center";
         ctx.fillText(person, center, boundary.bottom[1] * (width / rat));
