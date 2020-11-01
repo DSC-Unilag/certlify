@@ -275,6 +275,8 @@ input {
     margin: 0.1rem 0rem 2rem 0rem;
 }
 
+
+
 .sign-page-section .form-input {
     grid-template-columns: minmax(auto, 60rem);
 }
@@ -297,14 +299,14 @@ input {
 }
 
 #generate {
-    display: flex; 
+    display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin: 5rem 0rem;
 }
 
 /* 
-    ellispse curve code
+ellispse curve code
 */
 
 .ellipse-curve {
@@ -418,6 +420,11 @@ footer a img {
 
     .sign-page-section form {
         width: 50rem;
+    }
+
+    .sign-page-section #email-input {
+        grid-template-columns: minmax(auto, 60rem) 50%;
+        justify-content: center;
     }
 
     #regenerate {
