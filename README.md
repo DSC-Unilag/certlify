@@ -22,12 +22,15 @@ $ cd cert
 $ npm install
 ```
 
-####  3. Running The Application
+####  3. Configure Environment Variables
+The application uses <strong>mongoDB<strong>, and this requires a connection string. Open the config folder and edit the database.js file with your details.
+
+####  4. Running The Application
 ```sh
 $ npm run dev
 ```
 
-####  4. Using The Application
+####  5. Using The Application
 Open chrome and go to
 ```sh
 http://localhost:3333/
