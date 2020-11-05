@@ -3,6 +3,7 @@
 	Here I define functions to be used in my routes again, seems like man's just doing the same things over and over
 
 */
+
 // Bring in the links model
 const  Link= require("../models/links");
 
@@ -25,71 +26,92 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage }).single('FileUpload');
 
+// This gets the users from the csv file to the json to be stored in the mongoDB database
 const addEligibleUsers = (req, res) => {
+
+    // An easy way to know the function works, let it log something
     console.log("started")
+
+    // The real upload part
     upload(req,res,function (err){
-      if (err instanceof multer.MulterError){
-        console.log("multer error")
-        throw err
-      }else if(err){
-        throw err
-      }else{
-        const csvFilePath=__dirname+`/${req.session.email}.csv`
-        csv()
-      .fromFile(csvFilePath)
-      .then((users)=>{
-          console.log(users);
-        Link.findOne({link:req.params.link},(err,cert)=>{
-            if (cert){
-                if(cert.issuer==req.session.email){
-                    for (i in users){
-                        users[i].status=false;
-                        if(!users[i].email){
-                             res.status(400)
-                            return res.json({
-                                status: false,
-                                message: "check the format of your csv file"
-                            })
-                        }
-                    }
-                    cert.eligibleUsers=users;
-                    cert.save((err)=>{
-                        if(err) {
-                            console.log(err);
-                            res.status(400)
+
+        // We have to be sure there's no error, so we check to be safe
+        if (err instanceof multer.MulterError) {
+            console.log("multer error")
+            throw err
+        } else if (err) {
+            throw err
+        } else {
+
+            // Set save location and format
+            const csvFilePath=__dirname+`/${req.session.email}.csv`
+            csv()
+                .fromFile(csvFilePath) // Converts the csv file to json
+                .then((users) => {
+                    console.log(users);
+                    Link.findOne({ link:req.params.link }, (err, cert) => {
+
+                        // We see if there's actually a certificate to collect, yunno, it only makes sense
+                        if (cert) {
+
+                            // You must be logged in to upload eligible users
+                            if (cert.issuer == req.session.email) {
+
+                                // Deal with each user in the uploaded csv
+                                for (i in users) {
+
+                                    // This is set to true on collection of the certificate
+                                    users[i].status = false;
+
+                                    // Should a user row not have email
+                                    if (!users[i].email) {
+                                        res.status(400)
+                                        return res.json({
+                                            status: false,
+                                            message: "check the format of your csv file"
+                                        })
+                                    }
+                                }
+
+                                // Since each user row has been verified to contain email, they're eligible to get the certificate
+                                cert.eligibleUsers = users;
+
+                                // Now after all is said and done, saving now would make sense
+                                cert.save((err) => {
+                                    if (err) {
+                                        console.log(err);
+                                        res.status(400)
+                                        res.json({
+                                            status: false,
+                                            message: "check the format of your csv file"
+                                        })
+                                    } else {
+                                        console.log("done")
+                                        res.status(201)
+                                        res.json({
+                                            status: true,
+                                            message: "successfully added eligible users"
+                                        })
+                                    }
+                                })
+                            } else {
+                                res.status(401);
+                                res.json({
+                                    status:false,
+                                    message:"unauthorized access"
+                                })
+                            }
+                        } else {
+                            res.status(404)
                             res.json({
-                                status: false,
-                                message: "check the format of your csv file"
-                            })
-                        }
-                        else{
-                            console.log("done")
-                            res.status(201)
-                            res.json({
-                                status: true,
-                                message: "successfully added eligible users"
+                                status:false,
+                                message:"certificate does not exist"
                             })
                         }
                     })
-                }else{
-                    res.status(401);
-                    res.json({
-                        status:false,
-                        message:"unauthorized access"
-                    })
-                }
-            }else{
-                res.status(404)
-                res.json({
-                    status:false,
-                    message:"certificate does not exist"
                 })
             }
         })
-      })
-      }
-  
-    })
-  }
+    }
 
 module.exports.addNew = addEligibleUsers;

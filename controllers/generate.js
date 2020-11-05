@@ -1,3 +1,4 @@
+// Load dependencies, you have to do this
 const Link = require("../models/links");
 const nodemailer = require("nodemailer");
 const config = require("../config/database");
@@ -201,6 +202,7 @@ let generate = (req, res) => {
     }
 };
 
+// It's always nice to give out something, here's our little gift to the project
 module.exports.name = name;
 module.exports.emailverification = emailverification;
 module.exports.details = details;
