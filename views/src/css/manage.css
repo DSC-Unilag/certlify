@@ -292,6 +292,7 @@ header .bread-crumbs {
     cursor: pointer;
     background-color: white;
     transition: 90ms all ease-in;
+    text-decoration: none;
 }
 
 /* Modal  */
@@ -309,8 +310,9 @@ header .bread-crumbs {
 }
 
 .collectors-modal .collectors-panel {
-    width: 100%;
+    width: 90%;
     background: white;
+    display: grid;
     color: black;
     border-top-left-radius: 2.5rem;
     border-top-right-radius: 2.5rem;
@@ -346,10 +348,53 @@ th,
 td {
     border: none;
     border-collapse: collapse;
-    text-align: center;
+    text-align: left;
     padding: 0.4rem;
+    color: #BBBBBB;
 }
 
+.table-section {
+    display: inline-block;
+    justify-self: center;
+    width: 80%;
+}
+
+#collectors {
+    width: 100%;
+    border-collapse:separate; 
+    border-spacing:0 1rem;
+}
+
+#collectors tbody {
+    width: 90%;
+}
+
+#collectors tbody tr {
+    width: 100%;
+    margin-bottom: 0.3rem;
+    border: 1px solid lightgrey;
+    box-shadow: 1px 3px 5px lightgrey;
+}
+
+#collectors tbody tr:nth-child(1) {
+    text-align: left;
+    border: none;
+    box-shadow: none;
+    margin: 0;
+}
+
+#collectors tbody tr td {
+    color: black;
+    font-weight: bolder;
+}
+
+.color-green {
+    color: green !important;
+}
+
+.color-red {
+    color: red !important;
+}
 
 @media screen and (min-width: 45rem) {
     header {
@@ -444,6 +489,10 @@ td {
 
     .main-dashboard .edit-section a {
         margin: 0rem 1.3rem;
+    }
+
+    .collectors-modal .collectors-panel {
+        overflow-x: unset;
     }
 }
 

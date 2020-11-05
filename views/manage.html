@@ -71,7 +71,7 @@
         <section class="volunteer-header">
             <h1 id="title"></h1>
             
-            <a href="/dashboard" id="back-button"><img src="/imgs/arrow.svg"></a>
+            <a href="/dashboard" id="back-button"><img src="/imgs/arrow.svg" alt="back to dashboard"></a>
         </section>
     </header>
 
@@ -81,8 +81,8 @@
         </section>
 
         <section class="edit-section">
-            <a href="/createcertificate">Edit</a>
-            <a onclick="ToggleModal();ShowLoader();">Collectors</a>
+            <a href="">Upload CSV</a>
+            <a onclick="ToggleModal();collectors();ShowLoader();">Collectors</a>
             <a href="/createcertificate">Add Certificate</a>
         </section>
     </main>
@@ -103,14 +103,16 @@
                 <a onclick="ToggleModal()" id="close-button">&#x2716;</a>
                 <h3>Collectors</h3>
             </span>
-            <table id="collectors">
-                <tr>
-                    <th>S/N</th>
-                    <th>Name on Certificate</th>
-                    <th>Email Address</th>
-                    <th>Status</th>
-                </tr>
-            </table>
+            <section class="table-section">
+                <table id="collectors">
+                    <tr>
+                        <th>S/N</th>
+                        <th>Name on Certificate</th>
+                        <th>Email Address</th>
+                        <th>Status</th>
+                    </tr>
+                </table>
+            </section>
         </section>
     </section>
 
@@ -169,8 +171,9 @@
                     <td>${Number(i) + 1}</td>
                     <td>${collectors[i].name || ""}</td>
                     <td>${collectors[i].email}</td>
-                    <td>${collected}</td>
+                    <td class="collected-status">${collected}</td>
                 </tr>
+                
                         `
                     }
                     HideLoader();
