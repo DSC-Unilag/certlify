@@ -147,7 +147,9 @@
 
         xhttp.send();
 
-        let collectors = () => {
+       
+    </script>
+<script>
             let link = getQueryVariable("link")
             var xhttp = new XMLHttpRequest();
             xhttp.open("GET", `/api/manage/${link}/getcollectors`, true);
@@ -179,9 +181,7 @@
             };
 
             xhttp.send();
-        }
-    </script>
-
+</script>
 </body>
 
 </html>

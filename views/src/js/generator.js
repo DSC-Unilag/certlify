@@ -52,7 +52,7 @@ img.onload = start;
 
 function check() {
     if (boundary.right && boundary.left && boundary.bottom) {
-        let width = 1200;
+        let width = img.width;
         let center = (boundary.left[0] * width + boundary.right[0] * width) / 2
         document.getElementById("canvas").innerHTML = `<canvas id="my_canvas"width="${width}" height="${width / rat}"></canvas>`
         let canvas = document.getElementById("my_canvas");
@@ -73,7 +73,6 @@ function check() {
 
         pdf.addImage(imgData, 'JPEG', 0, 0, canvas.width, canvas.height);
         pdf.save("download.pdf");
-        window.open("/");
-        window.close();
+        window.location.href = "/";
     }
 }

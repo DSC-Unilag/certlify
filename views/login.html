@@ -60,7 +60,7 @@
                     autocomplete="current-password" minlength=8 required>
 
                 <p id="password-message" class="message"></p>
-                <button type="button" onclick="main()" class="sign-log">
+                <button type="submit" onclick="main()" class="sign-log">
                     Login
                 </button>
             </form>
@@ -97,7 +97,7 @@
         }
         let send = (data) => {
             var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "/api/login", true);
+            xhttp.open("POST", "/api/login", false);
             xhttp.setRequestHeader("Content-Type", "application/json");
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
@@ -120,6 +120,20 @@
     </script>
     <!-- <script src="/src/js/sw-install.js"></script> -->
     <script src='/src/js/main.js'></script>
+    <script>
+           let anon=()=>{
+            var xhttp = new XMLHttpRequest();
+           xhttp.open("GET", "/api/anon", false);
+           xhttp.setRequestHeader("Content-Type", "application/json");
+           xhttp.onreadystatechange = function () {
+               if (this.readyState == 4) {
+                   location.href = "/dashboard";
+               }
+           };
+
+           xhttp.send();
+        }
+    </script>
 </body>
 
 </html>

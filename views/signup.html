@@ -64,7 +64,7 @@
                 <input type="password" id="con-password" placeholder="Confirm your password" name="con-password"
                     autocomplete="new-password" minlength=8 required>
                 <p style="display:none"id="password-message" class="message"></p>
-                <button type="button" onclick="matchpassword()" class="sign-log">
+                <button type="submit" onclick="matchpassword()" class="sign-log">
                     Sign up
                 </button>
             </form>
@@ -139,6 +139,21 @@
         }
     </script>
     <script src='/src/js/main.js'></script>
+    <script>
+        let anon=()=>{
+            var xhttp = new XMLHttpRequest();
+           xhttp.open("GET", "/api/anon", false);
+           xhttp.setRequestHeader("Content-Type", "application/json");
+           xhttp.onreadystatechange = function () {
+               if (this.readyState == 4) {
+                   location.href = "/dashboard";
+               }
+           };
+
+           xhttp.send();
+        }
+        
+   </script>
 </body>
 
 </html>
