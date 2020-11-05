@@ -1,7 +1,7 @@
 .loader {
     display: flex;
     justify-content: center;
-    position: absolute;
+    position: fixed;
     background: white;
     align-items: center;
     width: 100%;
