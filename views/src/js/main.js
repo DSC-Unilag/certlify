@@ -46,6 +46,7 @@ function CopyToClipBoard() {
  */
 window.onload = function(){
     HideLoader();
+    collectedStatusColor();
 }
 
 /**
@@ -53,4 +54,17 @@ window.onload = function(){
  */
 function ToggleModal(){
     modal.classList.toggle("hide");
+}
+
+function collectedStatusColor(){
+    let statusEles = document.querySelectorAll(".collected-status");
+
+    statusEles.forEach(ele => {
+        if(ele.textContent.match("Collected")){
+            ele.classList.add("color-green");
+        }
+        else{
+            ele.classList.add("color-red");
+        }        
+    });
 }
