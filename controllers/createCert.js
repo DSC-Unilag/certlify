@@ -1,3 +1,4 @@
+// Load all dependencies
 const User = require("../models/users");
 var uniqid = require('uniqid');
 const Link = require("../models/links");
