@@ -152,8 +152,8 @@ let emailverification = (req, res) => {
             var transporter = nodemailer.createTransport({
               service: "Gmail",
               auth: {
-                user: "fakeemail@gmail.com"||process.env.EMAIL,
-                pass: "fakepassword"||process.env.PASSWORD,
+                user: process.env.EMAIL,
+                pass: process.env.PASSWORD,
               },
             });
 

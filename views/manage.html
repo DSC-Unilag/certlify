@@ -82,7 +82,7 @@
 
         <section class="edit-section">
             <a href="">Upload CSV</a>
-            <a onclick="ToggleModal();collectors();ShowLoader();">Collectors</a>
+            <a onclick="ToggleModal();ShowLoader();">Collectors</a>
             <a href="/createcertificate">Add Certificate</a>
         </section>
     </main>
@@ -118,6 +118,7 @@
 
     <script src='/src/js/main.js'></script>
     <script>
+        // This function parses the link variable in the query string in the url. The string stored by it is needed to make the api request for the properties of the certificate
         function getQueryVariable(variable) {
             var query = window.location.search.substring(1);
             var vars = query.split('&');
@@ -132,15 +133,23 @@
     </script>
     <script>
         ShowLoader();
+        // parsing the link variable
         let link = getQueryVariable("link")
+        // variable for sharable link;
+        let ShareLink;
+        // Making a XHR request for the name and image source at the api endpoint
         var xhttp = new XMLHttpRequest();
         xhttp.open("GET", `/api/manage/${link}/details`, true);
         xhttp.setRequestHeader("Content-Type", "application/json");
         xhttp.onreadystatechange = function () {
+            // When the response is recieved and the status code is 200
             if (this.readyState == 4 && this.status == 200) {
+                // parse the data
                 let data = JSON.parse(this.responseText)
+                // The data has the name property for the name of the certificate and the src property for the src of the certificate;
                 document.getElementById("title").innerHTML = data.name;
                 document.getElementById("template").src = data.src;
+                ShareLink=data.share;
                 HideLoader();
             }
         };
@@ -150,28 +159,30 @@
        
     </script>
 <script>
-            let link = getQueryVariable("link")
-            var xhttp = new XMLHttpRequest();
-            xhttp.open("GET", `/api/manage/${link}/getcollectors`, true);
-            xhttp.setRequestHeader("Content-Type", "application/json");
-            xhttp.onreadystatechange = function () {
+    // another XHR request 
+            var xhttp2 = new XMLHttpRequest();
+            xhttp2.open("GET", `/api/manage/${link}/getcollectors`, true);
+            xhttp2.setRequestHeader("Content-Type", "application/json");
+            xhttp2.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
                     let data = JSON.parse(this.responseText)
-                    // getElementById("title").innerHTML=data.
                     let collectors = data.collectors;
                     for (i in collectors) {
                         let collected;
+                        let style;
                         if (collectors[i].status) {
                             collected = "Collected"
+                            style="style='color:green'"
                         } else {
                             collected = "Not Collected"
+                             style="style='color:red'"
                         }
                         document.getElementById("collectors").innerHTML += `
                         <tr>
                     <td>${Number(i) + 1}</td>
                     <td>${collectors[i].name || ""}</td>
                     <td>${collectors[i].email}</td>
-                    <td class="collected-status">${collected}</td>
+                    <td class="collected-status"${style}>${collected}</td>
                 </tr>
                 
                         `
@@ -180,7 +191,7 @@
                 }
             };
 
-            xhttp.send();
+            xhttp2.send();
 </script>
 </body>
 

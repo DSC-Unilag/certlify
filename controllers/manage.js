@@ -52,6 +52,7 @@ let details=(req,res)=>{
                     name:cert.name,
                     src:cert.src,
                     link:req.params.link,
+                    share:req.hostname + "/certificate/" + req.params.link,
                     boundary:cert.boundary
                 });
             }else{
