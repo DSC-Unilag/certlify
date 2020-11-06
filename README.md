@@ -49,3 +49,5 @@ To view the api documentation, visit [editor.swagger.io](https://app.swaggerhub.
 *  **geektutor**
 *  **bolubee101**
 *  **sunkanmii**
+*  **[Ibrahim Salami](https://www.behance.net/ibrahimsalami)**
+*  **Lateefah**
