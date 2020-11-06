@@ -1,26 +1,44 @@
-window.addEventListener("resize", function () {
-    mark();
-});
+/**
+ * THIS SCRIPT IS WHERE THE BOUNDARIES ARE SET FOR A PARTICULAR CERTIFICATE TEMPLATE AND SENT TO THE SERVER FOR STORAGE
+ * */
+// This array holds the various prompts text that would be diplayed on the screen depending on what boundary is selected
 let prompts = ["Please select the left boundary of the space allocated for the name", "Please select the right boundary of the space allocated for the name", "Please select the bottom boundary of the space allocated for the name", ""];
+/**
+ * Variable to hold the string that would be printed on the certificate
+ */
 let person;
+/**
+ * variable to keep track of which prompt is active in the array.
+ */
 let pos = 0;
+/**
+ * This is the object that would be stringified and sent to the server.
+ * @type {object}
+ */
 let data = {};
-// The boundary object to store the x and y coordinates of the text area boundaries for left, right and bottom
-//let active=0;
-//let textareas=[]
+/**
+ * This object would hold the boundary for the space selected to write the name on. It has a global scope, therefore the various properties are filled all over the application
+ * @type {object}
+ * @property {array} left - The normalized coordinates for the left boundary of the name space for the certificate
+ * @property {array} right - The normalized coordinates for the left boundary of the name space for the certificate
+ * @property {array} bottom - The normalized coordinates for the bottom boundary of the name space(only the y coordinate is actually needed)
+ * @property {number} fontsize - The normalized fontsize of the text
+ * @property {string} color - The color of the font that would be used to write on the canvas
+ */
 let boundary = {};
-//let height = 0;
-// Initializing a new image and assigning it to a source
+/**
+ * Initializing a new image
+ */
 let img = new Image();
 
-
+/**
+ * @param {object} event 
+ */
 let loadFile = function (event) {
     img.src = URL.createObjectURL(event.target.files[0]);
 };
 
-
-//    img.src = "./DSC.png"
-// calculating the image width to height ratio to enable proper scaling of canvas dimensions irrespective of screen size 
+// This variable would store the image width to height ratio to enable proper scaling of canvas dimensions irrespective of screen size 
 var rat
 // This function changes the content of the prompt heading that guides users on how to select boundaries 
 function selector(p, prompts) {
@@ -31,16 +49,22 @@ function selector(p, prompts) {
 // This function creates the canvas element and draws the image inside it. 
 
 // This function returns the normalized coordinates of mouse clicks made on the canvas. These coordinates are used to mark the boundaries of the text
+// The normalized coordinates is just the ratio of the actual coordinate component(x or y) and the total span of the plane on which that component lies(width or height). This normalized coordinates can then be converted to appear the same depending on the screen size(size of canvas) 
 function getCursorPosition(canvas, event) {
+    /**
+     * google how to get the position clicked on a an html element.
+     */
     const rect = canvas.getBoundingClientRect()
     let width = document.getElementById('container').offsetWidth;
     let height = width / rat;
     let x = event.clientX - rect.left
     let y = event.clientY - rect.top
+    /**
+     * normalizing the coordinates;
+     */
     x = x / width;
     y = y / height;
-
-
+    // Pos is 0 when selecting the left boundart
     if (pos == 0) {
         if (boundary.right && x > boundary.right[0]) {
             prompt("left boundary must be to the left of right boundary")
@@ -48,8 +72,7 @@ function getCursorPosition(canvas, event) {
             boundary.left = [x, y];
             mark();
         }
-
-        //localStorage.setItem("boundary", JSON.stringify(boundary));
+    // pos is 1 when selecting the right boundary.
     } if (pos == 1) {
         if (boundary.left && x < boundary.left[0]) {
             prompt("right boundary must be to the right of left boundary")
@@ -57,12 +80,10 @@ function getCursorPosition(canvas, event) {
             boundary.right = [x, y]
             mark();
         }
-
-        //localStorage.setItem("boundary", JSON.stringify(boundary));
+    // pos is 2 when selecting the bottom boundary; 
     } if (pos == 2) {
         boundary.bottom = [x, y];
         mark();
-        // localStorage.setItem("boundary", JSON.stringify(boundary));
     }
 
 }
@@ -118,14 +139,9 @@ function mark() {
         let width = canvas.width;
         let center = (boundary.left[0] * width + boundary.right[0] * width) / 2
         boundary.color = document.getElementById("color").value;
-      //  
         ctx.font = `${boundary.fontsize * width}px ${boundary.fontfamily}`;
-        // ctx.className = "apply-font";
         ctx.fillStyle = boundary.color;
-        //ctx2.font = `${boundary.fontsize * canvas2.height}px Verdana`;
-        //ctx2.fillStyle = boundary.color;
         ctx.textAlign = "center";
-        //ctx2.textAlign = "center";
         ctx.fillText(person, center, boundary.bottom[1] * (width / rat));
     }
 }
@@ -243,3 +259,7 @@ function check() {
 
     }
 }
+
+window.addEventListener("resize", function () {
+    mark();
+});
