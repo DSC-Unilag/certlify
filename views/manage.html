@@ -132,6 +132,10 @@
         <p id="error" style="color:red;"></p>
     </section>
     
+    <footer>
+        <iframe name="hidden-iframe" style="display: none;"onload="parse()"></iframe>
+    </footer>
+
     <script src='/src/js/main.js'></script>
     <script>
         // This function parses the link variable in the query string in the url. The string stored by it is needed to make the api request for the properties of the certificate
@@ -146,6 +150,17 @@
             }
             console.log('Query variable %s not found', variable);
         }
+        function parse(){
+            let response = document.getElementsByName("hidden-iframe")[0].contentWindow.document
+                .getElementsByTagName("pre")[0].innerText
+            response = JSON.parse(response);
+            if (response.status) {
+                next();
+            } else {
+                document.getElementById("error").innerHTML = "Please check the format of your csv file"
+            }
+        }
+
     </script>
     <script>
         ShowLoader();
