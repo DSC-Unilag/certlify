@@ -9,6 +9,10 @@ const containerLoad = document.querySelector(".loader");
 const modal = document.querySelector(".collectors-modal");
 
 /**
+ * csv modal class
+ */
+const csv_modal = document.querySelector(".edit-cert-section");
+/**
  * Hides Loader
  */
 function HideLoader() {
@@ -27,7 +31,7 @@ function ShowLoader() {
 }
 
 /**
- *  
+ * Copy text to clipboard. 
  */
 function CopyToClipBoard() {
     let copyText = document.querySelector("#link");
@@ -46,7 +50,6 @@ function CopyToClipBoard() {
  */
 window.onload = function(){
     HideLoader();
-    collectedStatusColor();
 }
 
 /**
@@ -56,11 +59,15 @@ function ToggleModal(){
     modal.classList.toggle("hide");
 }
 
+function ToggleCSVModal(){
+    csv_modal.classList.toggle("hide");
+}
+
 function collectedStatusColor(){
     let statusEles = document.querySelectorAll(".collected-status");
 
     statusEles.forEach(ele => {
-        if(ele.textContent.match("Collected")){
+        if(ele.textContent.localeCompare("Collected") === 0){
             ele.classList.add("color-green");
         }
         else{

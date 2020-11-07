@@ -37,6 +37,16 @@
 </head>
 
 <body>
+    <span class="loader">
+        <div class="container-for-loader">
+            <div class="large-circle">
+            </div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+        </div>
+    </span>
     <header>
         <section class="logo-section">
             <span class="code-logo"><img class="cropped-logo" src="/imgs/code logo.jpg" alt="logo icon"></span>
@@ -81,26 +91,16 @@
         </section>
 
         <section class="edit-section">
-            <a href="">Upload CSV</a>
-            <a onclick="ToggleModal();ShowLoader();">Collectors</a>
+            <a onclick="ToggleCSVModal()">Upload CSV</a>
+            <a onclick="ToggleModal();">Collectors</a>
             <a href="/createcertificate">Add Certificate</a>
         </section>
     </main>
-    <span class="loader">
-        <div class="container-for-loader">
-            <div class="large-circle">
-            </div>
-            <div class="inner-circle"></div>
-            <div class="inner-circle"></div>
-            <div class="inner-circle"></div>
-            <div class="inner-circle"></div>
-        </div>
-    </span>
 
     <section aria-live="polite" class="collectors-modal hide">
         <section class="collectors-panel">
             <span class="table-header">
-                <a onclick="ToggleModal()" id="close-button">&#x2716;</a>
+                <a onclick="ToggleModal()" class="close-button">&#x2716;</a>
                 <h3>Collectors</h3>
             </span>
             <section class="table-section">
@@ -115,7 +115,23 @@
             </section>
         </section>
     </section>
-
+    
+    <section id="add-email-modal" class="edit-cert-section hide">
+        <article class="main-upload">
+            <a onclick="ToggleCSVModal()" class="close-button">&#x2716;</a>
+            <div class="upload-div">
+                <form id="email-form" class="form" method="POST" enctype="multipart/form-data"
+                target="hidden-iframe">
+                <label for="csv-upload">Upload CSV file with the names of those eligible for the
+                    certificate</label>
+                    <input id="csv-upload" type="file" name="FileUpload" accept=".csv" class="custom-file" required>
+                    <button class="icon">Submit</button>
+                </form>
+            </div>
+        </article>
+        <p id="error" style="color:red;"></p>
+    </section>
+    
     <script src='/src/js/main.js'></script>
     <script>
         // This function parses the link variable in the query string in the url. The string stored by it is needed to make the api request for the properties of the certificate
@@ -134,7 +150,7 @@
     <script>
         ShowLoader();
         // parsing the link variable
-        let link = getQueryVariable("link")
+        let link = getQueryVariable("link");
         // variable for sharable link;
         let ShareLink;
         // Making a XHR request for the name and image source at the api endpoint
@@ -150,10 +166,10 @@
                 document.getElementById("title").innerHTML = data.name;
                 document.getElementById("template").src = data.src;
                 ShareLink=data.share;
-                HideLoader();
+                // HideLoader();
             }
         };
-
+        
         xhttp.send();
 
        
@@ -184,10 +200,10 @@
                     <td>${collectors[i].email}</td>
                     <td class="collected-status"${style}>${collected}</td>
                 </tr>
-                
                         `
                     }
                     HideLoader();
+                    collectedStatusColor();
                 }
             };
 

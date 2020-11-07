@@ -318,7 +318,7 @@ header .bread-crumbs {
   position: relative;
 }
 
-.main-func-manage .edit-cert-section #close-button {
+.main-func-manage .edit-cert-section .close-button, .close-button {
   font-size: 2rem;
   width: 3rem;
   color: #2196f3;
@@ -326,20 +326,26 @@ header .bread-crumbs {
   text-decoration: none;
   box-shadow: none;
   height: 4rem;
+  cursor: pointer;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.main-func-manage .edit-cert-section #close-button:hover {
+.close-button{
+  color: white;
+  width: 1.5rem;
+}
+
+.main-func-manage .edit-cert-section .close-button:hover, .close-button:hover {
   color: red;
 }
 
-.main-func-manage .edit-cert-section #close-button:focus {
+.main-func-manage .edit-cert-section .close-button:focus, .close-button:focus {
   color: rgb(247, 62, 62);
 }
 
-.main-func-manage .edit-cert-section #close-button:active {
+.main-func-manage .edit-cert-section .close-button:active {
   color: rgb(245, 59, 59);
 }
 
