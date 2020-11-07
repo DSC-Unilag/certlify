@@ -337,6 +337,8 @@ header .bread-crumbs {
     border-radius: 0.2rem;
     margin: 1rem 0rem 4rem 0rem;
     cursor: pointer;
+    justify-self: center;
+    width: 13rem;
     transition: 90ms all ease-in;
 }
 
