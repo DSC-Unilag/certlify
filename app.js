@@ -9,7 +9,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const config = require("./config/database");
 let configuration = process.env.DATABASE || config.database;
-const Link = require("./models/links");
+const Links = require("./models/links");
 var jwt = require("jsonwebtoken");
 let secret = process.env.DATABASE || config.secret;
 // connect to database
@@ -83,7 +83,24 @@ app.get("/manage", (req, res) => {
   if (!req.session.email&&!req.session.anon) {
     return res.redirect("/login");
   }else {
-    res.sendFile(__dirname + "/views/manage.html");
+    if(req.query.link){
+      Links.findOne({ link:req.query.link}, function (err, cert) {
+        if(cert){
+            if(cert.issuer==req.session.email){
+              res.sendFile(__dirname + "/views/manage.html");
+            }else{
+                res.status(401)
+                res.redirect("/login");
+            }
+        }else{
+            res.sendFile(__dirname+"/views/404-page.html");
+        }
+    })
+      
+    }else{
+      res.sendFile(__dirname+"/views/404-page.html");
+    }
+    
   } 
 })
 
@@ -102,11 +119,7 @@ app.get("/certificate/:link", (req, res) => {
             res.status(200);
             return res.sendFile(__dirname + "/views/emailverify.html");
       } else {
-        res.status(400);
-        res.json({
-          status: false,
-          message: "invalid certificate link"
-        })
+        res.sendFile(__dirname+"/views/404-page.html");
       }
     })
   
@@ -115,7 +128,7 @@ app.get("/certify/:jwt",(req,res)=>{
   let token=req.params.jwt
   jwt.verify(token, secret, function(err, data) {
     if(err){
-      res.send("404");
+      res.sendFile(__dirname+"/views/404-page.html");
     }else{
       req.session.generator=data.email;
       req.session.link=data.link;

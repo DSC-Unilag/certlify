@@ -221,7 +221,30 @@ const status=(req,res)=>{
 	}
 }
 
+let logout=(req,res)=>{
+		if (req.session) {
+		  req.session.destroy(err => {
+			if (err) {
+			  res.status(400)
+			  res.json({
+				  status:false,
+				message:"unable to logout"
+			})
+			} else {
+			  res.json({
+				  status:true,
+				  message:"logout successful"
+			  })
+			}
+		  });
+		} else {
+		  res.end()
+		}
+	  
+}
+
 module.exports.login = login;
 module.exports.register = register;
 module.exports.anon = anon;
 module.exports.status = status;
+module.exports.logout=logout;
