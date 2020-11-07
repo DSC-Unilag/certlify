@@ -30,7 +30,7 @@ const app = express();
 // middlewares
 app.use(
   session({
-    secret: process.env.DATABASE || config.secret,
+    secret: process.env.SECRET || config.secret,
     store: new MongoStore({ mongooseConnection: db }),
     resave: false,
     saveUninitialized: false,
