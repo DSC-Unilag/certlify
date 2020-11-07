@@ -126,10 +126,10 @@
                     certificate</label>
                     <input id="csv-upload" type="file" name="FileUpload" accept=".csv" class="custom-file" required>
                     <button class="icon">Submit</button>
+                    <p id="error" style="color:red;"></p>
                 </form>
             </div>
         </article>
-        <p id="error" style="color:red;"></p>
     </section>
     
     <footer>
@@ -155,7 +155,7 @@
                 .getElementsByTagName("pre")[0].innerText
             response = JSON.parse(response);
             if (response.status) {
-                next();
+                document.getElementById("error").innerHTML = "Emails added successfully"
             } else {
                 document.getElementById("error").innerHTML = "Please check the format of your csv file"
             }
@@ -180,6 +180,7 @@
                 // The data has the name property for the name of the certificate and the src property for the src of the certificate;
                 document.getElementById("title").innerHTML = data.name;
                 document.getElementById("template").src = data.src;
+                document.getElementById("email-form").setAttribute("action", `/api/addeligibleusers/${link}`);
                 ShareLink=data.share;
                 // HideLoader();
             }

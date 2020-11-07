@@ -61,6 +61,7 @@ function ToggleModal(){
 
 function ToggleCSVModal(){
     csv_modal.classList.toggle("hide");
+    document.getElementById("error").innerHTML = ""
 }
 
 function collectedStatusColor(){

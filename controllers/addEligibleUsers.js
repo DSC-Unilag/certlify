@@ -74,8 +74,9 @@ const addEligibleUsers = (req, res) => {
                                 }
 
                                 // Since each user row has been verified to contain email, they're eligible to get the certificate
-                                cert.eligibleUsers = users;
-
+                               
+                                cert.eligibleUsers =cert.eligibleUsers.concat(users);
+                                
                                 // Now after all is said and done, saving now would make sense
                                 cert.save((err) => {
                                     if (err) {
