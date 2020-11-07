@@ -38,6 +38,16 @@
 </head>
 
 <body>
+    <span class="loader">
+        <div class="container-for-loader">
+            <div class="large-circle">
+            </div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+        </div>
+    </span>
     <header>
         <section class="logo-section">
             <span class="code-logo"><img class="cropped-logo" src="/imgs/code logo.jpg" alt="logo icon"></span>
@@ -78,19 +88,9 @@
 
         </section>
 
+        <button id="add-cert">&#65291; Add Certificate</button>
     </main>
-    <button id="add-cert">&#65291; Add Certificate</button>
 
-    <span class="loader">
-        <div class="container-for-loader">
-            <div class="large-circle">
-            </div>
-            <div class="inner-circle"></div>
-            <div class="inner-circle"></div>
-            <div class="inner-circle"></div>
-            <div class="inner-circle"></div>
-        </div>
-    </span>
     <script src='/src/js/main.js'></script>
     <script>
         let create = document.getElementById("add-cert");

@@ -31,13 +31,23 @@
     <link rel="apple-touch-icon" sizes="384x384" href="">
     <link rel="icon" sizes="512x512" href="/imgs/icon.png">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-
+    
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/main.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/animations.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css'/>
 </head>
 
 <body>
+    <span class="loader">
+        <div class="container-for-loader">
+            <div class="large-circle">
+            </div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+        </div>
+    </span>
     <div class="ellipse-curve top-left">
         <div class="first-line">
         </div>
@@ -90,16 +100,6 @@
             <img src="/imgs/mark-github-512.png" alt="github logo">
         </a>
     </footer>
-    <span class="loader">
-        <div class="container-for-loader">
-            <div class="large-circle">
-            </div>
-            <div class="inner-circle"></div>
-            <div class="inner-circle"></div>
-            <div class="inner-circle"></div>
-            <div class="inner-circle"></div>
-        </div>
-    </span>
     <!-- <script src='/src/js/sw-install.js'></script> -->
     <script src='/src/js/main.js'></script>
 </body>

@@ -39,22 +39,32 @@
 </head>
 
 <body>
+    <span class="loader">
+        <div class="container-for-loader">
+            <div class="large-circle">
+            </div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+        </div>
+    </span>
     <header>
         <section class="logo-section">
             <span class="code-logo"><img class="cropped-logo" src="/imgs/code logo.jpg" alt="logo icon"></span>
             <div class="img-line"></div>
         </section>
-
+        
         <span id="profile-image"><img id="user-image" src="/imgs/user.svg" alt="user icon" /></span>
-
+        
         <input type="checkbox" id="toggle-butt" />
-
+        
         <label for="toggle-butt" class="bread-crumbs">
             <div class="bread-crumb"></div>
             <div class="bread-crumb"></div>
             <div class="bread-crumb"></div>
         </label>
-
+        
         <nav class="section-links">
             <ul class="home-links">
                 <li><a href="/">Home</a>
@@ -62,12 +72,12 @@
                 <li class="gen-cert"><a href="/dashboard">Issued Certificates</a></li>
             </ul>
         </nav>
-
+        
         <section class="volunteer-header">
             <h1 id="certificate-name"></h1>
         </section>
     </header>
-
+    
     <main id="main-func" class="main-func-manage">
         <section id="cert-name" class="sign-page-section">
             <h1 class="first-text">Enter Bearers name</h1>
@@ -98,16 +108,6 @@
             <div id="canvas"></div>
         </div>
     </main>
-    <span class="loader">
-        <div class="container-for-loader">
-            <div class="large-circle">
-            </div>
-            <div class="inner-circle"></div>
-            <div class="inner-circle"></div>
-            <div class="inner-circle"></div>
-            <div class="inner-circle"></div>
-        </div>
-    </span>
     <script src='/src/js/FontPicker.js'></script>
     <script>
         /**

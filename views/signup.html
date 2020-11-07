@@ -3,11 +3,6 @@
 
 <head>
     <meta charset='utf-8'>
-    <!--
-         Todo:
-        1. SEO meta tags to improve search results.
-        2. ONe page app
-    -->
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Certlify</title>
     <meta name="msapplication-tap-highlight" , content="none" />
@@ -31,13 +26,23 @@
     <link rel="apple-touch-icon" sizes="384x384" href="">
     <link rel="icon" sizes="512x512" href="/imgs/icon.png">
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-
+    
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/signup.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/animations.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css'/>
 </head>
 
 <body>
+    <span class="loader">
+        <div class="container-for-loader">
+            <div class="large-circle">
+            </div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+        </div>
+    </span>
     <header>
         <nav class="section-links">
             <ul class="home-links">
@@ -76,23 +81,13 @@
             <img src="/imgs/mark-github-512.png" alt="github logo">
         </a>
     </footer>
-    <span class="loader">
-        <div class="container-for-loader">
-            <div class="large-circle">
-            </div>
-            <div class="inner-circle"></div>
-            <div class="inner-circle"></div>
-            <div class="inner-circle"></div>
-            <div class="inner-circle"></div>
-        </div>
-    </span>
+    
     <!-- <script src="/src/js/sw-install.js"></script> -->
     <script>
         var form = document.getElementById("form-input");
         let email_text = document.getElementById("email-message");
         let password_text = document.getElementById("password-message");
         
-
         let matchpassword = () => {
             let data = {}
             let password = document.getElementById("password").value;
@@ -101,7 +96,7 @@
             let name = document.getElementById("organization").value;
             if (password !== password2) {
                 password_text.style.display = "inline";
-                password_text.innerHTML = "Passwords don't match"
+                password_text.innerHTML = "Passwords don't match";
             } else {
                 password_text.style.display = "none";
                 document.getElementById("password-message").innerHTML = ""
@@ -111,9 +106,9 @@
                     data.name = name;
                     send(data);
                 }
-
             }
         }
+    
         let send = (data) => {
             var xhttp = new XMLHttpRequest();
             xhttp.open("POST", "/api/register", false);
@@ -152,7 +147,6 @@
 
            xhttp.send();
         }
-        
    </script>
 </body>
 
