@@ -3,7 +3,7 @@ const Link = require("../models/links");
 const nodemailer = require("nodemailer");
 const config = require("../config/database");
 var jwt = require("jsonwebtoken");
-let secret = process.env.DATABASE || config.secret;
+let secret = process.env.SECRET || config.secret;
 
 /**
  * This is the function that is fired when a get request is made to the "/api/name" endpoint
@@ -152,8 +152,8 @@ let emailverification = (req, res) => {
             var transporter = nodemailer.createTransport({
               service: "Gmail",
               auth: {
-                user: process.env.EMAIL,
-                pass: process.env.PASSWORD,
+                user: process.env.EMAIL||config.email,
+                pass: process.env.PASSWORD||config.emailpass,
               },
             });
 

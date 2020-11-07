@@ -11,7 +11,7 @@ const config = require("./config/database");
 let configuration = process.env.DATABASE || config.database;
 const Links = require("./models/links");
 var jwt = require("jsonwebtoken");
-let secret = process.env.DATABASE || config.secret;
+let secret = process.env.SECRET || config.secret;
 // connect to database
 mongoose.connect(configuration, {
   useNewUrlParser: true,
