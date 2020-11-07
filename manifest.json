@@ -1,6 +1,6 @@
 {
-  "name": "DSC Unilag Certificate Generator",
-  "short_name": "DSC Unilag Certificate generator",
+  "name": "Certlify",
+  "short_name": "Certlify",
   "start_url": "views/src/index.html",
   "background_color": "#3498DC",
   "theme_color": "#34495E",
