@@ -4,11 +4,6 @@ var uniqid = require('uniqid');
 const Link = require("../models/links");
 let cloudinary=require("cloudinary").v2
 
-// cloudinary.config({
-//     cloud_name:"de5neer84",
-//     api_key:"488273542881848",
-//     api_secret:"0dhjwq6UXnVpIzkMSaBI9sQCEws"
-// })
 
 let certificate = (req, res) => {
     if (!req.session.email&&!req.session.anon) {
