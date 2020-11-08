@@ -29,6 +29,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/manage.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/animations.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css' />
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/share.css' />
 </head>
 
 <body>
@@ -75,7 +76,7 @@
 
         <section class="volunteer-header">
             <h1 id="title"></h1>
-            
+
             <a href="/dashboard" id="back-button"><img src="/imgs/arrow.svg" alt="back to dashboard"></a>
         </section>
     </header>
@@ -85,6 +86,31 @@
             <img id="template" alt="certificate template" />
         </section>
 
+        <section class="link-section">
+            <input type="text" id="link" name="certificate" autocomplete="current-password" minlength=4
+                    readonly=true required>
+
+            <button class="icon" onclick="CopyToClipBoard()"><i class="copy"></i><span
+                id="text">Copy</span></button>
+            <!-- <button class="icon" onclick="OpenWrapper()"><i class="share"></i><span id="text">Share</span></button>
+            <div class="share-container">
+                <div class="share-wrapper">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//certlify.com/" class="text">
+                        <span class="icon-svg"><img src="/imgs/share-icons/facebook.svg" /></span>
+                        Facebook
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?text=Link%20to%20your%20certificates&url=http://certlify.com/"
+                        class="text sm twitter">
+                        <span class="icon-svg"><img src="/imgs/share-icons/twitter.svg" /></span>
+                        Twitter
+                    </a>
+                    <a href="whatsapp://send?text=The text to share!&url=http://certlify.com/" class="text">
+                        <span class="icon-svg"><img src="/imgs/share-icons/whatsapp.svg" /></span>
+                        WhatsApp
+                    </a>
+                </div>
+            </div> -->
+        </section>
         <section class="edit-section">
             <a onclick="ToggleCSVModal()">Upload CSV</a>
             <a onclick="ToggleModal();">Collectors</a>
@@ -110,15 +136,14 @@
             </section>
         </section>
     </section>
-    
+
     <section id="add-email-modal" class="edit-cert-section hide">
         <article class="main-upload">
             <a onclick="ToggleCSVModal()" class="close-button">&#x2716;</a>
             <div class="upload-div">
-                <form id="email-form" class="form" method="POST" enctype="multipart/form-data"
-                target="hidden-iframe">
-                <label for="csv-upload">Upload CSV file with the names of those eligible for the
-                    certificate</label>
+                <form id="email-form" class="form" method="POST" enctype="multipart/form-data" target="hidden-iframe">
+                    <label for="csv-upload">Upload CSV file with the names of those eligible for the
+                        certificate</label>
                     <input id="csv-upload" type="file" name="FileUpload" accept=".csv" class="custom-file" required>
                     <button class="icon">Submit</button>
                     <p id="error" style="color:red;"></p>
@@ -126,9 +151,9 @@
             </div>
         </article>
     </section>
-    
+
     <footer>
-        <iframe name="hidden-iframe" style="display: none;"onload="parse()"></iframe>
+        <iframe name="hidden-iframe" style="display: none;" onload="parse()"></iframe>
     </footer>
 
     <script src='/src/js/main.js'></script>
@@ -145,7 +170,8 @@
             }
             console.log('Query variable %s not found', variable);
         }
-        function parse(){
+
+        function parse() {
             let response = document.getElementsByName("hidden-iframe")[0].contentWindow.document
                 .getElementsByTagName("pre")[0].innerText
             response = JSON.parse(response);
@@ -155,7 +181,6 @@
                 document.getElementById("error").innerHTML = "Please check the format of your csv file"
             }
         }
-
     </script>
     <script>
         ShowLoader();
@@ -176,35 +201,33 @@
                 document.getElementById("title").innerHTML = data.name;
                 document.getElementById("template").src = data.src;
                 document.getElementById("email-form").setAttribute("action", `/api/addeligibleusers/${link}`);
-                ShareLink=data.share;
+                ShareLink = data.share;
                 // HideLoader();
             }
         };
-        
-        xhttp.send();
 
-       
+        xhttp.send();
     </script>
-<script>
-    // another XHR request 
-            var xhttp2 = new XMLHttpRequest();
-            xhttp2.open("GET", `/api/manage/${link}/getcollectors`, true);
-            xhttp2.setRequestHeader("Content-Type", "application/json");
-            xhttp2.onreadystatechange = function () {
-                if (this.readyState == 4 && this.status == 200) {
-                    let data = JSON.parse(this.responseText)
-                    let collectors = data.collectors;
-                    for (i in collectors) {
-                        let collected;
-                        let style;
-                        if (collectors[i].status) {
-                            collected = "Collected"
-                            style="style='color:green'"
-                        } else {
-                            collected = "Not Collected"
-                             style="style='color:red'"
-                        }
-                        document.getElementById("collectors").innerHTML += `
+    <script>
+        // another XHR request 
+        var xhttp2 = new XMLHttpRequest();
+        xhttp2.open("GET", `/api/manage/${link}/getcollectors`, true);
+        xhttp2.setRequestHeader("Content-Type", "application/json");
+        xhttp2.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let data = JSON.parse(this.responseText)
+                let collectors = data.collectors;
+                for (i in collectors) {
+                    let collected;
+                    let style;
+                    if (collectors[i].status) {
+                        collected = "Collected"
+                        style = "style='color:green'"
+                    } else {
+                        collected = "Not Collected"
+                        style = "style='color:red'"
+                    }
+                    document.getElementById("collectors").innerHTML += `
                         <tr>
                     <td>${Number(i) + 1}</td>
                     <td>${collectors[i].name || ""}</td>
@@ -212,14 +235,14 @@
                     <td class="collected-status"${style}>${collected}</td>
                 </tr>
                         `
-                    }
-                    HideLoader();
-                    collectedStatusColor();
                 }
-            };
+                HideLoader();
+                collectedStatusColor();
+            }
+        };
 
-            xhttp2.send();
-</script>
+        xhttp2.send();
+    </script>
 </body>
 
 </html>
