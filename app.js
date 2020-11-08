@@ -114,7 +114,7 @@ app.get("/createcertificate", (req, res) => {
 app.get("/certificate/:link", (req, res) => {
   let link = req.params.link
   req.session.link = link;
-    Link.findOne({ link: req.params.link }, (err, cert) => {
+    Links.findOne({ link: req.params.link }, (err, cert) => {
       if (cert) {
             res.status(200);
             return res.sendFile(__dirname + "/views/emailverify.html");

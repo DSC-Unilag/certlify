@@ -6,6 +6,8 @@ const rounds = process.env.ROUNDS || config.rounds;
 // Load dependencies
 const bcrypt = require("bcryptjs");
 var uniqid = require('uniqid');
+
+
 const register = (req, res) => {
 	console.log("a register")
 	if (!req.body.name || !req.body.password || !req.body.email) {

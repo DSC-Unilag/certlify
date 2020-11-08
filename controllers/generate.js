@@ -143,14 +143,14 @@ let emailverification = (req, res) => {
           jwt.sign({ email, link }, secret, function (err, token) {
             console.log("token generatex for", email);
             let mailOptions = {
-              from: "akinwandeakinboluwarin@gmail.com", // sender address
+              from: "info@certlify.com", // sender address
               to: `${email}`, // list of receivers
               subject: "generationlink", // Subject line
               text: `generate your certificate at: ${req.hostname}/certify/${token}`, // plain text body
               html: `<h3>generate your certificate at: </h3> <a href="${req.hostname}/certify/${token}">${req.hostname}/certify/${token}</a>`, // html body
             };
             var transporter = nodemailer.createTransport({
-              service: "Gmail",
+              service: 'SendGrid',
               auth: {
                 user: process.env.EMAIL||config.email,
                 pass: process.env.PASSWORD||config.emailpass,
