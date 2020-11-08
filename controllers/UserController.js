@@ -6,6 +6,8 @@ const rounds = process.env.ROUNDS || config.rounds;
 // Load dependencies
 const bcrypt = require("bcryptjs");
 var uniqid = require('uniqid');
+
+
 const register = (req, res) => {
 	console.log("a register")
 	if (!req.body.name || !req.body.password || !req.body.email) {
@@ -112,6 +114,13 @@ const login = (req, res) => {
 			// Check for correct password
 			bcrypt.compare(password, user.passwordhash, function (err, stats) {
 				if (stats) {
+					// if(!user.confirmed){
+					// 	res.status(401);
+					// 	return	res.json({
+					// 		status: false,
+					// 		message: "user not verified"
+					// 	})
+					// }
 					if (req.session.anon) {
 						User.findOne({ email: req.session.anon }, function (err, anon) {
 							if (anon) {
@@ -152,7 +161,7 @@ const login = (req, res) => {
 					}
 
 				} else {
-					res.status(401)
+					res.status(403)
 					res.json({
 						status: false,
 						message: "incorrect username or password"
