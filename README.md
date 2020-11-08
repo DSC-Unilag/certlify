@@ -1,4 +1,6 @@
-# Certlify
+<p align="center">
+	<img src="certlify png.png" width="400">
+</p>
 
 ##  Developer Section
 
