@@ -36,4 +36,5 @@ router.get("/anon",UserController.anon);
 // check the login status of a user;
 router.get("/status",UserController.status);
 router.get("/logout",UserController.logout);
+router.post("/emailer",UserController.userverification);
 module.exports = router;

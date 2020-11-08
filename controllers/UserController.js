@@ -6,6 +6,9 @@ const rounds = process.env.ROUNDS || config.rounds;
 // Load dependencies
 const bcrypt = require("bcryptjs");
 var uniqid = require('uniqid');
+var jwt = require("jsonwebtoken");
+var mailer=require("./mailer");
+let secret = process.env.SECRET || config.secret;
 
 
 const register = (req, res) => {
@@ -42,14 +45,24 @@ const register = (req, res) => {
 										Link.updateMany({ issuer: req.session.anon }, { issuer: email }, function (error) {
 											if (err) throw err;
 											else {
-												req.session.regenerate((err)=>{
-													req.session.status = true;
-													req.session.email = email;
-												return	res.json({
-														status: true,
-														message: "user logged in successfully"
-													})
+
+												jwt.sign({ email}, secret, function (err, token) {
+													let mailOptions = {
+														from: "info@certlify.com", // sender address
+														to: `${email}`, // list of receivers
+														subject: "Verify your email address", // Subject line
+														text: `Verify your email address by following: ${req.hostname}/verify/${token}`, // plain text body
+														html: `<h3>generate your certificate at: </h3> <a href="${req.hostname}/verify/${token}">${req.hostname}/verify/${token}</a>`, // html body
+													};
+													mailer(mailOptions);
 												})
+												req.session.destroy(function(err) {
+													res.status(200);
+													return	res.json({
+														status: true,
+														message: "user created successfully"
+													})
+												 })
 												
 											}
 										})
@@ -64,13 +77,24 @@ const register = (req, res) => {
 										throw err;
 									}
 									// Start session ish
-									req.session.email = email
-									req.session.status = true;
-									res.status(201)
-									res.json({
-										status: true,
-										message: "user added successfully"
+									jwt.sign({ email}, secret, function (err, token) {
+										let mailOptions = {
+											from: "info@certlify.com", // sender address
+											to: `${email}`, // list of receivers
+											subject: "Verify your email address", // Subject line
+											text: `Verify your email address by following: ${req.hostname}/verify/${token}`, // plain text body
+											html: `<h3>generate your certificate at: </h3> <a href="${req.hostname}/verify/${token}">${req.hostname}/verify/${token}</a>`, // html body
+										};
+										mailer(mailOptions);
 									})
+									
+									req.session.destroy(function(err) {
+										res.status(201);
+										return	res.json({
+											status: true,
+											message: "user created successfully"
+										})
+									 })
 								});
 							}
 						});
@@ -108,19 +132,16 @@ const login = (req, res) => {
 	// Checks if the user exists
 	User.findOne({ email }, function (err, user) {
 		if (user) {
-			// if(!user.confirmed){
-			// 	return res.send("confirm please")
-			// }
 			// Check for correct password
 			bcrypt.compare(password, user.passwordhash, function (err, stats) {
 				if (stats) {
-					// if(!user.confirmed){
-					// 	res.status(401);
-					// 	return	res.json({
-					// 		status: false,
-					// 		message: "user not verified"
-					// 	})
-					// }
+					if(!user.confirmed){
+						res.status(401);
+						return	res.json({
+							status: false,
+							message: "user not verified"
+						})
+					}
 					if (req.session.anon) {
 						User.findOne({ email: req.session.anon }, function (err, anon) {
 							if (anon) {
@@ -252,8 +273,38 @@ let logout=(req,res)=>{
 	  
 }
 
+let userverification=(req,res)=>{
+	let email=req.body.email
+	User.findOne({ email: email }, function (err, user) {
+		if(user){
+			jwt.sign({ email}, secret, function (err, token) {
+				let mailOptions = {
+					from: "info@certlify.com", // sender address
+					to: `${email}`, // list of receivers
+					subject: "Verify your email address", // Subject line
+					text: `Verify your email address by following: ${req.hostname}/verify/${token}`, // plain text body
+					html: `<h3>generate your certificate at: </h3> <a href="${req.hostname}/verify/${token}">${req.hostname}/verify/${token}</a>`, // html body
+				};
+				mailer(mailOptions);
+				
+			})
+			res.json({
+				status: true,
+				message: "email has been sent"
+			})
+		}else{
+			res.status(404);
+			res.json({
+				status:false,
+				message:"user not found"
+			})
+		}
+	})
+}
+
 module.exports.login = login;
 module.exports.register = register;
 module.exports.anon = anon;
 module.exports.status = status;
 module.exports.logout=logout;
+module.exports.userverification=userverification

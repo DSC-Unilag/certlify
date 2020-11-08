@@ -115,7 +115,8 @@
             xhttp.setRequestHeader("Content-Type", "application/json");
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 201) {
-                    location.href = "/dashboard";
+                    alert("An email has been sent to your mail for verification. Follow the link embeded in it to login");
+                    location.href = "/login";
                 }
                 if (this.readyState == 4 && this.status == 409) {
                     email_text.style.display = "inline";

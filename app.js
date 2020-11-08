@@ -10,6 +10,7 @@ const MongoStore = require("connect-mongo")(session);
 const config = require("./config/database");
 let configuration = process.env.DATABASE || config.database;
 const Links = require("./models/links");
+const User = require("./models/users");
 var jwt = require("jsonwebtoken");
 let secret = process.env.SECRET || config.secret;
 // connect to database
@@ -136,4 +137,28 @@ app.get("/certify/:jwt",(req,res)=>{
     }
   });
 })
+app.get("/verify/:jwt",(req,res)=>{
+  let token=req.params.jwt
+  jwt.verify(token, secret, function(err, data) {
+    if(err){
+      res.sendFile(__dirname+"/views/404-page.html");
+    }else{
+      User.findOne({ email:data.email }, function (err, user) {
+        if(user){
+          user.confirmed=true;
+          user.save((err)=>{
+            if (err) console.log(err)
+            else{
+              req.session.email=data.email;
+              res.redirect("/dashboard")
+            }
+          })
+        }else{
+          res.sendFile(__dirname+"/views/404-page.html");
+        }
 
+      })
+     
+    }
+  });
+})

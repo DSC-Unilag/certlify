@@ -70,10 +70,14 @@
                     autocomplete="current-password" minlength=8 required>
 
                 <p id="password-message" class="message"></p>
-                <button type="submit" onclick="main()" class="sign-log">
+                <button id="submit" type="submit" onclick="main()" class="sign-log">
                     Login
                 </button>
             </form>
+            <p id="email-verification" class="message"style="display:none"></p>
+            <button id="verify"type="button" onclick="emailer()" class="sign-log"style="display:none;">
+                Verify
+            </button>
             <p>Don't have an account? <a id="login" href="/signup">Sign up</a></p>
         </section>
     </main>
@@ -108,8 +112,11 @@
                     document.getElementById("password-message").innerHTML = "email or password incorrect"
                 }
                 if (this.readyState == 4 && this.status == 401) {
-                    document.getElementById("password-message").style.display = "inline";
-                    document.getElementById("password-message").innerHTML = "email or password incorrect"
+                    document.getElementById("password-message").style.display = "none";
+                    document.getElementById("email-verification").style.display = "inline";
+                    document.getElementById("email-verification").innerHTML = `This email needs to be verified before logging in. Click the button below and a verification email would be sent to your mail`;
+                    document.getElementById("submit").style.display = "none";
+                    document.getElementById("verify").style.display = "inline";
                 }
             };
 
@@ -125,6 +132,21 @@
     <!-- <script src="/src/js/sw-install.js"></script> -->
     <script src='/src/js/main.js'></script>
     <script>
+        let emailer=()=>{
+            let email = document.getElementById("email").value
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "/api/emailer", false);
+            xhttp.setRequestHeader("Content-Type", "application/json");
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("email-verification").style.color="blue"
+                    document.getElementById("email-verification").innerHTML = `Please check your email for your verification link`;
+                    document.getElementById("verify").style.display = "none";
+                }
+            }
+            xhttp.send(JSON.stringify({email}));
+        }
+
            let anon=()=>{
             var xhttp = new XMLHttpRequest();
            xhttp.open("GET", "/api/anon", false);
