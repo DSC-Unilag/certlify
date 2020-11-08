@@ -50,6 +50,11 @@
     display: flex;
     height: 10rem;
 }
+
+.icons-author a{
+    box-shadow: none;
+    text-decoration: underline;
+}
 @media screen and (min-width: 40rem) {
     .share-wrapper{
         flex-wrap: nowrap;

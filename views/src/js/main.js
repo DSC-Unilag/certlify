@@ -14,6 +14,8 @@ const modal = document.querySelector(".collectors-modal");
 const csv_modal = document.querySelector(".edit-cert-section");
 
 const share_wrapper = document.querySelector(".share-container");
+
+const icons_author = document.querySelector(".icons-author");
 /**
  * Hides Loader
  */
@@ -81,4 +83,5 @@ function collectedStatusColor(){
 
 function OpenWrapper(){
     share_wrapper.classList.toggle("increase-height");
+    icons_author.classList.toggle("hide");
 }
