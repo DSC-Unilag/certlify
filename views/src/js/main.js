@@ -12,6 +12,8 @@ const modal = document.querySelector(".collectors-modal");
  * csv modal class
  */
 const csv_modal = document.querySelector(".edit-cert-section");
+
+const share_wrapper = document.querySelector(".share-container");
 /**
  * Hides Loader
  */
@@ -75,4 +77,8 @@ function collectedStatusColor(){
             ele.classList.add("color-red");
         }        
     });
+}
+
+function OpenWrapper(){
+    share_wrapper.classList.toggle("increase-height");
 }

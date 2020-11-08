@@ -3,17 +3,10 @@
 
 <head>
     <meta charset='utf-8'>
-    <!--
-         Todo:
-        1. SEO meta tags to improve search results.
-        2. ONe page app
-    -->
-
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
     <title>Certlify</title>
     <meta name="msapplication-tap-highlight" , content="none" />
     <!-- <link rel="manifest" href="/manifest.json"> -->
-
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="application-name" content="Certlify">
@@ -36,7 +29,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/manage-func.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/animations.css'>
     <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css' />
-
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/share.css' />
 </head>
 
 <body>
@@ -73,7 +66,7 @@
     </header>
 
     <main id="main-func" class="main-func-manage">
-        <section id="cert-name" class="sign-page-section">
+        <section id="cert-name" class="sign-page-section hide">
             <h1 class="first-text">Enter the certificate name</h1>
             <p class="second-text">Hi there!, what would you want to name this certificate when issued?</p>
 
@@ -157,7 +150,7 @@
             <button class="icon" type="button" onclick="next()">Skip</button>
         </section>
 
-        <section id="cert-link" class="sign-page-section hide">
+        <section id="cert-link" class="sign-page-section">
             <h1 class="first-text">Generated certificate link</h1>
             <p class="second-text">Hi there! you can share the link below to those eligible for the certificate</p>
 
@@ -168,13 +161,30 @@
                 <p id="password-message" class="message"></p>
                 <button class="icon" onclick="CopyToClipBoard()"><i class="copy"></i><span
                         id="text">Copy</span></button>
-                <button class="icon"><i class="share"></i><span id="text">Share</span></button>
+                <button class="icon" onclick="OpenWrapper()"><i class="share"></i><span id="text">Share</span></button>
+                <div class="share-container">
+                    <div class="share-wrapper">
+                        <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//certlify.com/" class="text">
+                            <span class="icon-svg"><img src="/imgs/share-icons/facebook.svg"/></span>
+                            Facebook
+                        </a>
+                        <a href="https://twitter.com/intent/tweet?text=Link%20to%20your%20certificates&url=http://certlify.com/" class="text sm twitter">
+                            <span class="icon-svg"><img src="/imgs/share-icons/twitter.svg"/></span>
+                            Twitter
+                        </a>
+                        <a href="whatsapp://send?text=The text to share!&url=http://certlify.com/" class="text">
+                            <span class="icon-svg"><img src="/imgs/share-icons/whatsapp.svg"/></span>
+                            WhatsApp (Mobile)
+                        </a>
+                    </div>
+                </div>
             </form>
             <a id="goto" href="/dashboard">Go to dashboard</a>
         </section>
     </main>
 
     <footer>
+        <div>Icons made by <a href="https://www.flaticon.com/authors/pixel-perfect" title="Pixel perfect">Pixel perfect</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>
         <iframe name="hidden-iframe" style="display: none;"onload="parse()"></iframe>
     </footer>
 
