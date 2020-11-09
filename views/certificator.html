@@ -115,7 +115,7 @@
             check();
         })
         var xhttp = new XMLHttpRequest();
-        xhttp.open("GET", "/api/details", false);
+        xhttp.open("GET", "/api/details", true);
         xhttp.setRequestHeader("Content-Type", "application/json");
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {

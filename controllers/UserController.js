@@ -2,7 +2,7 @@
 const User = require("../models/users");
 const Link = require("../models/links");
 const config = require("../config/database");
-const rounds = process.env.ROUNDS || config.rounds;
+const rounds = Number(process.env.ROUNDS) || config.rounds;
 // Load dependencies
 const bcrypt = require("bcryptjs");
 var uniqid = require('uniqid');
