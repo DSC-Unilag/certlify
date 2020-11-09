@@ -161,12 +161,38 @@ app.get("/verify/:jwt", (req, res) => {
     }
   });
 })
-app.get('*',(req,res)=> {
+app.get('/logout', (req, res) => {
+  if (req.session) {
+    req.session.destroy(err => {
+      if (err) {
+        res.status(400)
+        res.json({
+          status: false,
+          message: "unable to logout"
+        })
+      } else {
+        if (req.accepts('html')) {
+          res.redirect("/login")
+        } else if (req.accepts('json')) {
+          res.json({
+            status: true,
+            message: "logout successful"
+          })
+        }
+
+      }
+    });
+  } else {
+    res.redirect("/login")
+  }
+
+})
+app.get('*', (req, res) => {
   res.status(404);
 
   if (req.accepts('html')) {
     return res.sendFile(__dirname + "/views/404-page.html");
-  }else if (req.accepts('json')) {
+  } else if (req.accepts('json')) {
     res.send({
       status: false,
       message: "endpoin not found"
