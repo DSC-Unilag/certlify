@@ -4,7 +4,7 @@ var transporter = nodemailer.createTransport({
     service: 'SendGrid',
     auth: {
         user: process.env.EMAIL || config.email,
-        pass: process.env.PASSWORD || config.emailpass,
+        pass: process.env.EMAILPASS || config.emailpass,
     },
 });
 let sendMail = (mailOptions) => {
