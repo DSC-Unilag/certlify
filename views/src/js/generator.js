@@ -3,20 +3,7 @@ let data = {};
 let boundary = {};
 let img = new Image();
 
-// This function enables the download of the certificate
-function downloadfunc() {
-    if (boundary.right && boundary.left && boundary.bottom) {
-        const a = document.createElement("a");
-        let canvas2 = document.getElementById("print");
-        a.href = canvas2.toDataURL();
-        a.download = "canvas-image.png";
-        a.click();
-        document.body.removeChild(a);
-    } else {
-        prompt("select all boundaries");
-    }
 
-}
 var person
 // On start, the canvas is drawn, and the various event listeners for the boundary selectors are initializes
 function start() {

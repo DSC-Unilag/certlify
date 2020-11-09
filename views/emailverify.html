@@ -145,6 +145,9 @@
                             document.getElementById("email-message").innerHTML = "This email has already generated a certificate. You may check your mail for the link to generate again"
                         }
                     }
+                    if(this.readyState == 4 && this.status == 409){
+                        location.reload();
+                    }
                 };
 
                 xhttp.send(JSON.stringify({ email }));
