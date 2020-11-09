@@ -81,6 +81,7 @@ function collectedStatusColor(){
     });
 }
 
+
 function OpenWrapper(){
     share_wrapper.classList.toggle("increase-height");
     icons_author.classList.toggle("hide");
