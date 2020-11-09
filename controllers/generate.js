@@ -1,6 +1,6 @@
 // Load dependencies, you have to do this
 const Link = require("../models/links");
-const nodemailer = require("nodemailer");
+var mailer=require("./mailer");
 const config = require("../config/database");
 var jwt = require("jsonwebtoken");
 let secret = process.env.SECRET || config.secret;
@@ -149,24 +149,7 @@ let emailverification = (req, res) => {
               text: `generate your certificate at: ${req.hostname}/certify/${token}`, // plain text body
               html: `<h3>generate your certificate at: </h3> <a href="${req.hostname}/certify/${token}">${req.hostname}/certify/${token}</a>`, // html body
             };
-            var transporter = nodemailer.createTransport({
-              service: 'SendGrid',
-              auth: {
-                user: process.env.EMAIL||config.email,
-                pass: process.env.PASSWORD||config.emailpass,
-              },
-            });
-
-            transporter.sendMail(mailOptions, function (err, response) {
-              if (err) console.log(err);
-              else {
-                res.status(200);
-                return res.json({
-                  status: true,
-                  message: "email sent",
-                });
-              }
-            });
+            mailer(mailOptions);
           });
         } else {
           res.status(409);
