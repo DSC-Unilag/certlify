@@ -90,10 +90,13 @@ header span {
     justify-content: center;
     align-items: center;
     height: 6.7rem;
+    position: relative;
+    top: 5.5rem;
+    z-index: -3;
 }
 
 header .logo img {
-    width: 20rem;
+    width: 12rem;
     position: relative;
     z-index: -1;
     bottom: 4.5rem;
