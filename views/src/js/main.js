@@ -13,8 +13,14 @@ const modal = document.querySelector(".collectors-modal");
  */
 const csv_modal = document.querySelector(".edit-cert-section");
 
+/**
+ * Share section wrapper
+ */
 const share_wrapper = document.querySelector(".share-container");
 
+/**
+ * Icons used in share container wrapper.
+ */
 const icons_author = document.querySelector(".icons-author");
 /**
  * Hides Loader
@@ -63,14 +69,20 @@ function ToggleModal(){
     modal.classList.toggle("hide");
 }
 
+/**
+ * Toggles CSV modal to display/hide.
+ */
 function ToggleCSVModal(){
     csv_modal.classList.toggle("hide");
     document.getElementById("error").innerHTML = ""
 }
 
+/**
+ * Change collected status color text.
+ */
 function collectedStatusColor(){
     let statusEles = document.querySelectorAll(".collected-status");
-
+    
     statusEles.forEach(ele => {
         if(ele.textContent.localeCompare("Collected") === 0){
             ele.classList.add("color-green");
@@ -81,6 +93,10 @@ function collectedStatusColor(){
     });
 }
 
+
+/*
+ * Toggle share wrapper.
+ */
 function OpenWrapper(){
     share_wrapper.classList.toggle("increase-height");
     icons_author.classList.toggle("hide");
