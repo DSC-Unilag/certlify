@@ -133,20 +133,15 @@
                         }
                     }
                     if (this.readyState == 4 && this.status == 400) {
-                        let data = JSON.parse(this.responseText)
-                        if (!data.status && data.message == "inneligible") {
                             document.getElementById("email-message").style.display = "block";
                             document.getElementById("email-message").style.color = "red";
                             document.getElementById("email-message").innerHTML = "This email is inneligible for this certificate. Please verify the mail or contact your supposed issuer"
-                        }
-                        if (!data.status && data.message == "generated") {
-                            document.getElementById("email-message").style.display = "block";
-                            document.getElementById("email-message").style.color = "blue";
-                            document.getElementById("email-message").innerHTML = "This email has already generated a certificate. You may check your mail for the link to generate again"
-                        }
+                        
                     }
                     if(this.readyState == 4 && this.status == 409){
-                        location.reload();
+                        document.getElementById("email-message").style.display = "block";
+                            document.getElementById("email-message").style.color = "blue";
+                            document.getElementById("email-message").innerHTML = "This email has already generated a certificate. You may check your mail for the link to generate again"
                     }
                 };
 
