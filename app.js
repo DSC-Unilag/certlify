@@ -67,22 +67,6 @@ app.use("/api", addnew)
 const generate = require("./routes/generate");
 app.use("/api", generate);
 
-
-app.use(function (req, res, next) {
-  res.status(404);
-
-  if (req.accepts('html')) {
-    res.sendFile(__dirname + "/views/404-page.html");
-  }
-  if (req.accepts('json')) {
-    res.send({
-      status: false,
-      message: "endpoin not found"
-    });
-    return;
-  }
-});
-
 app.get('/signup', (req, res) => {
   res.sendFile(__dirname + "/views/signup.html");
 });
@@ -177,3 +161,17 @@ app.get("/verify/:jwt", (req, res) => {
     }
   });
 })
+app.use(function (req, res, next) {
+  res.status(404);
+
+  if (req.accepts('html')) {
+    res.sendFile(__dirname + "/views/404-page.html");
+  }
+  if (req.accepts('json')) {
+    res.send({
+      status: false,
+      message: "endpoin not found"
+    });
+    return;
+  }
+});
