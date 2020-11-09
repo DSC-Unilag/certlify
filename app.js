@@ -161,13 +161,12 @@ app.get("/verify/:jwt", (req, res) => {
     }
   });
 })
-app.use(function (req, res, next) {
+app.get('*',(req,res)=> {
   res.status(404);
 
   if (req.accepts('html')) {
-    res.sendFile(__dirname + "/views/404-page.html");
-  }
-  if (req.accepts('json')) {
+    return res.sendFile(__dirname + "/views/404-page.html");
+  }else if (req.accepts('json')) {
     res.send({
       status: false,
       message: "endpoin not found"
