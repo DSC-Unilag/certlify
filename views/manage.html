@@ -190,7 +190,7 @@
         let ShareLink;
         // Making a XHR request for the name and image source at the api endpoint
         var xhttp = new XMLHttpRequest();
-        xhttp.open("GET", `/api/manage/${link}/details`, false);
+        xhttp.open("GET", `/api/manage/${link}/details`, true);
         xhttp.setRequestHeader("Content-Type", "application/json");
         xhttp.onreadystatechange = function () {
             // When the response is recieved and the status code is 200
@@ -211,7 +211,7 @@
     <script>
         // another XHR request 
         var xhttp2 = new XMLHttpRequest();
-        xhttp2.open("GET", `/api/manage/${link}/getcollectors`, false);
+        xhttp2.open("GET", `/api/manage/${link}/getcollectors`, true);
         xhttp2.setRequestHeader("Content-Type", "application/json");
         xhttp2.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {

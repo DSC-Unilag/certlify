@@ -96,7 +96,7 @@
         }
         let send = (data) => {
             var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "/api/login", false);
+            xhttp.open("POST", "/api/login", true);
             xhttp.setRequestHeader("Content-Type", "application/json");
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
@@ -130,7 +130,7 @@
         let emailer=()=>{
             let email = document.getElementById("email").value
             var xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "/api/emailer", false);
+            xhttp.open("POST", "/api/emailer", true);
             xhttp.setRequestHeader("Content-Type", "application/json");
             xhttp.onreadystatechange = function () {
                 if (this.readyState == 4 && this.status == 200) {
@@ -144,7 +144,7 @@
 
            let anon=()=>{
             var xhttp = new XMLHttpRequest();
-           xhttp.open("GET", "/api/anon", false);
+           xhttp.open("GET", "/api/anon", true);
            xhttp.setRequestHeader("Content-Type", "application/json");
            xhttp.onreadystatechange = function () {
                if (this.readyState == 4) {

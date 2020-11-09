@@ -72,7 +72,7 @@ app.get('/signup', (req, res) => {
   res.sendFile(__dirname + "/views/signup.html");
 });
 app.get("/dashboard", (req, res) => {
-  if (!req.session.email&&!req.session.anon) {
+  if (!req.session.email && !req.session.anon) {
     return res.redirect("/login");
   }
   res.sendFile(__dirname + "/views/dashboard.html");
@@ -81,32 +81,32 @@ app.get("/login", (req, res) => {
   res.sendFile(__dirname + "/views/login.html");
 })
 app.get("/manage", (req, res) => {
-  if (!req.session.email&&!req.session.anon) {
+  if (!req.session.email && !req.session.anon) {
     return res.redirect("/login");
-  }else {
-    if(req.query.link){
-      Links.findOne({ link:req.query.link}, function (err, cert) {
-        if(cert){
-            if(cert.issuer==req.session.email){
-              res.sendFile(__dirname + "/views/manage.html");
-            }else{
-                res.status(401)
-                res.redirect("/login");
-            }
-        }else{
-            res.sendFile(__dirname+"/views/404-page.html");
+  } else {
+    if (req.query.link) {
+      Links.findOne({ link: req.query.link }, function (err, cert) {
+        if (cert) {
+          if (cert.issuer == req.session.email) {
+            res.sendFile(__dirname + "/views/manage.html");
+          } else {
+            res.status(401)
+            res.redirect("/login");
+          }
+        } else {
+          res.sendFile(__dirname + "/views/404-page.html");
         }
-    })
-      
-    }else{
-      res.sendFile(__dirname+"/views/404-page.html");
+      })
+
+    } else {
+      res.sendFile(__dirname + "/views/404-page.html");
     }
-    
-  } 
+
+  }
 })
 
 app.get("/createcertificate", (req, res) => {
-  if (!req.session.email&&!req.session.anon) {
+  if (!req.session.email && !req.session.anon) {
     return res.redirect("/login");
   }
   res.sendFile(__dirname + "/views/certificate-gen.html");
@@ -115,50 +115,66 @@ app.get("/createcertificate", (req, res) => {
 app.get("/certificate/:link", (req, res) => {
   let link = req.params.link
   req.session.link = link;
-    Links.findOne({ link: req.params.link }, (err, cert) => {
-      if (cert) {
-            res.status(200);
-            return res.sendFile(__dirname + "/views/emailverify.html");
-      } else {
-        res.sendFile(__dirname+"/views/404-page.html");
-      }
-    })
-  
+  Links.findOne({ link: req.params.link }, (err, cert) => {
+    if (cert) {
+      res.status(200);
+      return res.sendFile(__dirname + "/views/emailverify.html");
+    } else {
+      res.sendFile(__dirname + "/views/404-page.html");
+    }
+  })
+
 })
-app.get("/certify/:jwt",(req,res)=>{
-  let token=req.params.jwt
-  jwt.verify(token, secret, function(err, data) {
-    if(err){
-      res.sendFile(__dirname+"/views/404-page.html");
-    }else{
-      req.session.generator=data.email;
-      req.session.link=data.link;
-      res.sendFile(__dirname+"/views/certificator.html")
+app.get("/certify/:jwt", (req, res) => {
+  let token = req.params.jwt
+  jwt.verify(token, secret, function (err, data) {
+    if (err) {
+      res.sendFile(__dirname + "/views/404-page.html");
+    } else {
+      req.session.generator = data.email;
+      req.session.link = data.link;
+      res.sendFile(__dirname + "/views/certificator.html")
     }
   });
 })
-app.get("/verify/:jwt",(req,res)=>{
-  let token=req.params.jwt
-  jwt.verify(token, secret, function(err, data) {
-    if(err){
-      res.sendFile(__dirname+"/views/404-page.html");
-    }else{
-      User.findOne({ email:data.email }, function (err, user) {
-        if(user){
-          user.confirmed=true;
-          user.save((err)=>{
+app.get("/verify/:jwt", (req, res) => {
+  let token = req.params.jwt
+  jwt.verify(token, secret, function (err, data) {
+    if (err) {
+      res.sendFile(__dirname + "/views/404-page.html");
+    } else {
+      User.findOne({ email: data.email }, function (err, user) {
+        if (user) {
+          user.confirmed = true;
+          user.save((err) => {
             if (err) console.log(err)
-            else{
-              req.session.email=data.email;
+            else {
+              req.session.email = data.email;
               res.redirect("/dashboard")
             }
           })
-        }else{
-          res.sendFile(__dirname+"/views/404-page.html");
+        } else {
+          res.sendFile(__dirname + "/views/404-page.html");
         }
 
       })
-     
+
     }
   });
 })
+
+
+app.use(function (req, res) {
+  res.status(404);
+
+  if (req.accepts('html')) {
+    res.sendFile(__dirname + "/views/404-page.html");
+  }
+  if (req.accepts('json')) {
+    res.send({
+      status: false,
+      message: "endpoin not found"
+    });
+    return;
+  }
+});
