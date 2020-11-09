@@ -12,7 +12,7 @@ let secret = process.env.SECRET || config.secret;
 
 
 const register = (req, res) => {
-	console.log("a register")
+	// console.log("a register")
 	if (!req.body.name || !req.body.password || !req.body.email) {
 		res.status(400);
 		res.json({

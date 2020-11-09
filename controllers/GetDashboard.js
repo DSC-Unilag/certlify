@@ -23,6 +23,7 @@ let dashboard = (req, res) => {
                 Links.find({
                     link: { $in: links }
                 }, function (err, docs) {
+                    // come back to do this like a normal human
                     for (i in docs) {
                         data.certs[i] = {};
                         data.certs[i].name = docs[i].name

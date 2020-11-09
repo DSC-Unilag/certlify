@@ -128,7 +128,6 @@
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 data = JSON.parse(this.responseText)
-                console.log(data);
                 let title = data.data.title;
                 if (data.data.generated) {
                     person = data.data.name;
@@ -137,6 +136,7 @@
                 }
                 document.getElementById("certificate-name").innerHTML = title;
                 boundary = data.data.boundary[0];
+                img.setAttribute('crossOrigin', 'anonymous');
                 img.src = data.data.src
                 //mark();
             }

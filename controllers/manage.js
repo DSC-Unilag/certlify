@@ -1,7 +1,4 @@
-const User = require("../models/users");
 const Links = require("../models/links");
-const config = require("../config/database");
-const rounds = process.env.ROUNDS || config.rounds;
 
 let getCollectors=(req,res)=>{
     if (!req.session.email&&!req.session.anon){

@@ -10,7 +10,6 @@ function increaseValue() {
     //let height = width / rat;
     boundary.fontsize = value / width;
     mark();
-    console.log(value);
 }
 
 /**
@@ -26,7 +25,6 @@ function decreaseValue() {
   //  let height = width / rat;
     boundary.fontsize = value / width;
     mark();
-    console.log(value);
 }
 
 /**

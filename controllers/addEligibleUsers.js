@@ -29,15 +29,15 @@ const upload = multer({ storage: storage }).single('FileUpload');
 // This gets the users from the csv file to the json to be stored in the mongoDB database
 const addEligibleUsers = (req, res) => {
 
-    // An easy way to know the function works, let it log something
-    console.log("started")
+    //  An easy way to know the function works, let it log something
+    // console.log("started")
 
     // The real upload part
     upload(req,res,function (err){
 
         // We have to be sure there's no error, so we check to be safe
         if (err instanceof multer.MulterError) {
-            console.log("multer error")
+             console.log("multer error")
             throw err
         } else if (err) {
             throw err
@@ -48,7 +48,7 @@ const addEligibleUsers = (req, res) => {
             csv()
                 .fromFile(csvFilePath) // Converts the csv file to json
                 .then((users) => {
-                    console.log(users);
+                    // console.log(users);
                     Link.findOne({ link:req.params.link }, (err, cert) => {
 
                         // We see if there's actually a certificate to collect, yunno, it only makes sense
@@ -80,14 +80,14 @@ const addEligibleUsers = (req, res) => {
                                 // Now after all is said and done, saving now would make sense
                                 cert.save((err) => {
                                     if (err) {
-                                        console.log(err);
+                                         console.log(err);
                                         res.status(400)
                                         res.json({
                                             status: false,
                                             message: "check the format of your csv file"
                                         })
                                     } else {
-                                        console.log("done")
+                                        // console.log("done")
                                         res.status(201)
                                         res.json({
                                             status: true,

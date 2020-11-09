@@ -132,16 +132,16 @@ let emailverification = (req, res) => {
     if (cert) {
       for (i in cert.eligibleUsers) {
         if (cert.eligibleUsers[i].email == email) {
-          console.log("email verified");
+          //console.log("email verified");
           chosen = cert.eligibleUsers[i];
-          console.log(chosen);
+          //console.log(chosen);
           break;
         }
       }
       if (chosen) {
         if (!chosen.status) {
           jwt.sign({ email, link }, secret, function (err, token) {
-            console.log("token generatex for", email);
+            //console.log("token generatex for", email);
             let mailOptions = {
               from: "info@certlify.com", // sender address
               to: `${email}`, // list of receivers
@@ -196,7 +196,7 @@ let generate = (req, res) => {
   let link = req.session.link;
   let email=req.session.generator;
   let chosen;
-  console.log(link,email)
+  //console.log(link,email)
     if (req.body.name !== "") {
       Link.findOne({ link: link }, (err, cert) => {
         if (cert) {

@@ -103,7 +103,6 @@
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
                 data = JSON.parse(this.responseText)
-                //   console.log(data);
                 let title = data.data.name;
                 link = data.data.link;
                 document.getElementById("certificate-name").innerHTML = title;
@@ -122,7 +121,7 @@
             let email = document.getElementById("email-verify").value;
             if (email.length > 4 && ValidateEmail(email)) {
                 var xhttp = new XMLHttpRequest();
-                xhttp.open("POST", `/api/generate/${link}`, true);
+                xhttp.open("POST", `/api/generate/${link}`, false);
                 xhttp.setRequestHeader("Content-Type", "application/json");
                 xhttp.onreadystatechange = function () {
                     if (this.readyState == 4 && this.status == 200) {

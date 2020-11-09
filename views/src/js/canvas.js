@@ -208,7 +208,6 @@ function start() {
     const buttons = document.querySelectorAll('.font-button');
 
 buttons.forEach(el => el.addEventListener('click', event => {
-    console.log(el.innerHTML);
     boundary.fontfamily = el.innerHTML;
     mark();
 }));
