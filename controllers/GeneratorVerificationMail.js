@@ -1,10 +1,10 @@
-let html=(confirmation)=>{
+let html=(generationlink,company,certname)=>{
     let email=`<!doctype html>
     <html>
       <head>
         <meta name="viewport" content="width=device-width" />
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-        <title>Confirmation Email</title>
+        <title>Generator Verification Email</title>
         <style>
           /* -------------------------------------
               GLOBAL RESETS
@@ -252,8 +252,8 @@ let html=(confirmation)=>{
                       <table border="0" cellpadding="0" cellspacing="0">
                         <tr>
                           <td>
-                            <h1>Welcome to Certlify</h1>
-                            <h2>To continue using our services, please verify your email below</h2>
+                            <h1>Your Certificate is waiting</h1>
+                            <h2>Hello there, you have requested to generate the ${certname} certificate issued by ${company}. To follow through with the process, please click the button below</h2>
                             <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                               <tbody>
                                 <tr>
@@ -261,7 +261,7 @@ let html=(confirmation)=>{
                                     <table border="0" cellpadding="0" cellspacing="0">
                                       <tbody>
                                         <tr>
-                                          <td> <a href="${confirmation}" target="_blank">confirm email</a> </td>
+                                          <td> <a href="${generationlink}" target="_blank">Generate your certificate</a> </td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -269,10 +269,14 @@ let html=(confirmation)=>{
                                 </tr>
                               </tbody>
                             </table>
-                            <p>If the button above did not work, please copy the link below to a browser window</p>
-                            <a href="${confirmation}">${confirmation}</a>
-                            <p>If you received this email by mistake, simply delete it.</p>
-          
+                            <p>If the button above doesn't work, paste this link in a browser window:</p>
+                            <a href="${generationlink}">${generationlinkn}</a>
+                            <br>
+                            <br>
+                            <p>If you did not by any means request for this email, please ignore it.</p>
+                            <br>
+                            <br>
+                            Thank you
                           </td>
                         </tr>
                       </table>
@@ -287,13 +291,8 @@ let html=(confirmation)=>{
                   <table border="0" cellpadding="0" cellspacing="0">
                     <tr>
                       <td class="content-block">
-                        <span class="apple-link">certlify.com | DSC-Unilag</span>
-                        <br> If you have questions or need help, please reach out to <a href="#">support@certlify.com</a>.
-                      </td>
-                    </tr>
-                    <tr>
-                      <td class="content-block powered-by">
-                        Powered by <a href="">DSC-Unilag</a>.
+                        <span class="apple-link">powered by <a href="https://github.com/DSC-Unilag/cert">DSC-Unilag</a></span>
+                        <br> If you have questions or need help, please reach out to <a href="mailto:support@certlify.com">support@certlify.com</a>.
                       </td>
                     </tr>
                   </table>

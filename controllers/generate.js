@@ -1,7 +1,9 @@
 // Load dependencies, you have to do this
 const Link = require("../models/links");
+const User = require("../models/users");
 var mailer=require("./mailer");
 const config = require("../config/database");
+let generatormail=require("./GeneratorVerificationMail");
 var jwt = require("jsonwebtoken");
 let secret = process.env.SECRET || config.secret;
 
@@ -140,22 +142,24 @@ let emailverification = (req, res) => {
       }
       if (chosen) {
         if (!chosen.status) {
-          jwt.sign({ email, link }, secret, function (err, token) {
-            //console.log("token generatex for", email);
-            let mailOptions = {
-              from: "info@certlify.com", // sender address
-              to: `${email}`, // list of receivers
-              subject: "generationlink", // Subject line
-              text: `generate your certificate at: ${req.hostname}/certify/${token}`, // plain text body
-              html: `<h3>generate your certificate at: </h3> <a href="${req.hostname}/certify/${token}">${req.hostname}/certify/${token}</a>`, // html body
-            };
-            mailer(mailOptions);
-          });
-          res.status(200);
-          return res.json({
-            status: true,
-            message: "you may generage certificate",
-          });
+          User.findOne({email:link.issuer},(err,user)=>{
+            jwt.sign({ email, link }, secret, function (err, token) {
+              //console.log("token generatex for", email);
+              let mailOptions = {
+                from: "info@certlify.com", // sender address
+                to: `${email}`, // list of receivers
+                subject: "Your Certificate is Waiting!", // Subject line
+                html: generatormail(`http://${req.hostname}/certify/${token}`,user.name,cert.name), // html body
+              };
+              mailer(mailOptions);
+            });
+            res.status(200);
+            return res.json({
+              status: true,
+              message: "you may generage certificate",
+            });
+          })
+          
         } else {
           jwt.sign({ email, link }, secret, function (err, token) {
             //console.log("token generatex for", email);
