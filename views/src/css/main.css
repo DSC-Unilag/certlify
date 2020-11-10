@@ -94,7 +94,7 @@ header span {
 }
 
 header .logo img {
-    width: 12rem;
+    width: 10rem;
     position: relative;
     z-index: -1;
     bottom: -0.5rem;
