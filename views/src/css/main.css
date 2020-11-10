@@ -108,7 +108,7 @@ main .landing-page-section {
     justify-items: center;
     align-items: center;
     grid-template-columns: auto;
-    grid-template-rows: 7rem 3rem 2rem 7rem;
+    grid-template-rows: minmax(6rem, auto) minmax(3rem, auto) minmax(4rem,  auto) minmax(4rem, auto) 3rem;
 }
 
 main .landing-page-section h1 {
@@ -116,8 +116,12 @@ main .landing-page-section h1 {
     font-size: 1.13rem;
     color: #4285F4;
 }
-
+main .landing-page-section h1 i{
+    margin-top: 0.3rem;
+    display: inline-block;
+}
 main .landing-page-section p {
+    margin: 0.5rem 0;
     text-align: center;
     font-size: 0.9rem;
     font-weight: 600;
