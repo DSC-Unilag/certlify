@@ -8,6 +8,7 @@
 const  Link= require("../models/links");
 
 // Load dependencies
+var fs = require('fs');
 const csv = require("csvtojson");
 const multer = require("multer");
 const path = require('path');
@@ -45,72 +46,80 @@ const addEligibleUsers = (req, res) => {
 
             // Set save location and format
             const csvFilePath=__dirname+`/${req.session.email}.csv`
-            csv()
-                .fromFile(csvFilePath) // Converts the csv file to json
-                .then((users) => {
-                    // console.log(users);
-                    Link.findOne({ link:req.params.link }, (err, cert) => {
-
-                        // We see if there's actually a certificate to collect, yunno, it only makes sense
-                        if (cert) {
-
-                            // You must be logged in to upload eligible users
-                            if (cert.issuer == req.session.email) {
-
-                                // Deal with each user in the uploaded csv
-                                for (i in users) {
-
-                                    // This is set to true on collection of the certificate
-                                    users[i].status = false;
-
-                                    // Should a user row not have email
-                                    if (!users[i].email) {
-                                        res.status(400)
-                                        return res.json({
-                                            status: false,
-                                            message: "check the format of your csv file"
-                                        })
+            fs.readFile(csvFilePath,'utf8', function(err, data) {
+                let newcase=data.replace(/email/i,"email")
+                fs.writeFile(csvFilePath,newcase , function (err) {
+                    csv()
+                    .fromFile(csvFilePath) // Converts the csv file to json
+                    .then((users) => {
+                        // console.log(users);
+                        fs.unlink(csvFilePath, (err) => {
+                            if (err) throw err;
+                          });
+                        Link.findOne({ link:req.params.link }, (err, cert) => {
+    
+                            // We see if there's actually a certificate to collect, yunno, it only makes sense
+                            if (cert) {
+    
+                                // You must be logged in to upload eligible users
+                                if (cert.issuer == req.session.email) {
+    
+                                    // Deal with each user in the uploaded csv
+                                    for (i in users) {
+    
+                                        // This is set to true on collection of the certificate
+                                        users[i].status = false;
+    
+                                        // Should a user row not have email
+                                        if (!users[i].email) {
+                                            res.status(400)
+                                            return res.json({
+                                                status: false,
+                                                message: "check the format of your csv file"
+                                            })
+                                        }
                                     }
+    
+                                    // Since each user row has been verified to contain email, they're eligible to get the certificate
+                                   
+                                    cert.eligibleUsers =cert.eligibleUsers.concat(users);
+                                    
+                                    // Now after all is said and done, saving now would make sense
+                                    cert.save((err) => {
+                                        if (err) {
+                                             console.log(err);
+                                            res.status(400)
+                                            res.json({
+                                                status: false,
+                                                message: "check the format of your csv file"
+                                            })
+                                        } else {
+                                            // console.log("done")
+                                            res.status(201)
+                                            res.json({
+                                                status: true,
+                                                message: "successfully added eligible users"
+                                            })
+                                        }
+                                    })
+                                } else {
+                                    res.status(401);
+                                    res.json({
+                                        status:false,
+                                        message:"unauthorized access"
+                                    })
                                 }
-
-                                // Since each user row has been verified to contain email, they're eligible to get the certificate
-                               
-                                cert.eligibleUsers =cert.eligibleUsers.concat(users);
-                                
-                                // Now after all is said and done, saving now would make sense
-                                cert.save((err) => {
-                                    if (err) {
-                                         console.log(err);
-                                        res.status(400)
-                                        res.json({
-                                            status: false,
-                                            message: "check the format of your csv file"
-                                        })
-                                    } else {
-                                        // console.log("done")
-                                        res.status(201)
-                                        res.json({
-                                            status: true,
-                                            message: "successfully added eligible users"
-                                        })
-                                    }
-                                })
                             } else {
-                                res.status(401);
+                                res.status(404)
                                 res.json({
                                     status:false,
-                                    message:"unauthorized access"
+                                    message:"certificate does not exist"
                                 })
                             }
-                        } else {
-                            res.status(404)
-                            res.json({
-                                status:false,
-                                message:"certificate does not exist"
-                            })
-                        }
+                        })
                     })
                 })
+              });
             }
         })
     }
