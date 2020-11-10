@@ -26,6 +26,7 @@ $ npm install
 
 ####  3. Configure Environment Variables
 The application uses <strong>mongoDB<strong>, and this requires a connection string. Open the config folder and edit the database.js file with your details.
+To enable mailing, configure the email and emailpass property of the database.js file
 
 ####  4. Running The Application
 ```sh
