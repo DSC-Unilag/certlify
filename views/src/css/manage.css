@@ -315,6 +315,7 @@ header .bread-crumbs {
     background: white;
     display: grid;
     color: black;
+    height: 33rem;
     border-top-left-radius: 2.5rem;
     box-shadow: 0px 2px 5px lightgrey;
     overflow-x: scroll;
