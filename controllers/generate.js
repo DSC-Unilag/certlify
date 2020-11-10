@@ -142,8 +142,7 @@ let emailverification = (req, res) => {
       }
       if (chosen) {
         if (!chosen.status) {
-          User.findOne({email:link.issuer},(err,user)=>{
-            console.log(user.name);
+          User.findOne({email:cert.issuer},(err,user)=>{
             jwt.sign({ email, link }, secret, function (err, token) {
               //console.log("token generatex for", email);
               let mailOptions = {
@@ -153,7 +152,6 @@ let emailverification = (req, res) => {
                 html: generatormail(`http://${req.hostname}/certify/${token}`,user.name,cert.name), // html body
               };
               mailer(mailOptions);
-              console.log("sent");
             });
             res.status(200);
             return res.json({
@@ -163,8 +161,7 @@ let emailverification = (req, res) => {
           })
           
         } else {
-          User.findOne({email:link.issuer},(err,user)=>{
-            console.log(user.name, "exists");
+          User.findOne({email:cert.issuer},(err,user)=>{
             jwt.sign({ email, link }, secret, function (err, token) {
               //console.log("token generatex for", email);
               let mailOptions = {
@@ -174,7 +171,6 @@ let emailverification = (req, res) => {
                 html: generatormail(`http://${req.hostname}/certify/${token}`,user.name,cert.name), // html body
               };
               mailer(mailOptions);
-              console.log("sent");
             });
           res.status(409);
           return res.json({
