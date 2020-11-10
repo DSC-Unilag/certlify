@@ -47,7 +47,8 @@ const addEligibleUsers = (req, res) => {
             // Set save location and format
             const csvFilePath=__dirname+`/${req.session.email}.csv`
             fs.readFile(csvFilePath,'utf8', function(err, data) {
-                let newcase=data.replace(/email/i,"email")
+                let newcase=data.replace(/email/i,"email");
+                    newcase=newcase.replace(/name/i,"name");
                 fs.writeFile(csvFilePath,newcase , function (err) {
                     csv()
                     .fromFile(csvFilePath) // Converts the csv file to json
@@ -69,7 +70,10 @@ const addEligibleUsers = (req, res) => {
     
                                         // This is set to true on collection of the certificate
                                         users[i].status = false;
-    
+                                        if(users[i].name){
+                                            users[i].status = true;
+                                        }
+                                        
                                         // Should a user row not have email
                                         if (!users[i].email) {
                                             res.status(400)
