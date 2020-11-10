@@ -218,7 +218,7 @@ header #toggle-butt {
 }
 
 header #toggle-butt:checked~.section-links {
-  height: 9rem;
+  height: 13rem;
 }
 
 ul {
