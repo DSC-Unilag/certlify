@@ -149,7 +149,7 @@ let emailverification = (req, res) => {
                 from: "info@certlify.com", // sender address
                 to: `${email}`, // list of receivers
                 subject: "Your Certificate is Waiting!", // Subject line
-                html: generatormail(`http://${req.hostname}/certify/${token}`,user.name,cert.name), // html body
+                html: generatormail(`http://${req.hostname}/certify/${token}`,user.name,cert.name)
               };
               mailer(mailOptions);
             });
@@ -164,19 +164,13 @@ let emailverification = (req, res) => {
           User.findOne({email:cert.issuer},(err,user)=>{
             jwt.sign({ email, link }, secret, function (err, token) {
               //console.log("token generatex for", email);
-              console.log(cert.issuer, "exists as", user.email)
-              if(err){
-                console.log(err)
-              }
-              generatormail(`http://${req.hostname}/certify/${token}`,user.name,cert.name)
               let mailOptions = {
                 from: "info@certlify.com", // sender address
                 to: `${email}`, // list of receivers
                 subject: "Your Certificate is Waiting!", // Subject line
-                html: generatormail(`http://${req.hostname}/certify/${token}`,user.name,cert.name), // html body
+                html: generatormail(`http://${req.hostname}/certify/${token}`,user.name,cert.name)
               };
               mailer(mailOptions);
-              console.log(sent);
             });
           res.status(409);
           return res.json({

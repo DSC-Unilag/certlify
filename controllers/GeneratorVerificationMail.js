@@ -253,7 +253,7 @@ let html=(generationlink,company,certname)=>{
                         <tr>
                           <td>
                             <h1>Your Certificate is waiting</h1>
-                            <h2>Hello there, you have requested to generate the ${certname} certificate issued by ${company}. To follow through with the process, please click the button below</h2>
+                            <h2>Hello there, you have requested to generate the <strong>${certname}</strong> certificate issued by ${company}. To follow through with the process, please click the button below</h2>
                             <table border="0" cellpadding="0" cellspacing="0" class="btn btn-primary">
                               <tbody>
                                 <tr>
@@ -270,7 +270,7 @@ let html=(generationlink,company,certname)=>{
                               </tbody>
                             </table>
                             <p>If the button above doesn't work, paste this link in a browser window:</p>
-                            <a href="${generationlink}">${generationlinkn}</a>
+                            <a href="${generationlink}">${generationlink}</a>
                             <br>
                             <br>
                             <p>If you did not by any means request for this email, please ignore it.</p>
