@@ -161,22 +161,23 @@ let emailverification = (req, res) => {
           })
           
         } else {
-          jwt.sign({ email, link }, secret, function (err, token) {
-            //console.log("token generatex for", email);
-            let mailOptions = {
-              from: "info@certlify.com", // sender address
-              to: `${email}`, // list of receivers
-              subject: "generationlink", // Subject line
-              text: `generate your certificate at: ${req.hostname}/certify/${token}`, // plain text body
-              html: `<h3>generate your certificate at: </h3> <a href="${req.hostname}/certify/${token}">${req.hostname}/certify/${token}</a>`, // html body
-            };
-            mailer(mailOptions);
-          });
+          User.findOne({email:link.issuer},(err,user)=>{
+            jwt.sign({ email, link }, secret, function (err, token) {
+              //console.log("token generatex for", email);
+              let mailOptions = {
+                from: "info@certlify.com", // sender address
+                to: `${email}`, // list of receivers
+                subject: "Your Certificate is Waiting!", // Subject line
+                html: generatormail(`http://${req.hostname}/certify/${token}`,user.name,cert.name), // html body
+              };
+              mailer(mailOptions);
+            });
           res.status(409);
           return res.json({
             status: false,
             message: "generated",
           });
+        })
         }
       } else if (!chosen) {
         res.status(400);
