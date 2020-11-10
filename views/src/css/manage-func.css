@@ -669,10 +669,39 @@ button.icon:active {
   display: flex;
   height: auto;
   width: 100%;
+  flex-wrap: wrap;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   margin-bottom: 3rem;
+}
+
+.main-upload .csv-tut-section {
+  width: 85%;
+  display: flex;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.main-upload .csv-tut-section h2{
+  font-size: 1.5rem;
+}
+
+.main-upload .csv-tut-section p {
+  text-align: left;
+  margin: 0.5rem 0rem;
+}
+
+.main-upload section.csv-tut-section p:nth-child(2) {
+  margin: 1rem 0rem;
+  text-align: center;
+}
+
+.main-upload .csv-tut-section .tut-img {
+  width: 100%;
+  height: auto;
+  margin-top: 2rem;
 }
 
 #upload-div form .custom-file {
@@ -723,6 +752,14 @@ button.icon:active {
 }
 
 @media screen and (min-width: 45rem) {
+  .main-upload .csv-tut-section .tut-img {
+    min-width: 44rem;
+  }
+
+  .main-upload .csv-tut-section {
+    width: 70%;
+  }
+
   header {
     grid-template-columns: 4rem 80% auto;
     grid-template-rows: 5rem auto 13rem;

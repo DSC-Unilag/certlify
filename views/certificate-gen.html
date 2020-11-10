@@ -62,7 +62,7 @@
     </header>
 
     <main id="main-func" class="main-func-manage">
-        <section id="cert-name" class="sign-page-section">
+        <section id="cert-name" class="sign-page-section hide">
             <h1 class="first-text">Enter the certificate name</h1>
             <p class="second-text">Hi there!, what would you want to name this certificate when issued?</p>
 
@@ -128,8 +128,15 @@
             <input id="done" type="submit" value="Submit">
         </section>
 
-        <section id="add-emails" class="edit-cert-section hide">
+        <section id="add-emails" class="edit-cert-section">
             <article class="main-upload">
+                <section class="csv-tut-section">
+                    <h2>Excel (or .csv) format</h2>
+                    <p>Your CSV file should follow this format to avoid any errors during certificate collection.</p>
+                    <p>1. Start by entering the your title header on the first row and column as "email" shown below.</p>
+                    <p>2. Next, enter all emails of those eligible for this certificate separating each on a new row.</p>
+                    <img class="tut-img" src="/imgs/tutorial.png" alt="CSV Format"/>
+                </section>
                 <div id="upload-div">
                     <form id="email-form" class="form" method="POST" enctype="multipart/form-data"
                         target="hidden-iframe">
