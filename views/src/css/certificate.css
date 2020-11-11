@@ -1,10 +1,10 @@
 @font-face {
-  font-family: "Open-Sans";
+  font-family: 'Nunito', Verdana, sans-serif;
   src: url("./fonts/OpenSans-Regular.ttf");
 }
 
 * {
-  font-family: Open-Sans, Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Nunito', Verdana, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
