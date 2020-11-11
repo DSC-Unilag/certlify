@@ -9,7 +9,7 @@ var uniqid = require('uniqid');
 var jwt = require("jsonwebtoken");
 var mailer=require("./mailer");
 let secret = process.env.SECRET || config.secret;
-
+let emailverify=require("./UserVerificationMail");
 
 const register = (req, res) => {
 	// console.log("a register")
@@ -47,12 +47,12 @@ const register = (req, res) => {
 											else {
 
 												jwt.sign({ email}, secret, function (err, token) {
+													emailverify(`${req.hostname}/verify/${token}`)
 													let mailOptions = {
 														from: "info@certlify.com", // sender address
 														to: `${email}`, // list of receivers
-														subject: "Verify your email address", // Subject line
-														text: `Verify your email address by following: ${req.hostname}/verify/${token}`, // plain text body
-														html: `<h3>generate your certificate at: </h3> <a href="${req.hostname}/verify/${token}">${req.hostname}/verify/${token}</a>`, // html body
+														subject: "Getting started with Certlify!", // Subject line
+														html: emailverify(`http://${req.hostname}/verify/${token}`), // html body
 													};
 													mailer(mailOptions);
 												})
@@ -78,12 +78,12 @@ const register = (req, res) => {
 									}
 									// Start session ish
 									jwt.sign({ email}, secret, function (err, token) {
+										emailverify(`${req.hostname}/verify/${token}`)
 										let mailOptions = {
 											from: "info@certlify.com", // sender address
 											to: `${email}`, // list of receivers
-											subject: "Verify your email address", // Subject line
-											text: `Verify your email address by following: ${req.hostname}/verify/${token}`, // plain text body
-											html: `<h3>generate your certificate at: </h3> <a href="${req.hostname}/verify/${token}">${req.hostname}/verify/${token}</a>`, // html body
+											subject: "Getting started with Certlify!", // Subject line
+											html: emailverify(`http://${req.hostname}/verify/${token}`), // html body
 										};
 										mailer(mailOptions);
 									})
@@ -278,15 +278,14 @@ let userverification=(req,res)=>{
 	User.findOne({ email: email }, function (err, user) {
 		if(user){
 			jwt.sign({ email}, secret, function (err, token) {
+				emailverify(`${req.hostname}/verify/${token}`)
 				let mailOptions = {
 					from: "info@certlify.com", // sender address
 					to: `${email}`, // list of receivers
-					subject: "Verify your email address", // Subject line
-					text: `Verify your email address by following: ${req.hostname}/verify/${token}`, // plain text body
-					html: `<h3>generate your certificate at: </h3> <a href="${req.hostname}/verify/${token}">${req.hostname}/verify/${token}</a>`, // html body
+					subject: "Getting started with Certlify!", // Subject line
+					html: emailverify(`http://${req.hostname}/verify/${token}`), // html body
 				};
 				mailer(mailOptions);
-				
 			})
 			res.json({
 				status: true,
