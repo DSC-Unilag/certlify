@@ -131,11 +131,25 @@
         <section id="add-emails" class="edit-cert-section hide">
             <article class="main-upload">
                 <section class="csv-tut-section">
-                    <h2>Excel (or .csv) format</h2>
-                    <p>Your CSV file should follow this format to avoid any errors during certificate collection.</p>
+                    <h2>CSV format Guide</h2>
+                    <h3>There are two formats from which your can structure your CSV file to avoid any error.</h3>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <h3>Email only format</h3>
+                    <p>Using this format, the recepient would have the opportunity to specify what Name they want printed on thier certificate</p>
+                    <p>If you have no experience with CSV files, we suggest you use a spreadsheet package and save as a CSV as explained below.</p>
                     <p>1. Start by entering the your title header on the first row and column as "email" shown below.</p>
                     <p>2. Next, enter all emails of those eligible for this certificate separating each on a new row.</p>
                     <img class="tut-img" src="/imgs/tutorial.png" alt="CSV Format"/>
+                    <br/>
+                    <br/>
+                    <br/>
+                    <h3>Email and Name format</h3>
+                    <p>This format should be used when the issuer already has the names assigned to the emails. The recipients of the cirtificates would be constrained to the name specified by the issuer.</p>
+                    <p>1. Specify the emails as dictated in the first format's guide</p>
+                    <p>2. Next, enter all the names of those eligible for this certificate against their email address</p>
+                    <img class="tut-img" src="/imgs/tutorial2.png" alt="CSV Format"/>
                 </section>
                 <div id="upload-div">
                     <form id="email-form" class="form" method="POST" enctype="multipart/form-data"
