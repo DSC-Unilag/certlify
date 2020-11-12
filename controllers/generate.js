@@ -1,6 +1,10 @@
 // Load dependencies, you have to do this
 const Link = require("../models/links");
 const User = require("../models/users");
+const sgMail = require("@sendgrid/mail");
+sgMail.setApiKey(
+  process.env.SEND_GRID_KEY
+);
 var mailer=require("./mailer");
 const config = require("../config/database");
 let generatormail=require("./GeneratorVerificationMail");
@@ -151,7 +155,17 @@ let emailverification = (req, res) => {
                 subject: "Your Certificate is Waiting!", // Subject line
                 html: generatormail(`http://${req.hostname}/certify/${token}`,user.name,cert.name)
               };
-              mailer(mailOptions);
+               //mailer(mailOptions);
+               sgMail.send(mailOptions).then(
+                () => {return 0},
+                (error) => {
+                  console.error(error);
+
+                  if (error.response) {
+                    console.error(error.response.body);
+                  }
+                }
+              );
             });
             res.status(200);
             return res.json({
@@ -170,7 +184,17 @@ let emailverification = (req, res) => {
                 subject: "Your Certificate is Waiting!", // Subject line
                 html: generatormail(`http://${req.hostname}/certify/${token}`,user.name,cert.name)
               };
-              mailer(mailOptions);
+               //mailer(mailOptions);
+               sgMail.send(mailOptions).then(
+                () => {return 0},
+                (error) => {
+                  console.error(error);
+
+                  if (error.response) {
+                    console.error(error.response.body);
+                  }
+                }
+              );
             });
           res.status(409);
           return res.json({

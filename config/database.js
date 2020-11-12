@@ -6,5 +6,6 @@ module.exports = {
   secret: "secret-key",
   rounds:10,
   email:"",
-  emailpass:""
+  emailpass:"",
+  sendgridkey:""
 };
