@@ -8,9 +8,12 @@ const bcrypt = require("bcryptjs");
 var uniqid = require("uniqid");
 var jwt = require("jsonwebtoken");
 const sgMail = require("@sendgrid/mail");
-sgMail.setApiKey(
-  process.env.SEND_GRID_KEY
-);
+if(process.env.SEND_GRID_KEY){
+	sgMail.setApiKey(
+		process.env.SEND_GRID_KEY
+	  );
+}
+
 var mailer = require("./mailer");
 let secret = process.env.SECRET || config.secret;
 let emailverify = require("./UserVerificationMail");

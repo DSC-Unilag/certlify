@@ -2,9 +2,11 @@
 const Link = require("../models/links");
 const User = require("../models/users");
 const sgMail = require("@sendgrid/mail");
-sgMail.setApiKey(
-  process.env.SEND_GRID_KEY
-);
+if(process.env.SEND_GRID_KEY){
+	sgMail.setApiKey(
+		process.env.SEND_GRID_KEY
+	  );
+}
 var mailer=require("./mailer");
 const config = require("../config/database");
 let generatormail=require("./GeneratorVerificationMail");
