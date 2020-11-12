@@ -222,7 +222,7 @@ const login = (req, res) => {
 
       // Render page finally
     } else {
-      res.status(401);
+      res.status(400);
       res.json({
         status: false,
         message: "incorrect username or password",
