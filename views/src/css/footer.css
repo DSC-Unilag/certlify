@@ -1,0 +1,52 @@
+footer {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width:100%;
+    height: auto;
+}
+footer .empty{
+    width:5%;
+}
+footer p {
+    width: 15%;
+    color:#BBBBBB;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    left: 1.5rem;
+    flex-grow: 1;
+  }
+footer .contribute{
+    position: relative;
+    width: 10%;
+    z-index: -1;
+    top: 8.6rem;
+    right: 1rem;
+    padding-left: 0;
+    left: 0;
+    text-align: center;
+    font-size: 0.6rem;
+}
+  footer p span{
+      position:relative;
+  }
+  footer p span img {
+    position: absolute;
+    width: 16.4rem;
+    height: auto;
+    top: -5.2rem;
+    right: -5.9rem;
+    z-index: -1;
+  }
+  
+  @media screen and (min-width:40rem){
+    footer{
+        justify-content: space-between;
+    }
+    footer .empty {
+        width: 10%;
+    }
+  }
