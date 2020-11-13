@@ -41,9 +41,9 @@ let loadFile = function (event) {
         cert_error.style.display="block";
         cert_error.innerHTML="please upload a valid file"
         
-    }else if(event.target.files[0].size>3145728){
+    }else if(event.target.files[0].size>2621440){
         cert_error.style.display="block";
-        cert_error.innerHTML="Please ensure yourfile is less than 3MB in size"
+        cert_error.innerHTML="Please ensure yourfile is less than 2.5MB in size"
        
     }else{
         img.src = URL.createObjectURL(event.target.files[0]);
