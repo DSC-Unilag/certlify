@@ -7,7 +7,7 @@ footer {
     height: auto;
 }
 footer .empty{
-    width:5%;
+    width:1%;
 }
 footer p {
     width: 15%;
@@ -47,6 +47,6 @@ footer .contribute{
         justify-content: space-between;
     }
     footer .empty {
-        width: 10%;
+        width: 5%;
     }
   }
