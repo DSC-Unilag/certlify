@@ -91,9 +91,10 @@
         <section id="edit-cert" class="edit-cert-section hide">
             <a href="/createcertificate" class="close-button">&#x2716;</a>
             <article class="main-upload">
-                <div id="upload-div">
-                    <label for="file" class="upload-style">CHOOSE CERTIFICATE FILE</label>
-                    <input id="file" type="file" accept="image/*" onchange="loadFile(event)">
+                <div id="upload-div"style="flex-direction:column">
+                    <label for="file" class="upload-style">CHOOSE CERTIFICATE TEMPLATE IMAGE LESS THAN 3MB IN SIZE</label>
+                    <input id="file" type="file" accept="image/*" onclick="cert_error.style.display='none'" onchange="loadFile(event)">
+                    <p id="cert-error"style="color:red;display:none;"></p>
                 </div>
                 <div id="container">
                     <div id="canvas" class="apply-font"></div>
@@ -170,6 +171,7 @@
                         <input id="csv-upload" type="file" name="FileUpload" accept=".csv" class="custom-file">
                         <button class="icon">Submit</button>
                     </form>
+                    
                 </div>
             </article>
             <p id="error" style="color:red;"></p>

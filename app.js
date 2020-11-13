@@ -40,13 +40,7 @@ app.use(
 
 app.use(cors());
 app.use(express.static(__dirname + "/views"));
-app.use(express.json({ limit: "50mb" }));
-
-const PORT = process.env.PORT || 3333;
-
-app.listen(PORT, () => {
-  console.log(`server running on port ${PORT}`);
-});
+app.use(express.json({ limit: "10mb" }));
 
 // Auth (User) Routes
 const userRoutes = require("./routes/userRoutes");
@@ -199,4 +193,15 @@ app.get('*', (req, res) => {
     });
     return;
   }
+});
+
+
+const PORT = process.env.PORT || 3333;
+
+let server=app.listen(PORT, () => {
+  console.log(`server running on port ${PORT}`);
+});
+server.on('clientError', (err, socket) => {
+  console.error(err);
+  socket.end('HTTP/1.1 400 Bad Request\r\n\r\n');
 });

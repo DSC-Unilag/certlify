@@ -34,8 +34,20 @@ let img = new Image();
 /**
  * @param {object} event 
  */
+var cert_error=document.getElementById("cert-error")
 let loadFile = function (event) {
-    img.src = URL.createObjectURL(event.target.files[0]);
+    
+    if(!event.target.files[0]){
+        cert_error.style.display="block";
+        cert_error.innerHTML="please upload a valid file"
+        
+    }else if(event.target.files[0].size>3145728){
+        cert_error.style.display="block";
+        cert_error.innerHTML="Please ensure yourfile is less than 3MB in size"
+       
+    }else{
+        img.src = URL.createObjectURL(event.target.files[0]);
+    }
 };
 
 // This variable would store the image width to height ratio to enable proper scaling of canvas dimensions irrespective of screen size 
@@ -67,7 +79,7 @@ function getCursorPosition(canvas, event) {
     // Pos is 0 when selecting the left boundart
     if (pos == 0) {
         if (boundary.right && x > boundary.right[0]) {
-            prompt("left boundary must be to the left of right boundary")
+            alert("left boundary must be to the left of right boundary")
         } else {
             boundary.left = [x, y];
             mark();
@@ -75,7 +87,7 @@ function getCursorPosition(canvas, event) {
     // pos is 1 when selecting the right boundary.
     } if (pos == 1) {
         if (boundary.left && x < boundary.left[0]) {
-            prompt("right boundary must be to the right of left boundary")
+            alert("right boundary must be to the right of left boundary")
         } else {
             boundary.right = [x, y]
             mark();
