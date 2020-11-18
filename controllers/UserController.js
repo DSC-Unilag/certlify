@@ -17,6 +17,7 @@ if(process.env.SEND_GRID_KEY){
 var mailer = require("./mailer");
 let secret = process.env.SECRET || config.secret;
 let emailverify = require("./UserVerificationMail");
+let passwordreset = require("./PasswordResetMail");
 
 const register = (req, res) => {
   // console.log("a register")
@@ -62,20 +63,20 @@ const register = (req, res) => {
                               to: `${email}`, // list of receivers
                               subject: "Getting started with Certlify!", // Subject line
                               html: emailverify(
-                                `http://${req.hostname}/verify/${token}`
+                                `https://${req.hostname}/verify/${token}`
                               ), // html body
                             };
-                            //mailer(mailOptions);
-                            sgMail.send(mailOptions).then(
-                              () => {return 0},
-                              (error) => {
-                                console.error(error);
+                            mailer(mailOptions);
+                            // sgMail.send(mailOptions).then(
+                            //   () => {return 0},
+                            //   (error) => {
+                            //     console.error(error);
 
-                                if (error.response) {
-                                  console.error(error.response.body);
-                                }
-                              }
-                            );
+                            //     if (error.response) {
+                            //       console.error(error.response.body);
+                            //     }
+                            //   }
+                            // );
                           });
                           req.session.destroy(function (err) {
                             res.status(200);
@@ -105,20 +106,20 @@ const register = (req, res) => {
                       to: `${email}`, // list of receivers
                       subject: "Getting started with Certlify!", // Subject line
                       html: emailverify(
-                        `http://${req.hostname}/verify/${token}`
+                        `https://${req.hostname}/verify/${token}`
                       ), // html body
                     };
-                    //mailer(mailOptions);
-					sgMail.send(mailOptions).then(
-						() => {return 0},
-						(error) => {
-						  console.error(error);
+                    mailer(mailOptions);
+					// sgMail.send(mailOptions).then(
+					// 	() => {return 0},
+					// 	(error) => {
+					// 	  console.error(error);
 
-						  if (error.response) {
-							console.error(error.response.body);
-						  }
-						}
-					  );
+					// 	  if (error.response) {
+					// 		console.error(error.response.body);
+					// 	  }
+					// 	}
+					//   );
                   });
 
                   req.session.destroy(function (err) {
@@ -313,19 +314,19 @@ let userverification = (req, res) => {
           from: "info@certlify.com", // sender address
           to: `${email}`, // list of receivers
           subject: "Getting started with Certlify!", // Subject line
-          html: emailverify(`http://${req.hostname}/verify/${token}`), // html body
+          html: emailverify(`https://${req.hostname}/verify/${token}`), // html body
         };
-        //mailer(mailOptions);
-		sgMail.send(mailOptions).then(
-			() => {return 0},
-			(error) => {
-			  console.error(error);
+        mailer(mailOptions);
+		// sgMail.send(mailOptions).then(
+		// 	() => {return 0},
+		// 	(error) => {
+		// 	  console.error(error);
 
-			  if (error.response) {
-				console.error(error.response.body);
-			  }
-			}
-		  );
+		// 	  if (error.response) {
+		// 		console.error(error.response.body);
+		// 	  }
+		// 	}
+		//   );
       });
       res.json({
         status: true,
@@ -340,10 +341,106 @@ let userverification = (req, res) => {
     }
   });
 };
+let emailrecovery=(req,res)=>{
+  email=req.body.email;
+  User.findOne({email},(err,user)=>{
+    if(user){
+      jwt.sign({ email }, secret,{ expiresIn: 60*15 }, function (err, token) {
+        emailverify(`${req.hostname}/verify/${token}`);
+        let mailOptions = {
+          from: "info@certlify.com", // sender address
+          to: `${email}`, // list of receivers
+          subject: "Reset Your Password!", // Subject line
+          html: passwordreset(`https://${req.hostname}/passwordupdate/?jwt=${token}`), // html body
+        };
+        mailer(mailOptions);
+		// sgMail.send(mailOptions).then(
+		// 	() => {return 0},
+		// 	(error) => {
+		// 	  console.error(error);
 
+		// 	  if (error.response) {
+		// 		console.error(error.response.body);
+		// 	  }
+		// 	}
+		//   );
+      });
+      res.status(200);
+      res.json({
+        status: true,
+        message: "email has been sent",
+      })
+    }else{
+      res.status(404);
+      res.json({
+        status:false,
+        message:"user not found"
+      })
+    }
+  })
+}
+let passwordupdate=(req,res)=>{
+  let token=req.params.jwt
+  let password=req.body.password
+
+  if(!req.params.jwt){
+    res.status(404);
+    return res.json({
+      status:false,
+      message:"invalid link"
+    })
+  }
+  if(!req.body.password){
+    res.status(400);
+    return res.json({
+      status:false,
+      message:"no password"
+    })
+  }
+
+  jwt.verify(token, secret, function (err, data) {
+    if(err){
+      res.status(404);
+      return res.json({
+        status:false,
+        message:"invalid user token"
+      })
+    }else{
+      User.findOne({email:data.email},(err,user)=>{
+        if(user){
+          bcrypt.genSalt(rounds, (err, salt) => {
+            bcrypt.hash(password, salt, (err, passwordhash) => {
+              user.passwordhash=passwordhash;
+              user.save((err)=>{
+                if(err) return err;
+                else{
+                  res.status(201);
+                return  res.json({
+                    status:true,
+                    message:"password updated"
+                  })
+                }
+              })
+            })
+          }) 
+        }else{
+          res.status(404);
+         return res.json({
+            status:false,
+            message:"User not found"
+          })
+        }
+      })
+    }
+  })
+
+  
+}
 module.exports.login = login;
 module.exports.register = register;
 module.exports.anon = anon;
 module.exports.status = status;
 module.exports.logout = logout;
 module.exports.userverification = userverification;
+module.exports.emailrecovery = emailrecovery;
+module.exports.passwordupdate=passwordupdate

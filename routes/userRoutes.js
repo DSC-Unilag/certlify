@@ -37,4 +37,6 @@ router.get("/anon",UserController.anon);
 router.get("/status",UserController.status);
 router.get("/logout",UserController.logout);
 router.post("/emailer",UserController.userverification);
+router.post("/emailrecovery",UserController.emailrecovery);
+router.post("/passwordupdate/:jwt",UserController.passwordupdate);
 module.exports = router;

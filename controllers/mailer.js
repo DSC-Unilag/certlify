@@ -1,7 +1,7 @@
 const nodemailer = require("nodemailer");
 const config = require("../config/database");
 var transporter = nodemailer.createTransport({
-    service: 'SendGrid',
+    service: 'gmail',
     auth: {
         user: process.env.EMAIL || config.email,
         pass: process.env.EMAILPASS || config.emailpass,

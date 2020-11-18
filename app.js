@@ -181,6 +181,24 @@ app.get('/logout', (req, res) => {
   }
 
 })
+
+
+app.get('/emailrecovery',(req,res)=>{
+  res.sendFile(__dirname+ "/views/forgot-email.html")
+})
+
+app.get('/passwordupdate',(req,res)=>{
+  if(!req.query.jwt){
+   return res.sendFile(__dirname + "/views/404-page.html");
+  }
+  let token=req.query.jwt;
+  jwt.verify(token, secret, function (err, data) {
+    if(err) return res.sendFile(__dirname + "/views/404-page.html");
+   return res.sendFile(__dirname+ "/views/password-reset.html")
+  })
+  
+})
+
 app.get('*', (req, res) => {
   res.status(404);
 
