@@ -7,12 +7,12 @@ const rounds = Number(process.env.ROUNDS) || config.rounds;
 const bcrypt = require("bcryptjs");
 var uniqid = require("uniqid");
 var jwt = require("jsonwebtoken");
-const sgMail = require("@sendgrid/mail");
-if(process.env.SEND_GRID_KEY){
-	sgMail.setApiKey(
-		process.env.SEND_GRID_KEY
-	  );
-}
+// const sgMail = require("@sendgrid/mail");
+// if(process.env.SEND_GRID_KEY){
+// 	sgMail.setApiKey(
+// 		process.env.SEND_GRID_KEY
+// 	  );
+// }
 
 var mailer = require("./mailer");
 let secret = process.env.SECRET || config.secret;
@@ -66,17 +66,17 @@ const register = (req, res) => {
                                 `https://${req.hostname}/verify/${token}`
                               ), // html body
                             };
-                            //mailer(mailOptions);
-                            sgMail.send(mailOptions).then(
-                              () => {return 0},
-                              (error) => {
-                                console.error(error);
+                            mailer(mailOptions);
+                            // sgMail.send(mailOptions).then(
+                            //   () => {return 0},
+                            //   (error) => {
+                            //     console.error(error);
 
-                                if (error.response) {
-                                  console.error(error.response.body);
-                                }
-                              }
-                            );
+                            //     if (error.response) {
+                            //       console.error(error.response.body);
+                            //     }
+                            //   }
+                            // );
                           });
                           req.session.destroy(function (err) {
                             res.status(200);
@@ -109,17 +109,17 @@ const register = (req, res) => {
                         `https://${req.hostname}/verify/${token}`
                       ), // html body
                     };
-                   // mailer(mailOptions);
-					sgMail.send(mailOptions).then(
-						() => {return 0},
-						(error) => {
-						  console.error(error);
+                    mailer(mailOptions);
+					// sgMail.send(mailOptions).then(
+					// 	() => {return 0},
+					// 	(error) => {
+					// 	  console.error(error);
 
-						  if (error.response) {
-							console.error(error.response.body);
-						  }
-						}
-					  );
+					// 	  if (error.response) {
+					// 		console.error(error.response.body);
+					// 	  }
+					// 	}
+					//   );
                   });
 
                   req.session.destroy(function (err) {
@@ -316,17 +316,17 @@ let userverification = (req, res) => {
           subject: "Getting started with Certlify!", // Subject line
           html: emailverify(`https://${req.hostname}/verify/${token}`), // html body
         };
-       // mailer(mailOptions);
-		sgMail.send(mailOptions).then(
-			() => {return 0},
-			(error) => {
-			  console.error(error);
+        mailer(mailOptions);
+		// sgMail.send(mailOptions).then(
+		// 	() => {return 0},
+		// 	(error) => {
+		// 	  console.error(error);
 
-			  if (error.response) {
-				console.error(error.response.body);
-			  }
-			}
-		  );
+		// 	  if (error.response) {
+		// 		console.error(error.response.body);
+		// 	  }
+		// 	}
+		//   );
       });
       res.json({
         status: true,
@@ -353,17 +353,17 @@ let emailrecovery=(req,res)=>{
           subject: "Reset Your Password!", // Subject line
           html: passwordreset(`https://${req.hostname}/passwordupdate/?jwt=${token}`), // html body
         };
-  //      mailer(mailOptions);
-		sgMail.send(mailOptions).then(
-			() => {return 0},
-			(error) => {
-			  console.error(error);
+        mailer(mailOptions);
+		// sgMail.send(mailOptions).then(
+		// 	() => {return 0},
+		// 	(error) => {
+		// 	  console.error(error);
 
-			  if (error.response) {
-				console.error(error.response.body);
-			  }
-			}
-		  );
+		// 	  if (error.response) {
+		// 		console.error(error.response.body);
+		// 	  }
+		// 	}
+		//   );
       });
       res.status(200);
       res.json({
