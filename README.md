@@ -49,7 +49,7 @@ If you found this project useful or you like what you see, then please consider 
 To view the api documentation, visit [editor.swagger.io](https://app.swaggerhub.com/apis-docs/DSC-cert-gen/certificate-generator/1.0.0). Setup the project locally to test
 
 ##  🤓 Contributors
-*  **Zubs**
+*  **[Zubs](https://zubs.github.io)**
 *  **WiseMrMusa**
 *  **geektutor**
 *  **bolubee101**
