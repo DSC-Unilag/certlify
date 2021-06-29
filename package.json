@@ -1,6 +1,6 @@
 {
   "name": "certlify",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "<p align=\"center\">\r \t<img src=\"certlify png.png\" width=\"400\">\r </p>",
   "main": "index.js",
   "dependencies": {
