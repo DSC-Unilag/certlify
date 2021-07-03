@@ -55,7 +55,7 @@ export async function register (req, res) {
         token = token.value;
         res.status(201).json({ user, token });
     } catch (error) {
-        const errors = handleErrors(error);
+        const errors = sendAuthError(error);
 
         res.status(400).json(errors);
     }
