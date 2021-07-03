@@ -1,5 +1,4 @@
 import { sign } from 'jsonwebtoken'
-import { getEnvs } from './env_vars'
 import { Token } from '../models/Token'
 let secret = process.env.SECRET || config.secret;
 
