@@ -1,16 +1,14 @@
 const express = require('express');
 const apiRouter = express.Router();
 
-
-let authroutes=require("./auth/auth.router");
-apiRouter.use('/auth',authroutes);
-
+const authroutes = require("./auth/auth.router");
+apiRouter.use('/auth', authroutes);
 
 apiRouter.get('*', (req, res) => {
-  res.status(404);
-  return res.json({
-    errorMessage: 'endpoint not found',
-  });
+	res.status(404);
+	return res.json({
+		errorMessage: 'endpoint not found',
+	});
 });
 
 apiRouter.post('*', (req, res) => {
