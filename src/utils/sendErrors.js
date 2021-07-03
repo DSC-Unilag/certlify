@@ -1,10 +1,10 @@
 /**
  * Formats errors as human readable json
  * @param error Error object or empty object incase of incorrect password
- * @param incorrectEmail boolean
+ * @param incorrectPassword boolean
  * @returns errors as json
  */
-export function sendAuthError (error, incorrectPassword) {
+export function sendAuthError (error, incorrectPassword = false, notLoggedIn = false) {
     let errors = {
         email: '',
         password: '',
@@ -25,7 +25,6 @@ export function sendAuthError (error, incorrectPassword) {
     }
 
     if (error) {
-
         if (error.message.includes('User validation failed')) {
             Object.values(error.errors).forEach((singleError) => {
                 const errorType = singleError.properties.path;

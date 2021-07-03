@@ -1,27 +1,48 @@
-const mongoose = require("mongoose");
-const uniqueValidator = require("mongoose-unique-validator");
+const mongoose = require("mongoose")
+const { isEmail } = require("../../utils/validator")
+import { genSalt, hash } from 'bcrypt'
 
 const UserSchema = new mongoose.Schema({
     name: {
         type: String,
+        required: [true, 'Name is required'],
     },
     email: {
         type: String,
-        unique: true,
+        unique: [true, 'Email is already in use'],
+        required: [true, 'Email is required'],
+        lowercase: true,
+        validate: [(value) => { return isEmail(value) }, 'Invalid email']
     },
-    passwordhash: {
+    password: {
         type: String,
+        required: [true, 'Password is required'],
+        minLength: [8, 'Password cannot be less than 8 characters'],
+        maxLength: [20, 'Password cannot be greater than 20 characters']
     },
     profilePicture: String,
     certificateUrls: [String],
     confirmed: {
         type: Boolean,
         default:false
+    },
+    date: {
+        type: Date, 
+        default: Date.now,
     }
 });
 
-// uniqueValidator plugin for presave validation of unique fields. Check the docs for more details
-UserSchema.plugin(uniqueValidator);
-let User = mongoose.model("User", UserSchema);
+userSchema.pre('save', async function (next) {
+    this.password = await hash(this.password, await genSalt());
+    next();
+});
 
-module.exports = User;
+// To make sure when we fetch a user, the email is always omitted
+userSchema.set('toJSON', {
+    transform: function (doc, ret, opt) {
+        delete ret['password']
+        return ret
+    }
+})
+
+export const User = mongoose.model("User", UserSchema);

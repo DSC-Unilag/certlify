@@ -1,6 +1,7 @@
 // Import modules
 const { generateResponse, createError, createSuccessMessage } = require("../../utils/response");
 const User = require("../../components/users");
+const { sendAuthError } = require("../../utils/sendErrors")
 
 module.exports.register = async (req, res) => {
 
@@ -47,4 +48,15 @@ module.exports.register = async (req, res) => {
 
 export async function register (req, res) {
     let { name, email, password } = req.body;
+
+    try {
+        const user = await User.create({ name, email: email.toLowerCase(), password })
+        let token = await createToken(user._id);
+        token = token.value;
+        res.status(201).json({ user, token });
+    } catch (error) {
+        const errors = handleErrors(error);
+
+        res.status(400).json(errors);
+    }
 }
