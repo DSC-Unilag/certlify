@@ -1,7 +1,7 @@
 // Import modules
-const { generateResponse, createError, createSuccessMessage } = require("../../utils/response")
+const { generateResponse, createError, createSuccessMessage } = require("../../../utils/response")
 const User = require("../../components/users")
-const { sendAuthError } = require("../../utils/sendErrors")
+const { sendAuthError } = require("../../../utils/sendErrors")
 
 export async function register (req, res) {
     let { name, email, password } = req.body

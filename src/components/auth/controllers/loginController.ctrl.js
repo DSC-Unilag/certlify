@@ -1,9 +1,9 @@
 // Import modules
 const { compare } = require("bcrypt")
-const { User } = require("../users/users.model")
-const { createToken } = require("../../utils/token")
-const { sendAuthError } = require("../../utils/sendErrors")
-const { generateResponse, createError, createSuccessMessage } = require("../../utils/response")
+const { User } = require("../../users/users.model")
+const { createToken } = require("../../../utils/token")
+const { sendAuthError } = require("../../../utils/sendErrors")
+const { generateResponse, createError, createSuccessMessage } = require("../../../utils/response")
 
 export async function Login (req, res) {
     const { email, password } = req.body

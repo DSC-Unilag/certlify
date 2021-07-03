@@ -1,6 +1,6 @@
 import { sign } from 'jsonwebtoken'
 import { Token } from '../models/Token'
-let secret = process.env.SECRET || config.secret;
+const secret = process.env.SECRET || config.secret;
 
 export const maxAge = 3 * 24 * 60 * 60;
 
