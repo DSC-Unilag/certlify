@@ -1,4 +1,4 @@
-import { Schema, model } from 'mongoose';
+const { Schema, model } = require('mongoose')
 
 const tokenSchema = new Schema({
     value: {
@@ -9,6 +9,6 @@ const tokenSchema = new Schema({
         type: Date, 
         default: Date.now,
     }
-});
+})
 
-export const Token = model('Token', tokenSchema);
+exports.Token = model('Token', tokenSchema)

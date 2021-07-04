@@ -4,7 +4,7 @@
  * @param incorrectPassword boolean
  * @returns errors as json
  */
-export function sendAuthError (error, incorrectPassword = false, notLoggedIn = false) {
+exports.sendAuthError = function (error, incorrectPassword = false, notLoggedIn = false) {
     let errors = {
         email: '',
         password: '',

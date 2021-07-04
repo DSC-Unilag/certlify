@@ -14,7 +14,8 @@
     "morgan": "^1.10.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/app.js",
+    "start": "NODE_ENV=production node src/app.js"
   },
   "repository": {
     "type": "git",

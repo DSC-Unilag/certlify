@@ -1,15 +1,16 @@
-import { sign } from 'jsonwebtoken'
-import { Token } from '../models/Token'
+const { sign } = require('jsonwebtoken')
+const { Token } = require('../components/tokens/token.model')
+const config = require("../config/configuration")
 const secret = process.env.SECRET || config.secret;
 
-export const maxAge = 3 * 24 * 60 * 60;
+const maxAge = 3 * 24 * 60 * 60;
 
 /**
  * Creates JWT Token
  * @param id user._id
  * @returns 
  */
-export async function createToken (id) {
+exports.createToken = async function (id) {
     const token = sign({ id }, secret, {
         expiresIn: maxAge
     });

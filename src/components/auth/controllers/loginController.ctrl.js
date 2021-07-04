@@ -5,7 +5,7 @@ const { createToken } = require("../../../utils/token")
 const { sendAuthError } = require("../../../utils/sendErrors")
 const { generateResponse, createError, createSuccessMessage } = require("../../../utils/response")
 
-export async function Login (req, res) {
+exports.login =  async function (req, res) {
     const { email, password } = req.body
 
     try {

@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const { isEmail } = require("../../utils/validator")
-import { genSalt, hash } from 'bcrypt'
+const { genSalt, hash } = require('bcrypt')
 
 const UserSchema = new mongoose.Schema({
     name: {
@@ -32,17 +32,17 @@ const UserSchema = new mongoose.Schema({
     }
 });
 
-userSchema.pre('save', async function (next) {
+UserSchema.pre('save', async function (next) {
     this.password = await hash(this.password, await genSalt());
     next();
 });
 
 // To make sure when we fetch a user, the email is always omitted
-userSchema.set('toJSON', {
+UserSchema.set('toJSON', {
     transform: function (doc, ret, opt) {
         delete ret['password']
         return ret
     }
 })
 
-export const User = mongoose.model("User", UserSchema);
+exports.User = mongoose.model("User", UserSchema);
