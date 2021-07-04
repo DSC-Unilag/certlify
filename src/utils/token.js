@@ -1,7 +1,7 @@
 const { sign } = require('jsonwebtoken')
 const { Token } = require('../components/tokens/token.model')
 const config = require("../config/configuration")
-const secret = process.env.SECRET || config.secret;
+const secret = process.env.SECRET || config.jwtsecret;
 
 const maxAge = 3 * 24 * 60 * 60;
 

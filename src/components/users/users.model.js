@@ -24,7 +24,7 @@ const UserSchema = new mongoose.Schema({
     certificateUrls: [String],
     confirmed: {
         type: Boolean,
-        default:false
+        default: false
     },
     date: {
         type: Date, 
