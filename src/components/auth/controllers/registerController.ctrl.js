@@ -3,6 +3,7 @@ const { generateResponse, createError, createSuccessMessage } = require("../../.
 const { User } = require("../../users/users.model")
 const { sendAuthError } = require("../../../utils/sendErrors")
 const { createToken } = require("../../../utils/token")
+const { verifyUser } = require("../../../utils/mail/mailer")
 
 exports.register = async function (req, res) {
     let { name, email, password } = req.body
@@ -17,6 +18,8 @@ exports.register = async function (req, res) {
             res.status(result.status).json(result.result)
         }
         const token = await createToken(user._id)
+
+
         const result = generateResponse(201, createSuccessMessage({ user, token: token.value }))
         res.status(result.status).json(result.result)
     } catch (error) {
