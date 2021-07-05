@@ -1,13 +1,13 @@
-const { verify } = require("jsonwebtoken")
 const { sendAuthError } = require("../../../utils/sendErrors")
 const { createError, generateResponse } = require("../../../utils/response")
-const { validateToken, removeToken } = require("../../../utils/token")
+const { validateToken } = require("../../../utils/token")
+const { User } = require("../../users/users.model")
 
 exports.requireAuth =  async function (req, res, next) {
     const token = req.header('token')
 
     if (token) {
-        const decodedToken = validateToken(token)
+        const decodedToken = await validateToken(token)
 
         if (decodedToken) {
             const user = await User.findById(decodedToken.id)

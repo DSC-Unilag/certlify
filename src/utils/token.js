@@ -1,5 +1,6 @@
 const { sign, verify } = require('jsonwebtoken')
 const { Token } = require('../components/tokens/token.model')
+const { User } = require("../components/users/users.model")
 const config = require("../config/configuration")
 const secret = process.env.SECRET || config.jwtsecret;
 
@@ -24,24 +25,25 @@ exports.createToken = async function (id) {
  * Decrypts a valid JWT Token
  * @param {string} token Token to be tested
  */
-exports.validateToken = function (token) {
-    verify (token, secret, async (error, decodedToken) => {
+exports.validateToken = async function (token) {
 
-        if (error) {
-            return false
+    try {
+        const verifiedToken = verify (token, secret)
+
+        const storedToken = await Token.findOne({ value: token })
+        const user = await User.findById(verifiedToken.id)
+
+        if (storedToken && user) {
+            return verifiedToken
         } else {
-
-            const storedToken = Token.findOne({ value: token })
-            const user = User.findById(decodedToken.id)
-
-            if (storedToken && user) {
-                return decodedToken
-            } else {
-                return false
-            }
+            return false
         }
-    })
+    } catch (error) {
+        return false
+    }
 }
+
+exports.getValidatedToken = function () {}
 
 /**
  * Removes a token whenever the user logs out
