@@ -1,4 +1,4 @@
-const { sign } = require('jsonwebtoken')
+const { sign, verify } = require('jsonwebtoken')
 const { Token } = require('../components/tokens/token.model')
 const config = require("../config/configuration")
 const secret = process.env.SECRET || config.jwtsecret;
@@ -18,4 +18,30 @@ exports.createToken = async function (id) {
     const storedToken = await Token.create({ value: token });
 
     return storedToken;
+}
+
+/**
+ * Decrypts a valid JWT Token
+ * @param {string} token Token to be tested
+ */
+exports.validateToken = function (token) {
+    verify (token, secret, async (error, decodedToken) => {
+
+        if (error) {
+            return false
+        } else {
+            return decodedToken
+        }
+    })
+}
+
+/**
+ * Removes a token whenever the user logs out
+ * @param {string} token Token from client
+ * @returns 
+ */
+exports.removeToken = async function (token) {
+    const removedToken = await Token.deleteOne({ value: token })
+
+    return removedToken;
 }
