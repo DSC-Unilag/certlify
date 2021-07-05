@@ -12,6 +12,7 @@ exports.requireAuth =  async function (req, res, next) {
         if (decodedToken) {
             const user = await User.findById(decodedToken.id)
             req.user = user
+            req.token = token
             next()
         } else {
             const result = generateResponse(403, createError({

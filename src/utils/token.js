@@ -30,7 +30,15 @@ exports.validateToken = function (token) {
         if (error) {
             return false
         } else {
-            return decodedToken
+
+            const storedToken = Token.findOne({ value: token })
+            const user = User.findById(decodedToken.id)
+
+            if (storedToken && user) {
+                return decodedToken
+            } else {
+                return false
+            }
         }
     })
 }
