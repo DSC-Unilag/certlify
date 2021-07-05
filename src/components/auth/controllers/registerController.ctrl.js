@@ -9,11 +9,10 @@ exports.register = async function (req, res) {
     let { name, email, password } = req.body
 
     try {
-        const { user, error } = await User.create({ name, email: email.toLowerCase(), password })
-        if (error || !user) {
+        const user = await User.create({ name, email: email.toLowerCase(), password })
+        if (!user) {
             const result = generateResponse(400, createError({
                 message: "Unable to create user",
-                error
             }))
             res.status(result.status).json(result.result)
         }
@@ -24,7 +23,6 @@ exports.register = async function (req, res) {
     } catch (error) {
         const errors = sendAuthError(error)
         const result = generateResponse(400, createError(errors))
-        console.log(result)
         res.status(result.status).json(result.result)
     }
 }
