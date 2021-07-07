@@ -46,7 +46,7 @@ If you found this project useful or you like what you see, then please consider 
 
 ###  Api documentation
 
-To view the api documentation, visit [editor.swagger.io](https://app.swaggerhub.com/apis-docs/DSC-cert-gen/certificate-generator/1.0.0). Setup the project locally to test
+To view the api documentation, visit [here](https://documenter.getpostman.com/view/13952131/Tzm2KJdE). Setup the project locally to test
 
 ##  🤓 Contributors
 *  **[Zubs](https://zubs.github.io)**
