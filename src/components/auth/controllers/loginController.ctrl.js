@@ -8,6 +8,13 @@ const { generateResponse, createError, createSuccessMessage } = require("../../.
 exports.login =  async function (req, res) {
     const { email, password } = req.body
 
+    if (!email || !password) {
+        const result = generateResponse(401, createError({
+            message: "Incomplete request"
+        }))
+        res.status(result.status).json(result.result)
+    }
+
     try {
         const user = await User.findOne({ email: email.toLowerCase() })
         
