@@ -1,19 +1,22 @@
 {
   "name": "certlify",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "<p align=\"center\">\r \t<img src=\"certlify png.png\" width=\"400\">\r </p>",
   "main": "index.js",
   "dependencies": {
+    "bcrypt": "^5.0.1",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "expres": "^0.0.5",
     "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.13.0",
-    "morgan": "^1.10.0"
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.6.2"
   },
-  "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon src/app.js",
+    "start": "NODE_ENV=production node src/app.js"
   },
   "repository": {
     "type": "git",

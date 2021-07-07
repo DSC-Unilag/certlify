@@ -100,7 +100,7 @@ const register = (req, res) => {
                   }
                   // Start session ish
                   jwt.sign({ email }, secret, function (err, token) {
-                    emailverify(`${req.hostname}/verify/${token}`);
+                    emailverify(`${req.hostname}/verify/${token}`)
                     let mailOptions = {
                       from: "info@certlify.com", // sender address
                       to: `${email}`, // list of receivers
