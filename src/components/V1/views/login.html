@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K1X9384BHD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K1X9384BHD');
+</script>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Login</title>
+    <meta name="msapplication-tap-highlight" , content="none" />
+    <link rel="manifest" href="manifest.json">
+    <meta name="description" content="Login to Certlify.">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Certlify">
+    <meta name="apple-mobile-web-app-title" content="Certlify">
+    <meta name="theme-color" content="#34495E">
+    <meta name="msapplication-navbutton-color" content="#FF9800">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="index.html">
+    <link rel="icon" sizes="512x512" href="/imgs/badge.svg">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/signup.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/animations.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css'/>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/footer.css'/>
+</head>
+
+<body>
+    <span class="loader">
+        <div class="container-for-loader">
+            <div class="large-circle">
+            </div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+        </div>
+    </span>
+    <header>
+        <nav class="section-links">
+            <ul class="home-links">
+                <li><a href="/index.html">Home</a>
+                </li>
+            </ul>
+        </nav>
+        <span class="logo"><img src="/imgs/Group 297.png" alt="Certlify logo"></span>
+    </header>
+
+    <main>
+        <section class="sign-page-section">
+            <h1 class="first-text">Login</h1>
+            <p class="second-text">Hi there! Kindly enter your login details</p>
+
+            <form id="email-input" class="form-input" onsubmit="return false">
+                <input type="email" id="email" placeholder="Enter your e-mail" name="email" autocomplete="email"
+                    minlength=4 required>
+                <input type="password" id="password" placeholder="Enter your password" name="password"
+                    autocomplete="current-password" minlength=8 required>
+
+                <p id="password-message" class="message"></p>
+                <button id="submit" type="submit" onclick="main()" class="sign-log">
+                    Login
+                </button>
+            </form>
+            <p id="email-verification" class="message"style="display:none"></p>
+            <button id="verify"type="button" onclick="emailer()" class="sign-log"style="display:none;">
+                Verify
+            </button>
+            <p>forgot password? <a id="login" href="/emailrecovery">Password recovery</a></p>
+            <p>Don't have an account? <a id="login" href="/signup">Sign up</a></p>
+        </section>
+    </main>
+
+    <footer>
+        <p class="contribute">
+            <span>Want to contribute?</span>    
+            <a href="https://github.com/DSC-Unilag/cert" target="_blank">
+                <img src="/imgs/mark-github-512.png" alt="github logo">
+            </a>
+        </p>
+        <p class="built-by">Built by <a href="https://dsc.community.dev/university-of-lagos/"target="_blank"> <span><img src="/imgs/hero-dsc-about-unilag.png" alt="dsc unilag"></span></a></p>
+        <p class="empty"style="width:10%;"></p>
+    </footer>
+
+    <script>
+        let main = () => {
+            let data={};
+            let password = document.getElementById("password").value
+            let email = document.getElementById("email").value
+            if (password.length >= 8 && ValidateEmail(email)) {
+                data.password = password;
+                data.email = email;
+                send(data);
+            }
+        }
+        let send = (data) => {
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "/api/login", true);
+            xhttp.setRequestHeader("Content-Type", "application/json");
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    location.href = "/dashboard";
+                }
+                if (this.readyState == 4 && (this.status == 400||this.status==403)) {
+                    document.getElementById("password-message").style.display = "inline";
+                    document.getElementById("password-message").innerHTML = "email or password incorrect"
+                }
+                if (this.readyState == 4 && this.status == 401) {
+                    document.getElementById("password-message").style.display = "none";
+                    document.getElementById("email-verification").style.display = "inline";
+                    document.getElementById("email-verification").innerHTML = `This email needs to be verified before logging in. Click the button below and a verification email would be sent to your mail`;
+                    document.getElementById("submit").style.display = "none";
+                    document.getElementById("verify").style.display = "inline";
+                }
+            };
+
+            xhttp.send(JSON.stringify(data));
+        }
+        function ValidateEmail(email) {
+            if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+                return (true)
+            }
+            return (false)
+        }
+    </script>
+    <!-- <script src="/src/js/sw-install.js"></script> -->
+    <script src='/src/js/main.js'></script>
+    <script>
+        let emailer=()=>{
+            let email = document.getElementById("email").value
+            var xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "/api/emailer", true);
+            xhttp.setRequestHeader("Content-Type", "application/json");
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("email-verification").style.color="blue"
+                    document.getElementById("email-verification").innerHTML = `Please check your email for your verification link`;
+                    document.getElementById("verify").style.display = "none";
+                }
+            }
+            xhttp.send(JSON.stringify({email}));
+        }
+
+           let anon=()=>{
+            var xhttp = new XMLHttpRequest();
+           xhttp.open("GET", "/api/anon", true);
+           xhttp.setRequestHeader("Content-Type", "application/json");
+           xhttp.onreadystatechange = function () {
+               if (this.readyState == 4) {
+                   location.href = "/dashboard";
+               }
+           };
+
+           xhttp.send();
+        }
+    </script>
+</body>
+
+</html>

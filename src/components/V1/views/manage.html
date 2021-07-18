@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en-US">
+
+<head>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K1X9384BHD"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-K1X9384BHD');
+</script>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Manage</title>
+    <meta name="msapplication-tap-highlight" , content="none" />
+    <!-- <link rel="manifest" href="manifest.json"> -->
+    <meta name="description" content="Manage your generated certificate.">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="Certlify">
+    <meta name="apple-mobile-web-app-title" content="Certlify">
+    <meta name="theme-color" content="#34495E">
+    <meta name="msapplication-navbutton-color" content="#FF9800">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="msapplication-starturl" content="index.html">
+    <link rel="icon" sizes="512x512" href="/imgs/badge.svg">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/manage.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/animations.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/loader.css' />
+    <link rel='stylesheet' type='text/css' media='screen' href='/src/css/share.css' />
+</head>
+
+<body>
+    <span class="loader">
+        <div class="container-for-loader">
+            <div class="large-circle">
+            </div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+            <div class="inner-circle"></div>
+        </div>
+    </span>
+    <header>
+        <section class="logo-section">
+            <span class="code-logo"><img class="cropped-logo" src="/imgs/Group 298-edit.png" alt="logo icon"></span>
+            <div class="img-line"></div>
+        </section>
+
+        <span id="profile-image"><img id="user-image" src="/imgs/user.svg" alt="user icon" /></span>
+
+        <section class="search-section">
+            <input type="search" placeholder="Search" />
+            <button onclick=""><img src="/imgs/search.svg" alt=""></button>
+        </section>
+
+        <input type="checkbox" id="toggle-butt" />
+
+        <label for="toggle-butt" class="bread-crumbs">
+            <div class="bread-crumb"></div>
+            <div class="bread-crumb"></div>
+            <div class="bread-crumb"></div>
+        </label>
+
+        <nav class="section-links">
+            <ul class="home-links">
+                <li><a href="/">Home</a>
+                </li>
+                <li class="gen-cert"><a href="/dashboard">Issued Certificates</a>
+                    <hr class="active-cert">
+                </li>
+                <li>
+                    <a href="/logout">Logout</a>
+                </li>
+            </ul>
+        </nav>
+
+        <section class="volunteer-header">
+            <h1 id="title"></h1>
+
+            <a href="/dashboard" id="back-button"><img src="/imgs/arrow.svg" alt="back to dashboard"></a>
+        </section>
+    </header>
+
+    <main class="main-dashboard">
+        <section class="cert-section">
+            <img id="template" alt="certificate template" />
+        </section>
+
+        <section class="link-section">
+            <input type="text" id="link" name="certificate" autocomplete="current-password" minlength=4
+                    readonly=true required>
+
+            <button class="icon" onclick="CopyToClipBoard()"><i class="copy"></i><span
+                id="text">Copy</span></button>
+            <!-- <button class="icon" onclick="OpenWrapper()"><i class="share"></i><span id="text">Share</span></button>
+            <div class="share-container">
+                <div class="share-wrapper">
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=http%3A//certlify.com/" class="text">
+                        <span class="icon-svg"><img src="/imgs/share-icons/facebook.svg" /></span>
+                        Facebook
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?text=Link%20to%20your%20certificates&url=http://certlify.com/"
+                        class="text sm twitter">
+                        <span class="icon-svg"><img src="/imgs/share-icons/twitter.svg" /></span>
+                        Twitter
+                    </a>
+                    <a href="whatsapp://send?text=The text to share!&url=http://certlify.com/" class="text">
+                        <span class="icon-svg"><img src="/imgs/share-icons/whatsapp.svg" /></span>
+                        WhatsApp
+                    </a>
+                </div>
+            </div> -->
+        </section>
+        <section class="edit-section">
+            <a onclick="ToggleCSVModal()">Upload CSV</a>
+            <a onclick="ToggleModal();">Collectors</a>
+            <a href="/createcertificate">Add Certificate</a>
+        </section>
+    </main>
+
+    <section aria-live="polite" class="collectors-modal hide">
+        <section class="collectors-panel">
+            <span class="table-header">
+                <a onclick="ToggleModal()" class="close-button">&#x2716;</a>
+                <h3>Collectors</h3>
+            </span>
+            <section class="table-section">
+                <table id="collectors">
+                    <tr>
+                        <th>S/N</th>
+                        <th>Name on Certificate</th>
+                        <th>Email Address</th>
+                        <th>Status</th>
+                    </tr>
+                </table>
+            </section>
+        </section>
+    </section>
+
+    <section id="add-email-modal" class="edit-cert-section hide">
+        <article class="main-upload">
+            <a onclick="ToggleCSVModal()" class="close-button">&#x2716;</a>
+            <div class="upload-div">
+                <form id="email-form" class="form" method="POST" enctype="multipart/form-data" target="hidden-iframe">
+                    <label for="csv-upload">Upload CSV file with the names of those eligible for the
+                        certificate</label>
+                    <input id="csv-upload" type="file" name="FileUpload" accept=".csv" class="custom-file" required>
+                    <button class="icon">Submit</button>
+                    <p id="error" style="color:red;"></p>
+                </form>
+            </div>
+        </article>
+    </section>
+
+    <footer>
+        <iframe name="hidden-iframe" style="display: none;" onload="parse()"></iframe>
+    </footer>
+
+    <script src='/src/js/main.js'></script>
+    <script>
+        // This function parses the link variable in the query string in the url. The string stored by it is needed to make the api request for the properties of the certificate
+        function getQueryVariable(variable) {
+            var query = window.location.search.substring(1);
+            var vars = query.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                var pair = vars[i].split('=');
+                if (decodeURIComponent(pair[0]) == variable) {
+                    return decodeURIComponent(pair[1]);
+                }
+            }
+            console.log('Query variable %s not found', variable);
+        }
+
+        function parse() {
+            let response = document.getElementsByName("hidden-iframe")[0].contentWindow.document
+                .getElementsByTagName("pre")[0].innerText
+            response = JSON.parse(response);
+            if (response.status) {
+                document.getElementById("error").innerHTML = "Emails added successfully"
+            } else {
+                document.getElementById("error").innerHTML = "Please check the format of your csv file"
+            }
+        }
+    </script>
+    <script>
+        ShowLoader();
+        // parsing the link variable
+        let link = getQueryVariable("link");
+        // variable for sharable link;
+        let ShareLink;
+        // Making a XHR request for the name and image source at the api endpoint
+        var xhttp = new XMLHttpRequest();
+        xhttp.open("GET", `/api/manage/${link}/details`, true);
+        xhttp.setRequestHeader("Content-Type", "application/json");
+        xhttp.onreadystatechange = function () {
+            // When the response is recieved and the status code is 200
+            if (this.readyState == 4 && this.status == 200) {
+                // parse the data
+                let data = JSON.parse(this.responseText)
+                // The data has the name property for the name of the certificate and the src property for the src of the certificate;
+                document.getElementById("title").innerHTML = data.name;
+                document.getElementById("template").src = data.src;
+                document.getElementById("email-form").setAttribute("action", `/api/addeligibleusers/${link}`);
+                document.getElementById("link").value=data.share;
+                // HideLoader();
+            }
+        };
+
+        xhttp.send();
+    </script>
+    <script>
+        // another XHR request 
+        var xhttp2 = new XMLHttpRequest();
+        xhttp2.open("GET", `/api/manage/${link}/getcollectors`, true);
+        xhttp2.setRequestHeader("Content-Type", "application/json");
+        xhttp2.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                let data = JSON.parse(this.responseText)
+                let collectors = data.collectors;
+                for (i in collectors) {
+                    let collected;
+                    let style;
+                    if (collectors[i].status) {
+                        collected = "Collected"
+                        style = "style='color:green'"
+                    } else {
+                        collected = "Not Collected"
+                        style = "style='color:red'"
+                    }
+                    document.getElementById("collectors").innerHTML += `
+                        <tr>
+                    <td>${Number(i) + 1}</td>
+                    <td>${collectors[i].name || ""}</td>
+                    <td>${collectors[i].email}</td>
+                    <td class="collected-status"${style}>${collected}</td>
+                </tr>
+                        `
+                }
+                HideLoader();
+                collectedStatusColor();
+            }
+        };
+
+        xhttp2.send();
+    </script>
+</body>
+
+</html>

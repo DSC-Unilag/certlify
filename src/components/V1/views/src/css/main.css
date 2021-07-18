@@ -1,0 +1,365 @@
+@font-face {
+    font-family: 'Nunito', Verdana, sans-serif;
+    src: url("./fonts/OpenSans-Regular.ttf");
+}
+
+* {
+    font-family: 'Nunito', Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1rem;
+    scroll-behavior: smooth;
+
+}
+
+html,
+body {
+    color: #098dff;
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.12rem;
+    word-spacing: 0.16rem;
+}
+
+body {
+    display: grid;
+    position: relative;
+    width: 100%;
+    height: auto;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto minmax(4.5rem, auto);
+    justify-content: center;
+    align-content: center;
+}
+
+/* Custom Scroll-bar */
+::-webkit-scrollbar {
+    width: 1.2rem;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 7px lightgrey;
+    border-radius: 2rem;
+    transition: all 90ms ease-in;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #4285F4;
+    border-radius: 2rem;
+    transition: all 90ms ease-in;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #2262c7;
+}
+
+main {
+    display: grid;
+    position: relative;
+    width: 100%;
+    grid-template-columns: 100%;
+    grid-template-rows: 11rem auto;
+    justify-items: center;
+}
+
+main span {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+}
+
+main span img {
+    width: 90%;
+    height: auto;
+    margin: 0rem 0.5rem;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem 0;
+}
+
+header span {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 6.7rem;
+}
+
+header .logo img {
+    width: 10rem;
+    position: relative;
+    z-index: -1;
+    bottom: -0.5rem;
+    left: 0.2rem;
+}
+
+main .landing-page-section {
+    display: grid;
+    height: auto;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: auto;
+    grid-template-rows: minmax(6rem, auto) minmax(3rem, auto) minmax(4rem,  auto) minmax(4rem, auto) 3rem;
+}
+
+main .landing-page-section h1 {
+    font-weight: 600;
+    font-size: 1.13rem;
+    color: #4285F4;
+}
+main .landing-page-section h1 i{
+    margin-top: 0.3rem;
+    display: inline-block;
+}
+main .landing-page-section p {
+    margin: 0.5rem 0;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.3rem;
+    color: black;
+    align-self: start;
+}
+
+a {
+    text-decoration: none;
+    color: #098dff;
+    cursor: pointer;
+}
+
+.landing-page-section a,
+.sign-log,
+#return-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 4px 5px lightgrey;
+    border: none;
+    color: white;
+    width: 12.25rem;
+    height: 2.5rem;
+    background-color: #4285F4;
+    transition: 300ms all ease-in;
+}
+
+main span .four-opor {
+    font-size: 44vw;
+    text-shadow: -7px 3px 1px gold;
+}
+
+#return-home {
+    margin-top: 7rem;
+    width: 15.65rem;
+}
+
+.sign-log {
+    width: 85%;
+    margin-top: 1rem;
+}
+
+.landing-page-section a:hover,
+.sign-log:hover,
+#return-home:hover {
+    background-color: #619bf7;
+}
+
+.landing-page-section a:focus,
+.sign-log:focus,
+#return-home:focus {
+    background-color: #1f74fc;
+}
+
+.landing-page-section a:active,
+.sign-log:active,
+#return-home:active {
+    background-color: #2e7eff;
+}
+
+input {
+    width: 85%;
+    height: 3rem;
+    border: 1.7px solid #4285F4;
+    padding-left: 0.3rem;
+    margin-bottom: 1rem;
+    border-radius: 0.3rem;
+    font-size: 0.9rem;
+}
+
+.sign-page-section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign-page-section p {
+    color: #707070;
+    margin: 1rem 0;
+    text-align: center;
+    width: 100%;
+}
+
+.sign-page-section form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0.1rem 0rem 2rem 0rem;
+}
+
+.sign-page-section h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    width: 100%;
+    font-weight: bolder;
+}
+
+.sign-page-section .second-text {
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+}
+
+/* 
+ellispse curve code
+*/
+
+.ellipse-curve {
+    width: 15rem;
+    position: fixed;
+    overflow: hidden;
+    z-index: -1;
+    bottom: -7rem;
+    right: 0;
+    transform: rotate(25deg);
+    height: 15rem;
+    display: inline-block;
+}
+
+.top-left {
+    transform: rotate(223deg);
+    top: -7.8rem;
+    left: -9.5rem;
+}
+
+.first-line,
+.second-line,
+.third-line {
+    width: 23.25rem;
+    height: 27rem;
+    position: absolute;
+    overflow: hidden;
+    border-top-left-radius: 65% 80%;
+    border-bottom-left-radius: 35% 20%;
+}
+
+.first-line {
+    border: 1px solid #0F9D58;
+}
+
+.second-line {
+    border: 1px solid #4285F4;
+    top: 1.5rem;
+}
+
+.third-line {
+    border: 1px solid #FBBC04;
+    top: 3rem;
+}
+
+.custom-cir {
+    width: 3rem;
+    height: 3rem;
+    background-color: #e1effb;
+    position: absolute;
+    border-radius: 50%;
+    right: 0rem;
+    z-index: -3;
+    bottom: 1rem;
+}
+
+.cir-left {
+    right: 0rem;
+    left: 0;
+    bottom: 11rem;
+}
+
+.custom-ellipse {
+    position: absolute;
+    z-index: -3;
+    background-color: #e1effb;
+    width: 20rem;
+    height: 23rem;
+    border-top-left-radius: 40% 80%;
+    border-top-right-radius: 40% 30%;
+    border-bottom-left-radius: 60% 30%;
+    border-bottom-right-radius: 20% 90%;
+    bottom: -79px;
+    animation: 6.5s wobble infinite ease;
+}
+
+footer {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+    /* padding-left: 1.5rem; */
+    align-items: center;
+    width: 100%;
+    height: 2rem;
+}
+
+footer a {
+    width: 3rem;
+    text-decoration: none;
+}
+
+footer a img {
+    width: 2.1rem;
+    height: auto;
+}
+
+@media screen and (min-width: 40rem) {
+    header #logo img {
+        bottom: 4rem;
+    }
+
+    main span .four-opor {
+        font-size: 15.5rem;
+    }
+
+    .custom-ellipse {
+        width: 23.5rem;
+        height: 25.5rem;
+        bottom: -110px;
+    }
+}
+
+@media screen and (min-width: 45rem) {
+    main span img {
+        width: 11rem;
+        margin: 0rem 1rem;
+    }
+
+    .sign-page-section form {
+        width: 50rem;
+    }
+}
+
+@media screen and (min-width: 62.3125rem) {
+    main span img {
+        width: 15rem;
+    }
+
+    .sign-page-section form {
+        width: 55.125rem;
+    }
+}

@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="660" height="434" viewBox="0 0 660 434">
+  <g id="certlify_svg" data-name="certlify svg" transform="translate(-1052 -2987)">
+    <g id="Rectangle_167" data-name="Rectangle 167" transform="translate(1052 2987)" fill="#e1effb" stroke="#707070" stroke-width="1">
+      <rect width="660" height="434" stroke="none"/>
+      <rect x="0.5" y="0.5" width="659" height="433" fill="none"/>
+    </g>
+    <g id="Group_297" data-name="Group 297" transform="translate(20 39)">
+      <g id="badge_1_" data-name="badge (1)" transform="translate(1419.346 3131.771)">
+        <path id="Path_388" data-name="Path 388" d="M64.316,232v21.857L74.6,243.572l10.286,10.286V232s-7.8,1.286-10.286,1.286A79.774,79.774,0,0,1,64.316,232Zm0,0" transform="translate(-54.031 -194.714)" fill="#f1d333"/>
+        <path id="Path_389" data-name="Path 389" d="M95.745,87.714A7.714,7.714,0,1,1,88.03,80,7.715,7.715,0,0,1,95.745,87.714Zm0,0" transform="translate(-67.459 -67.143)" fill="#4285f4"/>
+        <g id="Group_296" data-name="Group 296" transform="translate(0 0)">
+          <path id="Path_390" data-name="Path 390" d="M74.6,84.572A10.286,10.286,0,1,0,64.316,74.286,10.3,10.3,0,0,0,74.6,84.572Zm0-15.429a5.143,5.143,0,1,1-5.143,5.143A5.148,5.148,0,0,1,74.6,69.143Zm0,0" transform="translate(-54.03 -53.714)" fill="#f1d333"/>
+          <path id="Path_391" data-name="Path 391" d="M20.888,52.5,33.745,65.352V36.618a20.567,20.567,0,1,0-25.714.008V65.351Zm7.714.439L20.888,45.22l-7.714,7.714v-13.3a20.431,20.431,0,0,0,15.429,0ZM5.459,20.572a15.429,15.429,0,1,1,21.42,14.218h0a15.6,15.6,0,0,1-13.99-1.028A15.316,15.316,0,0,1,5.459,20.572Zm0,0" transform="translate(-0.316 0)" fill="#4285f4"/>
+        </g>
+      </g>
+      <text id="FY" transform="translate(1468 3197)" fill="#4285f4" font-size="91" font-family="ProductSans-Regular, Product Sans"><tspan x="0" y="0">FY</tspan></text>
+      <text id="CERTL" transform="translate(1154 3195)" fill="#4285f4" font-size="89" font-family="ProductSans-Regular, Product Sans"><tspan x="0" y="0">CERTL</tspan></text>
+    </g>
+  </g>
+</svg>
