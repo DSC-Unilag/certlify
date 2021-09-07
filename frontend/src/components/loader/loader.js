@@ -12,23 +12,23 @@ export class Loader extends React.Component{
      }
     
     componentDidMount() {
-        window.onload = this.HideLoader;
+        window.onload = this.ShowLoader;
     }
     
     componentWillUnmount() { 
-        window.onload = this.HideLoader;
+        window.onload = this.ShowLoader;
     }
 
     HideLoader() {
         this.setState({containerLoad: '.loader .zero-opacity'});
         setTimeout(() => {
-            this.setState({containerLoad: '.loader .hide'});
+            this.setState({containerLoad: '.loader .zero-opecity .hide'});
         }, 350);
     }
 
     ShowLoader() {
-        this.setState({containerLoad: ".loader .zero-opacity"});
-        this.setState({containerLoad: ".loader hide"});  
+        this.setState({containerLoad: ".loader"});
+        this.setState({containerLoad: ".loader"});  
     }
     
     render(){

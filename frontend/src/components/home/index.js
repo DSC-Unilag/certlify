@@ -1,12 +1,16 @@
 import React from 'react';
 import './custom-main.css';
 import logo from '../../imgs/diploma.svg';
+import {Loader} from '../loader/loader';
 import '../../animation/custom-animation.css';
 
 export class Home extends React.Component{
     render(){
         return(
-        <section className="main">
+            <section>
+            <Loader/>
+
+            <section className="main">
             <span>
                 <img src={logo} alt="certificate image"/>
             
@@ -30,6 +34,7 @@ export class Home extends React.Component{
                 <a id="get-started" href="/dashboard">Get Started</a>
             </section>
         </section>
+            </section>
         );
     }
 }
