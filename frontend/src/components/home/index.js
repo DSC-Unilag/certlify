@@ -1,18 +1,16 @@
 import React from 'react';
 import './custom-main.css';
 import logo from '../../imgs/diploma.svg';
-import {Loader} from '../loader/loader';
+import {Loader } from '../loader/loader';       
 import '../../animation/custom-animation.css';
 
 export class Home extends React.Component{
     render(){
         return(
-            <section>
+        <section className="main">
             <Loader/>
-
-            <section className="main">
             <span>
-                <img src={logo} alt="certificate image"/>
+                <img src={logo} alt="certificate"/>
             
                 <div className="custom-cir cir-left">
                 </div>
@@ -24,7 +22,7 @@ export class Home extends React.Component{
             </span>
     
             <section className="landing-page-section">
-                <h1>Welcome to the Certlify!
+                <h1>Welcome to Certlify!
                     <br/>
                     <i>Certificates on the go.</i>
                 </h1>
@@ -34,7 +32,6 @@ export class Home extends React.Component{
                 <a id="get-started" href="/dashboard">Get Started</a>
             </section>
         </section>
-            </section>
         );
     }
 }

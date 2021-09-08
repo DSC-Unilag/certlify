@@ -1,0 +1,439 @@
+@font-face {
+    font-family: 'Nunito', Verdana, sans-serif;
+    src: url("./fonts/OpenSans-Regular.ttf");
+}
+
+* {
+    font-family: 'Nunito', Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-size: 1rem;
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    color: #098dff;
+    font-size: 1rem;
+    line-height: 1.5;
+    letter-spacing: 0.12rem;
+    word-spacing: 0.16rem;
+}
+
+body {
+    display: grid;
+    position: relative;
+    width: 100%;
+    height: -webkit-fill-available;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+    justify-content: center;
+}
+
+/* Custom Scroll-bar */
+::-webkit-scrollbar {
+    width: 1.2rem;
+}
+
+::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 7px lightgrey;
+    border-radius: 2rem;
+    transition: all 90ms ease-in;
+
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #4285F4;
+    border-radius: 2rem;
+    transition: all 90ms ease-in;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #2262c7;
+}
+
+main {
+    display: grid;
+    position: relative;
+    width: 100%;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+    justify-items: center;
+}
+
+main span {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 45%;
+}
+
+main span img {
+    width: 100%;
+    height: auto;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+header span {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    height: 6.7rem;
+    position: relative;
+    top: 5.5rem;
+    z-index: -3;
+}
+
+header .logo img {
+    width: 10rem;
+    position: relative;
+    z-index: -1;
+    bottom: 4.5rem;
+    left: 0.2rem;
+}
+
+header .section-links {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    justify-self: center;
+    transition: all 400ms ease-in;
+}
+
+ul {
+    display: grid;
+    width: 100%;
+    align-items: end;
+    grid-template-rows: 100%;
+    justify-content: end;
+}
+
+ul li {
+    list-style-type: none;
+    justify-self: center;
+    display: flex;
+    width: 9rem;
+    height: 5rem;
+    text-align: center;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+ul li a {
+    width: 100%;
+    text-decoration: none;
+    transition: all 80ms ease-in;
+}
+
+header .section-links ul li a:hover {
+    color: #fbbf09;
+}
+
+header .section-links ul li a:focus {
+    color: #daa916;
+}
+
+header .section-links ul li a:active {
+    color: #eed487;
+}
+
+header .section-links ul {
+    justify-self: end;
+}
+
+header .section-links ul li a {
+    padding: 0.8rem;
+    font-size: 1.1rem;
+}
+
+header .section-links ul .gen-cert {
+    position: relative;
+}
+
+header .section-links ul li .active-cert {
+    background-color: #FBBC04;
+    width: 11rem;
+    height: 0.2rem;
+    position: absolute;
+    border: none;
+    bottom: 0.3rem;
+    right: 0;
+    left: 2rem;
+}
+
+main .landing-page-section {
+    display: grid;
+    height: auto;
+    text-align: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: auto;
+    grid-template-rows: 7rem 3rem 2rem 7rem;
+}
+
+main .landing-page-section h1 {
+    font-weight: 600;
+    font-size: 1.13rem;
+    color: #4285F4;
+}
+
+
+main .landing-page-section p {
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.3rem;
+    color: black;
+    align-self: start;
+}
+
+a {
+    text-decoration: none;
+    color: #098dff;
+    cursor: pointer;
+}
+
+.landing-page-section a,
+.sign-log {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 1px 4px 5px lightgrey;
+    border: none;
+    color: white;
+    width: 12.25rem;
+    height: 2.5rem;
+    background-color: #4285F4;
+    transition: 300ms all ease-in;
+}
+
+.sign-log {
+    width: 85%;
+    margin-top: 1rem;
+    cursor: pointer;
+}
+
+.landing-page-section a:hover,
+.sign-log:hover {
+    background-color: #619bf7;
+}
+
+.landing-page-section a:focus,
+.sign-log:focus {
+    background-color: #1f74fc;
+}
+
+.landing-page-section a:active,
+.sign-log:active {
+    background-color: #2e7eff;
+    cursor: wait;
+}
+
+input {
+    width: 85%;
+    height: 3rem;
+    border: 1.7px solid #4285F4;
+    padding-left: 1.5rem;
+    margin-bottom: 1rem;
+    border-radius: 0.3rem;
+    font-size: 0.9rem;
+}
+
+/* Generated cert link */
+
+
+.sign-page-section {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    grid-template-columns: minmax(3rem, 100%);
+    grid-template-rows: auto auto auto auto auto auto;
+}
+
+.sign-page-section p {
+    color: #707070;
+    margin: 1rem 0;
+    text-align: center;
+    width: 100%;
+}
+
+.sign-page-section form {
+    display: grid;
+    justify-items: center;
+    align-content: center;
+    grid-template-columns: minmax(auto, 60rem) 50%;
+    grid-template-rows: auto auto;
+    margin: 0.1rem 0rem 2rem 0rem;
+}
+
+.sign-page-section .form-input {
+    grid-template-columns: minmax(auto, 60rem);
+}
+
+.sign-page-section h1 {
+    font-size: 1.5rem;
+    text-align: center;
+    width: 100%;
+    font-weight: bolder;
+}
+
+.sign-page-section .second-text {
+    text-align: center;
+    padding: 1rem;
+    width: 100%;
+}
+
+#email-input .icon {
+    margin: 0.2rem 0.5rem;
+}
+
+#generate{
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 5rem 0rem;
+}
+
+/* 
+    ellispse curve code
+*/
+
+.ellipse-curve {
+    width: 15rem;
+    position: fixed;
+    overflow: hidden;
+    z-index: -1;
+    bottom: -7rem;
+    right: 0;
+    transform: rotate(25deg);
+    height: 15rem;
+    display: inline-block;
+}
+
+.top-left {
+    transform: rotate(223deg);
+    top: -7.8rem;
+    left: -9.5rem;
+}
+
+.first-line,
+.second-line,
+.third-line {
+    width: 23.25rem;
+    height: 27rem;
+    position: absolute;
+    overflow: hidden;
+    border-top-left-radius: 65% 80%;
+    border-bottom-left-radius: 35% 20%;
+}
+
+.first-line {
+    border: 1px solid #0F9D58;
+}
+
+.second-line {
+    border: 1px solid #4285F4;
+    top: 1.5rem;
+}
+
+.third-line {
+    border: 1px solid #FBBC04;
+    top: 3rem;
+}
+
+.custom-cir {
+    width: 3rem;
+    height: 3rem;
+    background-color: aliceblue;
+    position: absolute;
+    border-radius: 50%;
+    right: 0rem;
+    z-index: -3;
+    bottom: 1rem;
+}
+
+.cir-left {
+    right: 0rem;
+    left: 0;
+    bottom: 11rem;
+}
+
+.custom-ellipse {
+    position: absolute;
+    z-index: -3;
+    background-color: aliceblue;
+    width: 22rem;
+    height: 22rem;
+    border-top-left-radius: 40% 80%;
+    border-top-right-radius: 40% 30%;
+    border-bottom-left-radius: 60% 30%;
+    border-bottom-right-radius: 20% 90%;
+}
+
+#password-message,
+#email-message {
+    color: red;
+    display: none;
+}
+
+footer {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 1.5rem;
+    align-items: center;
+    width: 100%;
+    height: 2rem;
+}
+
+footer a {
+    width: 3rem;
+    text-decoration: none;
+}
+
+footer a img {
+    width: 2.1rem;
+    height: auto;
+}
+
+@media screen and (min-width: 40rem) {
+    header #logo img {
+        bottom: 4rem;
+    }
+}
+
+@media screen and (min-width: 45rem) {
+    main span img {
+        width: 60%;
+    }
+
+    .sign-page-section form {
+        width: 50rem;
+    }
+
+    #regenerate {
+        width: 24rem;
+        justify-self: center;
+    }
+}
+
+@media screen and (min-width: 62.3125rem) {
+    main span img {
+        width: 15rem;
+    }
+
+    .sign-page-section form {
+        width: 55.125rem;
+    }
+}
