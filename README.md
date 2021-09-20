@@ -40,6 +40,7 @@ mkdir log
 mkdir log/dev
 touch log/dev/access.log
 ```
+Log files are written automatically in log files, that may be looked at to monitor traffic or detect errors.
 
 ####  5. Running The Application
 ```sh
