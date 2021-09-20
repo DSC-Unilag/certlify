@@ -6,6 +6,7 @@ if(process.env.CLOUDINARY_URL){
     var cloudinary=require("cloudinary").v2
 }
 
+// Lemme start from here
 let certificate = (req, res) => {
     if (!req.session.email&&!req.session.anon) {
         res.status(401)

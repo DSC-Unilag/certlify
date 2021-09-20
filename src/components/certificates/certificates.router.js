@@ -1,9 +1,9 @@
 const express = require('express')
-const { getDashboard } = require("./controllers/dashboardController.ctrl.js")
+const { createCertificate } = require("./controllers/createCertificate")
 const { requireAuth } = require("../auth/middlewares/requireAuth")
 
 const router = express.Router()
 
-router.post('/dashboard', requireAuth, getDashboard)
+router.post('/create', requireAuth, createCertificate)
 
 module.exports = router

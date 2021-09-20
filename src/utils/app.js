@@ -8,6 +8,7 @@ const app = express()
 
 const authRoutes = require('../components/auth/auth.router')
 const dashboardRoutes = require('../components/dashboard/dashboard.router')
+const certificateRoutes = require('../components/certificates/certificates.router')
 
 /**
  * Initiate application
@@ -41,8 +42,11 @@ exports.startApp = () => {
 	app.use(urlencoded({ extended: true }))
 	app.use(cors())
 
-	app.use('/api/v1/auth/', authRoutes)
-	app.use('/api/v1/dashboard', dashboardRoutes)
+	let pathPrefix = '/api/v1/'
+
+	app.use(`${ pathPrefix }auth`, authRoutes)
+	app.use(`${ pathPrefix }dashboard`, dashboardRoutes)
+	app.use(`${ pathPrefix }certificates`, certificateRoutes)
 
 	// Handle 404
 	app.use('*', (req, res) => {
