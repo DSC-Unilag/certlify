@@ -6,7 +6,7 @@ const createWriteStream = require('fs').createWriteStream
 const Logger = require('./utils/logger').Logger
 const runApp = require('./utils/run_app').runApp
 
-const app = express();
+const app = express()
 
 // Logging in production
 const accessDailyLogStream = createStream('access.log', {
@@ -20,13 +20,13 @@ var accessDevLogStream = createWriteStream(path.join(__dirname, 'log', 'dev', 'a
 Logger('Starting Logger.....')
 
 if (process.env.NODE_ENV === 'production') {
-	app.use(morgan('combined', { stream: accessDailyLogStream }));
+	app.use(morgan('combined', { stream: accessDailyLogStream }))
 
-	Logger("Now Writing Logs To log/access.log", 'green');
+	Logger("Now Writing Logs To log/access.log", 'green')
 } else {
-	app.use(morgan('dev', { stream: accessDevLogStream }));
+	app.use(morgan('dev', { stream: accessDevLogStream }))
 
-	Logger("Now Writing Logs To log/dev/access.log", 'green');
+	Logger("Now Writing Logs To log/dev/access.log", 'green')
 }
 
 runApp()
