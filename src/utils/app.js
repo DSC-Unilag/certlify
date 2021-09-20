@@ -3,9 +3,11 @@ const urlencoded = require('body-parser').urlencoded
 const Logger = require('./logger').Logger
 const cors = require('cors')
 
-// Set Port
 const PORT = process.env.PORT || 3000
 const app = express()
+
+const authRoutes = require('../components/auth/auth.router')
+const dashboardRoutes = require('../components/dashboard/dashboard.router')
 
 /**
  * Initiate application
@@ -35,14 +37,12 @@ exports.startApp = () => {
  */
  exports.setRoutes = () => {
 
-	app.use(express.json())
+	app.use(express.json({ limit: '10mb' }))
 	app.use(urlencoded({ extended: true }))
 	app.use(cors())
-	
-	// Mount routes
-	app.use('/', (req, res) => {
-        res.status(200).send('I work');
-    })
+
+	app.use('/api/v1/auth/', authRoutes)
+	app.use('/api/v1/dashboard', dashboardRoutes)
 
 	// Handle 404
 	app.use('*', (req, res) => {
