@@ -1,10 +1,9 @@
 const { generateResponse, createError, createSuccessMessage } = require("../../../utils/response")
 const { User } = require("../../../models/users.model")
-const { sendAuthError } = require("../../../utils/sendErrors")
-const { createToken } = require("../../../utils/token")
-const { verifyUser } = require("../../../utils/mail/verifyUser")
+const { Token } = require("../../../models/token.model")
 
-exports.register = async function (req, res) {
+exports.getDashboard = async function (req, res) {
+    return "Hello World";
     let { name, email, password } = req.body
 
     try {

@@ -1,7 +1,7 @@
 const { sendAuthError } = require("../../../utils/sendErrors")
 const { createError, generateResponse } = require("../../../utils/response")
 const { validateToken } = require("../../../utils/token")
-const { User } = require("../../users/users.model")
+const { User } = require("../../../models/users.model")
 
 exports.requireAuth =  async function (req, res, next) {
     const token = req.header('token')

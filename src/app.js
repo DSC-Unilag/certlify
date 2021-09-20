@@ -1,8 +1,26 @@
-const express = require('express');
-const cors = require("cors");
-const mongoose = require('mongoose');
+const express = require('express')
+const cors = require("cors")
+const mongoose = require('mongoose')
 const dotenv = require('dotenv')
-const logger = require('morgan')
+const morgan = require('morgan')
+const path = require('path')
+const createStream = require('rotating-file-stream').createStream
+const createWriteStream = require('fs').createWriteStream
+const Logger = require('./utils/logger').Logger
+const runApp = require('./utils/run_app').runApp
+
+// const app = express();
+
+// Logging in production
+const accessDailyLogStream = createStream('access.log', {
+	interval: '1d',
+	path: path.join(__dirname, 'log')
+});
+
+// Logging in development
+var accessDevLogStream = createWriteStream(path.join(__dirname, 'log', 'dev', 'access.log'), { flags: 'a' })
+
+Logger('Starting Logger.....')
 
 dotenv.config()
 
@@ -25,12 +43,12 @@ db.once('open', function () {
 const app = express();
 app.use(cors());
 app.use(express.json({ limit: '10mb' }));
-app.use(logger(':method :url :status :res[content-length] - :response-time ms'))
+app.use(morgan(':method :url :status :res[content-length] - :response-time ms'))
 
 const apiRouter = require('./components/apiRouter');
 app.use('/api/v1', apiRouter);
 
-const PORT = process.env.PORT || 3333;
+const PORT = process.env.PORT || 3000;
 
 app.get('/', (req, res) => {
   res.send('I work');

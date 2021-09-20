@@ -4,6 +4,8 @@ const Links = require("../models/links");
 // controller to serve the dashboard data for a logged in user
 let dashboard = (req, res) => {
     let email
+
+    // Check auth user
     if (req.session.email) {
         email = req.session.email
     } else {
@@ -20,6 +22,7 @@ let dashboard = (req, res) => {
                 data.certs = [];
                 let links = user.certificateUrls
 
+                // Get user certificates
                 Links.find({
                     link: { $in: links }
                 }, function (err, docs) {

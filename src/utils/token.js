@@ -1,6 +1,6 @@
 const { sign, verify } = require('jsonwebtoken')
-const { Token } = require('../components/tokens/token.model')
-const { User } = require("../components/users/users.model")
+const { Token } = require('../models/token.model')
+const { User } = require("../models/users.model")
 const config = require("../config/configuration")
 const secret = process.env.SECRET || config.jwtsecret;
 

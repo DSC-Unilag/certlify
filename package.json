@@ -5,6 +5,7 @@
   "main": "index.js",
   "dependencies": {
     "bcrypt": "^5.0.1",
+    "chalk": "^4.1.2",
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "expres": "^0.0.5",
@@ -14,7 +15,8 @@
     "mongoose": "^5.13.0",
     "morgan": "^1.10.0",
     "nodemailer": "^6.6.2",
-    "nodemon": "^2.0.12"
+    "nodemon": "^2.0.12",
+    "rotating-file-stream": "^2.1.5"
   },
   "scripts": {
     "dev": "nodemon src/app.js",
