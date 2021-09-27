@@ -12,6 +12,8 @@ exports.createCertificate = async (req, res) => {
 
     try {
         user = await user.save()
+
+        cloudinary.uploader.upload()
     } catch (error) {
         throw error
     }

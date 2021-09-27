@@ -50,7 +50,20 @@ $ npm run dev
 ####  5. Using The Application
 Open chrome and go to
 ```sh
-http://localhost:3333/
+http://localhost:3000/api/v1/
+```
+
+You should get a json response like this
+```json
+{
+	"data": {
+		"name": "certlify",
+		"version": "1.0.0",
+		"contributors": [
+			"Zubs <zubairidrisaweda@gmail.com>"
+		]
+	}
+}
 ```
 
 ### :heart: Found this project useful?

@@ -23,3 +23,14 @@ exports.getEnvs = (key = '') => {
 		return Object(env_vars)
 	}
 }
+
+/**
+ * Get data from package.json file
+ * @param key The value name as it is in the package.json file
+ */
+ exports.getPackagedVars = (key = '') => {
+
+	// Import package.json
+	const env_file = require('../../package.json');
+	return Object(env_file);
+}

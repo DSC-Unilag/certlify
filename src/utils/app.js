@@ -9,6 +9,7 @@ const app = express()
 const authRoutes = require('../components/auth/auth.router')
 const dashboardRoutes = require('../components/dashboard/dashboard.router')
 const certificateRoutes = require('../components/certificates/certificates.router')
+const appRoutes = require('../components/app/app.router')
 
 /**
  * Initiate application
@@ -24,7 +25,7 @@ exports.startApp = () => {
 			Logger(greeting, 'green')
 		})
 	} else {
-		const greeting = "Application Started At PORT " + PORT + "\nApplication can be found at http://localhost:" + PORT
+		const greeting = "Application Started At PORT " + PORT + "\nApplication can be found at http://localhost:" + PORT + "/api/v1/ in development mode."
 
 		// Start app
 		app.listen(PORT, () => {
@@ -44,6 +45,7 @@ exports.startApp = () => {
 
 	let pathPrefix = '/api/v1/'
 
+	app.use(`${ pathPrefix }`, appRoutes)
 	app.use(`${ pathPrefix }auth`, authRoutes)
 	app.use(`${ pathPrefix }dashboard`, dashboardRoutes)
 	app.use(`${ pathPrefix }certificates`, certificateRoutes)
