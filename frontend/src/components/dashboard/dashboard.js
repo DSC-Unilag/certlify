@@ -1,14 +1,11 @@
 import React from 'react';
 import './dashboard.css';
 import '../..animation/custom-animation.css';
-import {Loader} from '../loader/loader';
-
 
 export class Dashboard extends React.Component{
     render(){
         return (
             <section>
-            <Loader/>
         <section>
             <header>
                 <section className="logo-section">

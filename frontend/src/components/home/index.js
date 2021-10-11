@@ -1,14 +1,12 @@
 import React from 'react';
 import './custom-main.css';
-import logo from '../../imgs/diploma.svg';
-import {Loader } from '../loader/loader';       
+import logo from '../../imgs/diploma.svg';       
 import '../../animation/custom-animation.css';
 
 export class Home extends React.Component{
     render(){
         return(
         <section className="main">
-            <Loader/>
             <span>
                 <img src={logo} alt="certificate"/>
             

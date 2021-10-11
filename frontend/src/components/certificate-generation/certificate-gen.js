@@ -1,13 +1,11 @@
 import React from 'react';
 import './certificate-gen.css';
 import '../..animation/custom-animation.css';
-import {Loader} from '../loader/loader';
 
 export class Certificator extends React.Component{
     render(){
         return(
         <section>
-            <Loader/>
         <section id="main-func" className="main-func-manage">
             <section id="cert-name" className="sign-page-section">
                 <h1 className="first-text">Enter the certificate name</h1>

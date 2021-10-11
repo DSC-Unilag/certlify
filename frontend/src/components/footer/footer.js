@@ -1,11 +1,13 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import './footer.css';
+import { Link } from "react-router-dom";
+import reportWebVitals from './reportWebVitals';
 
-
-export class Footer extends React.Component{
+class Footer extends React.Component{
     render(){
         return(
-        <footer>
+        <section>
             <p className="contribute">
                 <span>Want to contribute?</span>    
                 <a href="https://github.com/DSC-Unilag/cert" target="_blank" rel="noreferrer">
@@ -14,7 +16,14 @@ export class Footer extends React.Component{
             </p>
             <p className="built-by">Built by <a href="https://dsc.community.dev/university-of-lagos/" target="_blank" rel="noreferrer"> <span><img src="/imgs/hero-dsc-about-unilag.png" alt="dsc unilag" /></span></a></p>
             <p className="empty"></p>
-        </footer>
+        </section>
         );
     }
 }
+
+ReactDOM.render(
+    <React.StrictMode>
+        <Footer />
+    </React.StrictMode>, 
+document.getElementById("footer"));
+reportWebVitals();

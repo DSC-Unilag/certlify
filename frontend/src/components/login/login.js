@@ -1,14 +1,12 @@
 import React from 'react';
 import './custom-login.css';
 import '../..animation/custom-animation.css';
-import {Loader} from '../loader/loader';
 
 
 export class Login extends React.Component{
     render(){
         return(
             <section>
-            <Loader/>
             <section className="sign-page-section">
             <h1 className="first-text">Login</h1>
             <p className="second-text">Hi there! Kindly enter your login details</p>

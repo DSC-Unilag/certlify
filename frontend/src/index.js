@@ -1,12 +1,21 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './components/loader/loader.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+const loader = document.querySelector('.loader');
+
+const hideLoader = () => {
+  loader.classList.toggle("zero-opacity");
+  setTimeout(() => {
+    loader.classList.toggle("hide");
+  }, 350);
+}
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App hideLoader = {hideLoader}/>
   </React.StrictMode>,
   document.getElementById('root')
 );
