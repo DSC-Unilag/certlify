@@ -6,7 +6,7 @@ import React from 'react';
 
 class App extends React.Component {
   componentDidMount() {
-    this.props.hideLoader();
+    window.onload = () => this.props.hideLoader();
   }
 
   render() {

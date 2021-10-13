@@ -1,12 +1,29 @@
 import React from 'react';
 import './custom-main.css';
-import logo from '../../imgs/diploma.svg';       
+import '../scrollbar/custom-scrollbar.css';
+import logo from '../../imgs/diploma.svg';
+import { BrowserRouter, Link, Route, Switch} from 'react-router-dom';
+import svg_logo from '../../imgs/certlify-svg-logo.png';
 import '../../animation/custom-animation.css';
+import { SignUp } from '../signup/signup';
 
 export class Home extends React.Component{
     render(){
         return(
-        <section className="main">
+    <BrowserRouter>
+        <Switch>
+        <Route path="/signup" component={SignUp}/>
+
+    <section className="main">
+            <header>
+      <nav class="section-links">
+          <ul class="home-links">
+              <li><a href="/index.html">Home</a>
+              </li>
+          </ul>
+      </nav>
+      <span class="logo"><img src={svg_logo} alt="Certlify logo"/></span>
+  </header>
             <span>
                 <img src={logo} alt="certificate"/>
             
@@ -26,10 +43,12 @@ export class Home extends React.Component{
                 </h1>
                 <p>Easily upload and generate certificates at your convenience, anywhere and anytime with just your email &#128231;.</p>
                 <p>Click on the button below to get started!</p>
-    
-                <a id="get-started" href="/dashboard">Get Started</a>
+                <Link id="get-started" to="/signup">Get Started</Link>
             </section>
+
         </section>
+        </Switch>
+        </BrowserRouter>
         );
     }
 }

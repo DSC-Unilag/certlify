@@ -2,7 +2,6 @@ import React from 'react';
 import './custom-login.css';
 import '../..animation/custom-animation.css';
 
-
 export class Login extends React.Component{
     render(){
         return(
