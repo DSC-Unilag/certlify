@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Nunito', Verdana, sans-serif;
-    src: url("./fonts/OpenSans-Regular.ttf");
+    src: url("../../fonts/OpenSans-Regular.ttf");
 }
 
 * {
@@ -151,7 +151,7 @@ header #toggle-butt:checked~.section-links {
 header .section-links {
     width: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     align-items: center;
     height: 0;
     grid-area: 2 / 1 / 3 / 4;

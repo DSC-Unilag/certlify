@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './dashboard.css';
-import '../..animation/custom-animation.css';
+import '../scrollbar/custom-scrollbar.css';
+import { Link } from 'react-router-dom';
 
-export class Dashboard extends React.Component{
-    render(){
+
+export function Dashboard({hideLoader}){
+    
+    useEffect(hideLoader);
         return (
             <section>
         <section>
@@ -30,13 +33,13 @@ export class Dashboard extends React.Component{
             
                 <nav className="section-links">
                     <ul className="home-links">
-                        <li><a href="/">Home</a>
+                        <li><Link href="/">Home</Link>
                         </li>
                         <li className="gen-cert"><a href="/dashboard">Issued Certificates</a>
                             <hr className="active-cert"/>
                         </li>
                         <li>
-                            <a href="/logout">Logout</a>
+                            <Link href="/logout">Logout</Link>
                         </li>
                     </ul>
                 </nav>
@@ -55,4 +58,3 @@ export class Dashboard extends React.Component{
             </section>
         );
     };
-};

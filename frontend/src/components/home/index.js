@@ -2,27 +2,22 @@ import React from 'react';
 import './custom-main.css';
 import '../scrollbar/custom-scrollbar.css';
 import logo from '../../imgs/diploma.svg';
-import { BrowserRouter, Link, Route, Switch} from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import svg_logo from '../../imgs/certlify-svg-logo.png';
 import '../../animation/custom-animation.css';
-import { SignUp } from '../signup/signup';
 
-export class Home extends React.Component{
-    render(){
+export function Home(){
         return(
-    <BrowserRouter>
-        <Switch>
-        <Route path="/signup" component={SignUp}/>
 
     <section className="main">
             <header>
-      <nav class="section-links">
-          <ul class="home-links">
+      <nav className="section-links">
+          <ul className="home-links">
               <li><a href="/index.html">Home</a>
               </li>
           </ul>
       </nav>
-      <span class="logo"><img src={svg_logo} alt="Certlify logo"/></span>
+      <span className="logo"><img src={svg_logo} alt="Certlify logo"/></span>
   </header>
             <span>
                 <img src={logo} alt="certificate"/>
@@ -47,8 +42,5 @@ export class Home extends React.Component{
             </section>
 
         </section>
-        </Switch>
-        </BrowserRouter>
         );
     }
-}

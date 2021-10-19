@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './certificate-gen.css';
-import '../..animation/custom-animation.css';
+import '../../animation/custom-animation.css';
+import {Link} from 'react-router-dom';
+import '../scrollbar/custom-scrollbar.css';
 
-export class Certificator extends React.Component{
-    render(){
+export function Certificator({hideLoader}){
+    useEffect(hideLoader);
         return(
         <section>
         <section id="main-func" className="main-func-manage">
@@ -16,26 +18,26 @@ export class Certificator extends React.Component{
                         autocomplete="current-password" minLength={4} required/>
 
                     <p id="password-message" className="message"></p>
-                    <button type="button" onClick={first()} className="sign-log">
+                    <button type="button" /**  onClick={first()} */className="sign-log">
                         Submit
                     </button>
                 </form>
             </section>
 
             <section id="edit-cert" className="edit-cert-section hide">
-                <a href="/createcertificate" className="close-button">&#x2716;</a>
+                <Link href="/createcertificate" className="close-button">&#x2716;</Link>
                 <article className="main-upload">
-                    <div id="upload-div"style={{flexDirection: column}}>
+                    <div id="upload-div"style={{flexDirection: "column"}}>
                         <label for="file" className="upload-style">CHOOSE CERTIFICATE TEMPLATE IMAGE LESS THAN 2.5MB IN SIZE</label>
                         <input id="file" type="file" accept="image/*" onClick="cert_error.style.display='none'" onchange="loadFile(event)"/>
-                        <p id="cert-error"style={{color:red, display:none}}></p>
+                        <p id="cert-error"style={{color:"red", display:"none"}}></p>
                     </div>
                     <div id="container">
                         <div id="canvas" className="apply-font"></div>
                     </div>
                 </article>
             </section>
-            <h3 id="prompt"></h3>
+            <h3 id="prompt">None</h3>
             <section id="value-input" className="value-input-section hide">
                 <section className="input-details">
                     <section>
@@ -65,10 +67,10 @@ export class Certificator extends React.Component{
                 <hr />
 
                 <section className="border-section">
-                    <a id="left_border">Left border</a>
-                    <a id="right_border">Right border</a>
-                    <a id="bottom">Text base</a>
-                    <a id="preview">Preview</a>
+                    <Link id="left_border">Left border</Link>
+                    <Link id="right_border">Right border</Link>
+                    <Link id="bottom">Text base</Link>
+                    <Link id="preview">Preview</Link>
                 </section>
 
                 <input id="done" type="submit" value="Submit"/>
@@ -108,7 +110,7 @@ export class Certificator extends React.Component{
 
                     </div>
                 </article>
-                <p id="error" style={{color:red}}></p>
+                <p id="error" style={{color:"red"}}></p>
                 <p>You may skip, this process now and add later on your dashboard. Note that only user emails you have
                     uploaded would be eligile to generate</p>
                 <button className="icon" type="button" onClick="next()">Skip</button>
@@ -128,25 +130,24 @@ export class Certificator extends React.Component{
                     <button id="dashboard" className="icon" onClick="/*OpenWrapper()*/"><span id="text">Dashboard</span></button>
                     {/* <!-- <div className="share-container">
                         <div id="share-wrapper"className="share-wrapper">
-                            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//certlify.com/" className="text">
+                            <Link href="https://www.facebook.com/sharer/sharer.php?u=https%3A//certlify.com/" className="text">
                                 <span className="icon-svg"><img src="/imgs/share-icons/facebook.svg"/></span>
                                 Facebook
-                            </a>
-                            <a href="https://twitter.com/intent/tweet?text=Link%20to%20your%20certificates&url=https://certlify.com/" className="text sm twitter">
+                            </Link>
+                            <Link href="https://twitter.com/intent/tweet?text=Link%20to%20your%20certificates&url=https://certlify.com/" className="text sm twitter">
                                 <span className="icon-svg"><img src="/imgs/share-icons/twitter.svg"/></span>
                                 Twitter
-                            </a>
-                            <a href="whatsapp://send?text=The text to share!&url=https://certlify.com/" className="text">
+                            </Link>
+                            <Link href="whatsapp://send?text=The text to share!&url=https://certlify.com/" className="text">
                                 <span className="icon-svg"><img src="/imgs/share-icons/whatsapp.svg"/></span>
                                 WhatsApp
-                            </a>
+                            </Link>
                         </div>
                     </div> --> */}
                 </form>
-                {/* <!-- <a id="goto" href="/dashboard">Go to dashboard</a> --> */}
+                {/* <!-- <Link id="goto" href="/dashboard">Go to dashboard</Link> --> */}
             </section>
         </section>
         </section>
         );
     }
-}
