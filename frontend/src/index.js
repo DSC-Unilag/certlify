@@ -1,13 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './components/loader/loader.css';
-import App from './App';
+import './animation/custom-animation.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
-import { Login } from './components/login/login';
-import { SignUp } from './components/signup/signup';
-import { Dashboard } from './components/dashboard/dashboard';
 import reportWebVitals from './reportWebVitals';
-import { Certificator } from './components/certificate-generation/certificate-gen';
+const App = React.lazy(() => import( './App'));
+const Login = React.lazy(() => import('./components/login/login'));
+const SignUp = React.lazy(() => import('./components/signup/signup'));
+const Dashboard = React.lazy(() => import('./components/dashboard/dashboard'));
+const Certificator = React.lazy(() => import('./components/certificate-generation/certificate-gen'));
 const loader = document.querySelector('.loader');
 
 const hideLoader = () => {
@@ -23,6 +24,18 @@ const hideLoader = () => {
 
 ReactDOM.render(
   <BrowserRouter>
+  <React.Suspense fallback={
+    <section className="loader">
+        <div className="container-for-loader">
+            <div className="large-circle">
+            </div>
+            <div className="inner-circle"></div>
+            <div className="inner-circle"></div>
+            <div className="inner-circle"></div>
+            <div className="inner-circle"></div>
+        </div>
+    </section>
+  }>
   <Switch>
     <React.StrictMode>
     <Route exact path="/">
@@ -34,6 +47,7 @@ ReactDOM.render(
     <Route path="/certificate-gen" render={(props) => <Certificator {...props} hideLoader={hideLoader} />} />
     </React.StrictMode>
   </Switch>
+  </React.Suspense>
   </BrowserRouter>,
   document.getElementById('root')
 );

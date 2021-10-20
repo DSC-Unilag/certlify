@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 import svg_logo from '../../imgs/certlify-svg-logo.png';
 import '../../animation/custom-animation.css';
 
-export function Home(){
+function Home(){
         return(
 
     <section className="main">
@@ -43,4 +43,5 @@ export function Home(){
 
         </section>
         );
-    }
+}
+export default Home;

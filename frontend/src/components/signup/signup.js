@@ -3,7 +3,7 @@ import './custom-signup.css';
 import '../scrollbar/custom-scrollbar.css';
 import svg_logo from '../../imgs/certlify-svg-logo.png';
 
-export function SignUp({hideLoader}){
+function SignUp({hideLoader}){
     useEffect(hideLoader);
     
         return(
@@ -23,13 +23,13 @@ export function SignUp({hideLoader}){
             <h1 className="first-text">Sign up</h1>
             <p className="second-text">Hi there! Kindly enter the following details to create an account</p>
 
-            <form id="form-input" className="form-input"onSubmit={() => {} /**false*/}>
-                <input type="email" id="email" placeHolder="Enter your e-mail" name="email" autoComplete="email"
+            <form id="form-input" className="form-input" onSubmit={() => {} /**false*/}>
+                <input type="email" id="email" placeholder="Enter your e-mail" name="email" autoComplete="email"
                     minLength="4" required/>
                 <p style={{display:"none"}} id="email-message" className="message"></p>
-                <input type="text" id="organization" placeHolder="Enter your personal/organization name"
+                <input type="text" id="organization" placeholder="Enter your personal/organization name"
                     name="organization" minLength="2" autoComplete="organization" required/>
-                <input type="password" id="password" placeHolder="Enter your password" name="password"
+                <input type="password" id="password" placeholder="Enter your password" name="password"
                     autoComplete="new-password" minLength="8" required/>
                 <input type="password" id="con-password" placeholder="Confirm your password" name="con-password"
                     autoComplete="new-password" minLength="8" required/>
@@ -42,5 +42,7 @@ export function SignUp({hideLoader}){
         </section>
     </main>
             </section>
-        );
-    }
+    );
+}
+
+export default SignUp;

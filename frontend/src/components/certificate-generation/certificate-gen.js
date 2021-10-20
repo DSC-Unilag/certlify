@@ -4,7 +4,7 @@ import '../../animation/custom-animation.css';
 import {Link} from 'react-router-dom';
 import '../scrollbar/custom-scrollbar.css';
 
-export function Certificator({hideLoader}){
+function Certificator({hideLoader}){
     useEffect(hideLoader);
         return(
         <section>
@@ -151,3 +151,4 @@ export function Certificator({hideLoader}){
         </section>
         );
     }
+export default Certificator;

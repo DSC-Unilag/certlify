@@ -1,6 +1,4 @@
-import {
-  Home
-} from './components/home/index.js';
+import Home from './components/home/index.js';
 import './components/loader/loader.css';
 import React from 'react';
 
