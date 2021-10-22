@@ -49,6 +49,6 @@ function HeaderDashboard(){
                 </section>
                 </section>
     );
-} 
+}
 
 export default HeaderDashboard;

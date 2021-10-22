@@ -52,17 +52,21 @@ main span img {
     width: 100%;
     height: auto;
 }
+header{
+    width: 100%;
+    height: auto;
+    margin-bottom: 1.5rem;
+}
 
-header {
+header .signup-header-content-102020{
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto auto;
     justify-content: center;
     align-items: center;
-    margin-bottom: 1.5rem;
 }
 
-header span {
+header .signup-header-content-102020 span {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
@@ -81,7 +85,7 @@ header .logo img {
     left: 0.2rem;
 }
 
-header .section-links {
+header .signup-header-content-102020 .section-links {
     width: 100%;
     display: flex;
     justify-content: flex-end;
@@ -115,32 +119,32 @@ ul li a {
     transition: all 80ms ease-in;
 }
 
-header .section-links ul li a:hover {
+header .signup-header-content-102020 .section-links ul li a:hover {
     color: #fbbf09;
 }
 
-header .section-links ul li a:focus {
+header .signup-header-content-102020 .section-links ul li a:focus {
     color: #daa916;
 }
 
-header .section-links ul li a:active {
+header .signup-header-content-102020 .section-links ul li a:active {
     color: #eed487;
 }
 
-header .section-links ul {
+header .signup-header-content-102020 .section-links ul {
     justify-self: end;
 }
 
-header .section-links ul li a {
+header .signup-header-content-102020 .section-links ul li a {
     padding: 0.8rem;
     font-size: 1.1rem;
 }
 
-header .section-links ul .gen-cert {
+header .signup-header-content-102020 .section-links ul .gen-cert {
     position: relative;
 }
 
-header .section-links ul li .active-cert {
+header .signup-header-content-102020 .section-links ul li .active-cert {
     background-color: #FBBC04;
     width: 11rem;
     height: 0.2rem;
@@ -386,7 +390,7 @@ footer a img {
 }
 
 @media screen and (min-width: 40rem) {
-    header #logo img {
+    header .signup-header-content-102020 #logo img {
         bottom: 4rem;
     }
 }

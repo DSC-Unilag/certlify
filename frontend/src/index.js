@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom';
 import './components/loader/loader.css';
 import './animation/custom-animation.css';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import loadable from '@loadable/component'
 import reportWebVitals from './reportWebVitals';
-const App = React.lazy(() => import( './App'));
-const Login = React.lazy(() => import('./components/login/login'));
-const SignUp = React.lazy(() => import('./components/signup/signup'));
-const Dashboard = React.lazy(() => import('./components/dashboard/dashboard'));
-const Certificator = React.lazy(() => import('./components/certificate-generation/certificate-gen'));
+const App = loadable(() => import( './App'));
+const Login = loadable(() => import('./components/login/login'));
+const SignUp = loadable(() => import('./components/signup/signup'));
+const Dashboard = loadable(() => import('./components/dashboard/dashboard'));
+const Certificator = loadable(() => import('./components/certificate-generation/certificate-gen'));
 const loader = document.querySelector('.loader');
 
 const hideLoader = () => {

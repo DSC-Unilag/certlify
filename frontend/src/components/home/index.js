@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import ReactDOM  from 'react-dom';
 import './custom-main.css';
 import '../scrollbar/custom-scrollbar.css';
 import logo from '../../imgs/diploma.svg';
@@ -6,19 +7,27 @@ import { Link } from 'react-router-dom';
 import svg_logo from '../../imgs/certlify-svg-logo.png';
 import '../../animation/custom-animation.css';
 
-function Home(){
-        return(
+const headerContent = (
+    <section className="home-header-content-102020">
+        <nav className="section-links">
+            <ul className="home-links">
+                <li><a href="/">Home</a>
+                </li>
+            </ul>
+        </nav>
+        <span className="logo"><img src={svg_logo} alt="Certlify logo"/></span>
+    </section>
+);
+
+function Home(){       
+
+    useEffect(() => {
+        ReactDOM.render(headerContent, document.getElementById('main-header'));
+    });
+
+    return(
 
     <section className="main">
-            <header>
-      <nav className="section-links">
-          <ul className="home-links">
-              <li><a href="/index.html">Home</a>
-              </li>
-          </ul>
-      </nav>
-      <span className="logo"><img src={svg_logo} alt="Certlify logo"/></span>
-  </header>
             <span>
                 <img src={logo} alt="certificate"/>
             

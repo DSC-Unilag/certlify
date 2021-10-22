@@ -1,14 +1,15 @@
 import React, {useEffect} from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter, Link } from 'react-router-dom';
 import './custom-signup.css';
 import '../scrollbar/custom-scrollbar.css';
+import './footer.css';
 import svg_logo from '../../imgs/certlify-svg-logo.png';
+import github_logo from '../../imgs/mark-github-512.png';
+import dsc_hero_image from '../../imgs/hero-dsc-about-unilag.png'
 
-function SignUp({hideLoader}){
-    useEffect(hideLoader);
-    
-        return(
-            <section>
-                <header>
+const headerContent = (
+    <section className="signup-header-content-102020">
         <nav className="section-links">
             <ul className="home-links">
                 <li><a href="/">Home</a>
@@ -16,9 +17,33 @@ function SignUp({hideLoader}){
             </ul>
         </nav>
         <span className="logo"><img src={svg_logo} alt="Certlify logo"/></span>
-    </header>
+    </section>
+);
 
-    <main>
+const footerContent = (
+    <section className="signup-footer-content-102020">
+        <BrowserRouter>    
+        <p className="contribute">
+            <span>Want to contribute?</span>
+            <Link to="https://github.com/DSC-Unilag/cert">
+                <img src={github_logo} alt="github logo"/>
+            </Link>
+
+        </p>
+        <p className="built-by">Built by <Link to="https://dsc.community.dev/university-of-lagos/" target="_blank"> <span><img src={dsc_hero_image} alt="dsc unilag"/></span></Link></p>
+        </BrowserRouter>
+        <p className="empty"style={{width:"10%"}}></p>
+    </section>
+);
+
+function SignUp({hideLoader}){
+    useEffect(() => {
+        ReactDOM.render(headerContent, document.getElementById('main-header'));
+        ReactDOM.render(footerContent, document.getElementById('footer'));
+        hideLoader();
+    });
+    
+        return(
         <section className="sign-page-section">
             <h1 className="first-text">Sign up</h1>
             <p className="second-text">Hi there! Kindly enter the following details to create an account</p>
@@ -40,8 +65,6 @@ function SignUp({hideLoader}){
             </form>
             <p>Already have an account? <a id="login" href="/login">Login</a></p>
         </section>
-    </main>
-            </section>
     );
 }
 
