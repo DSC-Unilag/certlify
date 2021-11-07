@@ -39,7 +39,7 @@ UserSchema.pre('save', async function (next) {
 
 // To make sure when we fetch a user, the email is always omitted
 UserSchema.set('toJSON', {
-    transform: function (doc, ret, opt) {
+    transform: function (doc, ret) {
         delete ret['password']
         return ret
     }

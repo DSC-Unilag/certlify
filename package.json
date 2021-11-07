@@ -28,5 +28,9 @@
   "bugs": {
     "url": "https://github.com/DSC-Unilag/certlify/issues"
   },
-  "homepage": "https://github.com/DSC-Unilag/certlify#readme"
+  "homepage": "https://github.com/DSC-Unilag/certlify#readme",
+  "devDependencies": {
+    "eslint": "^8.2.0",
+    "eslint-plugin-react": "^7.26.1"
+  }
 }
