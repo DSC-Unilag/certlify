@@ -8,7 +8,9 @@ const eligibleUserSchema = new Schema({
         type: String,
     },
     name: String,
-    certificate: String,
+    certificate_id: {
+        type:mongoose.SchemaTypes.ObjectId
+    },
     status: Boolean
 });
 

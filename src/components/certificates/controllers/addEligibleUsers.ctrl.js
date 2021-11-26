@@ -117,4 +117,4 @@ const addEligibleUsers = (req, res) => {
   })
 }
 
-module.exports.addNew = addEligibleUsers;
+module.exports = addEligibleUsers;

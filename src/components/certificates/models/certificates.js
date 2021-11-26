@@ -34,6 +34,7 @@ const certificateSchema = new Schema({
   eligibleUsers: [eligibleUser],
 });
 // run migration to a certificate collection later...maybe
+// Leave the collection name as link for now...abeg
 let Certificate = mongoose.model("link", certificateSchema);
 
 module.exports = Certificate;
