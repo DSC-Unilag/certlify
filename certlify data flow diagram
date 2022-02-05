@@ -1,6 +1,6 @@
-<mxfile host="app.diagrams.net" modified="2022-02-05T23:36:47.462Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36" etag="V25dL2Jyilz72fOJcSYr" version="16.5.3" type="github" pages="2">
+<mxfile host="app.diagrams.net" modified="2022-02-05T23:48:53.224Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36" etag="HQ6NOd7yPETHQeZVJAIE" version="16.5.3" type="github" pages="2">
   <diagram name="Issuer DFD" id="b520641d-4fe3-3701-9064-5fc419738815">
-    <mxGraphModel dx="1021" dy="567" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4681" pageHeight="3300" background="none" math="0" shadow="0">
+    <mxGraphModel dx="2480" dy="1377" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="4681" pageHeight="3300" background="none" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -65,7 +65,7 @@
           <mxGeometry x="38" y="5" width="50" height="20" as="geometry" />
         </mxCell>
         <mxCell id="5D5zJyIbG-RF2g7gIMIR-36" value="" style="group" vertex="1" connectable="0" parent="1">
-          <mxGeometry x="2437.5" y="860" width="103" height="30" as="geometry" />
+          <mxGeometry x="2438.5" y="850" width="103" height="30" as="geometry" />
         </mxCell>
         <mxCell id="5D5zJyIbG-RF2g7gIMIR-37" value="D2" style="html=1;dashed=0;whitespace=wrap;shape=mxgraph.dfd.dataStoreID;align=left;spacingLeft=3;points=[[0,0],[0.5,0],[1,0],[0,0.5],[1,0.5],[0,1],[0.5,1],[1,1]];" vertex="1" parent="5D5zJyIbG-RF2g7gIMIR-36">
           <mxGeometry width="100" height="30" as="geometry" />
@@ -142,6 +142,14 @@
         <mxCell id="5D5zJyIbG-RF2g7gIMIR-92" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5D5zJyIbG-RF2g7gIMIR-83" target="5D5zJyIbG-RF2g7gIMIR-89">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="htQXr12NQeLLEDvayY0X-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.219;entryY=-0.129;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="5D5zJyIbG-RF2g7gIMIR-83" target="5D5zJyIbG-RF2g7gIMIR-38">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="htQXr12NQeLLEDvayY0X-5" value="send certificate data" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="htQXr12NQeLLEDvayY0X-2">
+          <mxGeometry x="-0.1174" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="5D5zJyIbG-RF2g7gIMIR-83" value="6.4" style="swimlane;gradientColor=#ffffff;startSize=23;" vertex="1" parent="1">
           <mxGeometry x="2181" y="514" width="160" height="130" as="geometry" />
         </mxCell>
@@ -151,6 +159,11 @@
         <mxCell id="5D5zJyIbG-RF2g7gIMIR-93" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.373;entryY=-0.233;entryDx=0;entryDy=0;entryPerimeter=0;" edge="1" parent="1" source="5D5zJyIbG-RF2g7gIMIR-89" target="5D5zJyIbG-RF2g7gIMIR-38">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
+        <mxCell id="htQXr12NQeLLEDvayY0X-6" value="Text" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="5D5zJyIbG-RF2g7gIMIR-93">
+          <mxGeometry x="-0.2212" relative="1" as="geometry">
+            <mxPoint as="offset" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="5D5zJyIbG-RF2g7gIMIR-89" value="6.5" style="swimlane;gradientColor=#ffffff;" vertex="1" parent="1">
           <mxGeometry x="2410" y="510" width="160" height="130" as="geometry" />
         </mxCell>
@@ -159,6 +172,41 @@
         </mxCell>
         <mxCell id="5D5zJyIbG-RF2g7gIMIR-94" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="5D5zJyIbG-RF2g7gIMIR-37" target="5D5zJyIbG-RF2g7gIMIR-40">
           <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="htQXr12NQeLLEDvayY0X-4" value="send unique string generated for certificate" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0;exitDx=0;exitDy=0;entryX=0.25;entryY=1;entryDx=0;entryDy=0;" edge="1" parent="1" source="5D5zJyIbG-RF2g7gIMIR-37" target="5D5zJyIbG-RF2g7gIMIR-83">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="2439" y="770" />
+              <mxPoint x="2221" y="770" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="htQXr12NQeLLEDvayY0X-7" value="Certificates" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1010" width="140" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="htQXr12NQeLLEDvayY0X-8" value="+ name: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="htQXr12NQeLLEDvayY0X-7">
+          <mxGeometry y="26" width="140" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="htQXr12NQeLLEDvayY0X-9" value="+ boundaries: object" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="htQXr12NQeLLEDvayY0X-7">
+          <mxGeometry y="52" width="140" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="htQXr12NQeLLEDvayY0X-10" value="+ collectors: [object]&#xa;&#xa;+ link: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="htQXr12NQeLLEDvayY0X-7">
+          <mxGeometry y="78" width="140" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="htQXr12NQeLLEDvayY0X-11" value="Collectors" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;" vertex="1" parent="1">
+          <mxGeometry x="500" y="1220" width="140" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="htQXr12NQeLLEDvayY0X-12" value="+ name: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="htQXr12NQeLLEDvayY0X-11">
+          <mxGeometry y="26" width="140" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="htQXr12NQeLLEDvayY0X-13" value="+ email: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="htQXr12NQeLLEDvayY0X-11">
+          <mxGeometry y="52" width="140" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="htQXr12NQeLLEDvayY0X-14" value="+ status: boolean&#xa;&#xa;+ certificate_id: string" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="htQXr12NQeLLEDvayY0X-11">
+          <mxGeometry y="78" width="140" height="62" as="geometry" />
+        </mxCell>
+        <mxCell id="htQXr12NQeLLEDvayY0X-15" value="Collectors used to be a field in the certificate document. An array of objects. I want it to be a collection on its own now with certificate_id as the link" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="290" y="1170" width="790" height="20" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
