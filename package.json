@@ -1,0 +1,31 @@
+{
+  "name": "certlify",
+  "version": "2.0.1",
+  "description": "A general certificate issuer",
+  "main": "src/app.js",
+  "scripts": {
+    "dev": "nodemon src/app.js",
+    "start": "NODE_ENV=production node src/app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DSC-Unilag/certlify.git"
+  },
+  "contributors": [
+    "DSC-Unilag",
+    "Zubs <zubairidrisaweda@gmail.com>"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/DSC-Unilag/certlify/issues"
+  },
+  "homepage": "https://github.com/DSC-Unilag/certlify#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  },
+  "dependencies": {
+    "chalk": "4.0.0",
+    "express": "^4.17.3",
+    "listr": "^0.14.3"
+  }
+}
