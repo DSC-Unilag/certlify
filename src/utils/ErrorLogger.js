@@ -1,45 +1,72 @@
+// // Import dependencies
+// const winston = require("winston");//
+// const consoleConfig = [
+//     new winston.transports.Console({
+//         'colorize': true
+//     })
+// ];
+//
+// const createLogger = new winston.createLogger({
+//     'transports': consoleConfig
+// });
+//
+//
+// const successLogger = createLogger;
+// successLogger.add(winstonRotator, {
+//     'name': 'access-file',
+//     'level': 'info',
+//     'filename': successFile,
+//     'json': true,
+//     'datePattern': 'yyyy-MM-dd-',
+//     'prepend': true
+// });
+//
+// const errorLogger = createLogger;
+// errorLogger.add(winstonRotator, {
+//     'name': 'error-file',
+//     'level': 'error',
+//     'filename': errorFile,
+//     'json': true,
+//     'datePattern': 'yyyy-MM-dd-',
+//     'prepend': true
+// });
+//
+// module.exports.successlog = successLogger;
+// module.exports.errorlog = errorLogger;
+
 // Import dependencies
 const winston = require("winston");
-const winstonRotator = require('winston-daily-rotate-file');
 const path = require("path");
+const winstonRotator = require('winston-daily-rotate-file');
 
-const consoleConfig = [
-    new winston.transports.Console({
-        'colorize': true
-    })
-];
-
-const createLogger = new winston.Logger({
-    'transports': consoleConfig
-});
+let successFile, errorFile;
 
 if (process.env.NODE_ENV === 'production') {
-    const successFile = path.join(__dirname, '..', 'log', 'success.log');
-    const errorFile = path.join(__dirname, '..', 'log', 'error.log');
+    successFile = path.join(__dirname, '..', 'log', 'success.log');
+    errorFile = path.join(__dirname, '..', 'log', 'error.log');
 } else {
-    const successFile = path.join(__dirname, '..', 'dev', 'log', 'success.log');
-    const errorFile = path.join(__dirname, '..', 'dev', 'log', 'error.log');
+    successFile = path.join(__dirname, '..', 'dev', 'log', 'success.log');
+    errorFile = path.join(__dirname, '..', 'dev', 'log', 'error.log');
 }
 
-const successLogger = createLogger;
-successLogger.add(winstonRotator, {
-    'name': 'access-file',
-    'level': 'info',
-    'filename': successFile,
-    'json': true,
-    'datePattern': 'yyyy-MM-dd-',
-    'prepend': true
+const logger = winston.createLogger({
+    format: winston.format.json,
+    transports: [
+        new winstonRotator({
+            filename: successFile,
+            datePattern: 'yyyy-MM-dd-'
+        }),
+        new winston.transports.File({
+            level: 'info',
+            filename: successFile
+        }),
+        new winston.transports.File({
+            level: 'error',
+            filename: errorFile
+        })
+    ]
 });
 
-const errorLogger = createLogger;
-errorLogger.add(winstonRotator, {
-    'name': 'error-file',
-    'level': 'error',
-    'filename': path.join(__dirname, '..', 'log', 'error.log'),
-    'json': true,
-    'datePattern': 'yyyy-MM-dd-',
-    'prepend': true
-});
+exports.fileLogger = logger;
 
-module.exports.successlog = successLogger;
-module.exports.errorlog = errorLogger;
+// Todo: fix this file
