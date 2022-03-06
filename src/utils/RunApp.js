@@ -9,12 +9,12 @@ const ConnectDB = require('./ConnectDB').ConnectDB;
  * @return {Promise<void>}
  * @constructor
  */
-exports.RunApp = async () => {
+exports.RunApp = async (app) => {
 
     const tasks = new Listr([
         {
             title: "Setting up routes...",
-            task: () => SetRoutes()
+            task: () => SetRoutes(app)
         },
         {
             title: "Connecting to Database...",
@@ -22,7 +22,7 @@ exports.RunApp = async () => {
         },
         {
             title: "Starting application...",
-            task: () => startApp()
+            task: () => startApp(app)
         }
     ]);
 

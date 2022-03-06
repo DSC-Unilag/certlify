@@ -17,7 +17,7 @@ const accessDailyLogStream = createStream('app.log', {
 });
 
 // For logging in dev
-const accessDevLogStream = createWriteStream(path.join(__dirname, 'log', 'dev', 'app.log'), { flags: 'a' })
+const accessDevLogStream = createWriteStream(path.join(__dirname, 'log', 'dev', 'app.log'), { flags: 'a' });
 
 if (process.env.NODE_ENV === 'production') {
     app.use(morgan('combined', {
@@ -35,4 +35,4 @@ if (process.env.NODE_ENV === 'production') {
 
 logger('Starting Logger.....');
 
-runApp();
+runApp(app);

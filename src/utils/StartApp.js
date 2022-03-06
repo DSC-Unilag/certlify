@@ -1,13 +1,13 @@
 // Import dependencies
 const logger = require('./Logger').Logger;
 
-const app = require('./SetRoutes').app;
+// const app = require('./SetRoutes').app;
 const PORT = process.env.PORT || 3000;
 
 /**
  * Initiates the application, after other tasks have been run.
  */
-exports.StartApp = () => {
+exports.StartApp = (app) => {
     if (process.env.NODE_ENV === 'production') {
         const greeting = `Application Started At PORT ${PORT} in ${process.env.NODE_ENV} Mode.`;
 

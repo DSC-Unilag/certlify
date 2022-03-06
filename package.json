@@ -32,6 +32,8 @@
     "listr": "^0.14.3",
     "mongoose": "^6.2.4",
     "morgan": "^1.10.0",
-    "rotating-file-stream": "^3.0.3"
+    "rotating-file-stream": "^3.0.3",
+    "winston": "^3.6.0",
+    "winston-daily-rotate-file": "^4.6.1"
   }
 }

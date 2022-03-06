@@ -3,11 +3,10 @@ const express = require('express');
 const urlencoded = require('body-parser').urlencoded;
 const cors = require('cors');
 
-const app = express();
 const appRoutes = require('../routes/app');
 const authRoutes = require('../routes/auth');
 
-exports.SetRoutes = () => {
+exports.SetRoutes = (app) => {
     app.use(express.json({
         limit: '10mb'
     }));
@@ -30,5 +29,3 @@ exports.SetRoutes = () => {
         });
     });
 }
-
-exports.app = app;
