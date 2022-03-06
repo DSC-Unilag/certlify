@@ -1,9 +1,8 @@
 // Import dependencies
 const Listr = require('listr');
-const {ConnectDB} = require("./ConnectDB");
 const startApp = require('./StartApp').StartApp;
 const SetRoutes = require("./SetRoutes").SetRoutes;
-const connectDB = require('./ConnectDB').ConnectDB;
+const ConnectDB = require('./ConnectDB').ConnectDB;
 
 /**
  * Runs all the tasks needed to start the application.

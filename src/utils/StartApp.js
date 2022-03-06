@@ -1,7 +1,7 @@
-const express = require('express');
+// Import dependencies
 const logger = require('./Logger').Logger;
 
-const app = express();
+const app = require('./SetRoutes').app;
 const PORT = process.env.PORT || 3000;
 
 /**

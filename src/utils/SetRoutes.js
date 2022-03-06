@@ -5,6 +5,7 @@ const cors = require('cors');
 
 const app = express();
 const appRoutes = require('../routes/app');
+const authRoutes = require('../routes/auth');
 
 exports.SetRoutes = () => {
     app.use(express.json({
@@ -17,9 +18,10 @@ exports.SetRoutes = () => {
 
     app.use(cors());
 
-    let pathPrefix = '/api/v2';
+    let pathPrefix = '/api/v2/';
 
     app.use(`${pathPrefix}`, appRoutes);
+    app.use(`${pathPrefix}auth`, authRoutes);
 
     // Handle 404
     app.use('*', (req, res) => {
@@ -28,3 +30,5 @@ exports.SetRoutes = () => {
         });
     });
 }
+
+exports.app = app;
