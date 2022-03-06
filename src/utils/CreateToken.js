@@ -1,3 +1,3 @@
 exports.CreateToken = async (id) => {
-    const token = 
+    const token = '';
 }
