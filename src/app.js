@@ -10,11 +10,13 @@ const logger = require('./utils/Logger').Logger;
 // Initialize application
 const app = express();
 
+// For logging in production
 const accessDailyLogStream = createStream('app.log', {
     interval: '1d',
     path: path.join(__dirname, 'log')
 });
 
+// For logging in dev
 const accessDevLogStream = createWriteStream(path.join(__dirname, 'log', 'dev', 'app.log'), { flags: 'a' })
 
 if (process.env.NODE_ENV === 'production') {
