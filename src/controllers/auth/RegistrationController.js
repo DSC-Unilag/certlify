@@ -1,29 +1,28 @@
 const User = require('../../models/User').User;
 const { hashSync, genSaltSync } = require('bcrypt');
 const createToken = require('../../utils/CreateToken').CreateToken;
+const ValidateRequest = require('../../utils/ValidateRequest').ValidateRequest;
 
 exports.Register = async (req, res) => {
-    const { first_name, last_name, email, password, password_confirmation } = req.body;
-    let required_fields = ['first_name', 'last_name', 'email', 'password', 'password_confirmation'];
-    let values = [first_name, last_name, email, password, password_confirmation];
+    const { body, errors } = ValidateRequest(req.body, [
+        {
+            first_name: 'string'
+        },
+        'last_name',
+        'email',
+        'password',
+        'password_confirmation'
+    ]);
 
-    // Todo: Move Basic validations into function
-    if (!first_name || !last_name || !email || !password || !password_confirmation) {
-        let message = 'Missing required fields: ';
-
-        required_fields.forEach((field, i) => {
-            if (!values[i]) message += field + ', ';
-        })
-
-        message = message.substring(0, message.length - 2);
-        message += ".";
-
+    if (errors) {
         res.status(400).json({
             data: null,
-            error: message
-        });
+            errors
+        })
     } else {
-        let user = await User.find({ email });
+        let user = await User.findOne({
+            email: body.email
+        });
 
         if (user) {
             res.status(400).json({
@@ -33,10 +32,10 @@ exports.Register = async (req, res) => {
         } else {
             try {
                 let user = await User.create({
-                    first_name,
-                    last_name,
-                    email,
-                    password: hashSync(password, genSaltSync())
+                    first_name: body.first_name,
+                    last_name: body.last_name,
+                    email: body.email,
+                    password: hashSync(body.password, genSaltSync())
                 });
 
                 if (!user) {
