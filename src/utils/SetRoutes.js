@@ -5,6 +5,7 @@ const cors = require('cors');
 
 const appRoutes = require('../routes/app');
 const authRoutes = require('../routes/auth');
+const certRoutes = require('../routes/certificates');
 
 exports.SetRoutes = (app) => {
     app.use(express.json({
@@ -21,6 +22,7 @@ exports.SetRoutes = (app) => {
 
     app.use(`${pathPrefix}`, appRoutes);
     app.use(`${pathPrefix}auth`, authRoutes);
+    app.use(`${pathPrefix}certificates`, certRoutes);
 
     // Handle 404
     app.use('*', (req, res) => {

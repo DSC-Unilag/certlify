@@ -55,6 +55,11 @@ exports.Register = async (req, res) => {
             } catch (error) {
                 // Todo: write to file here
                 console.log(error)
+
+                res.status(500).json({
+                    data: null,
+                    message: "Unable to create user"
+                })
             }
         }
     }
