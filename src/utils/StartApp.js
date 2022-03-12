@@ -2,7 +2,7 @@
 const logger = require('./Logger').Logger;
 
 // const app = require('./SetRoutes').app;
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 1234;
 
 /**
  * Initiates the application, after other tasks have been run.
