@@ -1,3 +1,26 @@
+/**
+ * Validates request body using a set of rules
+ * @param req Request body, req.body
+ * @param rules Array of required fields
+ * @return {{body: {}, errors: string}} Required fields and errors
+ * @example
+ const { body, errors } = ValidateRequest(req.body, [
+    'username',
+    'last_name',
+    'email',
+    'password',
+    'password_confirmation'
+ ]);
+
+ let username = body.username
+ @example
+ const { body, errors } = ValidateRequest(req.body, [
+    {
+        first_name: 'string' // Checks if request has first_name and that it is a string
+    },
+    'last_name',
+ ]);
+ */
 exports.ValidateRequest = (req, rules) => {
     let body = {};
     let errors = '';

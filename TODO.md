@@ -1,5 +1,4 @@
 # Todos
 
-- Logging to files, would be good for debugging 
-- General request validator
+- Logging to files, would be good for debugging
 - General response body stuff

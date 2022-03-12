@@ -5,9 +5,7 @@ const ValidateRequest = require('../../utils/ValidateRequest').ValidateRequest;
 
 exports.Register = async (req, res) => {
     const { body, errors } = ValidateRequest(req.body, [
-        {
-            first_name: 'string'
-        },
+        'first_name',
         'last_name',
         'email',
         'password',
