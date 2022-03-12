@@ -49,7 +49,7 @@ exports.ValidateRequest = (req, rules) => {
     })
 
     return {
-        errors: errors.substring(0, errors.length - 2) + ".",
+        errors: errors ? errors.substring(0, errors.length - 2) + "." : errors,
         body
     }
 }
