@@ -19,7 +19,7 @@ exports.RequireAuth = async (req, res, next) => {
             errors: "Invalid token"
         });
         else {
-            const user = User.findById(decodedToken.id);
+            const user = await User.findById(decodedToken.id);
 
             req.user = user;
             req.token = token;
