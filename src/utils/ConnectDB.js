@@ -2,7 +2,7 @@
 const logger = require('./Logger').Logger;
 const mongoose = require('mongoose');
 const getEnvs = require('./GetEnvs').GetEnvs;
-const { fileLogger } = require('./ErrorLogger');
+const { FileLogger } = require('./ErrorLogger');
 
 /**
  * Starts the application database and connects to it
@@ -17,10 +17,10 @@ exports.ConnectDB = async () => {
         });
 
         logger(`MongoDB connected: ${conn.connection.host}`, 'green');
-        // fileLogger.info(`MongoDB connected: ${conn.connection.host}`); // Todo: fix this
+        FileLogger.info(`MongoDB connected: ${conn.connection.host}`);
     } catch (error) {
         logger("Unable to connect to database", 'red');
-        // fileLogger.error(`Unable to connect to database: ${error}`) // Todo: fix this
+        FileLogger.error(`Unable to connect to Mongo`, { error });
         process.exit(1);
     }
 }

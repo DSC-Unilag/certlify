@@ -2,6 +2,7 @@ const User = require('../../models/User').User;
 const { hashSync, genSaltSync } = require('bcrypt');
 const createToken = require('../../utils/CreateToken').CreateToken;
 const ValidateRequest = require('../../utils/ValidateRequest').ValidateRequest;
+const FileLogger = require('../../utils/ErrorLogger').FileLogger;
 
 exports.Register = async (req, res) => {
     const { body, errors } = ValidateRequest(req.body, [
@@ -48,10 +49,8 @@ exports.Register = async (req, res) => {
                     token: await createToken(user._id)
                 });
 
-                // Todo: write to file here
             } catch (error) {
-                // Todo: write to file here
-                console.log(error)
+                FileLogger.error("Unable to create and send verification token", { error });
 
                 res.status(500).json({
                     data: null,

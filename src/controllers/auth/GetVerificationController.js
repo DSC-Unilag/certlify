@@ -1,6 +1,7 @@
 // Import dependencies
 const OTP = require('../../models/OTP').OTP;
 const SendMail = require('../../utils/SendMail').SendMail;
+const FileLogger = require('../../utils/ErrorLogger').FileLogger;
 
 exports.GetVerificationToken = async (req, res) => {
     try {
@@ -16,8 +17,7 @@ exports.GetVerificationToken = async (req, res) => {
             errors: null
         });
     } catch (error) {
-        // Todo: Write error to file
-        console.log(error)
+        FileLogger.error("Unable to create and send verification token", { error });
 
         res.status(500).json({
             data: null,

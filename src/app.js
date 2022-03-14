@@ -6,6 +6,7 @@ const path = require('path');
 const createStream = require('rotating-file-stream').createStream
 const createWriteStream = require('fs').createWriteStream
 const logger = require('./utils/Logger').Logger;
+const FileLogger = require('./utils/ErrorLogger').FileLogger;
 
 // Initialize application
 const app = express();
@@ -25,14 +26,17 @@ if (process.env.NODE_ENV === 'production') {
     }));
 
     logger('Now Writing Logs To log/app.log', "green");
+    FileLogger.info('Now Writing Logs To log/app.log');
 } else {
     app.use(morgan(':method :url :status :res[content-length] - :response-time ms', {
         stream: accessDevLogStream
     }))
 
     logger('Now Writing Logs To log/dev/app.log', "green");
+    FileLogger.info('Now Writing Logs To log/dev/app.log');
 }
 
 logger('Starting Logger.....');
+FileLogger.info('Starting Logger.....');
 
 runApp(app);
