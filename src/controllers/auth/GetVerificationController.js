@@ -9,8 +9,7 @@ exports.GetVerificationToken = async (req, res) => {
             user_id: req.user._id,
         });
 
-        const mail_status = SendMail(req.user.email, "Account Verification");
-        FileLogger.error("Sent? ", { mail_status });
+        const mail_status = await SendMail(req.user.email, "Account Verification");
 
         if (mail_status) res.status(200).json({
             data: "Email sent successfully",

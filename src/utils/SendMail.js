@@ -7,8 +7,8 @@ const EMAIL_TYPES = [
     "Account Verification",
 ];
 
-exports.SendMail = (to, type) => {
-    const from = "Certlify";
+exports.SendMail = async (to, type) => {
+    const from = getEnvs().NODE_MAILER_FROM_EMAIL;
     let subject, html;
 
     const transporter = nodemailer.createTransport({
@@ -41,11 +41,12 @@ exports.SendMail = (to, type) => {
         html
     }
 
-    transporter.sendMail(mailOptions, (err, response) => {
-        if (err) FileLogger.error('Unable to send mail', { error });
-        else {
-            FileLogger.info("Mail sent successfully", { response })
-            return true;
-        }
-    })
+    try {
+        const mail = await transporter.sendMail(mailOptions);
+
+        if (mail) return true;
+        else return false;
+    } catch (error) {
+        FileLogger.error('Unable to send mail', { error });
+    }
 }
