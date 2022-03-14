@@ -1,6 +1,7 @@
 // Import dependencies
 const nodemailer = require('nodemailer');
 const getEnvs = require('./GetEnvs').GetEnvs;
+const FileLogger = require('./ErrorLogger').FileLogger;
 
 exports.SendMail = (to, type) => {
     const transporter = nodemailer.createTransport({
@@ -16,12 +17,16 @@ exports.SendMail = (to, type) => {
 
     const mailOptions = {
         from: "info@certlify.com",
-        to: `${ to }`,
+        to: `zubairidrisaweda@gmail.com`, // Todo: fix this
         subject: "Getting started with Certlify!", // Todo: set to be dynamic based on type
-        html: verifyUserTemplate(username, link) // Todo: sett to be dynamic based on type
+        html: `i love love` // Todo: sett to be dynamic based on type
     }
 
     transporter.sendMail(mailOptions, (err, response) => {
-        if (err) console.log(err) // Todo: write to file here
+        if (err) FileLogger.error('Unable to send mail', { error });
+        else {
+            FileLogger.info("Mail sent successfully", { response })
+            return true;
+        }
     })
 }

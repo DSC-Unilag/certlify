@@ -9,12 +9,16 @@ exports.GetVerificationToken = async (req, res) => {
             user_id: req.user._id,
         });
 
-        // Todo: send mail here
-        SendMail(req.user.email, "Account Verification");
+        const mail_status = SendMail(req.user.email, "Account Verification");
+        FileLogger.error("Sent? ", { mail_status });
 
-        res.status(200).json({
+        if (mail_status) res.status(200).json({
             data: "Email sent successfully",
             errors: null
+        });
+        else res.status(500).json({
+            data: null,
+            message: "Unable to verify user"
         });
     } catch (error) {
         FileLogger.error("Unable to create and send verification token", { error });
