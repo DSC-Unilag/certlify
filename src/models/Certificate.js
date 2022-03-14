@@ -12,15 +12,6 @@ const boundarySchema = new Schema({
   color: String,
 });
 
-const eligibleUser = new Schema({
-  email: {
-    type: String,
-    sparse: true
-  },
-  name: String,
-  status: Boolean,
-});
-
 const certificateSchema = new Schema({
   issuer:String,
   name:String,
@@ -31,8 +22,7 @@ const certificateSchema = new Schema({
     required: true,
     unique: true,
   },
-  boundary: [boundarySchema],
-  eligibleUsers: [eligibleUser],
+  boundary: [boundarySchema]
 });
 
 let Certificate = mongoose.model("Certificate", certificateSchema);

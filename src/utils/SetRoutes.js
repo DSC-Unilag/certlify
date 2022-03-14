@@ -7,6 +7,7 @@ const appRoutes = require('../routes/app');
 const authRoutes = require('../routes/auth');
 const certRoutes = require('../routes/certificates');
 const userRoutes = require('../routes/user');
+const { RequireAuth } = require('../middlewares/RequireAuth');
 
 exports.SetRoutes = (app) => {
     app.use(express.json({
@@ -24,7 +25,7 @@ exports.SetRoutes = (app) => {
     app.use(`${pathPrefix}`, appRoutes);
     app.use(`${pathPrefix}auth`, authRoutes);
     app.use(`${pathPrefix}certificates`, certRoutes);
-    app.use(`${pathPrefix}user`, userRoutes)
+    app.use(`${pathPrefix}user`,RequireAuth, userRoutes)
 
     // Handle 404
     app.use('*', (req, res) => {
