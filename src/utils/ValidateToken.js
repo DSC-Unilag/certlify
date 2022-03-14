@@ -3,6 +3,7 @@ const verify = require('jsonwebtoken').verify;
 const getEnvs = require('./GetEnvs').GetEnvs;
 const Token = require('../models/Token').Token;
 const User = require('../models/User').User;
+const FileLogger = require('../utils/ErrorLogger').FileLogger;
 
 exports.ValidateToken = async (token) => {
     try {
@@ -16,7 +17,7 @@ exports.ValidateToken = async (token) => {
         if (storedToken && user) return verifiedToken;
         else return false;
     } catch (error) {
-        // Todo: Write error to file
+        FileLogger.error("Unable to validate token", { error });
         return false;
     }
 }

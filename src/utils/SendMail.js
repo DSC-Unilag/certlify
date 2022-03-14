@@ -9,7 +9,7 @@ exports.SendMail = (to, type) => {
         port: 587,
         secure: true,
         auth: {
-            user: process.env.SES_USER || getEnvs().NODE_MAILER_EMAIL,
+            user: process.env.SES_USER || getEnvs().NODE_MAILER_USER,
             pass: process.env.SES_PASS || getEnvs().NODE_MAILER_PASSWORD,
         },
     });

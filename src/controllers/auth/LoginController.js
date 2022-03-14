@@ -2,6 +2,7 @@ const ValidateRequest = require('../../utils/ValidateRequest').ValidateRequest;
 const User = require('../../models/User').User;
 const compare = require('bcrypt').compare;
 const createToken = require('../../utils/CreateToken').CreateToken;
+const FileLogger = require('../../utils/ErrorLogger').FileLogger;
 
 exports.Login = async (req, res) => {
     const { body, errors } = ValidateRequest(req.body, [
@@ -34,8 +35,7 @@ exports.Login = async (req, res) => {
                 });
             }
         } catch (error) {
-            // Todo: write to file here
-            console.log(error)
+            FileLogger.error("Unable to login user", { error });
 
             res.status(500).json({
                 data: null,

@@ -1,15 +1,14 @@
+// Import dependencies
 const mongoose = require("mongoose");
-
-// UserSchema
 const Schema = mongoose.Schema;
 
 const boundarySchema = new Schema({
-  bottom: Array,
-  left: Array,
-  right: Array,
-  fontsize: Number,
-  fontfamily:String,
-  color: String,
+    bottom: Array,
+    left: Array,
+    right: Array,
+    fontsize: Number,
+    fontfamily:String,
+    color: String,
 });
 
 const certificateSchema = new Schema({
@@ -25,6 +24,4 @@ const certificateSchema = new Schema({
   boundary: [boundarySchema]
 });
 
-let Certificate = mongoose.model("Certificate", certificateSchema);
-
-exports.Certificate = Certificate;
+exports.Certificate = mongoose.model("Certificate", certificateSchema);

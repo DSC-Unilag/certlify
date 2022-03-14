@@ -1,6 +1,5 @@
+// Import dependencies
 const mongoose = require("mongoose");
-
-// UserSchema
 const Schema = mongoose.Schema;
 
 const collectorSchema = new Schema({
@@ -17,6 +16,4 @@ const collectorSchema = new Schema({
     status: Boolean,
 });
 
-let Collector = mongoose.model("Collector", collectorSchema);
-
-exports.Collector = Collector;
+exports.Collector = mongoose.model("Collector", collectorSchema);
